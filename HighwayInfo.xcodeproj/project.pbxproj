@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
+		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
+		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
 		3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */; };
 		3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */; };
 		3B5B0E9029B0CFDD00AECF22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8F29B0CFDD00AECF22 /* ViewController.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
 		3B5B0E8829B0CFDD00AECF22 /* HighwayInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighwayInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +48,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B5AD11A29B1E7B300E2AFAA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */,
+				3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */,
+				3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3B5AD11B29B1E8D500E2AFAA /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3B5AD11C29B1E8DA00E2AFAA /* Common */,
+				3B5AD12329B1F30100E2AFAA /* Scene */,
+				3B5B0E9129B0CFDD00AECF22 /* Main.storyboard */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3B5AD11C29B1E8DA00E2AFAA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3B5AD12329B1F30100E2AFAA /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				3B5AD12429B1F30E00E2AFAA /* Home */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		3B5AD12429B1F30E00E2AFAA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B0E8F29B0CFDD00AECF22 /* ViewController.swift */,
+				3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3B5AD12529B1F37700E2AFAA /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */,
+				3B5B0E9929B0CFDE00AECF22 /* Info.plist */,
+				3B5B0E9629B0CFDE00AECF22 /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		3B5B0E7F29B0CFDD00AECF22 = {
 			isa = PBXGroup;
 			children = (
@@ -63,13 +124,9 @@
 		3B5B0E8A29B0CFDD00AECF22 /* HighwayInfo */ = {
 			isa = PBXGroup;
 			children = (
-				3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */,
-				3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */,
-				3B5B0E8F29B0CFDD00AECF22 /* ViewController.swift */,
-				3B5B0E9129B0CFDD00AECF22 /* Main.storyboard */,
-				3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */,
-				3B5B0E9629B0CFDE00AECF22 /* LaunchScreen.storyboard */,
-				3B5B0E9929B0CFDE00AECF22 /* Info.plist */,
+				3B5AD12529B1F37700E2AFAA /* Resource */,
+				3B5AD11A29B1E7B300E2AFAA /* Application */,
+				3B5AD11B29B1E8D500E2AFAA /* Presentation */,
 			);
 			path = HighwayInfo;
 			sourceTree = "<group>";
@@ -88,7 +145,6 @@
 				5606F3F1012B7A9156D35823 /* Pods-HighwayInfo.debug.xcconfig */,
 				483DF070A3B5717B415683AC /* Pods-HighwayInfo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -207,7 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* ViewController.swift in Sources */,
+				3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */,
+				3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */,
 				3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */,
 				3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */,
 			);
@@ -373,7 +432,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -401,7 +460,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
