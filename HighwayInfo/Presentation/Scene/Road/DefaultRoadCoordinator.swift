@@ -18,7 +18,7 @@ final class DefaultRoadCoordinator: Coordinator {
     
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "RoadViewController")
+        let vc = storyboard.instantiateViewController(ofType: RoadViewController.self)
         
         navigationController.pushViewController(vc, animated: true)
     }

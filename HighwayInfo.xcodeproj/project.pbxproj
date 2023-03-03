@@ -13,9 +13,10 @@
 		3B5AD12829B1F5E800E2AFAA /* RoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12729B1F5E800E2AFAA /* RoadViewController.swift */; };
 		3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12929B1F61500E2AFAA /* DefaultRoadCoordinator.swift */; };
 		3B5AD12C29B1FB8200E2AFAA /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12B29B1FB8200E2AFAA /* TabBarPage.swift */; };
+		3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12E29B203F300E2AFAA /* Reusable.swift */; };
 		3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */; };
 		3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */; };
-		3B5B0E9029B0CFDD00AECF22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8F29B0CFDD00AECF22 /* ViewController.swift */; };
+		3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */; };
 		3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9129B0CFDD00AECF22 /* Main.storyboard */; };
 		3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */; };
 		3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9629B0CFDE00AECF22 /* LaunchScreen.storyboard */; };
@@ -29,10 +30,11 @@
 		3B5AD12729B1F5E800E2AFAA /* RoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadViewController.swift; sourceTree = "<group>"; };
 		3B5AD12929B1F61500E2AFAA /* DefaultRoadCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12B29B1FB8200E2AFAA /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
+		3B5AD12E29B203F300E2AFAA /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		3B5B0E8829B0CFDD00AECF22 /* HighwayInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighwayInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3B5B0E8F29B0CFDD00AECF22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3B5B0E9229B0CFDD00AECF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B5B0E9729B0CFDE00AECF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,8 +88,8 @@
 		3B5AD12329B1F30100E2AFAA /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				3B5AD12629B1F4EB00E2AFAA /* Road */,
 				3B5AD12429B1F30E00E2AFAA /* Home */,
+				3B5AD12629B1F4EB00E2AFAA /* Road */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -95,7 +97,7 @@
 		3B5AD12429B1F30E00E2AFAA /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3B5B0E8F29B0CFDD00AECF22 /* ViewController.swift */,
+				3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */,
 				3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */,
 			);
 			path = Home;
@@ -117,6 +119,14 @@
 				3B5AD12929B1F61500E2AFAA /* DefaultRoadCoordinator.swift */,
 			);
 			path = Road;
+			sourceTree = "<group>";
+		};
+		3B5AD12D29B203E200E2AFAA /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3B5AD12E29B203F300E2AFAA /* Reusable.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		3B5B0E7F29B0CFDD00AECF22 = {
@@ -144,6 +154,7 @@
 				3B5AD12529B1F37700E2AFAA /* Resource */,
 				3B5AD11A29B1E7B300E2AFAA /* Application */,
 				3B5AD11B29B1E8D500E2AFAA /* Presentation */,
+				3B5AD12D29B203E200E2AFAA /* Utility */,
 			);
 			path = HighwayInfo;
 			sourceTree = "<group>";
@@ -281,9 +292,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
-				3B5B0E9029B0CFDD00AECF22 /* ViewController.swift in Sources */,
+				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,
 				3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */,
 				3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */,
+				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,
 				3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */,
 				3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */,
 				3B5AD12C29B1FB8200E2AFAA /* TabBarPage.swift in Sources */,
