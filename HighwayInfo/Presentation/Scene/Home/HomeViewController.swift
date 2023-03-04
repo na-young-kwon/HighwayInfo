@@ -11,13 +11,21 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var toggleBackground: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var toggleForeground: UIView!
+    @IBOutlet weak var accidentButton: UIButton!
+    @IBOutlet weak var constructionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureHomeView()
+        configureTableView()
+    }
+    
+    private func configureHomeView() {
         whiteView.layer.cornerRadius = 15
         toggleBackground.layer.cornerRadius = 10
-        configureTableView()
+        toggleForeground.layer.cornerRadius = 10
     }
     
     private func configureTableView() {
@@ -25,6 +33,22 @@ class HomeViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: AccidentCell.reuseID)
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
+    }
+    
+    @IBAction func constructionButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
+        }
+    }
+    
+    @IBAction func accidentButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            self.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
+    }
+    
+    @IBAction func refreshButtonTapped(_ sender: UIButton) {
+        print("새로고침 버튼 눌림")
     }
 }
 

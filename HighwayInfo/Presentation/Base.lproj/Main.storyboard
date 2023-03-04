@@ -21,23 +21,69 @@
                                 <rect key="frame" x="0.0" y="127.66666666666669" width="393" height="724.33333333333326"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19i-vM-20H">
-                                        <rect key="frame" x="296" y="13.999999999999986" width="83" height="35"/>
+                                        <rect key="frame" x="295.33333333333331" y="13.999999999999986" width="83.666666666666686" height="34.333333333333336"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="새로고침"/>
+                                        <connections>
+                                            <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IxS-XO-Sg7"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="돌발정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGT-tC-EjM">
-                                        <rect key="frame" x="18" y="17.999999999999986" width="77" height="27"/>
+                                        <rect key="frame" x="18" y="17.999999999999986" width="76.333333333333329" height="26.333333333333329"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W42-ST-XhF">
-                                        <rect key="frame" x="18" y="68.999999999999986" width="346" height="32"/>
+                                        <rect key="frame" x="18" y="68.333333333333329" width="346" height="32"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNb-lz-REo" userLabel="Toggle Foreground">
+                                                <rect key="frame" x="4" y="4" width="162" height="24"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ba-Hi-Gzh">
+                                                <rect key="frame" x="0.0" y="0.0" width="346" height="32"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuH-yl-u16">
+                                                        <rect key="frame" x="0.0" y="0.0" width="173" height="32"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="교통사고">
+                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                                            <color key="baseForegroundColor" red="0.15686274510000001" green="0.25490196079999999" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="accidentButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dJp-nr-iIV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JG-UN-s9a">
+                                                        <rect key="frame" x="173" y="0.0" width="173" height="32"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="공사">
+                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                                            <color key="baseForegroundColor" red="0.15686274510000001" green="0.25490196079999999" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="constructionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c3L-1p-ibO"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <constraints>
+                                            <constraint firstItem="LNb-lz-REo" firstAttribute="leading" secondItem="W42-ST-XhF" secondAttribute="leading" constant="4" id="1xm-6V-YpR"/>
+                                            <constraint firstItem="3ba-Hi-Gzh" firstAttribute="top" secondItem="W42-ST-XhF" secondAttribute="top" id="6OH-C7-0Hq"/>
+                                            <constraint firstAttribute="bottom" secondItem="LNb-lz-REo" secondAttribute="bottom" constant="4" id="QQF-h1-1pm"/>
+                                            <constraint firstItem="3ba-Hi-Gzh" firstAttribute="leading" secondItem="W42-ST-XhF" secondAttribute="leading" id="REk-Uc-rkV"/>
+                                            <constraint firstAttribute="bottom" secondItem="3ba-Hi-Gzh" secondAttribute="bottom" id="RW6-oO-VWn"/>
+                                            <constraint firstAttribute="trailing" secondItem="3ba-Hi-Gzh" secondAttribute="trailing" id="SMi-Bd-HIh"/>
+                                            <constraint firstAttribute="trailing" secondItem="LNb-lz-REo" secondAttribute="trailing" constant="180" id="Sxo-DN-lBm"/>
+                                            <constraint firstItem="LNb-lz-REo" firstAttribute="top" secondItem="W42-ST-XhF" secondAttribute="top" constant="4" id="nkc-j7-ROP"/>
+                                        </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vTX-Lh-9vm">
-                                        <rect key="frame" x="20" y="121" width="353" height="603.33333333333337"/>
+                                        <rect key="frame" x="20" y="120.33333333333331" width="353" height="604"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -59,7 +105,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighwayInfo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N98-Bf-UZ4">
-                                <rect key="frame" x="18" y="75.666666666666671" width="130" height="27"/>
+                                <rect key="frame" x="18" y="76.333333333333329" width="130" height="26.333333333333329"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -78,8 +124,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accidentButton" destination="KuH-yl-u16" id="qiw-Wf-Cu2"/>
+                        <outlet property="constructionButton" destination="6JG-UN-s9a" id="Kpd-nC-V5M"/>
                         <outlet property="tableView" destination="vTX-Lh-9vm" id="pCG-Az-4l5"/>
                         <outlet property="toggleBackground" destination="W42-ST-XhF" id="Ehm-3T-P2H"/>
+                        <outlet property="toggleForeground" destination="LNb-lz-REo" id="EvA-BR-uMP"/>
                         <outlet property="whiteView" destination="Y0U-Sd-Ulg" id="g01-Ih-XQ3"/>
                     </connections>
                 </viewController>
@@ -94,13 +143,37 @@
                     <view key="view" contentMode="scaleToFill" id="LpD-5O-foU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고속도로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaB-aL-5HY">
+                                <rect key="frame" x="18" y="75.666666666666671" width="90" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XdN-fO-ZEL">
+                                <rect key="frame" x="0.0" y="127.66666666666669" width="393" height="724.33333333333326"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Slq-y6-mci"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.15686274509803921" green="0.25490196078431371" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Slq-y6-mci" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="QaB-aL-5HY" secondAttribute="trailing" constant="285" id="Mlu-g6-MbD"/>
+                            <constraint firstItem="XdN-fO-ZEL" firstAttribute="top" secondItem="QaB-aL-5HY" secondAttribute="bottom" constant="25" id="Q5B-Q4-eRO"/>
+                            <constraint firstItem="XdN-fO-ZEL" firstAttribute="height" secondItem="LpD-5O-foU" secondAttribute="height" multiplier="0.85" id="fQF-xn-wCr"/>
+                            <constraint firstItem="QaB-aL-5HY" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="18" id="hcH-Ef-0Pz"/>
+                            <constraint firstItem="XdN-fO-ZEL" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" id="jsJ-Gq-aOp"/>
+                            <constraint firstItem="XdN-fO-ZEL" firstAttribute="trailing" secondItem="Slq-y6-mci" secondAttribute="trailing" id="nbV-dU-sYK"/>
+                            <constraint firstAttribute="bottom" secondItem="XdN-fO-ZEL" secondAttribute="bottom" id="nzg-cz-FbJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="XdN-fO-ZEL" id="5yO-DG-QqJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXN-DS-jWP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="-15"/>
+            <point key="canvasLocation" x="774.80916030534343" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>

@@ -17,6 +17,8 @@
 		3B5AD13329B2291D00E2AFAA /* AccidentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */; };
 		3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */; };
 		3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13629B32E3900E2AFAA /* ShadowView.swift */; };
+		3B5AD13929B3456F00E2AFAA /* RoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AD13829B3456F00E2AFAA /* RoadCell.xib */; };
+		3B5AD13B29B3457B00E2AFAA /* RoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13A29B3457B00E2AFAA /* RoadCell.swift */; };
 		3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */; };
 		3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */; };
 		3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */; };
@@ -37,6 +39,8 @@
 		3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccidentCell.xib; sourceTree = "<group>"; };
 		3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentCell.swift; sourceTree = "<group>"; };
 		3B5AD13629B32E3900E2AFAA /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		3B5AD13829B3456F00E2AFAA /* RoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoadCell.xib; sourceTree = "<group>"; };
+		3B5AD13A29B3457B00E2AFAA /* RoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadCell.swift; sourceTree = "<group>"; };
 		3B5B0E8829B0CFDD00AECF22 /* HighwayInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighwayInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,9 +100,6 @@
 			children = (
 				3B5AD12429B1F30E00E2AFAA /* Home */,
 				3B5AD12629B1F4EB00E2AFAA /* Road */,
-				3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */,
-				3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */,
-				3B5AD13629B32E3900E2AFAA /* ShadowView.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -108,6 +109,9 @@
 			children = (
 				3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */,
 				3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */,
+				3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */,
+				3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */,
+				3B5AD13629B32E3900E2AFAA /* ShadowView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -125,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				3B5AD12729B1F5E800E2AFAA /* RoadViewController.swift */,
+				3B5AD13829B3456F00E2AFAA /* RoadCell.xib */,
+				3B5AD13A29B3457B00E2AFAA /* RoadCell.swift */,
 				3B5AD12929B1F61500E2AFAA /* DefaultRoadCoordinator.swift */,
 			);
 			path = Road;
@@ -247,6 +253,7 @@
 			files = (
 				3B5AD13329B2291D00E2AFAA /* AccidentCell.xib in Resources */,
 				3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */,
+				3B5AD13929B3456F00E2AFAA /* RoadCell.xib in Resources */,
 				3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */,
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,
 			);
@@ -301,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5AD13B29B3457B00E2AFAA /* RoadCell.swift in Sources */,
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,

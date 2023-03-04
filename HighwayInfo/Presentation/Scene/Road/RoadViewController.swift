@@ -8,11 +8,37 @@
 import UIKit
 
 class RoadViewController: UIViewController {
-
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .brown
+        configureUI()
+        configureTableView()
     }
 
+    private func configureUI() {
+        tableView.layer.cornerRadius = 15
+        
+    }
+    
+    private func configureTableView() {
+        let nib = UINib(nibName: RoadCell.reuseID, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: RoadCell.reuseID)
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+    }
+}
+
+extension RoadViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RoadCell.reuseID, for: indexPath) as? RoadCell else {
+            return UITableViewCell()
+        }
+        return cell
+    }
 }

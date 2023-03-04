@@ -8,7 +8,13 @@
 import UIKit
 
 class AccidentCell: UITableViewCell {
-
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var blockLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var accidentImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

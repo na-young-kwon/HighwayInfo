@@ -83,6 +83,14 @@
                     <constraint firstItem="b0a-lw-kRE" firstAttribute="leading" secondItem="Jq5-mz-8D8" secondAttribute="leading" id="rB6-VU-zje"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="accidentImageView" destination="7aa-Wz-CwU" id="pf8-Ky-pVx"/>
+                <outlet property="blockLabel" destination="CGM-YF-b9K" id="Wv4-G5-Bhh"/>
+                <outlet property="dateLabel" destination="Jq5-mz-8D8" id="H8p-Cn-RXH"/>
+                <outlet property="descriptionLabel" destination="Q3g-us-ryE" id="zZK-MU-srz"/>
+                <outlet property="directionLabel" destination="CGM-YF-b9K" id="Uef-5g-MXN"/>
+                <outlet property="titleLabel" destination="vh4-3J-mO8" id="Chf-4m-9hx"/>
+            </connections>
             <point key="canvasLocation" x="180" y="-32"/>
         </tableViewCell>
     </objects>
