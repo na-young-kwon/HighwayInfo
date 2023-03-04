@@ -33,9 +33,9 @@ final class AppCoordinator: Coordinator {
     private func configureTabBar(with vc: [UIViewController]) {
         tabBarController.setViewControllers(vc, animated: true)
         tabBarController.selectedIndex = TabBarPage.home.pageNumber
-        tabBarController.view.backgroundColor = .systemBackground
         tabBarController.tabBar.backgroundColor = .systemBackground
-        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.tintColor = .black
+        tabBarController.tabBar.unselectedItemTintColor = .systemGray2
     }
     
     private func makeTabNavigationController(of page: TabBarPage) -> UINavigationController {
