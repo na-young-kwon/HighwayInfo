@@ -41,7 +41,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="TGT-tC-EjM" firstAttribute="leading" secondItem="Y0U-Sd-Ulg" secondAttribute="leading" constant="18" id="7qh-si-1dl"/>
                                     <constraint firstItem="W42-ST-XhF" firstAttribute="width" secondItem="Y0U-Sd-Ulg" secondAttribute="width" multiplier="0.880407" id="8bH-g2-1gd"/>
@@ -53,6 +53,7 @@
                                     <constraint firstItem="vTX-Lh-9vm" firstAttribute="top" secondItem="W42-ST-XhF" secondAttribute="bottom" constant="20" id="ghX-Ua-NbJ"/>
                                     <constraint firstAttribute="trailing" secondItem="vTX-Lh-9vm" secondAttribute="trailing" constant="20" id="lwS-Jz-VYI"/>
                                     <constraint firstItem="W42-ST-XhF" firstAttribute="leading" secondItem="TGT-tC-EjM" secondAttribute="leading" id="mcJ-E9-jD7"/>
+                                    <constraint firstItem="19i-vM-20H" firstAttribute="leading" relation="lessThanOrEqual" secondItem="TGT-tC-EjM" secondAttribute="trailing" constant="201" id="qw5-mM-p4T"/>
                                     <constraint firstAttribute="bottom" secondItem="vTX-Lh-9vm" secondAttribute="bottom" id="sV2-ly-Bx5"/>
                                     <constraint firstItem="19i-vM-20H" firstAttribute="top" secondItem="Y0U-Sd-Ulg" secondAttribute="top" constant="14" id="yzJ-q4-AP8"/>
                                 </constraints>
@@ -73,6 +74,7 @@
                             <constraint firstItem="Y0U-Sd-Ulg" firstAttribute="top" secondItem="N98-Bf-UZ4" secondAttribute="bottom" constant="25" id="ZWU-N3-lFZ"/>
                             <constraint firstItem="Y0U-Sd-Ulg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a2W-la-meE"/>
                             <constraint firstAttribute="bottom" secondItem="Y0U-Sd-Ulg" secondAttribute="bottom" id="cWG-hz-j6f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="N98-Bf-UZ4" secondAttribute="trailing" constant="245" id="fKn-Qj-GZR"/>
                         </constraints>
                     </view>
                     <connections>
