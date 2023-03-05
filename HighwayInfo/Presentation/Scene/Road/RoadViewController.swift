@@ -19,13 +19,14 @@ class RoadViewController: UIViewController {
 
     private func configureUI() {
         tableView.layer.cornerRadius = 15
-        
+        hidesBottomBarWhenPushed = true
     }
     
     private func configureTableView() {
         let nib = UINib(nibName: RoadCell.reuseID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: RoadCell.reuseID)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
     }
 }
@@ -40,5 +41,13 @@ extension RoadViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         return cell
+    }
+}
+
+extension RoadViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(ofType: DetailViewController.self)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

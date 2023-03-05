@@ -41,7 +41,6 @@ final class AppCoordinator: Coordinator {
     private func makeTabNavigationController(of page: TabBarPage) -> UINavigationController {
         let nav = UINavigationController()
         
-        nav.setNavigationBarHidden(true, animated: true)
         nav.tabBarItem = UITabBarItem(title: page.stringValue, image: UIImage(named: "Box"), selectedImage: nil)
         startTabCoordinator(of: page, to: nav)
         return nav

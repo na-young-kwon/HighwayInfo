@@ -10,19 +10,19 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var toggleBackground: UIView!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toggleForeground: UIView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var accidentButton: UIButton!
     @IBOutlet weak var constructionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureHomeView()
+        configureUI()
         configureTableView()
     }
     
-    private func configureHomeView() {
+    private func configureUI() {
         whiteView.layer.cornerRadius = 15
         toggleBackground.layer.cornerRadius = 10
         toggleForeground.layer.cornerRadius = 10
