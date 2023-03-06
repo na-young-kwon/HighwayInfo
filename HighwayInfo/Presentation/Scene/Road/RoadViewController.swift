@@ -19,7 +19,6 @@ class RoadViewController: UIViewController {
 
     private func configureUI() {
         tableView.layer.cornerRadius = 15
-        hidesBottomBarWhenPushed = true
     }
     
     private func configureTableView() {
@@ -49,5 +48,6 @@ extension RoadViewController: UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: DetailViewController.self)
         navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

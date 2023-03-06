@@ -35,15 +35,15 @@ class HomeViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
     }
     
-    @IBAction func constructionButtonTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.2) {
-            self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
-        }
-    }
-    
     @IBAction func accidentButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.2) {
             self.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
+    }
+    
+    @IBAction func constructionButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
         }
     }
     

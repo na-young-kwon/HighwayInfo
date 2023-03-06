@@ -8,7 +8,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var toggleBackground: UIView!
     @IBOutlet weak var toggleForeground: UIView!
@@ -20,11 +19,34 @@ class DetailViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+
     private func configureUI() {
         whiteView.layer.cornerRadius = 15
         toggleBackground.layer.cornerRadius = 10
         toggleForeground.layer.cornerRadius = 10
-        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(
-            title: "뒤로가기", style: .plain, target: nil, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "뒤로가기", style: .plain, target: nil, action: nil)
+        backBarButtonItem.tintColor = .white
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
+    }
+    
+    @IBAction func forwardButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            self.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
+    }
+    
+    @IBAction func reverseButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
+        }
     }
 }

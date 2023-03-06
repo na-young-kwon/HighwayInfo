@@ -184,27 +184,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLb-Zi-aS1" userLabel="WhiteView">
-                                <rect key="frame" x="0.0" y="127.66666666666669" width="393" height="724.33333333333326"/>
+                                <rect key="frame" x="0.0" y="170.33333333333331" width="393" height="681.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id9-Cc-R8V" userLabel="ToggleBackground">
-                                        <rect key="frame" x="18" y="17.999999999999986" width="346" height="32"/>
+                                        <rect key="frame" x="18" y="18" width="346" height="30"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWt-lA-caQ" userLabel="ToggleForeground">
-                                                <rect key="frame" x="4" y="4" width="162" height="24"/>
+                                                <rect key="frame" x="4" y="4" width="162" height="22"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-86-tbS">
-                                                <rect key="frame" x="0.0" y="0.0" width="346" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="346" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7z7-2P-nmZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="173" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="173" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="상행"/>
+                                                        <connections>
+                                                            <action selector="forwardButtonTapped:" destination="9NB-Xq-Z9r" eventType="touchUpInside" id="RAF-bo-9U6"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPs-KZ-VSE">
-                                                        <rect key="frame" x="173" y="0.0" width="173" height="32"/>
+                                                        <rect key="frame" x="173" y="0.0" width="173" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="하행"/>
+                                                        <connections>
+                                                            <action selector="reverseButtonTapped:" destination="9NB-Xq-Z9r" eventType="touchUpInside" id="WJX-3b-gAq"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -222,7 +228,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vlz-gR-NHB">
-                                        <rect key="frame" x="0.0" y="70" width="393" height="654.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="68" width="393" height="613.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -238,8 +244,8 @@
                                     <constraint firstItem="id9-Cc-R8V" firstAttribute="leading" secondItem="VLb-Zi-aS1" secondAttribute="leading" constant="18" id="rUx-6e-Zpo"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IUp-by-5Z8">
-                                <rect key="frame" x="18" y="62.666666666666657" width="167.33333333333334" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IUp-by-5Z8">
+                                <rect key="frame" x="18" y="105.33333333333333" width="157" height="39.999999999999986"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6WL-GC-DuA">
                                         <rect key="frame" x="0.0" y="1" width="40" height="38.666666666666671"/>
@@ -249,8 +255,8 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서해안 고속도로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh8-zJ-Hvh">
-                                        <rect key="frame" x="59.999999999999993" y="10.000000000000005" width="107.33333333333331" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="50" y="9.9999999999999982" width="107" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -264,7 +270,7 @@
                             <constraint firstItem="Qqv-o5-JjH" firstAttribute="trailing" secondItem="VLb-Zi-aS1" secondAttribute="trailing" id="IGZ-pH-Wkl"/>
                             <constraint firstAttribute="bottom" secondItem="VLb-Zi-aS1" secondAttribute="bottom" id="bUJ-wl-omw"/>
                             <constraint firstItem="VLb-Zi-aS1" firstAttribute="top" secondItem="IUp-by-5Z8" secondAttribute="bottom" constant="25" id="evX-x5-qzz"/>
-                            <constraint firstItem="VLb-Zi-aS1" firstAttribute="height" secondItem="ffk-Z3-orS" secondAttribute="height" multiplier="0.85" id="lHz-0n-b0C"/>
+                            <constraint firstItem="VLb-Zi-aS1" firstAttribute="height" secondItem="ffk-Z3-orS" secondAttribute="height" multiplier="0.8" id="lHz-0n-b0C"/>
                             <constraint firstItem="Qqv-o5-JjH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IUp-by-5Z8" secondAttribute="trailing" constant="20" id="oeN-P8-1Xn"/>
                             <constraint firstItem="IUp-by-5Z8" firstAttribute="leading" secondItem="Qqv-o5-JjH" secondAttribute="leading" constant="18" id="ytO-E4-2He"/>
                         </constraints>
