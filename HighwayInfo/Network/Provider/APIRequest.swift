@@ -8,7 +8,7 @@
 import Foundation
 
 protocol APIRequest {
-//    associatedtype Response: APIResponse
+    associatedtype Response: APIResponse
 
     var method: HTTPMethod { get }
     var baseURL: URL? { get }

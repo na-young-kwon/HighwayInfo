@@ -11,7 +11,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var toggleBackground: UIView!
     @IBOutlet weak var toggleForeground: UIView!
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
