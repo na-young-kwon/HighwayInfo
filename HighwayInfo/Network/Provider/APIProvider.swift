@@ -6,12 +6,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol APIProvider {
     var session: URLSession { get }
     
-    func request<T: APIRequest>(
-        _ request: T,
-        completion: @escaping (Result<T.Response, NetworkingError>) -> Void
-    )
+    func performDataTask<T: APIRequest>(with requestType: T) -> Observable<T.Response>
 }
