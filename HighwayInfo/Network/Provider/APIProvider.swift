@@ -9,6 +9,7 @@ import Foundation
 
 protocol APIProvider {
     var session: URLSession { get }
+    
     func request<T: APIRequest>(
         _ request: T,
         completion: @escaping (Result<T.Response, NetworkingError>) -> Void
