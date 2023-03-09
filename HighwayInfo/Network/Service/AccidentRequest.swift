@@ -8,7 +8,7 @@
 import Foundation
 
 struct AccidentRequest: APIRequest {
-    typealias Response = AccidentDTO
+    typealias Response = [AccidentDTO]
     
     let httpMethod: HTTPMethod = .get
     let urlHost: String = "http://openapigits.gg.go.kr/api/rest/"

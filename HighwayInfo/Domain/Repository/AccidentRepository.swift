@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol AccidentRepository {
-    func fetchAllAccidents() -> Observable<AccidentDTO>
+    func fetchAllAccidents() -> Observable<[AccidentDTO]>
 }

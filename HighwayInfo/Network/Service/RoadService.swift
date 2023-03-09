@@ -16,7 +16,7 @@ final class RoadService {
         self.apiProvider = apiProvider
     }
     
-    func fetchAllAccidents() -> Observable<AccidentDTO> {
+    func fetchAllAccidents() -> Observable<[AccidentDTO]> {
         let request = AccidentRequest()
         return apiProvider.performDataTask(with: request)
     }

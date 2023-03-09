@@ -35,10 +35,30 @@ final class DefaultAPIProvider: APIProvider {
                     observer.onError(NetworkingError.invalidData)
                     return
                 }
-                guard let decoded = try? JSONDecoder().decode(T.Response.self, from: data) else {
-                    observer.onError(NetworkingError.parsingError)
+                // XML
+                let parser = XmlParser(data: data)
+                guard let decoded = parser.parseXML() as? T.Response else {
+                    // [AccidentDTO] 로 형변환 안됨
+                    observer.onError(NetworkingError.convertToReponseError)
                     return
                 }
+                
+//                guard let convertedData = jsonString.data(using: .utf8) else {
+//                    observer.onError(NetworkingError.convertToDataError)
+//                    return
+//                }
+//
+//                guard let decoded = try? JSONDecoder().decode(T.Response.self, from: convertedData) else {
+//                    observer.onError(NetworkingError.parsingError)
+//                    return
+//                }
+                
+                // 후에 다른 api추가할때 xml이랑 json 구분해서 다시로직짜기
+                // Json
+//                guard let decoded = try? JSONDecoder().decode(T.Response.self, from: data) else {
+//                    observer.onError(NetworkingError.parsingError)
+//                    return
+//                }
                 observer.onNext(decoded)
                 observer.onCompleted()
             }

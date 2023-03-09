@@ -12,5 +12,6 @@ enum NetworkingError: Error {
     case invalidResponse
     case invalidData
     case invalidRequest
+    case convertToReponseError
     case parsingError
 }
