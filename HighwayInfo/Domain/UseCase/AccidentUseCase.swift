@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol AccidentUseCase {
-    func fetchAllAccidents() -> Observable<Accident>
+    func fetchAllAccidents() -> Observable<[Accident]>
 }

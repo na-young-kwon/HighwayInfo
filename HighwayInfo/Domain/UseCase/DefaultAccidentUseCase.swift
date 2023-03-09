@@ -15,7 +15,7 @@ final class DefaultAccidentUseCase: AccidentUseCase {
         self.repository = repository
     }
 
-    func fetchAllAccidents() -> RxSwift.Observable<Accident> {
-        return Disposables.create() as! Observable<Accident>
+    func fetchAllAccidents() -> RxSwift.Observable<[Accident]> {
+        return Disposables.create() as! Observable<[Accident]>
     }
 }
