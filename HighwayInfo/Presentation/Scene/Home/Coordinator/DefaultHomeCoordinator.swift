@@ -19,6 +19,14 @@ final class DefaultHomeCoordinator: Coordinator {
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: HomeViewController.self)
+        vc.viewModel = HomeViewModel(
+            useCase: DefaultAccidentUseCase(
+                repository: DefaultAccidentRepository(
+                    service: RoadService(
+                        apiProvider: DefaultAPIProvider())
+                )
+            ),
+            coordinator: self)
         
         navigationController.pushViewController(vc, animated: true)
     }

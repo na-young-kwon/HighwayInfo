@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+    var viewModel: HomeViewModel!
+    
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var toggleBackground: UIView!
     @IBOutlet weak var toggleForeground: UIView!
@@ -20,6 +25,7 @@ class HomeViewController: UIViewController {
         
         configureUI()
         configureTableView()
+        bindViewModel()
     }
     
     private func configureUI() {
@@ -31,8 +37,29 @@ class HomeViewController: UIViewController {
     private func configureTableView() {
         let nib = UINib(nibName: AccidentCell.reuseID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: AccidentCell.reuseID)
-        tableView.dataSource = self
+        tableView.refreshControl = UIRefreshControl()
         tableView.showsVerticalScrollIndicator = false
+    }
+    
+    private func bindViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+        let pull = tableView.refreshControl!.rx
+            .controlEvent(.valueChanged)
+            .asDriver()
+        
+        let input = HomeViewModel.Input(trigger: Driver.merge(viewWillAppear, pull))
+        let output = viewModel.transform(input: input)
+        
+        output.accidents.drive(tableView.rx.items(cellIdentifier: AccidentCell.reuseID.self, cellType: AccidentCell.self)) {
+            tv, viewModel, cell in
+            cell.bind(viewModel)
+        }.disposed(by: disposeBag)
+        
+        output.fetching
+            .drive(tableView.refreshControl!.rx.isRefreshing)
+            .disposed(by: disposeBag)
     }
     
     @IBAction func accidentButtonTapped(_ sender: UIButton) {
@@ -49,18 +76,5 @@ class HomeViewController: UIViewController {
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {
         print("새로고침 버튼 눌림")
-    }
-}
-
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AccidentCell.reuseID, for: indexPath) as? AccidentCell else {
-            return UITableViewCell()
-        }
-        return cell
     }
 }

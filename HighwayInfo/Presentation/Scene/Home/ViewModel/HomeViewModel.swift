@@ -15,19 +15,21 @@ final class HomeViewModel: ViewModelType {
     }
     
     struct Output {
+        let fetching: Driver<Bool>
         let accidents: Driver<[AccidentViewModel]>
     }
     
-    private weak var coordinator: AppCoordinator!
+    private weak var coordinator: DefaultHomeCoordinator!
     private let useCase: DefaultAccidentUseCase
     
-    init(useCase: DefaultAccidentUseCase, coordinator: AppCoordinator) {
+    init(useCase: DefaultAccidentUseCase, coordinator: DefaultHomeCoordinator) {
         self.useCase = useCase
         self.coordinator = coordinator
     }
     
     func transform(input: Input) -> Output {
         let activityIndicator = ActivityIndicator()
+        let fetching = activityIndicator.asDriver()
         
         let accidents = input.trigger.flatMapLatest {
             return self.useCase.fetchAllAccidents()
@@ -35,6 +37,7 @@ final class HomeViewModel: ViewModelType {
                 .asDriverOnErrorJustComplete()
                 .map { $0.map{ AccidentViewModel(accident: $0)} }
         }
-        return Output(accidents: accidents)
+        return Output(fetching: fetching,
+                      accidents: accidents)
     }
 }

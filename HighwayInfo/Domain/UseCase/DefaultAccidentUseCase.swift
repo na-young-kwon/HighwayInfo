@@ -16,6 +16,16 @@ final class DefaultAccidentUseCase: AccidentUseCase {
     }
 
     func fetchAllAccidents() -> RxSwift.Observable<[Accident]> {
-        return Disposables.create() as! Observable<[Accident]>
+        let accidentsDTO = repository.fetchAllAccidents()
+        let accidents = accidentsDTO.map { $0.map { Accident(
+            startTime: $0.startDate,
+            estimatedEndTime: $0.estEndDate,
+            place: $0.inciPlace1,
+            direction: $0.inciPlace2,
+            restrictType: $0.restrictType,
+            description: $0.inciDesc)
+           }
+        }
+        return accidents
     }
 }

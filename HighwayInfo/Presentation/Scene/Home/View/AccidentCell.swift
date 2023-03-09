@@ -27,4 +27,12 @@ class AccidentCell: UITableViewCell {
         // 셀간격
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
+    
+    func bind(_ viewModel: AccidentViewModel) {
+        dateLabel.text = viewModel.startTime
+        titleLabel.text = viewModel.place
+        directionLabel.text = viewModel.direction
+        blockLabel.text = viewModel.restrictType
+        descriptionLabel.text = viewModel.description
+    }
 }
