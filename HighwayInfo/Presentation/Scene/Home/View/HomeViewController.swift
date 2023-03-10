@@ -9,8 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum Road {
+    case accident, construction
+}
+
 class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
+    private let itemSelected = BehaviorSubject<Road>(value: .accident)
     var viewModel: HomeViewModel!
     
     @IBOutlet weak var whiteView: UIView!
@@ -19,6 +24,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var accidentButton: UIButton!
     @IBOutlet weak var constructionButton: UIButton!
+    @IBOutlet weak var refreshButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,32 +55,44 @@ class HomeViewController: UIViewController {
             .controlEvent(.valueChanged)
             .asDriver()
         
-        let input = HomeViewModel.Input(trigger: Driver.merge(viewWillAppear, pull))
+        // 로직 개선
+        accidentButton.rx.tap.bind { [weak self] _ in
+            self?.itemSelected.onNext(.accident)
+            UIView.animate(withDuration: 0.2) {
+                self?.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
+            }
+        }
+        .disposed(by: disposeBag)
+        
+        constructionButton.rx.tap.bind { [weak self] _ in
+            self?.itemSelected.onNext(.construction)
+            UIView.animate(withDuration: 0.2) {
+                self?.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
+            }
+        }
+        .disposed(by: disposeBag)
+        
+        let selectedRoad = itemSelected.asDriver(onErrorJustReturn: .accident)
+        let input = HomeViewModel.Input(trigger: Driver.merge(viewWillAppear, pull),
+                                        selectedRoad: selectedRoad)
+        
+//        let input = HomeViewModel.Input(trigger: viewWillAppear.asDriver())
         let output = viewModel.transform(input: input)
         
-        output.accidents.drive(tableView.rx.items(cellIdentifier: AccidentCell.reuseID.self, cellType: AccidentCell.self)) {
-            tv, viewModel, cell in
-            cell.bind(viewModel)
-        }.disposed(by: disposeBag)
+        output.accidents.drive(tableView.rx.items(
+            cellIdentifier: AccidentCell.reuseID.self,
+            cellType: AccidentCell.self)) { _, viewModel, cell in
+                cell.bind(viewModel)
+            }.disposed(by: disposeBag)
         
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)
             .disposed(by: disposeBag)
-    }
-    
-    @IBAction func accidentButtonTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.2) {
-            self.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
-        }
-    }
-    
-    @IBAction func constructionButtonTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.2) {
-            self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
-        }
-    }
-    
-    @IBAction func refreshButtonTapped(_ sender: UIButton) {
-        print("새로고침 버튼 눌림")
+        
+        refreshButton.rx.tap
+            .bind {
+                print("새로고침 버튼 눌림")
+            }
+            .disposed(by: disposeBag)
     }
 }

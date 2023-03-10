@@ -12,6 +12,7 @@ import RxCocoa
 final class HomeViewModel: ViewModelType {
     struct Input {
         let trigger: Driver<Void>
+        let selectedRoad: Driver<Road>
     }
     
     struct Output {
@@ -31,12 +32,14 @@ final class HomeViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
         let fetching = activityIndicator.asDriver()
         
-        let accidents = input.trigger.flatMapLatest {
-            return self.useCase.fetchAllAccidents()
+        let accidents = input.selectedRoad.flatMapLatest { road in
+            return self.useCase.fetchAccidents(for: road)
                 .trackActivity(activityIndicator)
                 .asDriverOnErrorJustComplete()
-                .map { $0.map{ AccidentViewModel(accident: $0)} }
+                .map { $0.map { AccidentViewModel(accident: $0) } }
         }
+            
+        
         return Output(fetching: fetching,
                       accidents: accidents)
     }

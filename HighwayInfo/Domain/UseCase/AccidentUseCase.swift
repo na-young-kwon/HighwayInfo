@@ -9,5 +9,7 @@ import Foundation
 import RxSwift
 
 protocol AccidentUseCase {
-    func fetchAllAccidents() -> Observable<[Accident]>
+    func fetchAccidents(for road: Road) -> Observable<[Accident]>
+    func fetchAccidents() -> Observable<[Accident]>
+    func fetchConstructions() -> Observable<[Accident]>
 }
