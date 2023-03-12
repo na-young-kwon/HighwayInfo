@@ -88,7 +88,7 @@
                 <outlet property="blockLabel" destination="CGM-YF-b9K" id="Wv4-G5-Bhh"/>
                 <outlet property="dateLabel" destination="Jq5-mz-8D8" id="H8p-Cn-RXH"/>
                 <outlet property="descriptionLabel" destination="Q3g-us-ryE" id="zZK-MU-srz"/>
-                <outlet property="directionLabel" destination="CGM-YF-b9K" id="Uef-5g-MXN"/>
+                <outlet property="directionLabel" destination="EUW-fd-0Ug" id="nss-Y6-unh"/>
                 <outlet property="titleLabel" destination="vh4-3J-mO8" id="Chf-4m-9hx"/>
             </connections>
             <point key="canvasLocation" x="180" y="-32"/>
