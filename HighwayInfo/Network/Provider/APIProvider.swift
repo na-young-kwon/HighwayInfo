@@ -11,5 +11,5 @@ import RxSwift
 protocol APIProvider {
     var session: URLSession { get }
     
-    func performDataTask<T: APIRequest>(with requestType: T) -> Observable<T.Response>
+    func performDataTask<T: APIRequest>(with requestType: T, decodeType: DecodeType) -> Observable<T.Response>
 }
