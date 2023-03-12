@@ -15,4 +15,8 @@ class RoadCell: UITableViewCell {
         super.awakeFromNib()
 
     }
+    
+    func configureUI(for route: Route) {
+        titleLabel.text = route.name + "고속도로"
+    }
 }

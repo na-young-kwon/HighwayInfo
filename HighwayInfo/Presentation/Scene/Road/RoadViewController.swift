@@ -9,6 +9,7 @@ import UIKit
 
 class RoadViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    private let routes = RouteList.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +33,14 @@ class RoadViewController: UIViewController {
 
 extension RoadViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return routes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RoadCell.reuseID, for: indexPath) as? RoadCell else {
             return UITableViewCell()
         }
+        cell.configureUI(for: routes[indexPath.row])
         return cell
     }
 }
@@ -47,6 +49,7 @@ extension RoadViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: DetailViewController.self)
+        vc.id = routes[indexPath.row].id
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

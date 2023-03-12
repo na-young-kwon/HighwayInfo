@@ -8,6 +8,7 @@
 import Foundation
 
 struct Route {
+    let id = UUID()
     let name: String
     let number: String
     let startNodeName: String
@@ -32,8 +33,18 @@ enum RouteList {
     static let ps = Route(name: "평택시흥", number: "0153", startNodeName: "시흥", endNodeName: "평택")
     static let oh = Route(name: "오산화성", number: "0171", startNodeName: "오산", endNodeName: "화성")
     static let ys = Route(name: "용인서울", number: "1710", startNodeName: "서울", endNodeName: "용인")
-    static let icnd = Route(name: "봉담동탄선", number: "4000", startNodeName: "봉담", endNodeName: "동탄")
-    static let ik = Route(name: "인천김포선", number: "4002", startNodeName: "김포", endNodeName: "인천")
-    static let bs = Route(name: "봉담송산선", number: "4003", startNodeName: "송산", endNodeName: "봉담")
-    static let hk = Route(name: "화성광주선", number: "4004", startNodeName: "화성", endNodeName: "광주")
+    static let icnd = Route(name: "봉담동탄", number: "4000", startNodeName: "봉담", endNodeName: "동탄")
+    static let ik = Route(name: "인천김포", number: "4002", startNodeName: "김포", endNodeName: "인천")
+    static let bs = Route(name: "봉담송산", number: "4003", startNodeName: "송산", endNodeName: "봉담")
+    static let hk = Route(name: "화성광주", number: "4004", startNodeName: "화성", endNodeName: "광주")
+}
+
+extension RouteList {
+    static var allCases: [Route] {
+        [ RouteList.kb, RouteList.sh, RouteList.ph, RouteList.kp, RouteList.jb,
+          RouteList.secondJb, RouteList.pj, RouteList.jbInside, RouteList.yd, RouteList.yy,
+          RouteList.circle, RouteList.secondGi, RouteList.gi, RouteList.icn, RouteList.ps,
+          RouteList.oh, RouteList.ys, RouteList.icnd, RouteList.ik, RouteList.bs, RouteList.hk
+        ]
+    }
 }

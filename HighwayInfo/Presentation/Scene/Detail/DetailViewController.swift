@@ -11,7 +11,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var toggleBackground: UIView!
     @IBOutlet weak var toggleForeground: UIView!
-    
+    var id: UUID?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
