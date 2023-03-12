@@ -26,6 +26,7 @@
 		3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9129B0CFDD00AECF22 /* Main.storyboard */; };
 		3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */; };
 		3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9629B0CFDE00AECF22 /* LaunchScreen.storyboard */; };
+		3B5FAE9C29BDD5DB00FC1772 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FAE9B29BDD5DB00FC1772 /* Route.swift */; };
 		3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA529B767EF0055D3A4 /* APIRequest.swift */; };
 		3B63BAA929B768860055D3A4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA829B768860055D3A4 /* HTTPMethod.swift */; };
 		3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAB29B768D20055D3A4 /* APIProvider.swift */; };
@@ -70,6 +71,7 @@
 		3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B5B0E9729B0CFDE00AECF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B5B0E9929B0CFDE00AECF22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B5FAE9B29BDD5DB00FC1772 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3B63BAA529B767EF0055D3A4 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIRequest.swift; path = ../../Provider/APIRequest.swift; sourceTree = "<group>"; };
 		3B63BAA829B768860055D3A4 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		3B63BAAB29B768D20055D3A4 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				3B63BABC29B84C8D0055D3A4 /* Accident.swift */,
+				3B5FAE9B29BDD5DB00FC1772 /* Route.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */,
 				3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */,
 				3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */,
+				3B5FAE9C29BDD5DB00FC1772 /* Route.swift in Sources */,
 				3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */,
 				3B8F086929B9BEB2009D7396 /* ViewModelType.swift in Sources */,
 				3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */,
