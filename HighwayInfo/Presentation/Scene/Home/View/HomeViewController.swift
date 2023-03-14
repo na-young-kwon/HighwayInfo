@@ -15,7 +15,7 @@ enum Road {
 
 class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
-    private let itemSelected = BehaviorSubject<Road>(value: .accident)
+    private var itemSelected = BehaviorSubject<Road>(value: .accident)
     var viewModel: HomeViewModel!
     
     @IBOutlet weak var whiteView: UIView!
@@ -50,36 +50,37 @@ class HomeViewController: UIViewController {
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
-            .asDriverOnErrorJustComplete()
         let pull = tableView.refreshControl!.rx
             .controlEvent(.valueChanged)
             .asDriver()
         
-        // 로직 개선
-        accidentButton.rx.tap.bind { [weak self] _ in
-            self?.itemSelected.onNext(.accident)
-            UIView.animate(withDuration: 0.2) {
-                self?.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
-            }
-        }
-        .disposed(by: disposeBag)
+        let selectedRelay = BehaviorRelay<Road>(value: .accident)
         
-        constructionButton.rx.tap.bind { [weak self] _ in
-            self?.itemSelected.onNext(.construction)
-            UIView.animate(withDuration: 0.2) {
-                self?.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
-            }
-        }
-        .disposed(by: disposeBag)
+        accidentButton.rx.tap.asObservable()
+            .subscribe(onNext: {
+                selectedRelay.accept(.accident)
+                UIView.animate(withDuration: 0.2) {
+                    self.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
+                }
+            })
+            .disposed(by: disposeBag)
         
-        let selectedRoad = itemSelected.asDriver(onErrorJustReturn: .accident)
-        let input = HomeViewModel.Input(trigger: Driver.merge(viewWillAppear, pull),
-                                        selectedRoad: selectedRoad)
+        constructionButton.rx.tap.asObservable()
+            .subscribe(onNext: {
+                selectedRelay.accept(.construction)
+                UIView.animate(withDuration: 0.2) {
+                    self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        let input = HomeViewModel.Input(trigger: viewWillAppear,
+                                        selectedRoad: selectedRelay,
+                                        refreshButtonTapped: refreshButton.rx.tap.asObservable())
         
-//        let input = HomeViewModel.Input(trigger: viewWillAppear.asDriver())
         let output = viewModel.transform(input: input)
         
-        output.accidents.drive(tableView.rx.items(
+        output.accidents.bind(to: tableView.rx.items(
             cellIdentifier: AccidentCell.reuseID.self,
             cellType: AccidentCell.self)) { _, viewModel, cell in
                 cell.bind(viewModel)
@@ -87,12 +88,6 @@ class HomeViewController: UIViewController {
         
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)
-            .disposed(by: disposeBag)
-        
-        refreshButton.rx.tap
-            .bind {
-                print("새로고침 버튼 눌림")
-            }
             .disposed(by: disposeBag)
     }
 }

@@ -10,14 +10,17 @@ import RxSwift
 import RxCocoa
 
 final class HomeViewModel: ViewModelType {
+    private let disposeBag = DisposeBag()
+    
     struct Input {
-        let trigger: Driver<Void>
-        let selectedRoad: Driver<Road>
+        let trigger: Observable<Void>
+        let selectedRoad: BehaviorRelay<Road>
+        let refreshButtonTapped: Observable<Void>
     }
     
     struct Output {
         let fetching: Driver<Bool>
-        let accidents: Driver<[AccidentViewModel]>
+        let accidents = BehaviorRelay<[AccidentViewModel]>(value: [])
     }
     
     private weak var coordinator: DefaultHomeCoordinator!
@@ -32,15 +35,43 @@ final class HomeViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
         let fetching = activityIndicator.asDriver()
         
-        let accidents = input.selectedRoad.flatMapLatest { road in
-            return self.useCase.fetchAccidents(for: road)
-                .trackActivity(activityIndicator)
-                .asDriverOnErrorJustComplete()
-                .map { $0.map { AccidentViewModel(accident: $0) } }
-        }
-            
+        let output = Output(fetching: fetching)
         
-        return Output(fetching: fetching,
-                      accidents: accidents)
+        useCase.accidents
+            .map { $0.map { AccidentViewModel(accident: $0) }}
+            .subscribe(onNext: { totalAccident in
+                output.accidents.accept(totalAccident)
+            })
+            .disposed(by: disposeBag)
+        
+        input.trigger
+            .subscribe { _ in
+                self.useCase.fetchAccidents(for: .accident)
+            }
+            .disposed(by: disposeBag)
+        
+        input.selectedRoad
+            .subscribe(onNext: { [weak self] road in
+                self?.useCase.fetchAccidents(for: road)
+            })
+            .disposed(by: disposeBag)
+        
+        input.refreshButtonTapped
+            .map { self.filteredAccidents(for: input.selectedRoad.value) }
+            .bind(onNext: { accidents in
+                output.accidents.accept(accidents)
+            })
+            .disposed(by: disposeBag)
+        
+        return output
+    }
+    
+    private func filteredAccidents(for road: Road) -> [AccidentViewModel] {
+        useCase.fetchAccidents(for: road)
+        guard let accidents = try? useCase.accidents.value() else {
+            return []
+        }
+        let accidentViewModel = accidents.map { AccidentViewModel(accident: $0) }
+        return accidentViewModel
     }
 }
