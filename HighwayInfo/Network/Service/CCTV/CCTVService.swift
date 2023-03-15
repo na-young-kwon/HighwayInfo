@@ -15,14 +15,12 @@ final class CCTVService {
         self.apiProvider = apiProvider
     }
     
-    func fetchPreviewBy(x: String, y: String) -> Observable<[CctvDTO]> {
-        let coordx = Double(x) ?? 0
-        let coordy = Double(y) ?? 0
+    func fetchPreviewBy(x: Double, y: Double) -> Observable<[CctvDTO]> {
         let request = CCTVRequest(cctvType: .preview,
-                                  minX: coordx - 0.003,
-                                  maxX: coordx + 0.003,
-                                  minY: coordy - 0.003,
-                                  maxY: coordy + 0.003)
+                                  minX: x - 0.003,
+                                  maxX: x + 0.003,
+                                  minY: y - 0.003,
+                                  maxY: y + 0.003)
         
         return apiProvider.performDataTask(with: request, decodeType: .json)
     }

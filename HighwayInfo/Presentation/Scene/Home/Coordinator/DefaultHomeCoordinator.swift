@@ -19,13 +19,14 @@ final class DefaultHomeCoordinator: Coordinator {
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: HomeViewController.self)
+        let apiProvider = DefaultAPIProvider()
+        let accidentRepository = DefaultAccidentRepository(service: AccidentService(apiProvider: apiProvider))
+        let cctvRepository = DefaultCCTVRepository(service: CCTVService(apiProvider: apiProvider))
+        
         vc.viewModel = HomeViewModel(
             useCase: DefaultAccidentUseCase(
-                repository: DefaultAccidentRepository(
-                    service: AccidentService(
-                        apiProvider: DefaultAPIProvider())
-                )
-            ),
+                accidentRepository: accidentRepository,
+                cctvRepository: cctvRepository),
             coordinator: self)
         
         navigationController.pushViewController(vc, animated: true)

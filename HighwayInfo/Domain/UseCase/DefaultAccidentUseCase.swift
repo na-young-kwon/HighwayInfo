@@ -9,15 +9,17 @@ import Foundation
 import RxSwift
 
 final class DefaultAccidentUseCase: AccidentUseCase {
-    private let repository: AccidentRepository
+    private let accidentRepository: AccidentRepository
+    private let cctvRepository: CCTVRepository
     private let accidentString = "[차량사고]"
     private let disposeBag = DisposeBag()
     
     var accidents = BehaviorSubject<[Accident]>(value: [])
     var cctvPreviews = BehaviorSubject<String>(value: "여기에 어떤 값을 넣어둘까? placeholder같은거")
     
-    init(repository: AccidentRepository) {
-        self.repository = repository
+    init(accidentRepository: AccidentRepository, cctvRepository: CCTVRepository) {
+        self.accidentRepository = accidentRepository
+        self.cctvRepository = cctvRepository
     }
 
     func fetchAccidents(for road: Road) {
@@ -31,14 +33,15 @@ final class DefaultAccidentUseCase: AccidentUseCase {
     
     // 이미지는 한개, cctv영상은 여러개일수있음
     func fetchCctvImage(for accident: Accident) -> String {
-        accident.coord_x
-        accident.coord_y
+        let cctvDTO = cctvRepository.fetchPreviewBy(x: accident.coord_x, y: accident.coord_y)
+        
+        
         return "image_url"
     }
     
     // 교통사고
     func fetchAccidents() {
-        let allAccidents = repository.fetchAllAccidents()
+        let allAccidents = accidentRepository.fetchAllAccidents()
             .map { $0.filter { $0.inciDesc.starts(with: self.accidentString) } }
             .share()
 
@@ -67,7 +70,7 @@ final class DefaultAccidentUseCase: AccidentUseCase {
     
     // 공사, 적재물낙하, 장애물, 도로폐쇄
     func fetchConstructions() {
-        repository.fetchAllAccidents()
+        accidentRepository.fetchAllAccidents()
             .map { $0.filter { !$0.inciDesc.starts(with: self.accidentString) } }
             .map { $0.map { Accident(
                 startTime: $0.startDate,

@@ -50,6 +50,8 @@
 		3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
 		3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9C29C1ECF40010FB25 /* CCTVType.swift */; };
 		3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */; };
+		3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EEA029C1F5910010FB25 /* CCTVRepository.swift */; };
+		3BD4EEA329C1F5C50010FB25 /* DefaultCCTVRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */; };
 		8FB86310EFF3889AA167FFFC /* Pods_HighwayInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 		3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRequest.swift; sourceTree = "<group>"; };
 		3BD4EE9C29C1ECF40010FB25 /* CCTVType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVType.swift; sourceTree = "<group>"; };
 		3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CctvDTO.swift; sourceTree = "<group>"; };
+		3BD4EEA029C1F5910010FB25 /* CCTVRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRepository.swift; sourceTree = "<group>"; };
+		3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCCTVRepository.swift; sourceTree = "<group>"; };
 		483DF070A3B5717B415683AC /* Pods-HighwayInfo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo.release.xcconfig"; path = "Target Support Files/Pods-HighwayInfo/Pods-HighwayInfo.release.xcconfig"; sourceTree = "<group>"; };
 		5606F3F1012B7A9156D35823 /* Pods-HighwayInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo.debug.xcconfig"; path = "Target Support Files/Pods-HighwayInfo/Pods-HighwayInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HighwayInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				3B63BABA29B84C5C0055D3A4 /* AccidentRepository.swift */,
+				3BD4EEA029C1F5910010FB25 /* CCTVRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 			children = (
 				3B8F085E29B87CD8009D7396 /* DTO */,
 				3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */,
+				3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				3B8F086729B9BE73009D7396 /* HomeViewModel.swift in Sources */,
 				3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */,
 				3B8F086E29B9C1F6009D7396 /* Observable+Ext.swift in Sources */,
+				3BD4EEA329C1F5C50010FB25 /* DefaultCCTVRepository.swift in Sources */,
 				3B63BAB229B76C1E0055D3A4 /* DefaultAPIProvider.swift in Sources */,
 				3B63BABB29B84C5C0055D3A4 /* AccidentRepository.swift in Sources */,
 				3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */,
@@ -552,6 +559,7 @@
 				3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */,
 				3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */,
 				3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */,
+				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,
 				3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */,
 				3B8F086529B9BDD1009D7396 /* ActivityIndicator.swift in Sources */,
 				3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */,
