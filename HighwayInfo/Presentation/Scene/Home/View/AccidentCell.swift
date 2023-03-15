@@ -8,10 +8,10 @@
 import UIKit
 
 class AccidentCell: UITableViewCell {
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
-    @IBOutlet weak var blockLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var accidentImageView: UIImageView!
     
@@ -29,10 +29,10 @@ class AccidentCell: UITableViewCell {
     }
     
     func bind(_ viewModel: AccidentViewModel) {
-        dateLabel.text = viewModel.startTime
         titleLabel.text = viewModel.place
         directionLabel.text = viewModel.direction
-        blockLabel.text = viewModel.restrictType
-        descriptionLabel.text = viewModel.description
+        startTimeLabel.text = "시작시간 " + viewModel.startTime
+        endTimeLabel.text = "종료예정시간 " + viewModel.estimatedEndTime
+        descriptionLabel.text = viewModel.description + " (\(viewModel.restrictType) 차단)"
     }
 }

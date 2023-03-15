@@ -16,11 +16,25 @@ struct AccidentViewModel {
     let description: String
     
     init(accident: Accident) {
-        self.startTime = accident.startTime
-        self.estimatedEndTime = accident.estimatedEndTime
+        self.startTime = accident.startTime.toShortDate
+        self.estimatedEndTime = accident.estimatedEndTime.toShortDate
         self.place = accident.place
         self.direction = accident.direction
         self.restrictType = accident.restrictType
         self.description = accident.description
+    }
+}
+
+private extension String {
+    var toShortDate: String {
+        let stringFormat = "yyyy-MM-dd HH:mm:ss"
+        let format = "a h:mm"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = stringFormat
+        dateFormatter.locale = Locale(identifier: "ko")
+        let convertedDate = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = format
+        let dateString = dateFormatter.string(from: convertedDate!)
+        return dateString
     }
 }

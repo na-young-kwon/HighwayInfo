@@ -65,7 +65,7 @@ final class XmlParser: NSObject, XMLParserDelegate {
         } else if elementName == "restrictType" {
             accident.restrictType = elementValue
         } else if elementName == "inciDesc" {
-            accident.inciDesc = elementValue
+            accident.inciDesc = elementValue?.toShortDescription
         } else if elementName == "inciPlace1" {
             accident.inciPlace1 = elementValue
         } else if elementName == "inciPlace2" {
@@ -77,5 +77,13 @@ final class XmlParser: NSObject, XMLParserDelegate {
         }
         
         elementValue = nil
+    }
+}
+
+private extension String {
+    var toShortDescription: String {
+        let title = self.components(separatedBy: " ").first!
+        let description = self.components(separatedBy: ",").last!
+        return title + description
     }
 }
