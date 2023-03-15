@@ -57,6 +57,7 @@ final class HomeViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.refreshButtonTapped
+            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
             .map { self.filteredAccidents(for: input.selectedRoad.value) }
             .bind(onNext: { accidents in
                 output.accidents.accept(accidents)

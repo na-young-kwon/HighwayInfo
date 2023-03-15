@@ -25,12 +25,21 @@ enum TabBarPage: CaseIterable {
         }
     }
     
-    var stringValue: String{
+    var imageName: String {
         switch self {
         case .home:
-            return "Home"
+            return "hi"
         case .road:
-            return "Road"
+            return "high"
+        }
+    }
+    
+    var stringValue: String {
+        switch self {
+        case .home:
+            return "홈"
+        case .road:
+            return "도로"
         }
     }
 }
