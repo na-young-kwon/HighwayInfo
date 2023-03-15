@@ -7,9 +7,6 @@
 
 import Foundation
 
-//struct ServiceResult: Decodable {
-//    let msgHeader: String
-//}
 class AccidentDTO: Decodable {
     var routeID: String!
     var linkId: String!

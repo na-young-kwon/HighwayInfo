@@ -10,7 +10,6 @@ import RxSwift
 
 final class AccidentService {
     let apiProvider: APIProvider
-    let apiKey = "952f3149f2bac24e515f8fb0b84bcc14ba2edc"
     
     init(apiProvider: APIProvider) {
         self.apiProvider = apiProvider
