@@ -92,7 +92,7 @@
                 <outlet property="accidentImageView" destination="7aa-Wz-CwU" id="pf8-Ky-pVx"/>
                 <outlet property="descriptionLabel" destination="Q3g-us-ryE" id="o0O-4D-zch"/>
                 <outlet property="directionLabel" destination="vh4-3J-mO8" id="VbI-MD-O7c"/>
-                <outlet property="endTimeLabel" destination="CGM-YF-b9K" id="wjk-0U-aKT"/>
+                <outlet property="restrictLabel" destination="CGM-YF-b9K" id="5Gk-aW-RIf"/>
                 <outlet property="startTimeLabel" destination="EUW-fd-0Ug" id="QkG-Jg-Kbm"/>
                 <outlet property="titleLabel" destination="Jq5-mz-8D8" id="ie8-ZT-RAn"/>
             </connections>

@@ -14,14 +14,16 @@ struct AccidentViewModel {
     let direction: String
     let restrictType: String
     let description: String
+    let cctvImage: String
     
-    init(accident: Accident) {
+    init(accident: Accident, cctvImage: String) {
         self.startTime = accident.startTime.toShortDate
         self.estimatedEndTime = accident.estimatedEndTime.toShortDate
         self.place = accident.place
         self.direction = accident.direction
         self.restrictType = accident.restrictType
         self.description = accident.description
+        self.cctvImage = cctvImage
     }
 }
 

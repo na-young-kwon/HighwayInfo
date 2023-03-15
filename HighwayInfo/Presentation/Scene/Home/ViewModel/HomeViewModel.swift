@@ -38,7 +38,7 @@ final class HomeViewModel: ViewModelType {
         let output = Output(fetching: fetching)
         
         useCase.accidents
-            .map { $0.map { AccidentViewModel(accident: $0) }}
+            .map { $0.map { AccidentViewModel(accident: $0, cctvImage: "") }}
             .subscribe(onNext: { totalAccident in
                 output.accidents.accept(totalAccident)
             })
@@ -69,10 +69,19 @@ final class HomeViewModel: ViewModelType {
     
     private func filteredAccidents(for road: Road) -> [AccidentViewModel] {
         useCase.fetchAccidents(for: road)
+
         guard let accidents = try? useCase.accidents.value() else {
             return []
         }
-        let accidentViewModel = accidents.map { AccidentViewModel(accident: $0) }
+        
+        let image = accidents.map {
+            useCase.fetchCctvImage(for: $0)
+        }
+        
+        let full = zip(accidents, image)
+        
+        let accidentViewModel = full.map { AccidentViewModel(accident: $0.0,
+                                                                  cctvImage: $0.1) }
         return accidentViewModel
     }
 }

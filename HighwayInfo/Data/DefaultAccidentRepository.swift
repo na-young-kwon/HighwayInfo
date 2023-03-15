@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 
 final class DefaultAccidentRepository: AccidentRepository {
-    private let service: RoadService
+    private let service: AccidentService
     
-    init(service: RoadService) {
+    init(service: AccidentService) {
         self.service = service
     }
     

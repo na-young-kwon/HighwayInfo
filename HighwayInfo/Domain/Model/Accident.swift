@@ -14,4 +14,6 @@ struct Accident {
     let direction: String
     let restrictType: String
     let description: String
+    let coord_x: Double
+    let coord_y: Double
 }

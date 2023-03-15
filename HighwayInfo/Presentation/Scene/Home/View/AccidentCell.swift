@@ -11,7 +11,7 @@ class AccidentCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
-    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var restrictLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var accidentImageView: UIImageView!
     
@@ -31,8 +31,8 @@ class AccidentCell: UITableViewCell {
     func bind(_ viewModel: AccidentViewModel) {
         titleLabel.text = viewModel.place
         directionLabel.text = viewModel.direction
-        startTimeLabel.text = "시작시간 " + viewModel.startTime
-        endTimeLabel.text = "종료예정시간 " + viewModel.estimatedEndTime
-        descriptionLabel.text = viewModel.description + " (\(viewModel.restrictType) 차단)"
+        startTimeLabel.text = "사고시각: " + viewModel.startTime
+        restrictLabel.text = viewModel.restrictType + "통제"
+        descriptionLabel.text = viewModel.description
     }
 }

@@ -22,7 +22,7 @@ final class DefaultHomeCoordinator: Coordinator {
         vc.viewModel = HomeViewModel(
             useCase: DefaultAccidentUseCase(
                 repository: DefaultAccidentRepository(
-                    service: RoadService(
+                    service: AccidentService(
                         apiProvider: DefaultAPIProvider())
                 )
             ),

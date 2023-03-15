@@ -32,7 +32,7 @@
 		3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAB29B768D20055D3A4 /* APIProvider.swift */; };
 		3B63BAAE29B768EE0055D3A4 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAD29B768EE0055D3A4 /* NetworkingError.swift */; };
 		3B63BAB229B76C1E0055D3A4 /* DefaultAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAB129B76C1E0055D3A4 /* DefaultAPIProvider.swift */; };
-		3B63BAB429B7711B0055D3A4 /* RoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAB329B7711B0055D3A4 /* RoadService.swift */; };
+		3B63BAB429B7711B0055D3A4 /* AccidentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAB329B7711B0055D3A4 /* AccidentService.swift */; };
 		3B63BABB29B84C5C0055D3A4 /* AccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABA29B84C5C0055D3A4 /* AccidentRepository.swift */; };
 		3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABC29B84C8D0055D3A4 /* Accident.swift */; };
 		3B63BABF29B860960055D3A4 /* AccidentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */; };
@@ -77,7 +77,7 @@
 		3B63BAAB29B768D20055D3A4 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		3B63BAAD29B768EE0055D3A4 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		3B63BAB129B76C1E0055D3A4 /* DefaultAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAPIProvider.swift; sourceTree = "<group>"; };
-		3B63BAB329B7711B0055D3A4 /* RoadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadService.swift; sourceTree = "<group>"; };
+		3B63BAB329B7711B0055D3A4 /* AccidentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentService.swift; sourceTree = "<group>"; };
 		3B63BABA29B84C5C0055D3A4 /* AccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentRepository.swift; sourceTree = "<group>"; };
 		3B63BABC29B84C8D0055D3A4 /* Accident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accident.swift; sourceTree = "<group>"; };
 		3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentUseCase.swift; sourceTree = "<group>"; };
@@ -252,9 +252,8 @@
 		3B63BAAA29B768A60055D3A4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				3BD4EE9629C1CED50010FB25 /* Accident */,
 				3B8F085D29B872EF009D7396 /* Protocol */,
-				3B63BAB329B7711B0055D3A4 /* RoadService.swift */,
-				3B8F085929B87299009D7396 /* AccidentRequest.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -355,6 +354,15 @@
 				3B8F086F29B9C2C6009D7396 /* AccidentViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3BD4EE9629C1CED50010FB25 /* Accident */ = {
+			isa = PBXGroup;
+			children = (
+				3B63BAB329B7711B0055D3A4 /* AccidentService.swift */,
+				3B8F085929B87299009D7396 /* AccidentRequest.swift */,
+			);
+			path = Accident;
 			sourceTree = "<group>";
 		};
 		46339A1A49DC70332F8414C5 /* Frameworks */ = {
@@ -523,7 +531,7 @@
 				3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */,
 				3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */,
 				3B8F086529B9BDD1009D7396 /* ActivityIndicator.swift in Sources */,
-				3B63BAB429B7711B0055D3A4 /* RoadService.swift in Sources */,
+				3B63BAB429B7711B0055D3A4 /* AccidentService.swift in Sources */,
 				3B5AD13E29B34BE500E2AFAA /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
