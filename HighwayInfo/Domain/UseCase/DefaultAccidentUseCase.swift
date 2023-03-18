@@ -15,7 +15,7 @@ final class DefaultAccidentUseCase: AccidentUseCase {
     private let disposeBag = DisposeBag()
     
     var accidents = BehaviorSubject<[Accident]>(value: [])
-    var cctvPreviews = BehaviorSubject<String>(value: "여기에 어떤 값을 넣어둘까? placeholder같은거")
+    var accidentsWithImage = BehaviorSubject<[AccidentViewModel]>(value: [])
     
     init(accidentRepository: AccidentRepository, cctvRepository: CCTVRepository) {
         self.accidentRepository = accidentRepository
@@ -32,11 +32,29 @@ final class DefaultAccidentUseCase: AccidentUseCase {
     }
     
     // 이미지는 한개, cctv영상은 여러개일수있음
-    func fetchCctvImage(for accident: Accident) -> String {
-        let cctvDTO = cctvRepository.fetchPreviewBy(x: accident.coord_x, y: accident.coord_y)
-        
-        
-        return "image_url"
+    func fetchCctvImage() {
+        var accidentList: [AccidentViewModel] = []
+//        let cctvUrl = cctvRepository.fetchPreviewBy(x: accident.coord_x,
+//                                                    y: accident.coord_y)
+//            .map { $0.cctvurl }
+//
+        accidents.asObservable()
+            .subscribe(onNext: { accidents in
+                Observable.zip( accidents.map { accident in
+                    self.cctvRepository.fetchPreviewBy(x: accident.coord_x,
+                                                                y: accident.coord_y)
+                    .map { $0.response.data?.cctvURL ?? "" }
+                        .map({ image in
+                            accidentList.append(AccidentViewModel(accident: accident, cctvImage: image))
+                        })
+                })
+                .subscribe(onNext: { [weak self] _ in
+                    self?.accidentsWithImage.onNext(accidentList)
+                })
+                .disposed(by: self.disposeBag)
+            })
+            .disposed(by: disposeBag)
+       
     }
     
     // 교통사고
@@ -44,11 +62,6 @@ final class DefaultAccidentUseCase: AccidentUseCase {
         let allAccidents = accidentRepository.fetchAllAccidents()
             .map { $0.filter { $0.inciDesc.starts(with: self.accidentString) } }
             .share()
-
-        // 이미지 가져오기
-//        allAccidents.subscribe(onNext: {_ in
-//            fetchCctvImage(for: <#T##Accident#>)
-//        })
         
         allAccidents
             .map { $0.map { Accident(

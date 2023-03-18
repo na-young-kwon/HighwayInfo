@@ -8,34 +8,45 @@
 import Foundation
 
 struct CctvDTO: Decodable {
-    private let roadsectionid: String
-    private let coordx: Double
-    private let coordy: Double
-    private let cctvresolution: String
-    private let filecreatetime: String
-    private let cctvtype: Int
-    private let cctvformat: String
-    private let cctvname: String
-    private let cctvurl: String
+    let response: Response
     
-    init(roadsectionid: String,
-         coordx: Double,
-         coordy: Double,
-         cctvresolution: String,
-         filecreatetime: String,
-         cctvtype: Int,
-         cctvformat: String,
-         cctvname: String,
-         cctvurl: String) {
-        
-        self.roadsectionid = roadsectionid
-        self.coordx = coordx
-        self.coordy = coordy
-        self.cctvresolution = cctvresolution
-        self.filecreatetime = filecreatetime
-        self.cctvtype = cctvtype
-        self.cctvformat = cctvformat
-        self.cctvname = cctvname
-        self.cctvurl = cctvurl
+    enum CodingKeys: String, CodingKey {
+        case response
+    }
+}
+
+struct Response: Decodable {
+    let coordType: Int
+    let data: Cctv?
+    let dataCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case coordType = "coordtype"
+        case dataCount = "datacount"
+        case data
+    }
+}
+
+struct Cctv: Decodable {
+     let roadSectionId: String
+     let coordX: Double
+     let coordY: Double
+     let cctvResolution: String
+     let fileCreateTime: String
+     let cctvType: Int
+     let cctvFormat: String
+     let cctvName: String
+    let cctvURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case roadSectionId = "roadsectionid"
+        case coordX = "coordx"
+        case coordY = "coordy"
+        case cctvResolution = "cctvresolution"
+        case fileCreateTime = "filecreatetime"
+        case cctvType = "cctvtype"
+        case cctvFormat = "cctvformat"
+        case cctvName = "cctvname"
+        case cctvURL = "cctvurl"
     }
 }

@@ -73,15 +73,7 @@ final class HomeViewModel: ViewModelType {
         guard let accidents = try? useCase.accidents.value() else {
             return []
         }
-        
-        let image = accidents.map {
-            useCase.fetchCctvImage(for: $0)
-        }
-        
-        let full = zip(accidents, image)
-        
-        let accidentViewModel = full.map { AccidentViewModel(accident: $0.0,
-                                                                  cctvImage: $0.1) }
+        let accidentViewModel = accidents.map { AccidentViewModel(accident: $0, cctvImage: "") }
         return accidentViewModel
     }
 }
