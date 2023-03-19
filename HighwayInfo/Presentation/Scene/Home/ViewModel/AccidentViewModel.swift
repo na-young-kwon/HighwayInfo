@@ -14,15 +14,24 @@ struct AccidentViewModel {
     let direction: String
     let restrictType: String
     let description: String
-    let cctvImage: String
+    var cctvImage: String?
+    {
+        didSet {
+            print("Did set: \(cctvImage)")
+        }
+    }
+    let coordx: Double
+    let coordy: Double
     
-    init(accident: Accident, cctvImage: String) {
+    init(accident: Accident, cctvImage: String?) {
         self.startTime = accident.startTime.toShortDate
         self.estimatedEndTime = accident.estimatedEndTime.toShortDate
         self.place = accident.place
         self.direction = accident.direction
         self.restrictType = accident.restrictType
         self.description = accident.description
+        self.coordx = accident.coord_x
+        self.coordy = accident.coord_y
         self.cctvImage = cctvImage
     }
 }

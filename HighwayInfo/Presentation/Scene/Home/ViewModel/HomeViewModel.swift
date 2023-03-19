@@ -53,6 +53,7 @@ final class HomeViewModel: ViewModelType {
         input.selectedRoad
             .subscribe(onNext: { [weak self] road in
                 self?.useCase.fetchAccidents(for: road)
+                self?.useCase.fetchViewModel()
             })
             .disposed(by: disposeBag)
         
@@ -70,10 +71,6 @@ final class HomeViewModel: ViewModelType {
     private func filteredAccidents(for road: Road) -> [AccidentViewModel] {
         useCase.fetchAccidents(for: road)
 
-        guard let accidents = try? useCase.accidents.value() else {
-            return []
-        }
-        let accidentViewModel = accidents.map { AccidentViewModel(accident: $0, cctvImage: "") }
-        return accidentViewModel
+        return useCase.fetchViewModel()
     }
 }
