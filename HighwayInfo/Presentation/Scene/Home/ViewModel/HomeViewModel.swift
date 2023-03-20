@@ -20,11 +20,12 @@ final class HomeViewModel: ViewModelType {
     
     struct Output {
         let fetching: Driver<Bool>
-        let accidents = BehaviorRelay<[AccidentViewModel]>(value: [])
+        let accidents = BehaviorRelay<[(AccidentViewModel, String?)]>(value: [])
     }
     
     private weak var coordinator: DefaultHomeCoordinator!
     private let useCase: DefaultAccidentUseCase
+    private let accidentViewModels = BehaviorSubject<[(AccidentViewModel, String?)]>(value: [])
     
     init(useCase: DefaultAccidentUseCase, coordinator: DefaultHomeCoordinator) {
         self.useCase = useCase
@@ -38,9 +39,14 @@ final class HomeViewModel: ViewModelType {
         let output = Output(fetching: fetching)
         
         useCase.accidents
-            .map { $0.map { AccidentViewModel(accident: $0, cctvImage: "") }}
             .subscribe(onNext: { totalAccident in
-                output.accidents.accept(totalAccident)
+                self.makeViewModel(accidents: totalAccident)
+            })
+            .disposed(by: disposeBag)
+        
+        accidentViewModels
+            .subscribe(onNext: { models in
+                output.accidents.accept(models)
             })
             .disposed(by: disposeBag)
         
@@ -53,24 +59,35 @@ final class HomeViewModel: ViewModelType {
         input.selectedRoad
             .subscribe(onNext: { [weak self] road in
                 self?.useCase.fetchAccidents(for: road)
-                self?.useCase.fetchViewModel()
             })
             .disposed(by: disposeBag)
         
         input.refreshButtonTapped
             .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
-            .map { self.filteredAccidents(for: input.selectedRoad.value) }
-            .bind(onNext: { accidents in
-                output.accidents.accept(accidents)
+            .subscribe(onNext: {
+                self.useCase.fetchAccidents(for: input.selectedRoad.value)
             })
             .disposed(by: disposeBag)
         
         return output
     }
     
-    private func filteredAccidents(for road: Road) -> [AccidentViewModel] {
-        useCase.fetchAccidents(for: road)
-
-        return useCase.fetchViewModel()
+    func makeViewModel(accidents: [Accident]) {
+        let index = accidents.count
+        useCase.fetchImage(for: accidents)
+        
+        for i in 0..<index {
+            useCase.image
+                .subscribe(onNext: { urls in
+                    if urls.count > 0 {
+                        let viewModel = (AccidentViewModel(accident: accidents[i]), urls[i])
+                        self.accidentViewModels.onNext([viewModel])
+                    } else {
+                        let viewModel = (AccidentViewModel(accident: accidents[i]), "")
+                        self.accidentViewModels.onNext([viewModel])
+                    }
+                })
+                .disposed(by: disposeBag)
+        }
     }
 }

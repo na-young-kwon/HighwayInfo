@@ -83,7 +83,7 @@ class HomeViewController: UIViewController {
         output.accidents.bind(to: tableView.rx.items(
             cellIdentifier: AccidentCell.reuseID.self,
             cellType: AccidentCell.self)) { _, viewModel, cell in
-                cell.bind(viewModel)
+                cell.bind(viewModel.0, url: viewModel.1)
             }.disposed(by: disposeBag)
         
         output.fetching

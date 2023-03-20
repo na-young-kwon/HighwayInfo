@@ -15,7 +15,7 @@ final class DefaultAccidentUseCase: AccidentUseCase {
     private let disposeBag = DisposeBag()
     
     var accidents = BehaviorSubject<[Accident]>(value: [])
-    var images = BehaviorSubject<[String?]>(value: [])
+    var image = BehaviorSubject<[String?]>(value: [])
     
     init(accidentRepository: AccidentRepository, cctvRepository: CCTVRepository) {
         self.accidentRepository = accidentRepository
@@ -30,38 +30,20 @@ final class DefaultAccidentUseCase: AccidentUseCase {
              fetchConstructions()
         }
     }
-    
-    // 이미지는 한개, cctv영상은 여러개일수있음
-    func fetchCctvImage(for accidents: [Accident]) {
+
+    func fetchImage(for accidents: [Accident]) {
         let coordinates = accidents.map { ($0.coord_x, $0.coord_y) }
         
         Observable<CctvDTO>.zip(coordinates.map {  coord in
             cctvRepository.fetchPreviewBy(x: coord.0, y: coord.1)
         })
-        .subscribe(onNext: { cctv in
-            let imageURL = cctv.map { $0.response.data?.cctvURL }
-            self.images.onNext(imageURL)
-        })
-        .disposed(by: disposeBag)
+            .subscribe(onNext: { cctv in
+                let urls = cctv.map { $0.response.data?.cctvURL }
+                self.image.onNext(urls)
+            })
+            .disposed(by: disposeBag)
     }
-    
-    func fetchViewModel() -> [AccidentViewModel] {
-        let accidents = accidents.asObservable()
-        let images = images.asObservable()
-        
-        var viewModels: [AccidentViewModel] = []
-        
-        Observable.zip(accidents, images)
-            .enumerated()
-            .subscribe(onNext: { (index, element) in
-                if element.0.count > 0 {
-                    let newElement = AccidentViewModel(accident: element.0[index], cctvImage: element.1[index])
-                    viewModels.append(newElement)
-                }
-            }).disposed(by: disposeBag)
-        return viewModels
-    }
-    
+ 
     // 교통사고
     func fetchAccidents() {
         let allAccidents = accidentRepository.fetchAllAccidents()
@@ -82,7 +64,6 @@ final class DefaultAccidentUseCase: AccidentUseCase {
             }
             .subscribe { [weak self] totalAccident in
                 self?.accidents.onNext(totalAccident)
-                self?.fetchCctvImage(for: totalAccident)
             }
             .disposed(by: self.disposeBag)
     }
@@ -104,7 +85,6 @@ final class DefaultAccidentUseCase: AccidentUseCase {
             }
             .subscribe { [weak self] totalAccident in
                 self?.accidents.onNext(totalAccident)
-                self?.fetchCctvImage(for: totalAccident)
             }
             .disposed(by: self.disposeBag)
     }
