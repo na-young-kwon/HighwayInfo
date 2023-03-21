@@ -9,7 +9,5 @@ import Foundation
 import RxSwift
 
 protocol AccidentUseCase {
-    func fetchAccidents(for road: Road)
     func fetchAccidents()
-    func fetchConstructions()
 }

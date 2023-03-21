@@ -75,7 +75,6 @@ class HomeViewController: UIViewController {
             .disposed(by: disposeBag)
 
         let input = HomeViewModel.Input(trigger: viewWillAppear,
-                                        selectedRoad: selectedRelay,
                                         refreshButtonTapped: refreshButton.rx.tap.asObservable())
         
         let output = viewModel.transform(input: input)

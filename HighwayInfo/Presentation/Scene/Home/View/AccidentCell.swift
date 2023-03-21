@@ -36,7 +36,6 @@ class AccidentCell: UITableViewCell {
         descriptionLabel.text = viewModel.description
 
         accidentImageView.loadFrom(url: url)
-        print(url)
     }
 }
 

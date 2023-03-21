@@ -14,7 +14,6 @@ final class HomeViewModel: ViewModelType {
     
     struct Input {
         let trigger: Observable<Void>
-        let selectedRoad: BehaviorRelay<Road>
         let refreshButtonTapped: Observable<Void>
     }
     
@@ -40,6 +39,7 @@ final class HomeViewModel: ViewModelType {
         
         useCase.accidents
             .subscribe(onNext: { totalAccident in
+                self.useCase.fetchImage(for: totalAccident)
                 self.makeViewModel(accidents: totalAccident)
             })
             .disposed(by: disposeBag)
@@ -52,20 +52,14 @@ final class HomeViewModel: ViewModelType {
         
         input.trigger
             .subscribe { _ in
-                self.useCase.fetchAccidents(for: .accident)
+                self.useCase.fetchAccidents()
             }
-            .disposed(by: disposeBag)
-        
-        input.selectedRoad
-            .subscribe(onNext: { [weak self] road in
-                self?.useCase.fetchAccidents(for: road)
-            })
             .disposed(by: disposeBag)
         
         input.refreshButtonTapped
             .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
-                self.useCase.fetchAccidents(for: input.selectedRoad.value)
+                self.useCase.fetchAccidents()
             })
             .disposed(by: disposeBag)
         
@@ -73,21 +67,12 @@ final class HomeViewModel: ViewModelType {
     }
     
     func makeViewModel(accidents: [Accident]) {
-        let index = accidents.count
-        useCase.fetchImage(for: accidents)
-        
-        for i in 0..<index {
-            useCase.image
-                .subscribe(onNext: { urls in
-                    if urls.count > 0 {
-                        let viewModel = (AccidentViewModel(accident: accidents[i]), urls[i])
-                        self.accidentViewModels.onNext([viewModel])
-                    } else {
-                        let viewModel = (AccidentViewModel(accident: accidents[i]), "")
-                        self.accidentViewModels.onNext([viewModel])
-                    }
-                })
-                .disposed(by: disposeBag)
-        }
+        useCase.images
+            .subscribe(onNext: { urls in
+                let viewModels = accidents.map { AccidentViewModel(accident: $0) }
+                let zipped = Array(zip(viewModels, urls))
+                self.accidentViewModels.onNext(zipped)
+            })
+            .disposed(by: disposeBag)
     }
 }
