@@ -44,12 +44,6 @@ final class CCTVParser: NSObject, XMLParserDelegate {
             cctvs.append(cctv)
         } else if elementName == "cctvurl" {
             cctv.cctvurl = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
-        } else if elementName == "coordy" {
-            cctv.coordy = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
-        } else if elementName == "cctvname" {
-            cctv.cctvname = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
-        } else if elementName == "coordx" {
-            cctv.coordx = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
         }
         
         elementValue = nil

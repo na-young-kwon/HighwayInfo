@@ -15,6 +15,7 @@ final class HomeViewModel: ViewModelType {
     struct Input {
         let trigger: Observable<Void>
         let refreshButtonTapped: Observable<Void>
+        let imageViewTapped: Observable<(Double, Double)>
     }
     
     struct Output {
@@ -60,6 +61,13 @@ final class HomeViewModel: ViewModelType {
             .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 self.useCase.fetchAccidents()
+            })
+            .disposed(by: disposeBag)
+        
+        input.imageViewTapped
+            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { coordinate in
+                print(coordinate)
             })
             .disposed(by: disposeBag)
         

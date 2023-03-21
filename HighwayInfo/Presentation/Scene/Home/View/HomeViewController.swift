@@ -9,10 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-enum Road {
-    case accident, construction
-}
-
 class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
     var viewModel: HomeViewModel!
@@ -46,9 +42,12 @@ class HomeViewController: UIViewController {
         let pull = tableView.refreshControl!.rx
             .controlEvent(.valueChanged)
             .asDriver()
+        
+        let imageViewtap = PublishRelay<(Double, Double)>()
 
         let input = HomeViewModel.Input(trigger: viewWillAppear,
-                                        refreshButtonTapped: refreshButton.rx.tap.asObservable())
+                                        refreshButtonTapped: refreshButton.rx.tap.asObservable(),
+                                        imageViewTapped: imageViewtap.asObservable())
         
         let output = viewModel.transform(input: input)
         
@@ -56,7 +55,13 @@ class HomeViewController: UIViewController {
             cellIdentifier: AccidentCell.reuseID.self,
             cellType: AccidentCell.self)) { _, viewModel, cell in
                 cell.bind(viewModel.0, url: viewModel.1)
-            }.disposed(by: disposeBag)
+                cell.imageViewTap.subscribe { _ in
+                    let coordinate = (viewModel.0.coordx, viewModel.0.coordy)
+                    imageViewtap.accept(coordinate)
+                }
+                .disposed(by: self.disposeBag)
+            }
+            .disposed(by: disposeBag)
         
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)

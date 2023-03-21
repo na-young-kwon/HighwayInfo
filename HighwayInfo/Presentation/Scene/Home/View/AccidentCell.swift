@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AccidentCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
@@ -14,6 +16,12 @@ class AccidentCell: UITableViewCell {
     @IBOutlet weak var restrictLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var accidentImageView: UIImageView!
+    
+    private let tapGesture = UITapGestureRecognizer()
+    
+    var imageViewTap: ControlEvent<UITapGestureRecognizer> {
+        return tapGesture.rx.event
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,13 +50,8 @@ class AccidentCell: UITableViewCell {
     }
     
     private func addTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapImageView))
         accidentImageView.addGestureRecognizer(tapGesture)
         accidentImageView.isUserInteractionEnabled = true
-    }
-    
-    @objc private  func tapImageView() {
-        print("show cctv video")
     }
 }
 
