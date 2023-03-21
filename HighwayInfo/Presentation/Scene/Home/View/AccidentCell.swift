@@ -17,8 +17,12 @@ class AccidentCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         selectionStyle = .none
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        accidentImageView.image = UIImage(systemName: "circle.fill")
     }
 
     override func layoutSubviews() {
@@ -26,16 +30,26 @@ class AccidentCell: UITableViewCell {
 
         // 셀간격
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
+        addTapGesture()
     }
     
     func bind(_ viewModel: AccidentViewModel, url: String?) {
+        accidentImageView.loadFrom(url: url)
         titleLabel.text = viewModel.place
         directionLabel.text = viewModel.direction
         startTimeLabel.text = "사고시각: " + viewModel.startTime
         restrictLabel.text = viewModel.restrictType + "통제"
         descriptionLabel.text = viewModel.description
-
-        accidentImageView.loadFrom(url: url)
+    }
+    
+    private func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapImageView))
+        accidentImageView.addGestureRecognizer(tapGesture)
+        accidentImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc private  func tapImageView() {
+        print("show cctv video")
     }
 }
 
