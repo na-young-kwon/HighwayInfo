@@ -22,7 +22,6 @@ class AccidentCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        accidentImageView.image = UIImage(systemName: "circle.fill")
     }
 
     override func layoutSubviews() {
