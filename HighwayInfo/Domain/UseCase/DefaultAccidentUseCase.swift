@@ -21,7 +21,6 @@ final class DefaultAccidentUseCase: AccidentUseCase {
         self.cctvRepository = cctvRepository
     }
     
-    // 교통사고
     func fetchAccidents() {
         let allAccidents = accidentRepository.fetchAllAccidents()
            
@@ -46,11 +45,11 @@ final class DefaultAccidentUseCase: AccidentUseCase {
     func fetchImage(for accidents: [Accident]) {
         let coordinates = accidents.map { ($0.coord_x, $0.coord_y) }
         
-        Observable<CctvDTO>.zip(coordinates.map {  coord in
+        Observable<CctvDTO?>.zip(coordinates.map {  coord in
             cctvRepository.fetchPreviewBy(x: coord.0, y: coord.1)
         })
             .subscribe(onNext: { cctv in
-                let urls = cctv.map { $0.response.data?.cctvURL }
+                let urls = cctv.map { $0?.cctvurl ?? ""}
                 self.images.onNext(urls)
             })
             .disposed(by: disposeBag)

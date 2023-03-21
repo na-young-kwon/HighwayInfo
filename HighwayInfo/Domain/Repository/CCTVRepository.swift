@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol CCTVRepository {
-    func fetchPreviewBy(x: Double, y: Double) -> Observable<CctvDTO>
+    func fetchPreviewBy(x: Double, y: Double) -> Observable<CctvDTO?>
 }

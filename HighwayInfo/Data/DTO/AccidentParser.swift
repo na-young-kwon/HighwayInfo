@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class XmlParser: NSObject, XMLParserDelegate {
+final class AccidentParser: NSObject, XMLParserDelegate {
     private let parser: XMLParser
     private var elementValue: String?
     private var accident: AccidentDTO!
