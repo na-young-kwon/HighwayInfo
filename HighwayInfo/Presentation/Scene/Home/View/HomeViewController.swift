@@ -15,15 +15,10 @@ enum Road {
 
 class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
-    private var itemSelected = BehaviorSubject<Road>(value: .accident)
     var viewModel: HomeViewModel!
     
     @IBOutlet weak var whiteView: UIView!
-    @IBOutlet weak var toggleBackground: UIView!
-    @IBOutlet weak var toggleForeground: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var accidentButton: UIButton!
-    @IBOutlet weak var constructionButton: UIButton!
     @IBOutlet weak var refreshButton: UIButton!
     
     override func viewDidLoad() {
@@ -36,8 +31,6 @@ class HomeViewController: UIViewController {
     
     private func configureUI() {
         whiteView.layer.cornerRadius = 15
-        toggleBackground.layer.cornerRadius = 10
-        toggleForeground.layer.cornerRadius = 10
     }
     
     private func configureTableView() {
@@ -53,26 +46,6 @@ class HomeViewController: UIViewController {
         let pull = tableView.refreshControl!.rx
             .controlEvent(.valueChanged)
             .asDriver()
-        
-        let selectedRelay = BehaviorRelay<Road>(value: .accident)
-        
-        accidentButton.rx.tap.asObservable()
-            .subscribe(onNext: {
-                selectedRelay.accept(.accident)
-                UIView.animate(withDuration: 0.2) {
-                    self.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        constructionButton.rx.tap.asObservable()
-            .subscribe(onNext: {
-                selectedRelay.accept(.construction)
-                UIView.animate(withDuration: 0.2) {
-                    self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
-                }
-            })
-            .disposed(by: disposeBag)
 
         let input = HomeViewModel.Input(trigger: viewWillAppear,
                                         refreshButtonTapped: refreshButton.rx.tap.asObservable())
