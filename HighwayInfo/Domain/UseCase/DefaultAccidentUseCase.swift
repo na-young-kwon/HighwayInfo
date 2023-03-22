@@ -54,4 +54,8 @@ final class DefaultAccidentUseCase: AccidentUseCase {
         })
         .disposed(by: disposeBag)
     }
+    
+    func fetchVideo(for coord: (Double, Double)) -> Observable<CctvDTO?> {
+        cctvRepository.fetchVideo(x: coord.0, y: coord.1)
+    }
 }

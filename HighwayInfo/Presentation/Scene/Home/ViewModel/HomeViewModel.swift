@@ -67,7 +67,10 @@ final class HomeViewModel: ViewModelType {
         input.imageViewTapped
             .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { coordinate in
-                print(coordinate)
+                self.useCase.fetchVideo(for: coordinate)
+                    .subscribe(onNext: { cctv in
+                        print(cctv?.cctvurl)
+                    }).disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
         
