@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import AVFoundation
 
 class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
@@ -58,6 +59,14 @@ class HomeViewController: UIViewController {
                 cell.imageViewTap.subscribe { _ in
                     let coordinate = (viewModel.0.coordx, viewModel.0.coordy)
                     imageViewtap.accept(coordinate)
+                    output.videoURL
+                        .observe(on: MainScheduler.instance)
+                        .subscribe(onNext: { url in
+                            if url != nil {
+                                self.presentVideo(for: url)
+                            }
+                        })
+                        .disposed(by: self.disposeBag)
                 }
                 .disposed(by: self.disposeBag)
             }
@@ -66,5 +75,24 @@ class HomeViewController: UIViewController {
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)
             .disposed(by: disposeBag)
+    }
+    
+    private func presentVideo(for url: String?) {
+        let window = UIApplication.shared.windows.last!
+        let backgroundView = UIView(frame: window.bounds)
+        let superView = view.frame
+        window.addSubview(backgroundView)
+        backgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        
+        let videoPlayer = VideoPlayerView(frame: CGRect(x: 0,
+                                                        y: 500,
+                                                        width: superView.width,
+                                                        height: superView.height * 0.3))
+        backgroundView.addSubview(videoPlayer)
+        guard let urlString = url, let url = URL(string: urlString) else { return }
+        let playerItem = AVPlayerItem(url: url)
+        playerItem.preferredForwardBufferDuration = TimeInterval(1.0)
+        videoPlayer.player = AVPlayer(playerItem: playerItem)
+        videoPlayer.player?.play()
     }
 }

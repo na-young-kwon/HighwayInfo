@@ -21,6 +21,7 @@ final class HomeViewModel: ViewModelType {
     struct Output {
         let fetching: Driver<Bool>
         let accidents = BehaviorRelay<[(AccidentViewModel, String?)]>(value: [])
+        let videoURL = BehaviorSubject<String?>(value: nil)
     }
     
     private weak var coordinator: DefaultHomeCoordinator!
@@ -69,7 +70,7 @@ final class HomeViewModel: ViewModelType {
             .subscribe(onNext: { coordinate in
                 self.useCase.fetchVideo(for: coordinate)
                     .subscribe(onNext: { cctv in
-                        print(cctv?.cctvurl)
+                        output.videoURL.onNext(cctv?.cctvurl)
                     }).disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
