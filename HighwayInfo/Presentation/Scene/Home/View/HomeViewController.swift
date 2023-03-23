@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import AVFoundation
+import AVKit
 
 class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
@@ -17,6 +18,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var refreshButton: UIButton!
+    
+    var player: AVPlayer!
+    var avpController = AVPlayerViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,15 +88,18 @@ class HomeViewController: UIViewController {
         window.addSubview(backgroundView)
         backgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         
-        let videoPlayer = VideoPlayerView(frame: CGRect(x: 0,
-                                                        y: 500,
-                                                        width: superView.width,
-                                                        height: superView.height * 0.3))
-        backgroundView.addSubview(videoPlayer)
-        guard let urlString = url, let url = URL(string: urlString) else { return }
-        let playerItem = AVPlayerItem(url: url)
-        playerItem.preferredForwardBufferDuration = TimeInterval(1.0)
-        videoPlayer.player = AVPlayer(playerItem: playerItem)
-        videoPlayer.player?.play()
+        guard let urlString = url,
+                let url = URL(string: urlString) else {
+            return
+            
+        }
+        player = AVPlayer(url: url)
+        avpController.player = player
+        avpController.view.frame = CGRect(x: 0,
+                                          y: 600,
+                                          width: superView.width,
+                                          height: superView.height * 0.3)
+        backgroundView.addSubview(avpController.view)
+        player.play()
     }
 }
