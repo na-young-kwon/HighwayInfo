@@ -20,13 +20,13 @@ final class HomeViewModel: ViewModelType {
     
     struct Output {
         let fetching: Driver<Bool>
-        let accidents = BehaviorRelay<[(AccidentViewModel, String?)]>(value: [])
+        let accidents = BehaviorRelay<[AccidentViewModel]>(value: [])
         let videoURL = BehaviorSubject<String?>(value: nil)
     }
     
     private weak var coordinator: DefaultHomeCoordinator!
     private let useCase: DefaultAccidentUseCase
-    private let accidentViewModels = BehaviorSubject<[(AccidentViewModel, String?)]>(value: [])
+    private let accidentViewModels = BehaviorSubject<[AccidentViewModel]>(value: [])
     
     init(useCase: DefaultAccidentUseCase, coordinator: DefaultHomeCoordinator) {
         self.useCase = useCase
@@ -41,8 +41,7 @@ final class HomeViewModel: ViewModelType {
         
         useCase.accidents
             .subscribe(onNext: { totalAccident in
-                self.useCase.fetchImage(for: totalAccident)
-                self.makeViewModel(accidents: totalAccident)
+                output.accidents.accept(totalAccident)
             })
             .disposed(by: disposeBag)
         
@@ -65,26 +64,16 @@ final class HomeViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        input.imageViewTapped
-            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { coordinate in
-                self.useCase.fetchVideo(for: coordinate)
-                    .subscribe(onNext: { cctv in
-                        output.videoURL.onNext(cctv?.cctvurl)
-                    }).disposed(by: self.disposeBag)
-            })
-            .disposed(by: disposeBag)
+//        input.imageViewTapped
+//            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { coordinate in
+//                self.useCase.fetchVideo(for: coordinate)
+//                    .subscribe(onNext: { cctv in
+//                        output.videoURL.onNext(cctv?.cctvurl)
+//                    }).disposed(by: self.disposeBag)
+//            })
+//            .disposed(by: disposeBag)
         
         return output
-    }
-    
-    func makeViewModel(accidents: [Accident]) {
-        useCase.images
-            .subscribe(onNext: { urls in
-                let viewModels = accidents.map { AccidentViewModel(accident: $0) }
-                let zipped = Array(zip(viewModels, urls))
-                self.accidentViewModels.onNext(zipped)
-            })
-            .disposed(by: disposeBag)
     }
 }

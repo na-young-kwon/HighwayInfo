@@ -39,14 +39,14 @@ class AccidentCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
         addTapGesture()
     }
-    
-    func bind(_ viewModel: AccidentViewModel, url: String?) {
-        accidentImageView.loadFrom(url: url)
+
+    func bind(_ viewModel: AccidentViewModel) {
         titleLabel.text = viewModel.place
         directionLabel.text = viewModel.direction
         startTimeLabel.text = "사고시각: " + viewModel.startTime
         restrictLabel.text = viewModel.restrictType + "통제"
         descriptionLabel.text = viewModel.description
+        accidentImageView.loadFrom(url: viewModel.preview)
     }
     
     private func addTapGesture() {
@@ -55,16 +55,20 @@ class AccidentCell: UITableViewCell {
     }
 }
 
-
 extension UIImageView {
     func loadFrom(url: String?) {
-        if let url = url, let url = URL(string: url) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                guard let imageData = data else { return }
-                DispatchQueue.main.async {
-                    self.image = UIImage(data: imageData)
-                }
-            }.resume()
+        guard let url = url, let url = URL(string: url) else {
+            self.image = UIImage(named: "NoImage")
+            return
         }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let imageData = data else {
+                self.image = UIImage(named: "NoImage")
+                return
+            }
+            DispatchQueue.main.async {
+                self.image = UIImage(data: imageData)
+            }
+        }.resume()
     }
 }

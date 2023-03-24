@@ -8,25 +8,30 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import AVFoundation
 import AVKit
 
 class HomeViewController: UIViewController {
-    private let disposeBag = DisposeBag()
+    
+    private enum Section {
+        case accident
+    }
+    
     var viewModel: HomeViewModel!
+    private let disposeBag = DisposeBag()
+    private var player: AVPlayer!
+    private var avpController = AVPlayerViewController()
+    private var dataSource: UITableViewDiffableDataSource<Section, AccidentViewModel>!
     
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var refreshButton: UIButton!
-    
-    var player: AVPlayer!
-    var avpController = AVPlayerViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         configureTableView()
+        configureDataSource()
         bindViewModel()
     }
     
@@ -39,6 +44,27 @@ class HomeViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: AccidentCell.reuseID)
         tableView.refreshControl = UIRefreshControl()
         tableView.showsVerticalScrollIndicator = false
+    }
+    
+    private func configureDataSource() {
+        self.dataSource = UITableViewDiffableDataSource<Section, AccidentViewModel>(tableView: tableView) { (tableView: UITableView, indexPath: IndexPath, viewModel: AccidentViewModel) in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AccidentCell.reuseID, for: indexPath) as? AccidentCell else {
+                return UITableViewCell()
+            }
+            cell.bind(viewModel)
+            cell.imageViewTap.subscribe(onNext: { a in
+                print(a)
+            })
+            .disposed(by: self.disposeBag)
+            return cell
+        }
+    }
+    
+    private func updateUI(with viewModel: [AccidentViewModel]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, AccidentViewModel>()
+        snapShot.appendSections([.accident])
+        snapShot.appendItems(viewModel)
+        dataSource.apply(snapShot)
     }
     
     private func bindViewModel() {
@@ -56,25 +82,12 @@ class HomeViewController: UIViewController {
         
         let output = viewModel.transform(input: input)
         
-        output.accidents.bind(to: tableView.rx.items(
-            cellIdentifier: AccidentCell.reuseID.self,
-            cellType: AccidentCell.self)) { _, viewModel, cell in
-                cell.bind(viewModel.0, url: viewModel.1)
-                cell.imageViewTap.subscribe { _ in
-                    let coordinate = (viewModel.0.coordx, viewModel.0.coordy)
-                    imageViewtap.accept(coordinate)
-                    output.videoURL
-                        .observe(on: MainScheduler.instance)
-                        .subscribe(onNext: { url in
-                            if url != nil {
-                                self.presentVideo(for: url)
-                            }
-                        })
-                        .disposed(by: self.disposeBag)
-                }
-                .disposed(by: self.disposeBag)
-            }
-            .disposed(by: disposeBag)
+        output.accidents
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { accidents in
+            self.updateUI(with: accidents)
+        })
+        .disposed(by: self.disposeBag)
         
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)
@@ -88,10 +101,8 @@ class HomeViewController: UIViewController {
         window.addSubview(backgroundView)
         backgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         
-        guard let urlString = url,
-                let url = URL(string: urlString) else {
+        guard let urlString = url, let url = URL(string: urlString) else {
             return
-            
         }
         player = AVPlayer(url: url)
         avpController.player = player

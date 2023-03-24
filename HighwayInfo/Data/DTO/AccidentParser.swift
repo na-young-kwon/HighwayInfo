@@ -48,20 +48,8 @@ final class AccidentParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "itemList" {
             accidents.append(accident)
-        } else if elementName == "routeId" {
-            accident.routeID = elementValue
-        } else if elementName == "linkId" {
-            accident.linkId = elementValue
-        } else if elementName == "spotId" {
-            accident.spotId = elementValue
-        } else if elementName == "regSeq" {
-            accident.regSeq = elementValue
         } else if elementName == "startDate" {
             accident.startDate = elementValue
-        } else if elementName == "estEndDate" {
-            accident.estEndDate = elementValue
-        } else if elementName == "endDate" {
-            accident.endDate = elementValue
         } else if elementName == "restrictType" {
             accident.restrictType = elementValue
         } else if elementName == "inciDesc" {

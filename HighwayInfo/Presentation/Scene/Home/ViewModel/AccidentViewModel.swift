@@ -7,25 +7,30 @@
 
 import Foundation
 
-struct AccidentViewModel {
+struct AccidentViewModel: Identifiable, Hashable {
+    static func == (lhs: AccidentViewModel, rhs: AccidentViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    let id = UUID()
     let startTime: String
-    let estimatedEndTime: String
     let place: String
     let direction: String
     let restrictType: String
     let description: String
     let coordx: Double
     let coordy: Double
+    let preview: String?
     
-    init(accident: Accident) {
+    init(accident: Accident, preview: String?) {
         self.startTime = accident.startTime.toShortDate
-        self.estimatedEndTime = accident.estimatedEndTime.toShortDate
         self.place = accident.place
         self.direction = accident.direction
         self.restrictType = accident.restrictType
         self.description = accident.description
         self.coordx = accident.coord_x
         self.coordy = accident.coord_y
+        self.preview = preview
     }
 }
 
