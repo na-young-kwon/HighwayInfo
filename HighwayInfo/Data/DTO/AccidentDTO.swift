@@ -8,14 +8,7 @@
 import Foundation
 
 class AccidentDTO: Decodable {
-    var routeID: String!
-    var linkId: String!
-    var spotId: String!
-    var regSeq: String!
-    var confirmDate: String!
     var startDate: String!
-    var estEndDate: String!
-    var endDate: String!
     var restrictType: String!
     var inciDesc: String!
     var inciPlace1: String!

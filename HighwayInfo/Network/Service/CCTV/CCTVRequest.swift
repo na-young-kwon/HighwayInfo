@@ -8,7 +8,7 @@
 import Foundation
 
 struct CCTVRequest: APIRequest {
-    typealias Response = CctvDTO
+    typealias Response = CctvDTO?
     
     let httpMethod: HTTPMethod = .get
     let urlHost: String = "https://openapi.its.go.kr:9443/"
@@ -19,7 +19,7 @@ struct CCTVRequest: APIRequest {
     let maxX: Double
     let minY: Double
     let maxY: Double
-    let getType = "json"
+    let getType = "xml"
     
     var parameters: [String : String] {
         [

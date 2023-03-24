@@ -7,32 +7,32 @@
 
 import Foundation
 
-struct AccidentViewModel {
+struct AccidentViewModel: Identifiable, Hashable {
+    static func == (lhs: AccidentViewModel, rhs: AccidentViewModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    let id = UUID()
     let startTime: String
-    let estimatedEndTime: String
     let place: String
     let direction: String
     let restrictType: String
     let description: String
-    var cctvImage: String?
-    {
-        didSet {
-            print("Did set: \(cctvImage)")
-        }
-    }
     let coordx: Double
     let coordy: Double
+    let preview: String?
+    let video: String?
     
-    init(accident: Accident, cctvImage: String?) {
+    init(accident: Accident, preview: String?, video: String?) {
         self.startTime = accident.startTime.toShortDate
-        self.estimatedEndTime = accident.estimatedEndTime.toShortDate
         self.place = accident.place
         self.direction = accident.direction
         self.restrictType = accident.restrictType
         self.description = accident.description
         self.coordx = accident.coord_x
         self.coordy = accident.coord_y
-        self.cctvImage = cctvImage
+        self.preview = preview
+        self.video = video
     }
 }
 

@@ -9,7 +9,6 @@ import Foundation
 
 struct Accident {
     let startTime: String
-    let estimatedEndTime: String
     let place: String
     let direction: String
     let restrictType: String

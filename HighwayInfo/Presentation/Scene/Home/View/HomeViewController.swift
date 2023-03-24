@@ -8,22 +8,22 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
-enum Road {
-    case accident, construction
-}
+import AVKit
 
 class HomeViewController: UIViewController {
-    private let disposeBag = DisposeBag()
-    private var itemSelected = BehaviorSubject<Road>(value: .accident)
+    
+    private enum Section {
+        case accident
+    }
+    
     var viewModel: HomeViewModel!
+    private let disposeBag = DisposeBag()
+    private var player: AVPlayer!
+    private var avpController = AVPlayerViewController()
+    private var dataSource: UITableViewDiffableDataSource<Section, AccidentViewModel>!
     
     @IBOutlet weak var whiteView: UIView!
-    @IBOutlet weak var toggleBackground: UIView!
-    @IBOutlet weak var toggleForeground: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var accidentButton: UIButton!
-    @IBOutlet weak var constructionButton: UIButton!
     @IBOutlet weak var refreshButton: UIButton!
     
     override func viewDidLoad() {
@@ -31,13 +31,12 @@ class HomeViewController: UIViewController {
         
         configureUI()
         configureTableView()
+        configureDataSource()
         bindViewModel()
     }
     
     private func configureUI() {
         whiteView.layer.cornerRadius = 15
-        toggleBackground.layer.cornerRadius = 10
-        toggleForeground.layer.cornerRadius = 10
     }
     
     private func configureTableView() {
@@ -47,6 +46,27 @@ class HomeViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
     }
     
+    private func configureDataSource() {
+        self.dataSource = UITableViewDiffableDataSource<Section, AccidentViewModel>(tableView: tableView) { (tableView: UITableView, indexPath: IndexPath, viewModel: AccidentViewModel) in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AccidentCell.reuseID, for: indexPath) as? AccidentCell else {
+                return UITableViewCell()
+            }
+            cell.bind(viewModel)
+            cell.imageViewTap.subscribe(onNext: { _ in
+                self.presentVideo(for: viewModel.video)
+            })
+            .disposed(by: self.disposeBag)
+            return cell
+        }
+    }
+    
+    private func updateUI(with viewModel: [AccidentViewModel]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, AccidentViewModel>()
+        snapShot.appendSections([.accident])
+        snapShot.appendItems(viewModel)
+        dataSource.apply(snapShot)
+    }
+    
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
@@ -54,40 +74,33 @@ class HomeViewController: UIViewController {
             .controlEvent(.valueChanged)
             .asDriver()
         
-        let selectedRelay = BehaviorRelay<Road>(value: .accident)
-        
-        accidentButton.rx.tap.asObservable()
-            .subscribe(onNext: {
-                selectedRelay.accept(.accident)
-                UIView.animate(withDuration: 0.2) {
-                    self.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        constructionButton.rx.tap.asObservable()
-            .subscribe(onNext: {
-                selectedRelay.accept(.construction)
-                UIView.animate(withDuration: 0.2) {
-                    self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
-                }
-            })
-            .disposed(by: disposeBag)
+        let imageViewTap = PublishRelay<(Double, Double)>()
 
         let input = HomeViewModel.Input(trigger: viewWillAppear,
-                                        selectedRoad: selectedRelay,
-                                        refreshButtonTapped: refreshButton.rx.tap.asObservable())
+                                        refreshButtonTapped: refreshButton.rx.tap.asObservable(),
+                                        imageViewTapped: imageViewTap.asObservable())
         
         let output = viewModel.transform(input: input)
         
-        output.accidents.bind(to: tableView.rx.items(
-            cellIdentifier: AccidentCell.reuseID.self,
-            cellType: AccidentCell.self)) { _, viewModel, cell in
-                cell.bind(viewModel)
-            }.disposed(by: disposeBag)
+        output.accidents
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { accidents in
+            self.updateUI(with: accidents)
+        })
+        .disposed(by: self.disposeBag)
         
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)
             .disposed(by: disposeBag)
+    }
+    
+    private func presentVideo(for url: String?) {
+        guard let urlString = url, let url = URL(string: urlString) else {
+            return
+        }
+        player = AVPlayer(url: url)
+        avpController.player = player
+        present(avpController, animated: true)
+        player.play()
     }
 }

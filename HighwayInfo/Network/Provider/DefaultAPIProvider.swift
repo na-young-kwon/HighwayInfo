@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 enum DecodeType {
-    case xml, json
+    case accident, cctv, json
 }
 
 final class DefaultAPIProvider: APIProvider {
@@ -41,10 +41,18 @@ final class DefaultAPIProvider: APIProvider {
                 }
                 
                 switch decodeType {
-                case .xml:
-                    let parser = XmlParser(data: data)
+                case .accident:
+                    let parser = AccidentParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
-                        // [AccidentDTO] 로 형변환 안됨
+                        observer.onError(NetworkingError.convertToReponseError)
+                        return
+                    }
+                    observer.onNext(decoded)
+                    observer.onCompleted()
+                    
+                case .cctv:
+                    let parser = CCTVParser(data: data)
+                    guard let decoded = parser.parseXML() as? T.Response else {
                         observer.onError(NetworkingError.convertToReponseError)
                         return
                     }

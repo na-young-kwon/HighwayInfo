@@ -14,17 +14,19 @@ final class HomeViewModel: ViewModelType {
     
     struct Input {
         let trigger: Observable<Void>
-        let selectedRoad: BehaviorRelay<Road>
         let refreshButtonTapped: Observable<Void>
+        let imageViewTapped: Observable<(Double, Double)>
     }
     
     struct Output {
         let fetching: Driver<Bool>
         let accidents = BehaviorRelay<[AccidentViewModel]>(value: [])
+        let videoURL = BehaviorSubject<String?>(value: nil)
     }
     
     private weak var coordinator: DefaultHomeCoordinator!
     private let useCase: DefaultAccidentUseCase
+    private let accidentViewModels = BehaviorSubject<[AccidentViewModel]>(value: [])
     
     init(useCase: DefaultAccidentUseCase, coordinator: DefaultHomeCoordinator) {
         self.useCase = useCase
@@ -38,39 +40,40 @@ final class HomeViewModel: ViewModelType {
         let output = Output(fetching: fetching)
         
         useCase.accidents
-            .map { $0.map { AccidentViewModel(accident: $0, cctvImage: "") }}
             .subscribe(onNext: { totalAccident in
                 output.accidents.accept(totalAccident)
             })
             .disposed(by: disposeBag)
         
-        input.trigger
-            .subscribe { _ in
-                self.useCase.fetchAccidents(for: .accident)
-            }
+        accidentViewModels
+            .subscribe(onNext: { models in
+                output.accidents.accept(models)
+            })
             .disposed(by: disposeBag)
         
-        input.selectedRoad
-            .subscribe(onNext: { [weak self] road in
-                self?.useCase.fetchAccidents(for: road)
-                self?.useCase.fetchViewModel()
-            })
+        input.trigger
+            .subscribe { _ in
+                self.useCase.fetchAccidents()
+            }
             .disposed(by: disposeBag)
         
         input.refreshButtonTapped
             .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
-            .map { self.filteredAccidents(for: input.selectedRoad.value) }
-            .bind(onNext: { accidents in
-                output.accidents.accept(accidents)
+            .subscribe(onNext: {
+                self.useCase.fetchAccidents()
             })
             .disposed(by: disposeBag)
         
+//        input.imageViewTapped
+//            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { coordinate in
+//                self.useCase.fetchVideo(for: coordinate)
+//                    .subscribe(onNext: { cctv in
+//                        output.videoURL.onNext(cctv?.cctvurl)
+//                    }).disposed(by: self.disposeBag)
+//            })
+//            .disposed(by: disposeBag)
+        
         return output
-    }
-    
-    private func filteredAccidents(for road: Road) -> [AccidentViewModel] {
-        useCase.fetchAccidents(for: road)
-
-        return useCase.fetchViewModel()
     }
 }

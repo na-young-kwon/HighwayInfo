@@ -32,64 +32,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W42-ST-XhF">
-                                        <rect key="frame" x="18" y="68.333333333333329" width="346" height="32"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNb-lz-REo" userLabel="Toggle Foreground">
-                                                <rect key="frame" x="4" y="4" width="162" height="24"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ba-Hi-Gzh">
-                                                <rect key="frame" x="0.0" y="0.0" width="346" height="32"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuH-yl-u16">
-                                                        <rect key="frame" x="0.0" y="0.0" width="173" height="32"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="교통사고">
-                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
-                                                            <color key="baseForegroundColor" red="0.15686274510000001" green="0.25490196079999999" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </buttonConfiguration>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JG-UN-s9a">
-                                                        <rect key="frame" x="173" y="0.0" width="173" height="32"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="공사">
-                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
-                                                            <color key="baseForegroundColor" red="0.15686274510000001" green="0.25490196079999999" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </buttonConfiguration>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                        <constraints>
-                                            <constraint firstItem="LNb-lz-REo" firstAttribute="leading" secondItem="W42-ST-XhF" secondAttribute="leading" constant="4" id="1xm-6V-YpR"/>
-                                            <constraint firstItem="3ba-Hi-Gzh" firstAttribute="top" secondItem="W42-ST-XhF" secondAttribute="top" id="6OH-C7-0Hq"/>
-                                            <constraint firstAttribute="bottom" secondItem="LNb-lz-REo" secondAttribute="bottom" constant="4" id="QQF-h1-1pm"/>
-                                            <constraint firstItem="3ba-Hi-Gzh" firstAttribute="leading" secondItem="W42-ST-XhF" secondAttribute="leading" id="REk-Uc-rkV"/>
-                                            <constraint firstAttribute="bottom" secondItem="3ba-Hi-Gzh" secondAttribute="bottom" id="RW6-oO-VWn"/>
-                                            <constraint firstAttribute="trailing" secondItem="3ba-Hi-Gzh" secondAttribute="trailing" id="SMi-Bd-HIh"/>
-                                            <constraint firstAttribute="trailing" secondItem="LNb-lz-REo" secondAttribute="trailing" constant="180" id="Sxo-DN-lBm"/>
-                                            <constraint firstItem="LNb-lz-REo" firstAttribute="top" secondItem="W42-ST-XhF" secondAttribute="top" constant="4" id="nkc-j7-ROP"/>
-                                        </constraints>
-                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vTX-Lh-9vm">
-                                        <rect key="frame" x="20" y="120.33333333333331" width="353" height="604"/>
+                                        <rect key="frame" x="18" y="68.333333333333314" width="357" height="656"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="vTX-Lh-9vm" firstAttribute="top" secondItem="19i-vM-20H" secondAttribute="bottom" constant="20" id="7Wa-fu-rtE"/>
                                     <constraint firstItem="TGT-tC-EjM" firstAttribute="leading" secondItem="Y0U-Sd-Ulg" secondAttribute="leading" constant="18" id="7qh-si-1dl"/>
-                                    <constraint firstItem="W42-ST-XhF" firstAttribute="width" secondItem="Y0U-Sd-Ulg" secondAttribute="width" multiplier="0.88" id="8bH-g2-1gd"/>
+                                    <constraint firstItem="vTX-Lh-9vm" firstAttribute="leading" secondItem="TGT-tC-EjM" secondAttribute="leading" id="CiS-Tm-3wB"/>
                                     <constraint firstItem="TGT-tC-EjM" firstAttribute="top" secondItem="Y0U-Sd-Ulg" secondAttribute="top" constant="18" id="Dqu-NJ-3dw"/>
-                                    <constraint firstItem="vTX-Lh-9vm" firstAttribute="leading" secondItem="Y0U-Sd-Ulg" secondAttribute="leading" constant="20" id="QcP-6k-xIb"/>
                                     <constraint firstAttribute="trailing" secondItem="19i-vM-20H" secondAttribute="trailing" constant="14" id="Rzl-AH-fGw"/>
-                                    <constraint firstItem="W42-ST-XhF" firstAttribute="height" secondItem="Y0U-Sd-Ulg" secondAttribute="height" multiplier="0.044" id="YmV-Bt-d0D"/>
-                                    <constraint firstItem="W42-ST-XhF" firstAttribute="top" secondItem="19i-vM-20H" secondAttribute="bottom" constant="20" id="enQ-qT-20z"/>
-                                    <constraint firstItem="vTX-Lh-9vm" firstAttribute="top" secondItem="W42-ST-XhF" secondAttribute="bottom" constant="20" id="ghX-Ua-NbJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="vTX-Lh-9vm" secondAttribute="trailing" constant="20" id="lwS-Jz-VYI"/>
-                                    <constraint firstItem="W42-ST-XhF" firstAttribute="leading" secondItem="TGT-tC-EjM" secondAttribute="leading" id="mcJ-E9-jD7"/>
+                                    <constraint firstAttribute="trailing" secondItem="vTX-Lh-9vm" secondAttribute="trailing" constant="18" id="lwS-Jz-VYI"/>
                                     <constraint firstItem="19i-vM-20H" firstAttribute="leading" relation="lessThanOrEqual" secondItem="TGT-tC-EjM" secondAttribute="trailing" constant="201" id="qw5-mM-p4T"/>
                                     <constraint firstAttribute="bottom" secondItem="vTX-Lh-9vm" secondAttribute="bottom" id="sV2-ly-Bx5"/>
                                     <constraint firstItem="19i-vM-20H" firstAttribute="top" secondItem="Y0U-Sd-Ulg" secondAttribute="top" constant="14" id="yzJ-q4-AP8"/>
@@ -115,12 +70,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="accidentButton" destination="KuH-yl-u16" id="qiw-Wf-Cu2"/>
-                        <outlet property="constructionButton" destination="6JG-UN-s9a" id="Kpd-nC-V5M"/>
                         <outlet property="refreshButton" destination="19i-vM-20H" id="hFD-64-haV"/>
                         <outlet property="tableView" destination="vTX-Lh-9vm" id="pCG-Az-4l5"/>
-                        <outlet property="toggleBackground" destination="W42-ST-XhF" id="Ehm-3T-P2H"/>
-                        <outlet property="toggleForeground" destination="LNb-lz-REo" id="EvA-BR-uMP"/>
                         <outlet property="whiteView" destination="Y0U-Sd-Ulg" id="g01-Ih-XQ3"/>
                     </connections>
                 </viewController>

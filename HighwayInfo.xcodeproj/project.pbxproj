@@ -37,10 +37,13 @@
 		3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABC29B84C8D0055D3A4 /* Accident.swift */; };
 		3B63BABF29B860960055D3A4 /* AccidentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */; };
 		3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAC029B862D30055D3A4 /* DefaultAccidentUseCase.swift */; };
+		3B6CF35129C9CE14002289A0 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF35029C9CE14002289A0 /* info.plist */; };
+		3B6CF35329CAB7FD002289A0 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF35229CAB7FD002289A0 /* VideoPlayerView.swift */; };
+		3B6CF35729CABBDA002289A0 /* VideoPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF35629CABBDA002289A0 /* VideoPlayerView.xib */; };
 		3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */; };
 		3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085929B87299009D7396 /* AccidentRequest.swift */; };
 		3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */; };
-		3B8F086329B89AE7009D7396 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086229B89AE7009D7396 /* XMLParser.swift */; };
+		3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086229B89AE7009D7396 /* AccidentParser.swift */; };
 		3B8F086529B9BDD1009D7396 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086429B9BDD1009D7396 /* ActivityIndicator.swift */; };
 		3B8F086729B9BE73009D7396 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086629B9BE73009D7396 /* HomeViewModel.swift */; };
 		3B8F086929B9BEB2009D7396 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086829B9BEB2009D7396 /* ViewModelType.swift */; };
@@ -52,6 +55,7 @@
 		3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */; };
 		3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EEA029C1F5910010FB25 /* CCTVRepository.swift */; };
 		3BD4EEA329C1F5C50010FB25 /* DefaultCCTVRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */; };
+		3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EEA629C980580010FB25 /* CCTVParser.swift */; };
 		8FB86310EFF3889AA167FFFC /* Pods_HighwayInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +80,6 @@
 		3B5B0E9229B0CFDD00AECF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B5B0E9729B0CFDE00AECF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3B5B0E9929B0CFDE00AECF22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B5FAE9B29BDD5DB00FC1772 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3B63BAA529B767EF0055D3A4 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIRequest.swift; path = ../../Provider/APIRequest.swift; sourceTree = "<group>"; };
 		3B63BAA829B768860055D3A4 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -88,10 +91,13 @@
 		3B63BABC29B84C8D0055D3A4 /* Accident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accident.swift; sourceTree = "<group>"; };
 		3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentUseCase.swift; sourceTree = "<group>"; };
 		3B63BAC029B862D30055D3A4 /* DefaultAccidentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentUseCase.swift; sourceTree = "<group>"; };
+		3B6CF35029C9CE14002289A0 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		3B6CF35229CAB7FD002289A0 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		3B6CF35629CABBDA002289A0 /* VideoPlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayerView.xib; sourceTree = "<group>"; };
 		3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentRepository.swift; sourceTree = "<group>"; };
 		3B8F085929B87299009D7396 /* AccidentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentRequest.swift; sourceTree = "<group>"; };
 		3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentDTO.swift; sourceTree = "<group>"; };
-		3B8F086229B89AE7009D7396 /* XMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
+		3B8F086229B89AE7009D7396 /* AccidentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentParser.swift; sourceTree = "<group>"; };
 		3B8F086429B9BDD1009D7396 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		3B8F086629B9BE73009D7396 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3B8F086829B9BEB2009D7396 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 		3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CctvDTO.swift; sourceTree = "<group>"; };
 		3BD4EEA029C1F5910010FB25 /* CCTVRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRepository.swift; sourceTree = "<group>"; };
 		3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCCTVRepository.swift; sourceTree = "<group>"; };
+		3BD4EEA629C980580010FB25 /* CCTVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVParser.swift; sourceTree = "<group>"; };
 		483DF070A3B5717B415683AC /* Pods-HighwayInfo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo.release.xcconfig"; path = "Target Support Files/Pods-HighwayInfo/Pods-HighwayInfo.release.xcconfig"; sourceTree = "<group>"; };
 		5606F3F1012B7A9156D35823 /* Pods-HighwayInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo.debug.xcconfig"; path = "Target Support Files/Pods-HighwayInfo/Pods-HighwayInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HighwayInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +143,7 @@
 				3B5AD11C29B1E8DA00E2AFAA /* Common */,
 				3B5AD12329B1F30100E2AFAA /* Scene */,
 				3B5B0E9129B0CFDD00AECF22 /* Main.storyboard */,
+				3B6CF35629CABBDA002289A0 /* VideoPlayerView.xib */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -229,7 +237,7 @@
 		3B5B0E8A29B0CFDD00AECF22 /* HighwayInfo */ = {
 			isa = PBXGroup;
 			children = (
-				3B5B0E9929B0CFDE00AECF22 /* Info.plist */,
+				3B6CF35029C9CE14002289A0 /* info.plist */,
 				3B5AD11A29B1E7B300E2AFAA /* Application */,
 				3B5AD11B29B1E8D500E2AFAA /* Presentation */,
 				3B63BAB529B84A460055D3A4 /* Domain */,
@@ -330,7 +338,8 @@
 			isa = PBXGroup;
 			children = (
 				3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */,
-				3B8F086229B89AE7009D7396 /* XMLParser.swift */,
+				3B8F086229B89AE7009D7396 /* AccidentParser.swift */,
+				3BD4EEA629C980580010FB25 /* CCTVParser.swift */,
 				3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */,
 			);
 			path = DTO;
@@ -356,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */,
+				3B6CF35229CAB7FD002289A0 /* VideoPlayerView.swift */,
 				3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */,
 				3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */,
 				3B5AD13629B32E3900E2AFAA /* ShadowView.swift */,
@@ -470,6 +480,8 @@
 			files = (
 				3B5AD13329B2291D00E2AFAA /* AccidentCell.xib in Resources */,
 				3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */,
+				3B6CF35129C9CE14002289A0 /* info.plist in Resources */,
+				3B6CF35729CABBDA002289A0 /* VideoPlayerView.xib in Resources */,
 				3B5AD13929B3456F00E2AFAA /* RoadCell.xib in Resources */,
 				3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */,
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,
@@ -525,12 +537,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B8F086329B89AE7009D7396 /* XMLParser.swift in Sources */,
+				3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */,
 				3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */,
 				3B5AD13B29B3457B00E2AFAA /* RoadCell.swift in Sources */,
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,
+				3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */,
 				3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */,
 				3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */,
 				3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */,
@@ -565,6 +578,7 @@
 				3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */,
 				3B63BAB429B7711B0055D3A4 /* AccidentService.swift in Sources */,
 				3B5AD13E29B34BE500E2AFAA /* DetailViewController.swift in Sources */,
+				3B6CF35329CAB7FD002289A0 /* VideoPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

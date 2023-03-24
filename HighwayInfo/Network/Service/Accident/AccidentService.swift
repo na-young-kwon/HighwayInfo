@@ -17,6 +17,6 @@ final class AccidentService {
     
     func fetchAllAccidents() -> Observable<[AccidentDTO]> {
         let request = AccidentRequest()
-        return apiProvider.performDataTask(with: request, decodeType: .xml)
+        return apiProvider.performDataTask(with: request, decodeType: .accident)
     }
 }
