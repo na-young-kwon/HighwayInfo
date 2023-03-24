@@ -60,13 +60,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func updateUI(with viewModel: [AccidentViewModel]) {
-        var snapShot = NSDiffableDataSourceSnapshot<Section, AccidentViewModel>()
-        snapShot.appendSections([.accident])
-        snapShot.appendItems(viewModel)
-        dataSource.apply(snapShot)
-    }
-    
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
@@ -74,24 +67,28 @@ class HomeViewController: UIViewController {
             .controlEvent(.valueChanged)
             .asDriver()
         
-        let imageViewTap = PublishRelay<(Double, Double)>()
-
         let input = HomeViewModel.Input(trigger: viewWillAppear,
-                                        refreshButtonTapped: refreshButton.rx.tap.asObservable(),
-                                        imageViewTapped: imageViewTap.asObservable())
+                                        refreshButtonTapped: refreshButton.rx.tap.asObservable())
         
         let output = viewModel.transform(input: input)
         
         output.accidents
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { accidents in
-            self.updateUI(with: accidents)
+            self.applySnapshot(with: accidents)
         })
         .disposed(by: self.disposeBag)
         
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)
             .disposed(by: disposeBag)
+    }
+    
+    private func applySnapshot(with viewModel: [AccidentViewModel]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, AccidentViewModel>()
+        snapShot.appendSections([.accident])
+        snapShot.appendItems(viewModel)
+        dataSource.apply(snapShot)
     }
     
     private func presentVideo(for url: String?) {
