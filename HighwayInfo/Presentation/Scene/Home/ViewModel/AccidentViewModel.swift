@@ -21,8 +21,9 @@ struct AccidentViewModel: Identifiable, Hashable {
     let coordx: Double
     let coordy: Double
     let preview: String?
+    let video: String?
     
-    init(accident: Accident, preview: String?) {
+    init(accident: Accident, preview: String?, video: String?) {
         self.startTime = accident.startTime.toShortDate
         self.place = accident.place
         self.direction = accident.direction
@@ -31,6 +32,7 @@ struct AccidentViewModel: Identifiable, Hashable {
         self.coordx = accident.coord_x
         self.coordy = accident.coord_y
         self.preview = preview
+        self.video = video
     }
 }
 

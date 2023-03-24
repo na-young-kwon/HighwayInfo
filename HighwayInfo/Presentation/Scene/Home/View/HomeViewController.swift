@@ -52,8 +52,8 @@ class HomeViewController: UIViewController {
                 return UITableViewCell()
             }
             cell.bind(viewModel)
-            cell.imageViewTap.subscribe(onNext: { a in
-                print(a)
+            cell.imageViewTap.subscribe(onNext: { _ in
+                self.presentVideo(for: viewModel.video)
             })
             .disposed(by: self.disposeBag)
             return cell
@@ -74,11 +74,11 @@ class HomeViewController: UIViewController {
             .controlEvent(.valueChanged)
             .asDriver()
         
-        let imageViewtap = PublishRelay<(Double, Double)>()
+        let imageViewTap = PublishRelay<(Double, Double)>()
 
         let input = HomeViewModel.Input(trigger: viewWillAppear,
                                         refreshButtonTapped: refreshButton.rx.tap.asObservable(),
-                                        imageViewTapped: imageViewtap.asObservable())
+                                        imageViewTapped: imageViewTap.asObservable())
         
         let output = viewModel.transform(input: input)
         
@@ -95,22 +95,12 @@ class HomeViewController: UIViewController {
     }
     
     private func presentVideo(for url: String?) {
-        let window = UIApplication.shared.windows.last!
-        let backgroundView = UIView(frame: window.bounds)
-        let superView = view.frame
-        window.addSubview(backgroundView)
-        backgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
-        
         guard let urlString = url, let url = URL(string: urlString) else {
             return
         }
         player = AVPlayer(url: url)
         avpController.player = player
-        avpController.view.frame = CGRect(x: 0,
-                                          y: 600,
-                                          width: superView.width,
-                                          height: superView.height * 0.3)
-        backgroundView.addSubview(avpController.view)
+        present(avpController, animated: true)
         player.play()
     }
 }

@@ -39,30 +39,36 @@ final class DefaultAccidentUseCase: AccidentUseCase {
             })
             .disposed(by: self.disposeBag)
     }
-
+    
     func fetchImage(for accidents: [Accident]) {
         let coordinates = accidents.map { ($0.coord_x, $0.coord_y) }
         
-        Observable<CctvDTO?>.zip(coordinates.map { coord in
+        let previewsObservable = Observable<CctvDTO?>.zip(coordinates.map { coord in
             cctvRepository.fetchPreviewBy(x: coord.0, y: coord.1)
-        })
-        .map { $0.map { $0?.cctvurl } }
-        .retry(3)
-        .subscribe(onNext: { urls in
-            let viewModels = self.makeViewModel(accidents: accidents, urls: urls)
-            self.accidents.onNext(viewModels)
-        })
-        .disposed(by: disposeBag)
+        }).map { $0.map { $0?.cctvurl } }
+        
+        let videoObservable = Observable<CctvDTO?>.zip(coordinates.map { coord in
+            cctvRepository.fetchVideo(x: coord.0, y: coord.1)
+        }).map { $0.map { $0?.cctvurl } }
+        
+        Observable.zip(previewsObservable, videoObservable)
+            .retry(3)
+            .subscribe(onNext: { (previews, videos) in
+                let viewModels = self.makeViewModel(accidents: accidents, previews: previews, videos: videos)
+                self.accidents.onNext(viewModels)
+            })
+            .disposed(by: disposeBag)
     }
     
-    func makeViewModel(accidents: [Accident], urls: [String?]) -> [AccidentViewModel] {
-        let accident: Observable<Accident> = Observable.from(accidents)
-        let url: Observable<String?> = Observable.from(urls)
+    func makeViewModel(accidents: [Accident], previews: [String?], videos: [String?]) -> [AccidentViewModel] {
+        let accident = Observable.from(accidents)
+        let url = Observable.from(previews)
+        let video = Observable.from(videos)
         var viewModels: [AccidentViewModel] = []
         
-        Observable.zip(accident, url)
-            .subscribe(onNext: { (accident, url) in
-                viewModels.append(AccidentViewModel(accident: accident, preview: url))
+        Observable.zip(accident, url, video)
+            .subscribe(onNext: { (accident, url, video) in
+                viewModels.append(AccidentViewModel(accident: accident, preview: url, video: video))
             })
             .disposed(by: disposeBag)
         return viewModels
