@@ -96,6 +96,15 @@ class HomeViewController: UIViewController {
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)
             .disposed(by: disposeBag)
+        
+        refreshButton.rx.tap
+            .bind { _ in
+                self.view.addSubview(self.loadingIndicator)
+                self.loadingIndicator.play { finished in
+                    self.loadingIndicator.removeFromSuperview()
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     private func applySnapshot(with viewModel: [AccidentViewModel]) {

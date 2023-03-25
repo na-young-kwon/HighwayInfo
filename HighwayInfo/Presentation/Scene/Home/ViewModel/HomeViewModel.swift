@@ -52,7 +52,7 @@ final class HomeViewModel: ViewModelType {
         
         input.refreshButtonTapped
             .trackActivity(activityIndicator)
-            .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.seconds(5), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 self.useCase.fetchAccidents()
             })
