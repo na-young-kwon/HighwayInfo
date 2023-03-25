@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import AVKit
+import Lottie
 
 class HomeViewController: UIViewController {
     
@@ -18,13 +19,23 @@ class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModel!
     private let disposeBag = DisposeBag()
-    private var player: AVPlayer!
-    private var avpController = AVPlayerViewController()
+    private var videoPlayer: AVPlayer!
+    private var videoController = AVPlayerViewController()
     private var dataSource: UITableViewDiffableDataSource<Section, AccidentViewModel>!
     
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var refreshButton: UIButton!
+    
+    private var loadingIndicator: LottieAnimationView = {
+        let animation = LottieAnimation.named("GrayLoadingIndicator")
+        let view = LottieAnimationView(animation: animation)
+        view.loopMode = .loop
+        view.play { finished in
+            view.removeFromSuperview()
+        }
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +48,8 @@ class HomeViewController: UIViewController {
     
     private func configureUI() {
         whiteView.layer.cornerRadius = 15
+        loadingIndicator.center = view.center
+        view.addSubview(loadingIndicator)
     }
     
     private func configureTableView() {
@@ -52,6 +65,7 @@ class HomeViewController: UIViewController {
                 return UITableViewCell()
             }
             cell.bind(viewModel)
+            self.loadingIndicator.stop()
             cell.imageViewTap.subscribe(onNext: { _ in
                 self.presentVideo(for: viewModel.video)
             })
@@ -75,9 +89,9 @@ class HomeViewController: UIViewController {
         output.accidents
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { accidents in
-            self.applySnapshot(with: accidents)
-        })
-        .disposed(by: self.disposeBag)
+                self.applySnapshot(with: accidents)
+            })
+            .disposed(by: self.disposeBag)
         
         output.fetching
             .drive(tableView.refreshControl!.rx.isRefreshing)
@@ -95,9 +109,9 @@ class HomeViewController: UIViewController {
         guard let urlString = url, let url = URL(string: urlString) else {
             return
         }
-        player = AVPlayer(url: url)
-        avpController.player = player
-        present(avpController, animated: true)
-        player.play()
+        videoPlayer = AVPlayer(url: url)
+        videoController.player = videoPlayer
+        present(videoController, animated: true)
+        videoPlayer.play()
     }
 }

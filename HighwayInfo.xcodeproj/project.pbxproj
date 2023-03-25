@@ -40,6 +40,7 @@
 		3B6CF35129C9CE14002289A0 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF35029C9CE14002289A0 /* info.plist */; };
 		3B6CF35329CAB7FD002289A0 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF35229CAB7FD002289A0 /* VideoPlayerView.swift */; };
 		3B6CF35729CABBDA002289A0 /* VideoPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF35629CABBDA002289A0 /* VideoPlayerView.xib */; };
+		3B6CF36729CDD177002289A0 /* GrayLoadingIndicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF36629CDD177002289A0 /* GrayLoadingIndicator.json */; };
 		3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */; };
 		3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085929B87299009D7396 /* AccidentRequest.swift */; };
 		3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */; };
@@ -94,6 +95,7 @@
 		3B6CF35029C9CE14002289A0 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		3B6CF35229CAB7FD002289A0 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		3B6CF35629CABBDA002289A0 /* VideoPlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayerView.xib; sourceTree = "<group>"; };
+		3B6CF36629CDD177002289A0 /* GrayLoadingIndicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = GrayLoadingIndicator.json; path = ../../../../../../../Downloads/GrayLoadingIndicator.json; sourceTree = "<group>"; };
 		3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentRepository.swift; sourceTree = "<group>"; };
 		3B8F085929B87299009D7396 /* AccidentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentRequest.swift; sourceTree = "<group>"; };
 		3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentDTO.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 		3B8F086B29B9C058009D7396 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3B6CF36629CDD177002289A0 /* GrayLoadingIndicator.json */,
 				3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */,
 				3B6CF35229CAB7FD002289A0 /* VideoPlayerView.swift */,
 				3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */,
@@ -482,6 +485,7 @@
 				3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */,
 				3B6CF35129C9CE14002289A0 /* info.plist in Resources */,
 				3B6CF35729CABBDA002289A0 /* VideoPlayerView.xib in Resources */,
+				3B6CF36729CDD177002289A0 /* GrayLoadingIndicator.json in Resources */,
 				3B5AD13929B3456F00E2AFAA /* RoadCell.xib in Resources */,
 				3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */,
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,

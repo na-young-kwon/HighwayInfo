@@ -37,18 +37,21 @@ final class HomeViewModel: ViewModelType {
         let output = Output(fetching: fetching)
         
         useCase.accidents
+            .trackActivity(activityIndicator)
             .subscribe(onNext: { totalAccident in
                 output.accidents.accept(totalAccident)
             })
             .disposed(by: disposeBag)
         
         input.trigger
+            .trackActivity(activityIndicator)
             .subscribe { _ in
                 self.useCase.fetchAccidents()
             }
             .disposed(by: disposeBag)
         
         input.refreshButtonTapped
+            .trackActivity(activityIndicator)
             .throttle(.seconds(2), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 self.useCase.fetchAccidents()
