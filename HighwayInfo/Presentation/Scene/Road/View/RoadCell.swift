@@ -17,6 +17,7 @@ class RoadCell: UITableViewCell {
     }
     
     func configureUI(for route: Route) {
+        roadImageView.image = UIImage(named: "1")
         titleLabel.text = route.name + "고속도로"
     }
 }

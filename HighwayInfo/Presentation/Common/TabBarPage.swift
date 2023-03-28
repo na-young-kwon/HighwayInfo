@@ -39,7 +39,7 @@ enum TabBarPage: CaseIterable {
         case .home:
             return "홈"
         case .road:
-            return "도로"
+            return "고속도로"
         }
     }
 }
