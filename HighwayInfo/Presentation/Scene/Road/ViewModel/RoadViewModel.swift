@@ -13,17 +13,14 @@ final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     struct Input {
-        let trigger: Observable<Void>
     }
     
     struct Output {
     }
     
-    private weak var coordinator: DefaultHomeCoordinator!
-    private let useCase: DefaultAccidentUseCase
+    private weak var coordinator: DefaultRoadCoordinator!
     
-    init(useCase: DefaultAccidentUseCase, coordinator: DefaultHomeCoordinator) {
-        self.useCase = useCase
+    init(coordinator: DefaultRoadCoordinator) {
         self.coordinator = coordinator
     }
     

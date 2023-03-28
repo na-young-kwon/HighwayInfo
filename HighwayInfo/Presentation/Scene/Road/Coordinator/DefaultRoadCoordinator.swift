@@ -20,6 +20,7 @@ final class DefaultRoadCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: RoadViewController.self)
         
+        vc.viewModel = RoadViewModel(coordinator: self)
         navigationController.pushViewController(vc, animated: true)
     }
 }

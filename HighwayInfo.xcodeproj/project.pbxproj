@@ -40,6 +40,13 @@
 		3B6CF35129C9CE14002289A0 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF35029C9CE14002289A0 /* info.plist */; };
 		3B6CF36929D2CF0D002289A0 /* GrayLoadingIndicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF36829D2CF0D002289A0 /* GrayLoadingIndicator.json */; };
 		3B6CF36E29D313B0002289A0 /* RoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF36D29D313B0002289A0 /* RoadViewModel.swift */; };
+		3B6CF37129D31544002289A0 /* RoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37029D31544002289A0 /* RoadService.swift */; };
+		3B6CF37329D3154C002289A0 /* RoadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37229D3154C002289A0 /* RoadRequest.swift */; };
+		3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37429D31571002289A0 /* RoadRepository.swift */; };
+		3B6CF37829D318D7002289A0 /* RoadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37729D318D7002289A0 /* RoadDTO.swift */; };
+		3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */; };
+		3B6CF37C29D31C6B002289A0 /* RoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37B29D31C6B002289A0 /* RoadUseCase.swift */; };
+		3B6CF37E29D31CC0002289A0 /* DefaultRoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37D29D31CC0002289A0 /* DefaultRoadUseCase.swift */; };
 		3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */; };
 		3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085929B87299009D7396 /* AccidentRequest.swift */; };
 		3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */; };
@@ -94,6 +101,13 @@
 		3B6CF35029C9CE14002289A0 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		3B6CF36829D2CF0D002289A0 /* GrayLoadingIndicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GrayLoadingIndicator.json; sourceTree = "<group>"; };
 		3B6CF36D29D313B0002289A0 /* RoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadViewModel.swift; sourceTree = "<group>"; };
+		3B6CF37029D31544002289A0 /* RoadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadService.swift; sourceTree = "<group>"; };
+		3B6CF37229D3154C002289A0 /* RoadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadRequest.swift; sourceTree = "<group>"; };
+		3B6CF37429D31571002289A0 /* RoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadRepository.swift; sourceTree = "<group>"; };
+		3B6CF37729D318D7002289A0 /* RoadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadDTO.swift; sourceTree = "<group>"; };
+		3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadRepository.swift; sourceTree = "<group>"; };
+		3B6CF37B29D31C6B002289A0 /* RoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadUseCase.swift; sourceTree = "<group>"; };
+		3B6CF37D29D31CC0002289A0 /* DefaultRoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadUseCase.swift; sourceTree = "<group>"; };
 		3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentRepository.swift; sourceTree = "<group>"; };
 		3B8F085929B87299009D7396 /* AccidentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentRequest.swift; sourceTree = "<group>"; };
 		3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentDTO.swift; sourceTree = "<group>"; };
@@ -275,6 +289,7 @@
 				3B8F085D29B872EF009D7396 /* Protocol */,
 				3BD4EE9629C1CED50010FB25 /* Accident */,
 				3BD4EE9729C1CFF10010FB25 /* CCTV */,
+				3B6CF36F29D31523002289A0 /* Road */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -301,8 +316,9 @@
 		3B63BAB729B84A4F0055D3A4 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */,
+				3B6CF37629D317DD002289A0 /* Protocol */,
 				3B63BAC029B862D30055D3A4 /* DefaultAccidentUseCase.swift */,
+				3B6CF37D29D31CC0002289A0 /* DefaultRoadUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -312,6 +328,7 @@
 			children = (
 				3B63BABA29B84C5C0055D3A4 /* AccidentRepository.swift */,
 				3BD4EEA029C1F5910010FB25 /* CCTVRepository.swift */,
+				3B6CF37429D31571002289A0 /* RoadRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -322,6 +339,7 @@
 				3B8F085E29B87CD8009D7396 /* DTO */,
 				3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */,
 				3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */,
+				3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -352,6 +370,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		3B6CF36F29D31523002289A0 /* Road */ = {
+			isa = PBXGroup;
+			children = (
+				3B6CF37029D31544002289A0 /* RoadService.swift */,
+				3B6CF37229D3154C002289A0 /* RoadRequest.swift */,
+			);
+			path = Road;
+			sourceTree = "<group>";
+		};
+		3B6CF37629D317DD002289A0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */,
+				3B6CF37B29D31C6B002289A0 /* RoadUseCase.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		3B8F085D29B872EF009D7396 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +403,7 @@
 				3B8F086229B89AE7009D7396 /* AccidentParser.swift */,
 				3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */,
 				3BD4EEA629C980580010FB25 /* CCTVParser.swift */,
+				3B6CF37729D318D7002289A0 /* RoadDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -584,17 +621,24 @@
 				3BD4EEA329C1F5C50010FB25 /* DefaultCCTVRepository.swift in Sources */,
 				3B63BAB229B76C1E0055D3A4 /* DefaultAPIProvider.swift in Sources */,
 				3B63BABB29B84C5C0055D3A4 /* AccidentRepository.swift in Sources */,
+				3B6CF37829D318D7002289A0 /* RoadDTO.swift in Sources */,
 				3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */,
 				3B63BABF29B860960055D3A4 /* AccidentUseCase.swift in Sources */,
 				3B5AD12C29B1FB8200E2AFAA /* TabBarPage.swift in Sources */,
+				3B6CF37C29D31C6B002289A0 /* RoadUseCase.swift in Sources */,
 				3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */,
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
+				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
 				3B63BAA929B768860055D3A4 /* HTTPMethod.swift in Sources */,
 				3B5AD12829B1F5E800E2AFAA /* RoadViewController.swift in Sources */,
+				3B6CF37E29D31CC0002289A0 /* DefaultRoadUseCase.swift in Sources */,
 				3B63BAAE29B768EE0055D3A4 /* NetworkingError.swift in Sources */,
+				3B6CF37129D31544002289A0 /* RoadService.swift in Sources */,
 				3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */,
 				3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */,
+				3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */,
+				3B6CF37329D3154C002289A0 /* RoadRequest.swift in Sources */,
 				3B6CF36E29D313B0002289A0 /* RoadViewModel.swift in Sources */,
 				3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */,
 				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,
