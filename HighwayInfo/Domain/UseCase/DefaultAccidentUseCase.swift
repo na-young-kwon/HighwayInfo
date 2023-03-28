@@ -32,7 +32,6 @@ final class DefaultAccidentUseCase: AccidentUseCase {
                     coord_x: Double($0.coord_x) ?? 0,
                     coord_y: Double($0.coord_y) ?? 0)
             }}
-        
         accidentDTOs
             .subscribe(onNext: { accidents in
                 self.fetchImage(for: accidents)
@@ -60,7 +59,7 @@ final class DefaultAccidentUseCase: AccidentUseCase {
             .disposed(by: disposeBag)
     }
     
-    func makeViewModel(accidents: [Accident], previews: [String?], videos: [String?]) -> [AccidentViewModel] {
+    private func makeViewModel(accidents: [Accident], previews: [String?], videos: [String?]) -> [AccidentViewModel] {
         let accident = Observable.from(accidents)
         let url = Observable.from(previews)
         let video = Observable.from(videos)

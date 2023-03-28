@@ -21,16 +21,14 @@ struct CCTVRequest: APIRequest {
     let maxY: Double
     let getType = "xml"
     
-    var parameters: [String : String] {
-        [
-            "apiKey": "5178d00cd45340f58aedda032872a0e0",
-            "type": type,
-            "cctvType": cctvType.rawValue,
-            "minX": String(minX),
-            "maxX": String(maxX),
-            "minY": String(minY),
-            "maxY": String(maxY),
-            "getType": getType
-        ]
-    }
+    var parameters: [String : String] {[
+        "apiKey": "5178d00cd45340f58aedda032872a0e0",
+        "type": type,
+        "cctvType": cctvType.rawValue,
+        "minX": String(minX),
+        "maxX": String(maxX),
+        "minY": String(minY),
+        "maxY": String(maxY),
+        "getType": getType
+    ]}
 }

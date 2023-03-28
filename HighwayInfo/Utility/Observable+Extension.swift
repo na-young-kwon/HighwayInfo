@@ -10,7 +10,6 @@ import RxSwift
 import RxCocoa
 
 extension ObservableType {
-    
     func catchErrorJustComplete() -> Observable<Element> {
         return catchError { _ in
             return Observable.empty()

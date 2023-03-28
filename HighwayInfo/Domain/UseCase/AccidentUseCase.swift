@@ -10,4 +10,5 @@ import RxSwift
 
 protocol AccidentUseCase {
     func fetchAccidents()
+    func fetchImage(for accidents: [Accident])
 }
