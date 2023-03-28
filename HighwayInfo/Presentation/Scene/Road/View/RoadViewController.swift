@@ -6,18 +6,22 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RoadViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: RoadViewModel!
     private let routes = RouteList.allCases
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureUI()
         configureTableView()
+        bindViewModel()
     }
 
     private func configureUI() {
@@ -27,32 +31,21 @@ class RoadViewController: UIViewController {
     private func configureTableView() {
         let nib = UINib(nibName: RoadCell.reuseID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: RoadCell.reuseID)
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
     }
-}
-
-extension RoadViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routes.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RoadCell.reuseID, for: indexPath) as? RoadCell else {
-            return UITableViewCell()
-        }
-        cell.configureUI(for: routes[indexPath.row])
-        return cell
-    }
-}
+    private func bindViewModel() {
+        let selectedRoute = tableView.rx.itemSelected
+            .map { self.routes[$0.row] }
+        
+        let input = RoadViewModel.Input(selectedRoute: selectedRoute)
+        let _ = viewModel.transform(input: input)
+        
 
-extension RoadViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(ofType: DetailViewController.self)
-        vc.id = routes[indexPath.row].id
-        navigationController?.pushViewController(vc, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+        Observable.just(RouteList.allCases).bind(to: tableView.rx.items(
+            cellIdentifier: RoadCell.reuseID, cellType: RoadCell.self)) { _, route, cell in
+                cell.bindCell(with: route)
+            }
+            .disposed(by: disposeBag)
     }
 }

@@ -13,6 +13,7 @@ final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     struct Input {
+        let selectedRoute: Observable<Route>
     }
     
     struct Output {
@@ -25,6 +26,12 @@ final class RoadViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        input.selectedRoute
+            .subscribe(onNext: { route in
+                print("디테일로 이동")
+            })
+            .disposed(by: disposeBag)
+        
         return Output()
     }
 }
