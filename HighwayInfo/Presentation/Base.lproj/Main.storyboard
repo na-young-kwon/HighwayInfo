@@ -211,6 +211,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="6WL-GC-DuA" id="pOE-df-NxM"/>
+                        <outlet property="titleLabel" destination="xh8-zJ-Hvh" id="p6s-9a-QbA"/>
                         <outlet property="toggleBackground" destination="id9-Cc-R8V" id="GDv-gD-BsQ"/>
                         <outlet property="toggleForeground" destination="kWt-lA-caQ" id="yWY-la-0Wy"/>
                         <outlet property="whiteView" destination="VLb-Zi-aS1" id="elU-qr-YXW"/>

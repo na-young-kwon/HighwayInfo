@@ -9,6 +9,8 @@ import UIKit
 
 class RoadViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+    var viewModel: RoadViewModel!
     private let routes = RouteList.allCases
     
     override func viewDidLoad() {
