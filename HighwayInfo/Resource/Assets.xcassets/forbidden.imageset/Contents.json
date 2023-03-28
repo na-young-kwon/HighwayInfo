@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "NoImage.png",
+      "filename" : "forbidden.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "forbidden@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "forbidden@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

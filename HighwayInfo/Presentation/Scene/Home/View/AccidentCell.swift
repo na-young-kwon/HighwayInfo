@@ -58,12 +58,12 @@ class AccidentCell: UITableViewCell {
 extension UIImageView {
     func loadFrom(url: String?) {
         guard let url = url, let url = URL(string: url) else {
-            self.image = UIImage(named: "NoImage")
+            self.image = UIImage(named: "forbidden")
             return
         }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let imageData = data else {
-                self.image = UIImage(named: "NoImage")
+                self.image = UIImage(named: "forbidden")
                 return
             }
             DispatchQueue.main.async {
