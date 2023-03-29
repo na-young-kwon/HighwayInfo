@@ -7,16 +7,27 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 final class DefaultRoadUseCase: RoadUseCase {
     private let roadRepository: RoadRepository
     private let disposeBag = DisposeBag()
+    let route: Route
+    var roads = BehaviorSubject<[RoadDetail]>(value: [])
     
-    init(roadRepository: RoadRepository) {
+    init(route: Route, roadRepository: RoadRepository) {
+        self.route = route
         self.roadRepository = roadRepository
     }
     
-    func fetchLocationInfo(for route: Route) {
-        print("좌표정보 가져오기")
+    func fetchLocationInfo() {
+        roadRepository.fetchLocationInfo(for: route)
+            .map { $0.map {
+                RoadDetail(name: $0.icName, coordx: $0.coordx, coordy: $0.coordy, preview: nil)
+            }}
+            .subscribe(onNext: { roadDetails in
+                self.roads.onNext(roadDetails)
+            })
+            .disposed(by: disposeBag)
     }
 }

@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
 
         configureUI()
         configureTableView()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,21 +36,29 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
     }
+
+    private func configureUI() {
+        whiteView.layer.cornerRadius = 15
+        toggleBackground.layer.cornerRadius = 10
+        toggleForeground.layer.cornerRadius = 10
+//        titleLabel.text = viewModel.route.name + "고속도로"
+        let backBarButtonItem = UIBarButtonItem(title: "뒤로가기", style: .plain, target: nil, action: nil)
+        backBarButtonItem.tintColor = .white
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
+    }
     
     private func configureTableView() {
         let nib = UINib(nibName: RoadDetailCell.reuseID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: RoadDetailCell.reuseID)
         tableView.showsVerticalScrollIndicator = false
     }
-
-    private func configureUI() {
-        whiteView.layer.cornerRadius = 15
-        toggleBackground.layer.cornerRadius = 10
-        toggleForeground.layer.cornerRadius = 10
-        titleLabel.text = viewModel.route.name + "고속도로"
-        let backBarButtonItem = UIBarButtonItem(title: "뒤로가기", style: .plain, target: nil, action: nil)
-        backBarButtonItem.tintColor = .white
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
+    
+    private func bindViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+        
+        let input = RoadDetailViewModel.Input(trigger: viewWillAppear)
+        let output = viewModel.transform(input: input)
     }
     
     @IBAction func forwardButtonTapped(_ sender: UIButton) {

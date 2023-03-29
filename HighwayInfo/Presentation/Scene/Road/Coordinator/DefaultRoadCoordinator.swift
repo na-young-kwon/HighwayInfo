@@ -28,7 +28,10 @@ final class DefaultRoadCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: DetailViewController.self)
         
-        vc.viewModel = RoadDetailViewModel(route: route)
+        let service = RoadService(apiProvider: DefaultAPIProvider())
+        let repository = DefaultRoadRepository(service: service)
+        let useCase = DefaultRoadUseCase(route: route, roadRepository: repository)
+        vc.viewModel = RoadDetailViewModel(useCase: useCase)
         navigationController.pushViewController(vc, animated: true)
     }
 }

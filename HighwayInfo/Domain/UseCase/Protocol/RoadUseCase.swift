@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol RoadUseCase {
-    func fetchLocationInfo(for route: Route)
+    func fetchLocationInfo()
 }
