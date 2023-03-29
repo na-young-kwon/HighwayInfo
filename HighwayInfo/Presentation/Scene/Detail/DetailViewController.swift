@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var toggleForeground: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
     var viewModel: RoadDetailViewModel!
 
@@ -22,6 +23,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
+        configureTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +34,12 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func configureTableView() {
+        let nib = UINib(nibName: RoadDetailCell.reuseID, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: RoadDetailCell.reuseID)
+        tableView.showsVerticalScrollIndicator = false
     }
 
     private func configureUI() {

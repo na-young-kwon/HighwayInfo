@@ -13,7 +13,7 @@ class RoadCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        selectionStyle = .none
     }
     
     func bindCell(with route: Route) {
