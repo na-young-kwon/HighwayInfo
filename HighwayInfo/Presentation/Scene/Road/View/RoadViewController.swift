@@ -12,9 +12,8 @@ import RxCocoa
 class RoadViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: RoadViewModel!
-    private let routes = RouteList.allCases
     private let disposeBag = DisposeBag()
+    var viewModel: RoadViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +34,11 @@ class RoadViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let selectedRoute = tableView.rx.itemSelected
-            .map { self.routes[$0.row] }
-        
+        let selectedRoute = tableView.rx.itemSelected.asDriver()
         let input = RoadViewModel.Input(selectedRoute: selectedRoute)
-        let _ = viewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
         
-
-        Observable.just(RouteList.allCases).bind(to: tableView.rx.items(
+        output.routes.bind(to: tableView.rx.items(
             cellIdentifier: RoadCell.reuseID, cellType: RoadCell.self)) { _, route, cell in
                 cell.bindCell(with: route)
             }

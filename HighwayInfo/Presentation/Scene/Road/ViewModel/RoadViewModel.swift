@@ -12,12 +12,14 @@ import RxCocoa
 final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private var coordinator: DefaultRoadCoordinator
+    private let routes = RouteList.allCases
     
     struct Input {
-        let selectedRoute: Observable<Route>
+        let selectedRoute: Driver<IndexPath>
     }
     
     struct Output {
+        let routes: Observable<[Route]>
     }
     
     init(coordinator: DefaultRoadCoordinator) {
@@ -25,12 +27,13 @@ final class RoadViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.selectedRoute
-            .subscribe(onNext: { route in
+        input.selectedRoute.asObservable()
+            .subscribe(onNext: { indexPath in
+                let route = self.routes[indexPath.row]
                 self.coordinator.toRoadDetail(with: route)
             })
             .disposed(by: disposeBag)
-        
-        return Output()
+  
+        return Output(routes: Observable.just(routes))
     }
 }

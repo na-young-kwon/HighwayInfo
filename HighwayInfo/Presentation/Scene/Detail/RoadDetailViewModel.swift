@@ -10,7 +10,8 @@ import RxSwift
 
 final class RoadDetailViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    let route: Route
+    
+    let route: Route // 이걸 유즈케이스로 옮길지 
     
     struct Input {
     }
