@@ -11,6 +11,7 @@ import RxCocoa
 
 final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
+    private var coordinator: DefaultRoadCoordinator
     
     struct Input {
         let selectedRoute: Observable<Route>
@@ -19,8 +20,6 @@ final class RoadViewModel: ViewModelType {
     struct Output {
     }
     
-    private weak var coordinator: DefaultRoadCoordinator!
-    
     init(coordinator: DefaultRoadCoordinator) {
         self.coordinator = coordinator
     }
@@ -28,7 +27,7 @@ final class RoadViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.selectedRoute
             .subscribe(onNext: { route in
-                print("디테일로 이동")
+                self.coordinator.toRoadDetail(with: route)
             })
             .disposed(by: disposeBag)
         

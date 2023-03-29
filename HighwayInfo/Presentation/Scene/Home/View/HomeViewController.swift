@@ -111,7 +111,7 @@ class HomeViewController: UIViewController {
         var snapShot = NSDiffableDataSourceSnapshot<Section, AccidentViewModel>()
         snapShot.appendSections([.accident])
         snapShot.appendItems(viewModel)
-        dataSource.apply(snapShot)
+        dataSource.apply(snapShot, animatingDifferences: false)
     }
     
     private func presentVideo(for url: String?) {

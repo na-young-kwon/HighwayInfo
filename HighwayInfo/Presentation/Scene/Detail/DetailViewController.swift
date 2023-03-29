@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var whiteView: UIView!
@@ -13,7 +15,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var toggleForeground: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    var id: UUID?
+    
+    var viewModel: RoadDetailViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class DetailViewController: UIViewController {
         whiteView.layer.cornerRadius = 15
         toggleBackground.layer.cornerRadius = 10
         toggleForeground.layer.cornerRadius = 10
+        titleLabel.text = viewModel.route.name + "고속도로"
         let backBarButtonItem = UIBarButtonItem(title: "뒤로가기", style: .plain, target: nil, action: nil)
         backBarButtonItem.tintColor = .white
         navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem

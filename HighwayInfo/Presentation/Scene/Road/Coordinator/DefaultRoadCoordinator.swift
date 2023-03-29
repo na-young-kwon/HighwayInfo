@@ -23,4 +23,12 @@ final class DefaultRoadCoordinator: Coordinator {
         vc.viewModel = RoadViewModel(coordinator: self)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func toRoadDetail(with route: Route) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(ofType: DetailViewController.self)
+        
+        vc.viewModel = RoadDetailViewModel(route: route)
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
