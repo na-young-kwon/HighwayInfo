@@ -15,7 +15,7 @@ final class DefaultRoadRepository: RoadRepository {
         self.service = service
     }
     
-    func fetchLocationInfo(for route: Route) -> RxSwift.Observable<[RoadDTO]> {
+    func fetchLocationInfo(for route: Route) -> Observable<LocationInfo> {
         service.fetchLocationInfo(for: route)
     }
 }

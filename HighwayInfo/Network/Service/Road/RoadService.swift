@@ -15,7 +15,7 @@ final class RoadService {
         self.apiProvider = apiProvider
     }
     
-    func fetchLocationInfo(for route: Route) -> Observable<[RoadDTO]> {
+    func fetchLocationInfo(for route: Route) -> Observable<LocationInfo> {
         let request = RoadRequest(routeNo: route.number)
         let result = apiProvider.performDataTask(with: request, decodeType: .json)
         return result

@@ -15,4 +15,9 @@ class RoadDetailCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
     }
+    
+    func bind(with road: RoadDetail) {
+        titleLabel.text = road.name
+        accidentImageView.image = UIImage(named: "forbidden")
+    }
 }

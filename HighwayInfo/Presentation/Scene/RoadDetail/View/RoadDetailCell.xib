@@ -34,6 +34,7 @@
                     <constraint firstItem="mGl-yf-cgc" firstAttribute="top" secondItem="NlQ-Rn-9Xk" secondAttribute="top" constant="22" id="7z3-Em-VgZ"/>
                     <constraint firstAttribute="trailing" secondItem="bVN-Ig-RHU" secondAttribute="trailing" constant="8" id="9eB-9B-MBS"/>
                     <constraint firstItem="mGl-yf-cgc" firstAttribute="leading" secondItem="NlQ-Rn-9Xk" secondAttribute="leading" constant="22" id="J7H-CH-cZr"/>
+                    <constraint firstAttribute="bottom" secondItem="mGl-yf-cgc" secondAttribute="bottom" constant="45" id="NpP-aA-gdo"/>
                     <constraint firstItem="bVN-Ig-RHU" firstAttribute="top" secondItem="NlQ-Rn-9Xk" secondAttribute="top" constant="8" id="RMF-3W-B0t"/>
                 </constraints>
             </tableViewCellContentView>

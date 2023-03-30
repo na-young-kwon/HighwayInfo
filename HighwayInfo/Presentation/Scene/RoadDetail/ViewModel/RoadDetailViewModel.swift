@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 final class RoadDetailViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
@@ -18,6 +19,8 @@ final class RoadDetailViewModel: ViewModelType {
     }
     
     struct Output {
+        let route: Route
+        let roads: Driver<[RoadDetail]>
     }
         
     init(useCase: DefaultRoadUseCase) {
@@ -25,18 +28,14 @@ final class RoadDetailViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        let roads = useCase.roads.asDriverOnErrorJustComplete()
+        
         input.trigger
             .subscribe(onNext: { _ in
                 self.useCase.fetchLocationInfo()
             })
             .disposed(by: disposeBag)
         
-        useCase.roads
-            .subscribe(onNext: { roads in
-                print(roads)
-            })
-            .disposed(by: disposeBag)
-        
-        return Output()
+        return Output(route: useCase.route, roads: roads)
     }
 }

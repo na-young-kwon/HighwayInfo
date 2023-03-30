@@ -8,7 +8,7 @@
 import Foundation
 
 struct RoadRequest: APIRequest {
-    typealias Response = [RoadDTO]
+    typealias Response = LocationInfo
     
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/locationinfo/"

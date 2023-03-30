@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct LocationInfo: Decodable {
+    let count: Int
+    let list: [RoadDTO]
+}
+
 struct RoadDTO: Decodable {
     let routeName: String
     let routeNumber: String
