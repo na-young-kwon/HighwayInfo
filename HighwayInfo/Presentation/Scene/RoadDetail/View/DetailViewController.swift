@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
         configureUI()
         configureTableView()
         configureDataSource()
-        configureTapEvent()
+        configureToggleAnimation()
         bindViewModel()
     }
     
@@ -78,7 +78,7 @@ class DetailViewController: UIViewController {
         dataSource.apply(snapShot, animatingDifferences: false)
     }
     
-    private func configureTapEvent() {
+    private func configureToggleAnimation() {
         upButton.rx.tap.bind { [weak self] in
             UIView.animate(withDuration: 0.2) {
                 self?.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
@@ -94,21 +94,30 @@ class DetailViewController: UIViewController {
         .disposed(by: disposeBag)
     }
     
+    private func configureUI(with route: Route) {
+        titleLabel.text = route.name + "고속도로"
+        upButton.titleLabel?.font = .systemFont(ofSize: 13)
+        upButton.setTitle(route.upString, for: .normal)
+        upButton.setTitleColor(UIColor(named: "MainBlue"), for: .normal)
+        reverseButton.titleLabel?.font = .systemFont(ofSize: 13)
+        reverseButton.setTitle(route.downString, for: .normal)
+        reverseButton.setTitleColor(UIColor(named: "MainBlue"), for: .normal)
+        imageView.image = UIImage(named: route.number)
+    }
+    
     private func bindViewModel() {
-        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
-            .mapToVoid()
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
         
         let input = RoadDetailViewModel.Input(viewWillAppear: viewWillAppear,
                                               upButtonTap: upButton.rx.tap.asObservable(),
                                               reverseButtonTap: reverseButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
+        configureUI(with: output.route)
         
         output.roads
-            .drive(onNext: { details in
-                self.applySnapshot(with: details)
+            .drive(onNext: { roadDetails in
+                self.applySnapshot(with: roadDetails)
             })
             .disposed(by: disposeBag)
-        
-        titleLabel.text = output.route.name + "고속도로"
     }
 }
