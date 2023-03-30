@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var upButton: UIButton!
-    @IBOutlet weak var downButton: UIButton!
+    @IBOutlet weak var reverseButton: UIButton!
     
     var viewModel: RoadDetailViewModel!
     private let disposeBag = DisposeBag()
@@ -32,6 +32,7 @@ class DetailViewController: UIViewController {
         configureUI()
         configureTableView()
         configureDataSource()
+        configureTapEvent()
         bindViewModel()
     }
     
@@ -77,11 +78,29 @@ class DetailViewController: UIViewController {
         dataSource.apply(snapShot, animatingDifferences: false)
     }
     
+    private func configureTapEvent() {
+        upButton.rx.tap.bind { [weak self] in
+            UIView.animate(withDuration: 0.2) {
+                self?.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
+            }
+        }
+        .disposed(by: disposeBag)
+        
+        reverseButton.rx.tap.bind { [weak self] in
+            UIView.animate(withDuration: 0.2) {
+                self?.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
+            }
+        }
+        .disposed(by: disposeBag)
+    }
+    
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
         
-        let input = RoadDetailViewModel.Input(trigger: viewWillAppear)
+        let input = RoadDetailViewModel.Input(viewWillAppear: viewWillAppear,
+                                              upButtonTap: upButton.rx.tap.asObservable(),
+                                              reverseButtonTap: reverseButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
         
         output.roads
@@ -90,18 +109,6 @@ class DetailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        titleLabel.text = output.route.name
-    }
-    
-    @IBAction func forwardButtonTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.2) {
-            self.toggleForeground.transform = CGAffineTransform(translationX: 0, y: 0)
-        }
-    }
-    
-    @IBAction func reverseButtonTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.2) {
-            self.toggleForeground.transform = CGAffineTransform(translationX: 175, y: 0)
-        }
+        titleLabel.text = output.route.name + "고속도로"
     }
 }

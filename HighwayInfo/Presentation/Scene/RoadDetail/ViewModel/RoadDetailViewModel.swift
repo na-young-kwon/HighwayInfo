@@ -15,7 +15,9 @@ final class RoadDetailViewModel: ViewModelType {
     var useCase: DefaultRoadUseCase
     
     struct Input {
-        let trigger: Observable<Void>
+        let viewWillAppear: Observable<Void>
+        let upButtonTap: Observable<Void>
+        let reverseButtonTap: Observable<Void>
     }
     
     struct Output {
@@ -30,9 +32,21 @@ final class RoadDetailViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let roads = useCase.roads.asDriverOnErrorJustComplete()
         
-        input.trigger
+        input.viewWillAppear
             .subscribe(onNext: { _ in
                 self.useCase.fetchLocationInfo()
+            })
+            .disposed(by: disposeBag)
+        
+        input.upButtonTap
+            .subscribe(onNext: { _ in
+                self.useCase.isReverse.accept(false)
+            })
+            .disposed(by: disposeBag)
+        
+        input.reverseButtonTap
+            .subscribe(onNext: { _ in
+                self.useCase.isReverse.accept(true)
             })
             .disposed(by: disposeBag)
         

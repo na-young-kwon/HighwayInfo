@@ -143,17 +143,11 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="173" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="상행"/>
-                                                        <connections>
-                                                            <action selector="forwardButtonTapped:" destination="9NB-Xq-Z9r" eventType="touchUpInside" id="RAF-bo-9U6"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPs-KZ-VSE">
                                                         <rect key="frame" x="173" y="0.0" width="173" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="하행"/>
-                                                        <connections>
-                                                            <action selector="reverseButtonTapped:" destination="9NB-Xq-Z9r" eventType="touchUpInside" id="WJX-3b-gAq"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -219,8 +213,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="downButton" destination="RPs-KZ-VSE" id="4Rg-ve-luT"/>
                         <outlet property="imageView" destination="6WL-GC-DuA" id="pOE-df-NxM"/>
+                        <outlet property="reverseButton" destination="RPs-KZ-VSE" id="4Rg-ve-luT"/>
                         <outlet property="tableView" destination="KaJ-4T-Zqa" id="Pvd-ai-ipI"/>
                         <outlet property="titleLabel" destination="xh8-zJ-Hvh" id="p6s-9a-QbA"/>
                         <outlet property="toggleBackground" destination="id9-Cc-R8V" id="GDv-gD-BsQ"/>
