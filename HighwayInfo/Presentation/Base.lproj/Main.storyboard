@@ -87,25 +87,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고속도로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaB-aL-5HY">
-                                <rect key="frame" x="18" y="75.666666666666671" width="90" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고속도로 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaB-aL-5HY">
+                                <rect key="frame" x="18" y="73.333333333333329" width="119" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XdN-fO-ZEL">
-                                <rect key="frame" x="0.0" y="127.66666666666669" width="393" height="724.33333333333326"/>
+                                <rect key="frame" x="0.0" y="170.33333333333331" width="393" height="681.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="034-3w-8QA">
+                                <rect key="frame" x="18" y="118.33333333333331" width="357" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Slq-y6-mci"/>
                         <color key="backgroundColor" red="0.15686274509803921" green="0.25490196078431371" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Slq-y6-mci" firstAttribute="trailing" secondItem="034-3w-8QA" secondAttribute="trailing" constant="18" id="1VL-gK-mly"/>
+                            <constraint firstItem="034-3w-8QA" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="18" id="3Ke-1s-rlY"/>
                             <constraint firstItem="Slq-y6-mci" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="QaB-aL-5HY" secondAttribute="trailing" constant="285" id="Mlu-g6-MbD"/>
-                            <constraint firstItem="XdN-fO-ZEL" firstAttribute="top" secondItem="QaB-aL-5HY" secondAttribute="bottom" constant="25" id="Q5B-Q4-eRO"/>
-                            <constraint firstItem="XdN-fO-ZEL" firstAttribute="height" secondItem="LpD-5O-foU" secondAttribute="height" multiplier="0.85" id="fQF-xn-wCr"/>
+                            <constraint firstItem="XdN-fO-ZEL" firstAttribute="top" secondItem="034-3w-8QA" secondAttribute="bottom" constant="18" id="YEK-ct-grx"/>
+                            <constraint firstItem="XdN-fO-ZEL" firstAttribute="height" secondItem="LpD-5O-foU" secondAttribute="height" multiplier="0.8" id="fQF-xn-wCr"/>
                             <constraint firstItem="QaB-aL-5HY" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="18" id="hcH-Ef-0Pz"/>
                             <constraint firstItem="XdN-fO-ZEL" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" id="jsJ-Gq-aOp"/>
+                            <constraint firstItem="034-3w-8QA" firstAttribute="top" secondItem="QaB-aL-5HY" secondAttribute="bottom" constant="18" id="lGf-1M-uyc"/>
                             <constraint firstItem="XdN-fO-ZEL" firstAttribute="trailing" secondItem="Slq-y6-mci" secondAttribute="trailing" id="nbV-dU-sYK"/>
                             <constraint firstAttribute="bottom" secondItem="XdN-fO-ZEL" secondAttribute="bottom" id="nzg-cz-FbJ"/>
                         </constraints>
@@ -116,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXN-DS-jWP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774.80916030534343" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="773.28244274809163" y="-2.1126760563380285"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="1es-If-zuM">

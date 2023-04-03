@@ -17,20 +17,20 @@ final class CCTVService {
     
     func fetchPreviewBy(x: Double, y: Double) -> Observable<CctvDTO?> {
         let request = CCTVRequest(cctvType: .preview,
-                                  minX: x - 0.005,
-                                  maxX: x + 0.005,
-                                  minY: y - 0.005,
-                                  maxY: y + 0.005)
+                                  minX: x - 0.006,
+                                  maxX: x + 0.006,
+                                  minY: y - 0.006,
+                                  maxY: y + 0.006)
         let result = apiProvider.performDataTask(with: request, decodeType: .cctv)
         return result
     }
     
     func fetchVideo(x: Double, y: Double) -> Observable<CctvDTO?> {
         let request = CCTVRequest(cctvType: .video,
-                                  minX: x - 0.005,
-                                  maxX: x + 0.005,
-                                  minY: y - 0.005,
-                                  maxY: y + 0.005)
+                                  minX: x - 0.006,
+                                  maxX: x + 0.006,
+                                  minY: y - 0.006,
+                                  maxY: y + 0.006)
         let result = apiProvider.performDataTask(with: request, decodeType: .cctv)
         return result
     }

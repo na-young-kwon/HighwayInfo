@@ -51,7 +51,7 @@ final class AppCoordinator: Coordinator {
         case .home:
             let homeCoordinator = DefaultHomeCoordinator(navigationController)
             homeCoordinator.start()
-        case .road:
+        case .search:
             let roadCoordinator = DefaultRoadCoordinator(navigationController)
             roadCoordinator.start()
         }
