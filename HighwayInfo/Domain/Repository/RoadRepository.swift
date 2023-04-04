@@ -9,5 +9,4 @@ import Foundation
 import RxSwift
 
 protocol RoadRepository {
-    func fetchLocationInfo(for: Route) -> Observable<LocationInfo>
 }

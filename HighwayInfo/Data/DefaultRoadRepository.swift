@@ -14,8 +14,4 @@ final class DefaultRoadRepository: RoadRepository {
     init(service: RoadService) {
         self.service = service
     }
-    
-    func fetchLocationInfo(for route: Route) -> Observable<LocationInfo> {
-        service.fetchLocationInfo(for: route)
-    }
 }
