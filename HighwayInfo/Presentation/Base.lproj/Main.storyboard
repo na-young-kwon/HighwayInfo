@@ -87,40 +87,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="고속도로 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaB-aL-5HY">
-                                <rect key="frame" x="18" y="59" width="119" height="27"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="034-3w-8QA">
-                                <rect key="frame" x="18" y="104" width="357" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urP-u4-y7C">
-                                <rect key="frame" x="0.0" y="168" width="393" height="684"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ej-IM-2Ik">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBP-4F-wij">
+                                <rect key="frame" x="30" y="109" width="333" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로 갈까요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOG-ph-noE">
+                                        <rect key="frame" x="20" y="4" width="293" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BOG-ph-noE" secondAttribute="trailing" constant="20" id="EdA-Vj-RxO"/>
+                                    <constraint firstItem="BOG-ph-noE" firstAttribute="top" secondItem="OBP-4F-wij" secondAttribute="top" constant="4" id="Oc5-Bv-5uK"/>
+                                    <constraint firstAttribute="height" constant="40" id="jzB-MZ-ACB"/>
+                                    <constraint firstItem="BOG-ph-noE" firstAttribute="leading" secondItem="OBP-4F-wij" secondAttribute="leading" constant="20" id="saA-Sg-uyB"/>
+                                    <constraint firstAttribute="bottom" secondItem="BOG-ph-noE" secondAttribute="bottom" constant="4" id="z4F-Wo-lb6"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Slq-y6-mci"/>
-                        <color key="backgroundColor" red="0.15686274509803921" green="0.25490196078431371" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Slq-y6-mci" firstAttribute="trailing" secondItem="034-3w-8QA" secondAttribute="trailing" constant="18" id="1VL-gK-mly"/>
-                            <constraint firstItem="034-3w-8QA" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="18" id="3Ke-1s-rlY"/>
-                            <constraint firstItem="QaB-aL-5HY" firstAttribute="top" secondItem="Slq-y6-mci" secondAttribute="top" id="7ev-Hv-p47"/>
-                            <constraint firstAttribute="bottom" secondItem="urP-u4-y7C" secondAttribute="bottom" id="HfF-sa-jOd"/>
-                            <constraint firstItem="Slq-y6-mci" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="QaB-aL-5HY" secondAttribute="trailing" constant="285" id="Mlu-g6-MbD"/>
-                            <constraint firstItem="urP-u4-y7C" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" id="cxd-DG-TiL"/>
-                            <constraint firstItem="QaB-aL-5HY" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="18" id="hcH-Ef-0Pz"/>
-                            <constraint firstItem="034-3w-8QA" firstAttribute="top" secondItem="QaB-aL-5HY" secondAttribute="bottom" constant="18" id="lGf-1M-uyc"/>
-                            <constraint firstItem="urP-u4-y7C" firstAttribute="trailing" secondItem="Slq-y6-mci" secondAttribute="trailing" id="rLk-E1-hhk"/>
-                            <constraint firstItem="urP-u4-y7C" firstAttribute="top" secondItem="034-3w-8QA" secondAttribute="bottom" constant="30" id="uWx-Rs-Z9G"/>
+                            <constraint firstItem="9Ej-IM-2Ik" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" id="29A-AW-fGS"/>
+                            <constraint firstItem="OBP-4F-wij" firstAttribute="top" secondItem="Slq-y6-mci" secondAttribute="top" constant="50" id="IHJ-WE-1LD"/>
+                            <constraint firstItem="9Ej-IM-2Ik" firstAttribute="top" secondItem="LpD-5O-foU" secondAttribute="top" id="QVT-G9-Opm"/>
+                            <constraint firstItem="OBP-4F-wij" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="30" id="S26-dx-rxY"/>
+                            <constraint firstItem="Slq-y6-mci" firstAttribute="trailing" secondItem="OBP-4F-wij" secondAttribute="trailing" constant="30" id="gjf-BR-J2u"/>
+                            <constraint firstItem="9Ej-IM-2Ik" firstAttribute="trailing" secondItem="Slq-y6-mci" secondAttribute="trailing" id="jZe-U7-XoD"/>
+                            <constraint firstAttribute="bottom" secondItem="9Ej-IM-2Ik" secondAttribute="bottom" id="zI7-gR-LD4"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="textField" destination="034-3w-8QA" id="3Z5-0z-m71"/>
-                        <outlet property="whiteView" destination="urP-u4-y7C" id="mcv-wc-p9n"/>
+                        <outlet property="backgroundView" destination="9Ej-IM-2Ik" id="s07-jv-AUy"/>
+                        <outlet property="locationInputView" destination="OBP-4F-wij" id="PA2-Vp-bBj"/>
+                        <outlet property="placeholderLabel" destination="BOG-ph-noE" id="zjt-gq-Rnr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXN-DS-jWP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
