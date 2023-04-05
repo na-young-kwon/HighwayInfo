@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol SearchViewDelegate: AnyObject {
+    func dismissSearchView()
+}
+
+
 class SearchView: UIView {
+    weak var delegate: SearchViewDelegate?
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .lightGray
+        textField.textColor = .black
         textField.font = .systemFont(ofSize: 17)
         textField.borderStyle = .none
         textField.backgroundColor = .white
@@ -30,15 +36,31 @@ class SearchView: UIView {
         return textField
     }()
     
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(dismissSearchView), for: .touchUpInside)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        hideKeyboardWhenTappedAround()
         backgroundColor = .white
         addSubview(textField)
-        textField.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 100, paddingLeft: 20, paddingRight: 20, height: 40)
+        addSubview(backButton)
+        backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 100, paddingLeft: 10, width: 40, height: 40)
+        textField.anchor(top: backButton.topAnchor, left: backButton.rightAnchor, right: rightAnchor, paddingRight: 20, height: 40)
+        textField.centerY(inView: backButton)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func dismissSearchView() {
+        endEditing(true)
+        delegate?.dismissSearchView()
     }
 }

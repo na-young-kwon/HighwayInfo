@@ -50,6 +50,7 @@ class RoadViewController: UIViewController, TMapViewDelegate {
     private func configureSearchView() {
         view.addSubview(searchView)
         searchView.alpha = 0
+        searchView.delegate = self
         searchView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: view.frame.height)
         
         UIView.animate(withDuration: 0.5) {
@@ -67,5 +68,15 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         locationInputView.alpha = 0
         placeholderLabel.alpha = 0
         configureSearchView()
+    }
+}
+
+
+extension RoadViewController: SearchViewDelegate {
+    func dismissSearchView() {
+        locationInputView.alpha = 1
+        placeholderLabel.alpha = 1
+        searchView.alpha = 0
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
