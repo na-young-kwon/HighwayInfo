@@ -33,7 +33,6 @@
 		3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABC29B84C8D0055D3A4 /* Accident.swift */; };
 		3B63BABF29B860960055D3A4 /* AccidentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */; };
 		3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAC029B862D30055D3A4 /* DefaultAccidentUseCase.swift */; };
-		3B6CF35129C9CE14002289A0 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF35029C9CE14002289A0 /* info.plist */; };
 		3B6CF36929D2CF0D002289A0 /* GrayLoadingIndicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF36829D2CF0D002289A0 /* GrayLoadingIndicator.json */; };
 		3B6CF36E29D313B0002289A0 /* RoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF36D29D313B0002289A0 /* RoadViewModel.swift */; };
 		3B6CF37129D31544002289A0 /* RoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37029D31544002289A0 /* RoadService.swift */; };
@@ -567,7 +566,6 @@
 			files = (
 				3B5AD13329B2291D00E2AFAA /* AccidentCell.xib in Resources */,
 				3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */,
-				3B6CF35129C9CE14002289A0 /* info.plist in Resources */,
 				3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */,
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,
 				3B6CF36929D2CF0D002289A0 /* GrayLoadingIndicator.json in Resources */,
