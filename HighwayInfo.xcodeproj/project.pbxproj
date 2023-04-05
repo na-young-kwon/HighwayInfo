@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3CD27229DD519C00D223AC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3CD27129DD519C00D223AC /* TMapSDK.framework */; };
+		3B3CD27329DD519C00D223AC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3CD27129DD519C00D223AC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -38,8 +40,6 @@
 		3B6CF37129D31544002289A0 /* RoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37029D31544002289A0 /* RoadService.swift */; };
 		3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37429D31571002289A0 /* RoadRepository.swift */; };
 		3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */; };
-		3B7399F229DC1C6400B5D1FF /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7399F029DC1C4A00B5D1FF /* TMapSDK.framework */; };
-		3B7399F329DC1C6400B5D1FF /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7399F029DC1C4A00B5D1FF /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B7399F629DC2DE600B5D1FF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F529DC2DE600B5D1FF /* SearchView.swift */; };
 		3B7399F829DC34C200B5D1FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */; };
 		3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */; };
@@ -62,13 +62,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3B7399EF29DC1B5100B5D1FF /* Embed Frameworks */ = {
+		3B3CD27429DD519C00D223AC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B7399F329DC1C6400B5D1FF /* TMapSDK.framework in Embed Frameworks */,
+				3B3CD27329DD519C00D223AC /* TMapSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B3CD27129DD519C00D223AC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../[iOS_SWIFT]TmapSDK_2.12/배포/TMapSDK.framework"; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		3B6CF37029D31544002289A0 /* RoadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadService.swift; sourceTree = "<group>"; };
 		3B6CF37429D31571002289A0 /* RoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadRepository.swift; sourceTree = "<group>"; };
 		3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadRepository.swift; sourceTree = "<group>"; };
-		3B7399F029DC1C4A00B5D1FF /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
 		3B7399F529DC2DE600B5D1FF /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchView.swift; path = HighwayInfo/Presentation/Scene/Search/View/SearchView.swift; sourceTree = SOURCE_ROOT; };
 		3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentRepository.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FB86310EFF3889AA167FFFC /* Pods_HighwayInfo.framework in Frameworks */,
-				3B7399F229DC1C6400B5D1FF /* TMapSDK.framework in Frameworks */,
+				3B3CD27229DD519C00D223AC /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				3B5B0E8A29B0CFDD00AECF22 /* HighwayInfo */,
-				3B7399F029DC1C4A00B5D1FF /* TMapSDK.framework */,
 				3B5B0E8929B0CFDD00AECF22 /* Products */,
 				D67B399BF71743F1D55A02ED /* Pods */,
 				46339A1A49DC70332F8414C5 /* Frameworks */,
@@ -489,6 +488,7 @@
 		46339A1A49DC70332F8414C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B3CD27129DD519C00D223AC /* TMapSDK.framework */,
 				7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */,
 			);
 			name = Frameworks;
@@ -515,7 +515,7 @@
 				3B5B0E8529B0CFDD00AECF22 /* Frameworks */,
 				3B5B0E8629B0CFDD00AECF22 /* Resources */,
 				022B6428FBE7D772D362C5DE /* [CP] Embed Pods Frameworks */,
-				3B7399EF29DC1B5100B5D1FF /* Embed Frameworks */,
+				3B3CD27429DD519C00D223AC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
