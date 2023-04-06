@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -110,11 +110,24 @@
                                     <constraint firstAttribute="bottom" secondItem="BOG-ph-noE" secondAttribute="bottom" constant="4" id="z4F-Wo-lb6"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kby-z9-vwm">
+                                <rect key="frame" x="10" y="718" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kby-z9-vwm" secondAttribute="height" multiplier="1:1" id="GTS-dy-gZk"/>
+                                    <constraint firstAttribute="width" constant="50" id="NE9-6Q-wBF"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="tap:" destination="rzH-ha-7Df" eventType="touchUpInside" id="wfc-Jg-Qbj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Slq-y6-mci"/>
                         <constraints>
                             <constraint firstItem="9Ej-IM-2Ik" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" id="29A-AW-fGS"/>
+                            <constraint firstItem="kby-z9-vwm" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="10" id="3RH-8W-9Oa"/>
                             <constraint firstItem="OBP-4F-wij" firstAttribute="top" secondItem="Slq-y6-mci" secondAttribute="top" constant="50" id="IHJ-WE-1LD"/>
+                            <constraint firstItem="Slq-y6-mci" firstAttribute="bottom" secondItem="kby-z9-vwm" secondAttribute="bottom" constant="50" id="Moh-CI-fnf"/>
                             <constraint firstItem="9Ej-IM-2Ik" firstAttribute="top" secondItem="LpD-5O-foU" secondAttribute="top" id="QVT-G9-Opm"/>
                             <constraint firstItem="OBP-4F-wij" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="30" id="S26-dx-rxY"/>
                             <constraint firstItem="Slq-y6-mci" firstAttribute="trailing" secondItem="OBP-4F-wij" secondAttribute="trailing" constant="30" id="gjf-BR-J2u"/>
@@ -124,6 +137,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="9Ej-IM-2Ik" id="s07-jv-AUy"/>
+                        <outlet property="currentLocationButton" destination="kby-z9-vwm" id="X90-hb-ewQ"/>
                         <outlet property="locationInputView" destination="OBP-4F-wij" id="PA2-Vp-bBj"/>
                         <outlet property="placeholderLabel" destination="BOG-ph-noE" id="zjt-gq-Rnr"/>
                     </connections>

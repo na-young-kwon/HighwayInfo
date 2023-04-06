@@ -9,17 +9,21 @@ import UIKit
 import RxSwift
 import RxCocoa
 import TMapSDK
+import CoreLocation
 
 class RoadViewController: UIViewController, TMapViewDelegate {
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var locationInputView: UIView!
     @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var currentLocationButton: UIButton!
     
+    var viewModel: RoadViewModel!
+    private let disposeBag = DisposeBag()
     private let searchView = SearchView()
     private var mapView: TMapView?
     private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
-    private let disposeBag = DisposeBag()
-    var viewModel: RoadViewModel!
+    private let locationManager = CLLocationManager()
+    private var position: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,7 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         configureUI()
         configureMapView()
         configureTapGesture()
+        setLocationManager()
     }
     
     private func configureUI() {
@@ -34,10 +39,21 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         locationInputView.layer.borderColor = UIColor.white.cgColor
         locationInputView.layer.borderWidth = 0.25
         locationInputView.backgroundColor = .white
-        locationInputView.layer.shadowOpacity = 1
-        locationInputView.layer.shadowRadius = 3.0
-        locationInputView.layer.shadowOffset = CGSize.zero
         locationInputView.layer.shadowColor = UIColor.gray.cgColor
+        locationInputView.layer.shadowOffset = CGSize.zero
+        locationInputView.layer.shadowOpacity = 1
+        locationInputView.layer.shadowRadius = 3
+        currentLocationButton.backgroundColor = .white
+        currentLocationButton.setImage(UIImage(systemName: "location.fill.viewfinder"), for: .normal)
+        currentLocationButton.layer.cornerRadius = currentLocationButton.frame.width / 2
+        currentLocationButton.layer.shadowColor = UIColor.gray.cgColor
+        currentLocationButton.layer.shadowOffset = CGSize.zero
+        currentLocationButton.layer.shadowOpacity = 1
+        currentLocationButton.layer.shadowRadius = 3
+    }
+    
+    @IBAction func tap(_ sender: UIButton) {
+        showCurrentLocation()
     }
     
     private func configureMapView() {
@@ -64,6 +80,23 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         locationInputView.addGestureRecognizer(tap)
     }
     
+    private func setLocationManager() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    private func showCurrentLocation() {
+        if let position = position {
+            let marker = TMapCustomMarker(position: position)
+            let view = UIImageView(image: UIImage(named: "marker"))
+            marker.view = view
+            mapView?.setCenter(position)
+            mapView?.setZoom(17)
+            marker.map = self.mapView
+        }
+    }
+    
     @objc func showSearchView() {
         locationInputView.alpha = 0
         placeholderLabel.alpha = 0
@@ -78,5 +111,18 @@ extension RoadViewController: SearchViewDelegate {
         placeholderLabel.alpha = 1
         searchView.alpha = 0
         self.tabBarController?.tabBar.isHidden = false
+    }
+}
+
+extension RoadViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print("권한 변경")
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            position = location.coordinate
+        }
     }
 }
