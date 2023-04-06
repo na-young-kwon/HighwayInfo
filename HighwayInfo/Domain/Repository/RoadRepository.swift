@@ -9,4 +9,5 @@ import Foundation
 import RxSwift
 
 protocol RoadRepository {
+    func fetchSearchResult(for: String) -> Observable<SearchResultDTO>
 }

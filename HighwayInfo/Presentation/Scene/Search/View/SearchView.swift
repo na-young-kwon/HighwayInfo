@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol SearchViewDelegate: AnyObject {
     func dismissSearchView()
 }
-
 
 class SearchView: UIView {
     weak var delegate: SearchViewDelegate?

@@ -14,4 +14,9 @@ final class DefaultRoadRepository: RoadRepository {
     init(service: RoadService) {
         self.service = service
     }
+    
+    func fetchSearchResult(for keyword: String) -> Observable<SearchResultDTO> {
+        let request = SearchRequest(searchKeyword: keyword)
+        return service.apiProvider.performDataTask(with: request, decodeType: .json)
+    }
 }
