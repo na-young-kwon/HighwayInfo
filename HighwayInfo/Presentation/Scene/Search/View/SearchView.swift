@@ -24,7 +24,7 @@ class SearchView: UIView {
     private var viewModel = SearchViewModel(useCase: DefaultRoadUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider()))))
     private var dataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
     
-    private lazy var textField: UITextField = {
+    lazy var textField: UITextField = {
         let textField = UITextField()
         textField.textColor = .black
         textField.font = .systemFont(ofSize: 17)
@@ -118,9 +118,8 @@ class SearchView: UIView {
         endEditing(true)
         delegate?.dismissSearchView()
         textField.text = ""
-        var snapShot = NSDiffableDataSourceSnapshot<Section, LocationInfo>()
-        snapShot.appendSections([.search])
-        snapShot.appendItems([])
+        var snapShot = dataSource.snapshot()
+        snapShot.deleteAllItems()
         dataSource.apply(snapShot)
     }
 }

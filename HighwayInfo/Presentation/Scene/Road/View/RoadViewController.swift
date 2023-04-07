@@ -71,6 +71,7 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         
         UIView.animate(withDuration: 0.5) {
             self.searchView.alpha = 1
+            self.searchView.textField.becomeFirstResponder()
             self.tabBarController?.tabBar.isHidden = true
         }
     }
@@ -116,7 +117,6 @@ extension RoadViewController: SearchViewDelegate {
 
 extension RoadViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print("권한 변경")
         locationManager.startUpdatingLocation()
     }
     

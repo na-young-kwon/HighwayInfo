@@ -72,6 +72,7 @@ class HomeViewController: UIViewController {
             .disposed(by: self.disposeBag)
             return cell
         }
+        dataSource.defaultRowAnimation = .top
     }
     
     private func bindViewModel() {
@@ -99,6 +100,9 @@ class HomeViewController: UIViewController {
         
         refreshButton.rx.tap
             .bind { _ in
+                var snapshot = self.dataSource.snapshot()
+                snapshot.deleteAllItems()
+                self.dataSource.apply(snapshot)
                 self.view.addSubview(self.loadingIndicator)
                 self.loadingIndicator.play { finished in
                     self.loadingIndicator.removeFromSuperview()
