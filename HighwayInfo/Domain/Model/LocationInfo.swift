@@ -10,7 +10,9 @@ import Foundation
 struct LocationInfo: Hashable {
     let id = UUID()
     let name: String
-    let address: String?
     let businessName: String
     let distance: String
+    let address: String?
+    let coordx: String?
+    let coordy: String?
 }

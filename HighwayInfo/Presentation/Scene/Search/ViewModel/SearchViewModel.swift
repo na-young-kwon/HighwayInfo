@@ -16,7 +16,7 @@ final class SearchViewModel: ViewModelType {
     
     struct Input {
         let searchKeyword: Observable<String>
-        let modelSelected: Observable<LocationInfo>
+        let itemSelected: Observable<LocationInfo?>
     }
     
     struct Output {
@@ -35,10 +35,11 @@ final class SearchViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        input.modelSelected
-            .do { locationInfo in
+        input.itemSelected
+            .subscribe(onNext: { locationInfo in
                 self.coordinator.toResultView(with: locationInfo)
-            }
+            })
+            .disposed(by: disposeBag)
             
         return Output(searchResult:  useCase.searchResult.asObservable())
     }

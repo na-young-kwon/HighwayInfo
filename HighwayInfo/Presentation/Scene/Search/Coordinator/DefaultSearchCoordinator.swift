@@ -20,7 +20,8 @@ final class DefaultSearchCoordinator: Coordinator {
         print("start")
     }
     
-    func toResultView(with info: LocationInfo) {
+    func toResultView(with info: LocationInfo?) {
+        guard let info = info else { return }
         print(info)
     }
 }

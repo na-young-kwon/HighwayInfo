@@ -21,7 +21,14 @@ final class DefaultRoadUseCase: RoadUseCase {
     
     func fetchResult(for keyword: String) {
         roadRepository.fetchSearchResult(for: keyword)
-            .map { $0.searchPoiInfo.pois.poi.map { LocationInfo(name: $0.name, address: $0.newAddressList.newAddress.first?.fullAddressRoad, businessName: $0.lowerBizName, distance: $0.id) }}
+            .map { $0.searchPoiInfo.pois.poi.map {
+                LocationInfo(name: $0.name,
+                             businessName: $0.lowerBizName,
+                             distance: $0.id,
+                             address: $0.newAddressList.newAddress.first?.fullAddressRoad,
+                             coordx: $0.newAddressList.newAddress.first?.centerLon,
+                             coordy: $0.newAddressList.newAddress.first?.centerLat) }
+            }
             .subscribe(onNext: { searchResult in
                 self.searchResult.onNext(searchResult)
             })

@@ -105,11 +105,16 @@ class SearchView: UIView {
     }
     
     private func bindViewModel() {
+        let selectedLocation = PublishSubject<LocationInfo?>()
         let keyword = textField.rx.text.orEmpty.asObservable()
-        let modelSelected = tableView.rx.modelSelected(LocationInfo.self).asObservable()
         
-        let input = SearchViewModel.Input(searchKeyword: keyword, modelSelected: modelSelected)
+        tableView.rx.itemSelected.subscribe(onNext: { index in
+            let location = self.dataSource.itemIdentifier(for: index)
+            selectedLocation.onNext(location)
+        })
+        .disposed(by: disposeBag)
         
+        let input = SearchViewModel.Input(searchKeyword: keyword, itemSelected: selectedLocation.asObservable())
         let output = viewModel?.transform(input: input)
         
         output?.searchResult
