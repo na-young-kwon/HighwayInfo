@@ -14,7 +14,9 @@ protocol SearchViewDelegate: AnyObject {
 }
 
 class SearchView: UIView {
+    private let disposeBag = DisposeBag()
     weak var delegate: SearchViewDelegate?
+    var viewModel = SearchViewModel(useCase: DefaultRoadUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider()))))
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
@@ -47,6 +49,15 @@ class SearchView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configureUI()
+        bindViewModel()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureUI() {
         hideKeyboardWhenTappedAround()
         backgroundColor = .white
         addSubview(textField)
@@ -56,8 +67,16 @@ class SearchView: UIView {
         textField.centerY(inView: backButton)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func bindViewModel() {
+        let input = SearchViewModel.Input(searchKeyword: textField.rx.text.orEmpty.asObservable())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.searchResult
+            .subscribe(onNext: { result in
+                print(result)
+            })
+            .disposed(by: disposeBag)
     }
     
     @objc func dismissSearchView() {

@@ -11,20 +11,27 @@ import RxCocoa
 
 final class SearchViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
+    private let useCase: DefaultRoadUseCase
     
     struct Input {
         let searchKeyword: Observable<String>
     }
     
     struct Output {
-//        let searchResult
+        let searchResult: Observable<[String]>
     }
     
-    init() {
-        
+    init(useCase: DefaultRoadUseCase) {
+        self.useCase = useCase
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        input.searchKeyword
+            .subscribe(onNext: { keyword in
+                self.useCase.fetchResult(for: keyword)
+            })
+            .disposed(by: disposeBag)
+
+        return Output(searchResult:  useCase.searchResult.asObservable())
     }
 }

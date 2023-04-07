@@ -54,6 +54,7 @@
 		3B8F086929B9BEB2009D7396 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086829B9BEB2009D7396 /* ViewModelType.swift */; };
 		3B8F086E29B9C1F6009D7396 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */; };
 		3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086F29B9C2C6009D7396 /* AccidentViewModel.swift */; };
+		3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45229DF2756000F4B39 /* DefaultRoadUseCase.swift */; };
 		3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC11C7429DF263D000B0290 /* RoadUseCase.swift */; };
 		3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
@@ -128,6 +129,7 @@
 		3B8F086829B9BEB2009D7396 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		3B8F086F29B9C2C6009D7396 /* AccidentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentViewModel.swift; sourceTree = "<group>"; };
+		3B97E45229DF2756000F4B39 /* DefaultRoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadUseCase.swift; sourceTree = "<group>"; };
 		3BC11C7429DF263D000B0290 /* RoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoadUseCase.swift; path = ../RoadUseCase.swift; sourceTree = "<group>"; };
 		3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVService.swift; sourceTree = "<group>"; };
 		3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRequest.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			children = (
 				3B6CF37629D317DD002289A0 /* Protocol */,
 				3B63BAC029B862D30055D3A4 /* DefaultAccidentUseCase.swift */,
+				3B97E45229DF2756000F4B39 /* DefaultRoadUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
 				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
+				3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */,
 				3B63BAA929B768860055D3A4 /* HTTPMethod.swift in Sources */,
 				3B5AD12829B1F5E800E2AFAA /* RoadViewController.swift in Sources */,
 				3B63BAAE29B768EE0055D3A4 /* NetworkingError.swift in Sources */,
