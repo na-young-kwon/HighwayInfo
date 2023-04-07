@@ -18,7 +18,7 @@ final class SearchViewModel: ViewModelType {
     }
     
     struct Output {
-        let searchResult: Observable<[String]>
+        let searchResult: Observable<[LocationInfo]>
     }
     
     init(useCase: DefaultRoadUseCase) {

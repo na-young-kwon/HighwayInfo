@@ -14,9 +14,15 @@ protocol SearchViewDelegate: AnyObject {
 }
 
 class SearchView: UIView {
+    enum Section {
+        case search
+    }
+    
     private let disposeBag = DisposeBag()
     weak var delegate: SearchViewDelegate?
-    var viewModel = SearchViewModel(useCase: DefaultRoadUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider()))))
+    // 이거 어디로 옮길 수 있는지 생각하기
+    private var viewModel = SearchViewModel(useCase: DefaultRoadUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider()))))
+    private var dataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
@@ -46,10 +52,14 @@ class SearchView: UIView {
         return button
     }()
     
+    private let tableView = UITableView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureUI()
+        configureTableView()
+        configureDataSource()
         bindViewModel()
     }
     
@@ -62,9 +72,34 @@ class SearchView: UIView {
         backgroundColor = .white
         addSubview(textField)
         addSubview(backButton)
+        addSubview(tableView)
         backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 100, paddingLeft: 10, width: 40, height: 40)
         textField.anchor(top: backButton.topAnchor, left: backButton.rightAnchor, right: rightAnchor, paddingRight: 20, height: 40)
         textField.centerY(inView: backButton)
+        tableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12)
+    }
+    
+    private func configureTableView() {
+        let nib = UINib(nibName: SearchResultCell.reuseID, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SearchResultCell.reuseID)
+        tableView.showsVerticalScrollIndicator = false
+    }
+    
+    private func configureDataSource() {
+        self.dataSource = UITableViewDiffableDataSource<Section, LocationInfo>(tableView: tableView) { (tableView: UITableView, indexPath: IndexPath, viewModel: LocationInfo) in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.reuseID, for: indexPath) as? SearchResultCell else {
+                return UITableViewCell()
+            }
+            cell.bind(viewModel: viewModel)
+            return cell
+        }
+    }
+    
+    private func applySnapshot(with viewModel: [LocationInfo]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, LocationInfo>()
+        snapShot.appendSections([.search])
+        snapShot.appendItems(viewModel)
+        dataSource.apply(snapShot, animatingDifferences: false)
     }
     
     private func bindViewModel() {
@@ -74,7 +109,7 @@ class SearchView: UIView {
         
         output.searchResult
             .subscribe(onNext: { result in
-                print(result)
+                self.applySnapshot(with: result)
             })
             .disposed(by: disposeBag)
     }
@@ -82,5 +117,10 @@ class SearchView: UIView {
     @objc func dismissSearchView() {
         endEditing(true)
         delegate?.dismissSearchView()
+        textField.text = ""
+        var snapShot = NSDiffableDataSourceSnapshot<Section, LocationInfo>()
+        snapShot.appendSections([.search])
+        snapShot.appendItems([])
+        dataSource.apply(snapShot)
     }
 }
