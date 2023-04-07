@@ -9,11 +9,14 @@ import UIKit
 
 final class DefaultRoadCoordinator: Coordinator {
     var navigationController: UINavigationController
-    
     var childCoordinators: [Coordinator] = []
+    var searchViewModel: SearchViewModel
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        let apiProvider = DefaultAPIProvider()
+        let useCase = DefaultRoadUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)))
+        self.searchViewModel = SearchViewModel(useCase: useCase, coordinator: DefaultSearchCoordinator(navigationController))
     }
     
     func start() {

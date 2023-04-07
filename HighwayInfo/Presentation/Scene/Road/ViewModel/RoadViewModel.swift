@@ -12,6 +12,7 @@ import RxCocoa
 final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private var coordinator: DefaultRoadCoordinator
+    let searchViewModel: SearchViewModel
     
     struct Input {
     }
@@ -21,6 +22,7 @@ final class RoadViewModel: ViewModelType {
     
     init(coordinator: DefaultRoadCoordinator) {
         self.coordinator = coordinator
+        self.searchViewModel = coordinator.searchViewModel
     }
     
     func transform(input: Input) -> Output {

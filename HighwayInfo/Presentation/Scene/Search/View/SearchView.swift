@@ -18,10 +18,13 @@ class SearchView: UIView {
         case search
     }
     
+    var viewModel: SearchViewModel? {
+        didSet {
+            bindViewModel()
+        }
+    }
     private let disposeBag = DisposeBag()
     weak var delegate: SearchViewDelegate?
-    // 이거 어디로 옮길 수 있는지 생각하기
-    private var viewModel = SearchViewModel(useCase: DefaultRoadUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider()))))
     private var dataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
     
     lazy var textField: UITextField = {
@@ -60,7 +63,6 @@ class SearchView: UIView {
         configureUI()
         configureTableView()
         configureDataSource()
-        bindViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -103,11 +105,14 @@ class SearchView: UIView {
     }
     
     private func bindViewModel() {
-        let input = SearchViewModel.Input(searchKeyword: textField.rx.text.orEmpty.asObservable())
+        let keyword = textField.rx.text.orEmpty.asObservable()
+        let modelSelected = tableView.rx.modelSelected(LocationInfo.self).asObservable()
         
-        let output = viewModel.transform(input: input)
+        let input = SearchViewModel.Input(searchKeyword: keyword, modelSelected: modelSelected)
         
-        output.searchResult
+        let output = viewModel?.transform(input: input)
+        
+        output?.searchResult
             .subscribe(onNext: { result in
                 self.applySnapshot(with: result)
             })

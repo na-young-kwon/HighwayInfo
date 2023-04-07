@@ -67,6 +67,7 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         view.addSubview(searchView)
         searchView.alpha = 0
         searchView.delegate = self
+        searchView.viewModel = viewModel.searchViewModel
         searchView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: view.frame.height)
         
         UIView.animate(withDuration: 0.5) {

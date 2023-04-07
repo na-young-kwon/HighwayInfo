@@ -59,6 +59,7 @@
 		3B97E45729E00397000F4B39 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45629E00397000F4B39 /* SearchResultCell.swift */; };
 		3B97E45929E003A1000F4B39 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B97E45829E003A1000F4B39 /* SearchResultCell.xib */; };
 		3B97E45B29E008A1000F4B39 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45A29E008A1000F4B39 /* UIImageView + Extension.swift */; };
+		3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */; };
 		3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC11C7429DF263D000B0290 /* RoadUseCase.swift */; };
 		3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
@@ -138,6 +139,7 @@
 		3B97E45629E00397000F4B39 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		3B97E45829E003A1000F4B39 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		3B97E45A29E008A1000F4B39 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
+		3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchCoordinator.swift; sourceTree = "<group>"; };
 		3BC11C7429DF263D000B0290 /* RoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoadUseCase.swift; path = ../RoadUseCase.swift; sourceTree = "<group>"; };
 		3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVService.swift; sourceTree = "<group>"; };
 		3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRequest.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 		3B6CF38129D32AA8002289A0 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */,
+				3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */,
 				3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */,
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
