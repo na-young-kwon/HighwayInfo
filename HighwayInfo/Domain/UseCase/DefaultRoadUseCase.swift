@@ -10,14 +10,50 @@ import RxSwift
 import RxRelay
 import CoreLocation
 
+enum LocationAuthorizationStatus {
+    case allowed, notAllowed, notDetermined
+}
+
 final class DefaultRoadUseCase: RoadUseCase {
+    var currentLocation = PublishSubject<CLLocation>()
+    var authorizationStatus = BehaviorSubject<LocationAuthorizationStatus?>(value: nil)
     private let roadRepository: RoadRepository
+    private let locationService: LocationService
     private let disposeBag = DisposeBag()
     
     var searchResult = PublishSubject<[LocationInfo]>()
     
-    init(roadRepository: RoadRepository) {
+    init(roadRepository: RoadRepository, locationService: LocationService) {
         self.roadRepository = roadRepository
+        self.locationService = locationService
+    }
+    
+    func checkAuthorization() {
+        locationService.observeUpdatedAuthorization()
+            .subscribe(onNext: { [weak self] status in
+                switch status {
+                case .authorizedAlways, .authorizedWhenInUse:
+                    self?.authorizationStatus.onNext(.allowed)
+                    self?.locationService.start()
+                case .notDetermined:
+                    self?.authorizationStatus.onNext(.notDetermined)
+                    self?.locationService.requestAuthorization()
+                case .denied, .restricted:
+                    self?.authorizationStatus.onNext(.notAllowed)
+                @unknown default:
+                    self?.authorizationStatus.onNext(nil)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func observeLocation() {
+        return locationService.currentLocation()
+            .compactMap { $0.last }
+            .subscribe(onNext: { [weak self] location in
+                self?.currentLocation.onNext(location)
+            })
+            .disposed(by: disposeBag)
     }
     
     func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?) {

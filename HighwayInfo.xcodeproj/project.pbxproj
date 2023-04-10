@@ -60,6 +60,7 @@
 		3B97E45929E003A1000F4B39 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B97E45829E003A1000F4B39 /* SearchResultCell.xib */; };
 		3B97E45B29E008A1000F4B39 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45A29E008A1000F4B39 /* UIImageView + Extension.swift */; };
 		3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */; };
+		3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45E29E3CA12000F4B39 /* LocationService.swift */; };
 		3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC11C7429DF263D000B0290 /* RoadUseCase.swift */; };
 		3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
@@ -140,6 +141,7 @@
 		3B97E45829E003A1000F4B39 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		3B97E45A29E008A1000F4B39 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchCoordinator.swift; sourceTree = "<group>"; };
+		3B97E45E29E3CA12000F4B39 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		3BC11C7429DF263D000B0290 /* RoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoadUseCase.swift; path = ../RoadUseCase.swift; sourceTree = "<group>"; };
 		3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVService.swift; sourceTree = "<group>"; };
 		3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRequest.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */,
 				3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */,
 				3B97E45A29E008A1000F4B39 /* UIImageView + Extension.swift */,
+				3B97E45E29E3CA12000F4B39 /* LocationService.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				3B5AD12C29B1FB8200E2AFAA /* TabBarPage.swift in Sources */,
 				3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */,
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
+				3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
 				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
 				3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */,

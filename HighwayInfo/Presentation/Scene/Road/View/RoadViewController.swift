@@ -22,7 +22,6 @@ class RoadViewController: UIViewController, TMapViewDelegate {
     private let searchView = SearchView()
     private var mapView: TMapView?
     private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
-    private let locationManager = CLLocationManager()
     private var position: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
@@ -31,7 +30,7 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         configureUI()
         configureMapView()
         configureTapGesture()
-        setLocationManager()
+        bindViewModel()
     }
     
     private func configureUI() {
@@ -82,12 +81,6 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         locationInputView.addGestureRecognizer(tap)
     }
     
-    private func setLocationManager() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
     private func showCurrentLocation() {
         if let position = position {
             let marker = TMapCustomMarker(position: position)
@@ -104,8 +97,26 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         placeholderLabel.alpha = 0
         configureSearchView()
     }
+    
+    private func bindViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+        let input = RoadViewModel.Input(viewWillAppear: viewWillAppear)
+        let output = viewModel.transform(input: input)
+        
+        output.currentLocation
+            .subscribe(onNext: { location in
+                self.position = location
+            })
+            .disposed(by: disposeBag)
+        
+        output.showAuthorizationAlert
+            .subscribe(onNext: { showAlert in
+              print(showAlert)
+            })
+            .disposed(by: disposeBag)
+    }
 }
-
 
 extension RoadViewController: SearchViewDelegate {
     func dismissSearchView() {
@@ -117,17 +128,5 @@ extension RoadViewController: SearchViewDelegate {
     
     func currentLocation() -> CLLocationCoordinate2D? {
         return position
-    }
-}
-
-extension RoadViewController: CLLocationManagerDelegate {
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        locationManager.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            position = location.coordinate
-        }
     }
 }
