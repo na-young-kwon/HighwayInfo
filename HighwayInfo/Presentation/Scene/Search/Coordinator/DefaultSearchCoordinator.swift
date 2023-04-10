@@ -17,11 +17,13 @@ final class DefaultSearchCoordinator: Coordinator {
     }
     
     func start() {
-        print("start")
+        navigationController.navigationBar.backIndicatorImage = UIImage(systemName: "circle")
+        navigationController.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "circle")
+        navigationController.navigationBar.backItem?.title = ""
     }
     
-    func toResultView(with info: LocationInfo?) {
-        guard let info = info else { return }
-        print(info)
+    func toResultView(with info: LocationInfo) {
+        let resultCoordinator = DefaultResultCoordinator(navigationController)
+        resultCoordinator.start(with: info)
     }
 }

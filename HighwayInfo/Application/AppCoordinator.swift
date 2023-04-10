@@ -19,7 +19,7 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let pages = TabBarPage.allCases
-        let controllers = pages.map({ makeTabNavigationController(of: $0) })
+        let controllers = pages.map { makeTabNavigationController(of: $0) }
         configureTabBar(with: controllers)
         showTabBar()
     }

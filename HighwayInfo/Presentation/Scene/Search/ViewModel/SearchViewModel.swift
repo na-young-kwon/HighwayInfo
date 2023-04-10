@@ -38,6 +38,7 @@ final class SearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.itemSelected
+            .compactMap { $0 }
             .subscribe(onNext: { locationInfo in
                 self.coordinator.toResultView(with: locationInfo)
             })
