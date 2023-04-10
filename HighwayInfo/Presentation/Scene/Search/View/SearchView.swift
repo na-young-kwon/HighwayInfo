@@ -25,8 +25,8 @@ class SearchView: UIView {
             bindViewModel()
         }
     }
-    private let disposeBag = DisposeBag()
     weak var delegate: SearchViewDelegate?
+    private let disposeBag = DisposeBag()
     private var dataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
     
     lazy var textField: UITextField = {
@@ -110,17 +110,17 @@ class SearchView: UIView {
         let keyword = textField.rx.text.orEmpty.asObservable()
         let selectedLocation = PublishSubject<LocationInfo?>()
         let currentLocation = delegate?.currentLocation()
+
+        let input = SearchViewModel.Input(searchKeyword: keyword,
+                                          itemSelected: selectedLocation.asObservable(),
+                                          currentLocation: Observable.of(currentLocation))
+        let output = viewModel?.transform(input: input)
         
         tableView.rx.itemSelected.subscribe(onNext: { index in
             let location = self.dataSource.itemIdentifier(for: index)
             selectedLocation.onNext(location)
         })
         .disposed(by: disposeBag)
-        
-        let input = SearchViewModel.Input(searchKeyword: keyword,
-                                          itemSelected: selectedLocation.asObservable(),
-                                          currentLocation: Observable.of(currentLocation))
-        let output = viewModel?.transform(input: input)
         
         output?.searchResult
             .subscribe(onNext: { result in

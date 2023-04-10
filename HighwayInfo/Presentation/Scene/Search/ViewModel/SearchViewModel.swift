@@ -12,7 +12,7 @@ import CoreLocation
 
 final class SearchViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private let useCase: DefaultRoadUseCase
+    private let useCase: SearchUseCase
     private let coordinator: DefaultSearchCoordinator
     
     struct Input {
@@ -25,7 +25,7 @@ final class SearchViewModel: ViewModelType {
         let searchResult: Observable<[LocationInfo]>
     }
     
-    init(useCase: DefaultRoadUseCase, coordinator: DefaultSearchCoordinator) {
+    init(useCase: SearchUseCase, coordinator: DefaultSearchCoordinator) {
         self.useCase = useCase
         self.coordinator = coordinator
     }

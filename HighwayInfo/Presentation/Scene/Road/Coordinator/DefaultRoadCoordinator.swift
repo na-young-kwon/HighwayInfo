@@ -20,9 +20,12 @@ final class DefaultRoadCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: RoadViewController.self)
         let apiProvider = DefaultAPIProvider()
-        let useCase = DefaultRoadUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)), locationService: LocationService.shared)
-        searchViewModel = SearchViewModel(useCase: useCase, coordinator: DefaultSearchCoordinator(navigationController))
-        vc.viewModel = RoadViewModel(coordinator: self, useCase: useCase)
+        
+        let roadUseCase = DefaultRoadUseCase(locationService: LocationService.shared)
+        let searchUseCase = DefaultSearchUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)))
+                                                 
+        searchViewModel = SearchViewModel(useCase: searchUseCase, coordinator: DefaultSearchCoordinator(navigationController))
+        vc.viewModel = RoadViewModel(coordinator: self, useCase: roadUseCase)
         navigationController.pushViewController(vc, animated: true)
     }
 }

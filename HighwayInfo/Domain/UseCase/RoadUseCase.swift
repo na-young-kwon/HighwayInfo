@@ -14,5 +14,4 @@ protocol RoadUseCase {
     var authorizationStatus: BehaviorSubject<LocationAuthorizationStatus?> { get }
     func checkAuthorization()
     func observeLocation()
-    func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?)
 }
