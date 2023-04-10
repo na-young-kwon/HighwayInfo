@@ -114,6 +114,10 @@ extension RoadViewController: SearchViewDelegate {
         searchView.alpha = 0
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    func currentLocation() -> CLLocationCoordinate2D? {
+        return position
+    }
 }
 
 extension RoadViewController: CLLocationManagerDelegate {
@@ -122,7 +126,7 @@ extension RoadViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
+        if let location = locations.last {
             position = location.coordinate
         }
     }

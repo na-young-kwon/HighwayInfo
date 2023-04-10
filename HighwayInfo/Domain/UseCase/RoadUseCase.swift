@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol RoadUseCase {
-    func fetchResult(for keyword: String)
+    func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?)
 }

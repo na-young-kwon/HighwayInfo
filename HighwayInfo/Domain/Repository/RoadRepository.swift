@@ -7,7 +7,8 @@
 
 import Foundation
 import RxSwift
+import CoreLocation
 
 protocol RoadRepository {
-    func fetchSearchResult(for: String) -> Observable<SearchResultDTO>
+    func fetchSearchResult(for: String, coordinate: CLLocationCoordinate2D) -> Observable<SearchResultDTO>
 }

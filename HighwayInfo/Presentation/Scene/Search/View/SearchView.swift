@@ -8,9 +8,11 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CoreLocation
 
 protocol SearchViewDelegate: AnyObject {
     func dismissSearchView()
+    func currentLocation() -> CLLocationCoordinate2D?
 }
 
 class SearchView: UIView {
@@ -105,8 +107,9 @@ class SearchView: UIView {
     }
     
     private func bindViewModel() {
-        let selectedLocation = PublishSubject<LocationInfo?>()
         let keyword = textField.rx.text.orEmpty.asObservable()
+        let selectedLocation = PublishSubject<LocationInfo?>()
+        let currentLocation = delegate?.currentLocation()
         
         tableView.rx.itemSelected.subscribe(onNext: { index in
             let location = self.dataSource.itemIdentifier(for: index)
@@ -114,7 +117,9 @@ class SearchView: UIView {
         })
         .disposed(by: disposeBag)
         
-        let input = SearchViewModel.Input(searchKeyword: keyword, itemSelected: selectedLocation.asObservable())
+        let input = SearchViewModel.Input(searchKeyword: keyword,
+                                          itemSelected: selectedLocation.asObservable(),
+                                          currentLocation: Observable.of(currentLocation))
         let output = viewModel?.transform(input: input)
         
         output?.searchResult

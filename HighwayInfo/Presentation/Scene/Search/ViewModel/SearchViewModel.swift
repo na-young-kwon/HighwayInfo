@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import CoreLocation
 
 final class SearchViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
@@ -17,6 +18,7 @@ final class SearchViewModel: ViewModelType {
     struct Input {
         let searchKeyword: Observable<String>
         let itemSelected: Observable<LocationInfo?>
+        let currentLocation: Observable<CLLocationCoordinate2D?>
     }
     
     struct Output {
@@ -29,9 +31,9 @@ final class SearchViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.searchKeyword
-            .subscribe(onNext: { keyword in
-                self.useCase.fetchResult(for: keyword)
+        Observable.combineLatest(input.currentLocation, input.searchKeyword)
+            .subscribe(onNext: { coordinate, keyword in
+                self.useCase.fetchResult(for: keyword, coordinate: coordinate)
             })
             .disposed(by: disposeBag)
         
@@ -41,6 +43,6 @@ final class SearchViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
             
-        return Output(searchResult:  useCase.searchResult.asObservable())
+        return Output(searchResult: useCase.searchResult.asObservable())
     }
 }

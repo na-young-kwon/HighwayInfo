@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import CoreLocation
 
 final class DefaultRoadRepository: RoadRepository {
     private let service: RoadService
@@ -15,8 +16,10 @@ final class DefaultRoadRepository: RoadRepository {
         self.service = service
     }
     
-    func fetchSearchResult(for keyword: String) -> Observable<SearchResultDTO> {
-        let request = SearchRequest(searchKeyword: keyword)
+    func fetchSearchResult(for keyword: String, coordinate: CLLocationCoordinate2D) -> Observable<SearchResultDTO> {
+        let request = SearchRequest(searchKeyword: keyword,
+                                    longitude: coordinate.longitude,
+                                    latitude: coordinate.latitude)
         return service.apiProvider.performDataTask(with: request, decodeType: .json)
     }
 }
