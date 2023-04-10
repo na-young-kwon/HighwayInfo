@@ -52,7 +52,7 @@ class SearchView: UIView {
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(UIImage(systemName: "chevron.backward")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(dismissSearchView), for: .touchUpInside)
         return button
     }()

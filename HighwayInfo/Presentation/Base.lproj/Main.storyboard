@@ -175,7 +175,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBrownColor"/>
                                 <constraints>
                                     <constraint firstItem="bID-Lh-5KH" firstAttribute="leading" secondItem="eq2-gh-OTh" secondAttribute="leading" constant="70" id="FfS-He-3T1"/>
                                     <constraint firstItem="bID-Lh-5KH" firstAttribute="top" secondItem="eq2-gh-OTh" secondAttribute="top" constant="55" id="XA6-CN-zkj"/>
@@ -185,7 +184,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-0b-VJP">
                                 <rect key="frame" x="0.0" y="130" width="393" height="722"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qql-IR-Veh"/>
@@ -214,12 +212,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

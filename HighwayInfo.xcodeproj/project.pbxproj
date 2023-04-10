@@ -65,6 +65,8 @@
 		3B97E46329E3FEB0000F4B39 /* DefaultSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */; };
 		3B97E46929E419FB000F4B39 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46829E419FB000F4B39 /* ResultViewController.swift */; };
 		3B97E46B29E41B24000F4B39 /* DefaultResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46A29E41B24000F4B39 /* DefaultResultCoordinator.swift */; };
+		3B97E46E29E42580000F4B39 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46D29E42580000F4B39 /* CardViewController.swift */; };
+		3B97E47029E42AE3000F4B39 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B97E46F29E42AE3000F4B39 /* CardViewController.xib */; };
 		3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC11C7429DF263D000B0290 /* RoadUseCase.swift */; };
 		3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
@@ -150,6 +152,8 @@
 		3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchUseCase.swift; sourceTree = "<group>"; };
 		3B97E46829E419FB000F4B39 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		3B97E46A29E41B24000F4B39 /* DefaultResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResultCoordinator.swift; sourceTree = "<group>"; };
+		3B97E46D29E42580000F4B39 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		3B97E46F29E42AE3000F4B39 /* CardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		3BC11C7429DF263D000B0290 /* RoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoadUseCase.swift; path = ../RoadUseCase.swift; sourceTree = "<group>"; };
 		3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVService.swift; sourceTree = "<group>"; };
 		3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRequest.swift; sourceTree = "<group>"; };
@@ -532,6 +536,8 @@
 			isa = PBXGroup;
 			children = (
 				3B97E46829E419FB000F4B39 /* ResultViewController.swift */,
+				3B97E46D29E42580000F4B39 /* CardViewController.swift */,
+				3B97E46F29E42AE3000F4B39 /* CardViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -645,6 +651,7 @@
 				3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */,
 				3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */,
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,
+				3B97E47029E42AE3000F4B39 /* CardViewController.xib in Resources */,
 				3B97E45929E003A1000F4B39 /* SearchResultCell.xib in Resources */,
 				3B6CF36929D2CF0D002289A0 /* GrayLoadingIndicator.json in Resources */,
 			);
@@ -733,6 +740,7 @@
 				3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */,
 				3B97E46129E3FE76000F4B39 /* SearchUseCase.swift in Sources */,
 				3B63BABF29B860960055D3A4 /* AccidentUseCase.swift in Sources */,
+				3B97E46E29E42580000F4B39 /* CardViewController.swift in Sources */,
 				3B5AD12C29B1FB8200E2AFAA /* TabBarPage.swift in Sources */,
 				3B97E46329E3FEB0000F4B39 /* DefaultSearchUseCase.swift in Sources */,
 				3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */,
