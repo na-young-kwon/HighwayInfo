@@ -131,8 +131,9 @@ class SearchView: UIView {
     
     @objc func dismissSearchView() {
         endEditing(true)
-        delegate?.dismissSearchView()
         textField.text = ""
+        viewModel?.finish()
+        delegate?.dismissSearchView()
         var snapShot = dataSource.snapshot()
         snapShot.deleteAllItems()
         dataSource.apply(snapShot)

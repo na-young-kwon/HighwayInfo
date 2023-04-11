@@ -137,4 +137,8 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
         }
     }
+    
+    deinit {
+        print("viewmodel.finish() 호출")
+    }
 }

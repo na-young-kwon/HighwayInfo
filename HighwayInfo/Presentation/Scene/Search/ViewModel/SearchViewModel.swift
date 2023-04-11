@@ -46,4 +46,8 @@ final class SearchViewModel: ViewModelType {
             
         return Output(searchResult: useCase.searchResult.asObservable())
     }
+    
+    func finish() {
+        coordinator.finish()
+    }
 }
