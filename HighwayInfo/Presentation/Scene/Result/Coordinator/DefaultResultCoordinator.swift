@@ -27,10 +27,11 @@ final class DefaultResultCoordinator: Coordinator {
     func start(with info: LocationInfo) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: ResultViewController.self)
+        controller.viewModel = ResultViewModel(coordinator: self)
         navigationController.pushViewController(controller, animated: true)
     }
     
-    func finish() {
+    func removeCoordinator() {
         parentCoordinator?.removeChildCoordinator(self)
     }
 }

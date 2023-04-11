@@ -23,6 +23,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
     
+    var viewModel: ResultViewModel!
     private var cardViewController:CardViewController!
     private var mapView: TMapView?
     private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
@@ -139,6 +140,6 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     }
     
     deinit {
-        print("viewmodel.finish() 호출")
+        viewModel.removeCoordinator()
     }
 }

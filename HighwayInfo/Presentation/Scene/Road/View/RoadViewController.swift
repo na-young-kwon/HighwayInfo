@@ -19,7 +19,7 @@ class RoadViewController: UIViewController, TMapViewDelegate {
     
     var viewModel: RoadViewModel!
     private let disposeBag = DisposeBag()
-    private let searchView = SearchView()
+    private var searchView: SearchView?
     private var mapView: TMapView?
     private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
     private var position: CLLocationCoordinate2D?
@@ -63,15 +63,16 @@ class RoadViewController: UIViewController, TMapViewDelegate {
     }
     
     private func configureSearchView() {
+        searchView = SearchView()
+        guard let searchView = searchView else { return }
         view.addSubview(searchView)
-        searchView.alpha = 0
         searchView.delegate = self
         searchView.viewModel = viewModel.searchViewModel
         searchView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: view.frame.height)
         
         UIView.animate(withDuration: 0.5) {
-            self.searchView.alpha = 1
-            self.searchView.textField.becomeFirstResponder()
+            self.searchView?.alpha = 1
+            self.searchView?.textField.becomeFirstResponder()
             self.tabBarController?.tabBar.isHidden = true
         }
     }
@@ -138,7 +139,8 @@ extension RoadViewController: SearchViewDelegate {
     func dismissSearchView() {
         locationInputView.alpha = 1
         placeholderLabel.alpha = 1
-        searchView.alpha = 0
+        searchView?.alpha = 0
+        searchView = nil
         self.tabBarController?.tabBar.isHidden = false
     }
     
