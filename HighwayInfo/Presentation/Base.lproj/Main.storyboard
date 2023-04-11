@@ -154,7 +154,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq2-gh-OTh">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq2-gh-OTh" userLabel="TitleView">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bID-Lh-5KH">
@@ -174,11 +174,21 @@
                                             </label>
                                         </subviews>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uc-YK-hXF">
+                                        <rect key="frame" x="0.0" y="129" width="393" height="1"/>
+                                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="GBa-mC-OLU"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="0uc-YK-hXF" firstAttribute="leading" secondItem="eq2-gh-OTh" secondAttribute="leading" id="BqP-1h-ZIy"/>
+                                    <constraint firstAttribute="trailing" secondItem="0uc-YK-hXF" secondAttribute="trailing" id="Ekw-eQ-7wa"/>
                                     <constraint firstItem="bID-Lh-5KH" firstAttribute="leading" secondItem="eq2-gh-OTh" secondAttribute="leading" constant="70" id="FfS-He-3T1"/>
                                     <constraint firstItem="bID-Lh-5KH" firstAttribute="top" secondItem="eq2-gh-OTh" secondAttribute="top" constant="55" id="XA6-CN-zkj"/>
                                     <constraint firstAttribute="height" constant="130" id="fRZ-Fh-o1U"/>
+                                    <constraint firstAttribute="bottom" secondItem="0uc-YK-hXF" secondAttribute="bottom" id="hQ4-RA-lAv"/>
                                     <constraint firstAttribute="trailing" secondItem="bID-Lh-5KH" secondAttribute="trailing" constant="70" id="kyz-Wm-fAK"/>
                                 </constraints>
                             </view>
@@ -202,6 +212,7 @@
                         <outlet property="backgroundView" destination="jnP-0b-VJP" id="ABg-ol-0L9"/>
                         <outlet property="destinationLabel" destination="lsL-8B-2et" id="Pm9-cM-pxy"/>
                         <outlet property="startLabel" destination="5In-SE-tjp" id="kbE-mD-bCO"/>
+                        <outlet property="titleView" destination="eq2-gh-OTh" id="6DX-RC-trj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u7g-sh-tUF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -210,6 +221,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

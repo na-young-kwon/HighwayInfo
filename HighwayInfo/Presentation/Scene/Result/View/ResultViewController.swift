@@ -13,12 +13,13 @@ import CoreLocation
 
 class ResultViewController: UIViewController, TMapViewDelegate {
     
-    enum CardState {
+    private enum CardState {
         case collapsed
         case expanded
     }
     
-    @IBOutlet var backgroundView: UIView!
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
     

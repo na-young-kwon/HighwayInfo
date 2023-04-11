@@ -111,10 +111,26 @@ class RoadViewController: UIViewController, TMapViewDelegate {
             .disposed(by: disposeBag)
         
         output.showAuthorizationAlert
-            .subscribe(onNext: { showAlert in
-              print(showAlert)
+            .subscribe(onNext: { [weak self] showAlert in
+                if showAlert { self?.setAuthAlertAction() }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private  func setAuthAlertAction() {
+        let alert = UIAlertController(title: "위치정보 권한 요청",
+                                      message: "경로탐색을 위한 위치정보가 필요합니다",
+                                      preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(title: "확인",
+                                     style: .default,
+                                     handler: { _ in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            }}
+        )
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

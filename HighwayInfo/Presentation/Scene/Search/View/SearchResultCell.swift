@@ -22,6 +22,5 @@ class SearchResultCell: UITableViewCell {
         addressLabel.text = viewModel.address ?? ""
         businessLabel.text = viewModel.businessName
         distanceLabel.text = viewModel.distance + "km"
-        
     }
 }
