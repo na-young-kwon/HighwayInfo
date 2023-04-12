@@ -210,8 +210,8 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="jnP-0b-VJP" id="ABg-ol-0L9"/>
-                        <outlet property="destinationLabel" destination="lsL-8B-2et" id="Pm9-cM-pxy"/>
-                        <outlet property="startLabel" destination="5In-SE-tjp" id="kbE-mD-bCO"/>
+                        <outlet property="endPointLabel" destination="lsL-8B-2et" id="Pm9-cM-pxy"/>
+                        <outlet property="startPointLabel" destination="5In-SE-tjp" id="kbE-mD-bCO"/>
                         <outlet property="titleView" destination="eq2-gh-OTh" id="6DX-RC-trj"/>
                     </connections>
                 </viewController>

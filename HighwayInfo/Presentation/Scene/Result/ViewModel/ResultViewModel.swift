@@ -12,20 +12,38 @@ import CoreLocation
 
 final class ResultViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private var coordinator: DefaultResultCoordinator
+    private let coordinator: DefaultResultCoordinator
+    private let useCase: ResultUseCase
+    private let locationInfo: LocationInfo
     
     struct Input {
+        let viewWillAppear: Observable<Void>
     }
     
     struct Output {
+//        let startPoint: Observable<String>
+        let endPointName: Driver<String>
     }
     
-    init(coordinator: DefaultResultCoordinator) {
+    init(coordinator: DefaultResultCoordinator, locationInfo: LocationInfo, useCase: ResultUseCase) {
         self.coordinator = coordinator
+        self.useCase = useCase
+        self.locationInfo = locationInfo
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        input.viewWillAppear
+            .subscribe(onNext: { _ in
+                self.useCase.observeLocation()
+            })
+            .disposed(by: disposeBag)
+        
+        let startPoint = useCase.currentLocation.map { $0.coordinate }
+        let endPoint = Observable.of((locationInfo.coordx, locationInfo.coordy))
+        
+        let endPointName = Observable.of(locationInfo.name).asDriver(onErrorJustReturn: "")
+        
+        return Output(endPointName: endPointName)
     }
     
     func removeCoordinator() {

@@ -27,7 +27,8 @@ final class DefaultResultCoordinator: Coordinator {
     func start(with info: LocationInfo) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: ResultViewController.self)
-        controller.viewModel = ResultViewModel(coordinator: self)
+        let useCase = DefaultResultUseCase(locationService: LocationService())
+        controller.viewModel = ResultViewModel(coordinator: self, locationInfo: info, useCase: useCase)
         navigationController.pushViewController(controller, animated: true)
     }
     

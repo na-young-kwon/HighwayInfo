@@ -12,7 +12,7 @@ import CoreLocation
 
 final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private var coordinator: DefaultRoadCoordinator
+    private let coordinator: DefaultRoadCoordinator
     let useCase: RoadUseCase
     let searchViewModel: SearchViewModel
     

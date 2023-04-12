@@ -20,8 +20,8 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var startLabel: UILabel!
-    @IBOutlet weak var destinationLabel: UILabel!
+    @IBOutlet weak var startPointLabel: UILabel!
+    @IBOutlet weak var endPointLabel: UILabel!
     
     var viewModel: ResultViewModel!
     private var cardViewController:CardViewController!
@@ -29,22 +29,21 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
     private let disposeBag = DisposeBag()
     
-    private var nextState: CardState {
-        return cardVisible ? .collapsed : .expanded
-    }
-    
     private var startCardHeight: CGFloat = 0
     private var endCardHeight: CGFloat = 0
     private var cardVisible = false
-    
     private var runningAnimations: [UIViewPropertyAnimator] = []
     private var animationProgressWhenInterrupted: CGFloat = 0
+    private var nextState: CardState {
+        return cardVisible ? .collapsed : .expanded
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureMapView()
         setupCard()
+        bindViewModel()
     }
     
     private func configureMapView() {
@@ -57,7 +56,6 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     private func setupCard() {
         startCardHeight = self.view.frame.height * 0.3
         endCardHeight = self.view.frame.height * 0.85
-        
         cardViewController = CardViewController(nibName: CardViewController.reuseID, bundle: nil)
         self.view.addSubview(cardViewController.view)
         self.cardViewController.view.layer.cornerRadius = 30
@@ -68,10 +66,25 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         
         let panGestureRecognizer = UIPanGestureRecognizer(target: self,
                                                           action: #selector(handleCardPan(recognizer:)))
-        
         cardViewController.view.addGestureRecognizer(panGestureRecognizer)
     }
     
+    private func bindViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
+        let input = ResultViewModel.Input(viewWillAppear: viewWillAppear)
+        let output = viewModel.transform(input: input)
+        
+        output.endPointName
+            .drive(endPointLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    deinit {
+        viewModel.removeCoordinator()
+    }
+}
+
+extension ResultViewController {
     @objc func handleCardPan(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
@@ -111,7 +124,6 @@ class ResultViewController: UIViewController, TMapViewDelegate {
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.startCardHeight
                 }
             }
-            
             frameAnimator.addCompletion { _ in
                 self.cardVisible = !self.cardVisible
                 self.runningAnimations.removeAll()
@@ -137,9 +149,5 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         for animator in runningAnimations {
             animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
         }
-    }
-    
-    deinit {
-        viewModel.removeCoordinator()
     }
 }
