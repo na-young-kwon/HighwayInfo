@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class DefaultResultCoordinator: Coordinator {
     var navigationController: UINavigationController
@@ -24,11 +25,15 @@ final class DefaultResultCoordinator: Coordinator {
         navigationController.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    func start(with info: LocationInfo) {
+    func start(with info: LocationInfo, currentLocation: CLLocationCoordinate2D) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: ResultViewController.self)
-        let useCase = DefaultResultUseCase(locationService: LocationService())
-        controller.viewModel = ResultViewModel(coordinator: self, locationInfo: info, useCase: useCase)
+        let useCase = DefaultResultUseCase()
+        controller.viewModel = ResultViewModel(coordinator: self,
+                                               locationInfo: info,
+                                               useCase: useCase,
+                                               currentLocation: currentLocation
+        )
         navigationController.pushViewController(controller, animated: true)
     }
     

@@ -31,16 +31,19 @@ final class SearchViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        Observable.combineLatest(input.currentLocation, input.searchKeyword)
+        let coordinate = input.currentLocation.compactMap { $0 }.share()
+        let searchKeyword = input.searchKeyword.compactMap { $0 }
+        let selectedLocation = input.itemSelected.compactMap { $0 }
+        
+        Observable.combineLatest(coordinate, searchKeyword)
             .subscribe(onNext: { coordinate, keyword in
                 self.useCase.fetchResult(for: keyword, coordinate: coordinate)
             })
             .disposed(by: disposeBag)
         
-        input.itemSelected
-            .compactMap { $0 }
-            .subscribe(onNext: { locationInfo in
-                self.coordinator.toResultView(with: locationInfo)
+        Observable.combineLatest(coordinate, selectedLocation)
+            .subscribe(onNext: { coordinate, currentLocation in
+                self.coordinator.toResultView(with: currentLocation, currentLocation: coordinate)
             })
             .disposed(by: disposeBag)
             

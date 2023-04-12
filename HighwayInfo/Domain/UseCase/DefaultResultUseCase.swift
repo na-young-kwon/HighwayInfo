@@ -12,15 +12,13 @@ import CoreLocation
 
 final class DefaultResultUseCase: ResultUseCase {
     var currentLocation = PublishSubject<CLLocation>()
-    private let locationService: LocationService
     private let disposeBag = DisposeBag()
     
-    init(locationService: LocationService) {
-        self.locationService = locationService
+    init() {
     }
     
     func observeLocation() {
-        return locationService.currentLocation()
+        return LocationService.shared.currentLocation()
             .compactMap { $0.last }
             .subscribe(onNext: { [weak self] location in
                 self?.currentLocation.onNext(location)

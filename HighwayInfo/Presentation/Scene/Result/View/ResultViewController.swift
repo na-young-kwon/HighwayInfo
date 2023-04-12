@@ -29,6 +29,10 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
     private let disposeBag = DisposeBag()
     
+    //TMap
+    var markers: Array<TMapMarker> = []
+    
+    // CardView
     private var startCardHeight: CGFloat = 0
     private var endCardHeight: CGFloat = 0
     private var cardVisible = false
@@ -54,7 +58,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     }
     
     private func setupCard() {
-        startCardHeight = self.view.frame.height * 0.3
+        startCardHeight = self.view.frame.height * 0.1
         endCardHeight = self.view.frame.height * 0.85
         cardViewController = CardViewController(nibName: CardViewController.reuseID, bundle: nil)
         self.view.addSubview(cardViewController.view)
@@ -77,6 +81,27 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         output.endPointName
             .drive(endPointLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        output.markerPoint
+            .subscribe(onNext: { (startPoint, endPoint) in
+                let startMarker = TMapMarker(position: startPoint)
+                let endMarker = TMapMarker(position: endPoint)
+                startMarker.map = self.mapView
+                endMarker.map = self.mapView
+                self.fitMapBoundsWithRectangles(startPoint: startPoint, endPoint: endPoint)
+            })
+            .disposed(by: disposeBag)
+        
+    }
+    
+    private func fitMapBoundsWithRectangles(startPoint: CLLocationCoordinate2D, endPoint: CLLocationCoordinate2D) {
+        let ne = CLLocationCoordinate2D(latitude: endPoint.latitude - 0.3, longitude: endPoint.longitude + 0.3)
+        let sw = CLLocationCoordinate2D(latitude: startPoint.latitude + 0.3, longitude: startPoint.longitude - 0.3)
+        let rectangle = TMapRectangle(rectangle: MapBounds(sw: sw, ne: ne))
+        rectangle.fillColor = .clear
+        rectangle.strokeColor = .clear
+        rectangle.map = self.mapView
+        self.mapView?.fitMapBoundsWithRectangles([rectangle])
     }
     
     deinit {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class DefaultSearchCoordinator: Coordinator {
     var navigationController: UINavigationController
@@ -18,13 +19,13 @@ final class DefaultSearchCoordinator: Coordinator {
     func start() {
     }
     
-    func toResultView(with info: LocationInfo) {
+    func toResultView(with info: LocationInfo, currentLocation: CLLocationCoordinate2D) {
         let resultCoordinator = DefaultResultCoordinator(
             navigationController: navigationController,
             parentCoordinator: self
         )
         childCoordinators.append(resultCoordinator)
         resultCoordinator.start()
-        resultCoordinator.start(with: info)
+        resultCoordinator.start(with: info, currentLocation: currentLocation)
     }
 }
