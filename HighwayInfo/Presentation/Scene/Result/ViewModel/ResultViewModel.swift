@@ -24,6 +24,7 @@ final class ResultViewModel: ViewModelType {
     struct Output {
         let markerPoint: Observable<(CLLocationCoordinate2D, CLLocationCoordinate2D)>
         let endPointName: Driver<String>
+        let path: Observable<[CLLocationCoordinate2D]>
     }
     
     init(coordinator: DefaultResultCoordinator, locationInfo: LocationInfo, useCase: ResultUseCase, currentLocation: CLLocationCoordinate2D) {
@@ -36,7 +37,7 @@ final class ResultViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.viewWillAppear
             .subscribe(onNext: { _ in
-                self.useCase.observeLocation()
+                self.useCase.searchRoute()
             })
             .disposed(by: disposeBag)
         
@@ -44,7 +45,8 @@ final class ResultViewModel: ViewModelType {
                                                 longitude: Double(locationInfo.coordx) ?? 0)
         let endPointName = Observable.of(locationInfo.name).asDriver(onErrorJustReturn: "")
         let markerPoint = Observable.of((currentLocation, coordinate))
-        return Output(markerPoint: markerPoint, endPointName: endPointName)
+        let path = useCase.path.asObservable()
+        return Output(markerPoint: markerPoint, endPointName: endPointName, path: path)
     }
     
     func removeCoordinator() {

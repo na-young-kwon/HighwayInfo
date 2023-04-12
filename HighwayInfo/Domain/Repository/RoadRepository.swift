@@ -11,4 +11,5 @@ import CoreLocation
 
 protocol RoadRepository {
     func fetchSearchResult(for: String, coordinate: CLLocationCoordinate2D) -> Observable<SearchResultDTO>
+    func fetchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) -> Observable<RouteDTO>
 }

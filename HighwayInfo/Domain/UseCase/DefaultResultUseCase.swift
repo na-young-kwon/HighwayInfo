@@ -11,18 +11,20 @@ import RxRelay
 import CoreLocation
 
 final class DefaultResultUseCase: ResultUseCase {
-    var currentLocation = PublishSubject<CLLocation>()
     private let disposeBag = DisposeBag()
+    var path = PublishSubject<[CLLocationCoordinate2D]>()
     
     init() {
     }
     
-    func observeLocation() {
-        return LocationService.shared.currentLocation()
-            .compactMap { $0.last }
-            .subscribe(onNext: { [weak self] location in
-                self?.currentLocation.onNext(location)
-            })
-            .disposed(by: disposeBag)
+    func searchRoute() {
+        let position = CLLocationCoordinate2D(latitude: 37.57084, longitude: 126.985302)
+        var path = Array<CLLocationCoordinate2D>()
+        path.append(CLLocationCoordinate2D(latitude: position.latitude - 0.001, longitude: position.longitude - 0.001))
+        path.append(CLLocationCoordinate2D(latitude: position.latitude + 0.001, longitude: position.longitude - 0.0005))
+        path.append(CLLocationCoordinate2D(latitude: position.latitude, longitude: position.longitude))
+        path.append(CLLocationCoordinate2D(latitude: position.latitude + 0.001, longitude: position.longitude + 0.0005))
+        path.append(CLLocationCoordinate2D(latitude: position.latitude - 0.001, longitude: position.longitude + 0.001))
+        self.path.onNext(path)
     }
 }

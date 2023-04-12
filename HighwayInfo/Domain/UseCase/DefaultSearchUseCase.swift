@@ -35,5 +35,4 @@ final class DefaultSearchUseCase: SearchUseCase {
             })
             .disposed(by: disposeBag)
     }
-    
 }

@@ -10,6 +10,6 @@ import RxSwift
 import CoreLocation
 
 protocol ResultUseCase {
-    var currentLocation: PublishSubject<CLLocation> { get }
-    func observeLocation()
+    var path: PublishSubject<[CLLocationCoordinate2D]> { get }
+    func searchRoute()
 }

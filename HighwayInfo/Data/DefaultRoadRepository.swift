@@ -17,9 +17,10 @@ final class DefaultRoadRepository: RoadRepository {
     }
     
     func fetchSearchResult(for keyword: String, coordinate: CLLocationCoordinate2D) -> Observable<SearchResultDTO> {
-        let request = SearchRequest(searchKeyword: keyword,
-                                    longitude: coordinate.longitude,
-                                    latitude: coordinate.latitude)
-        return service.apiProvider.performDataTask(with: request, decodeType: .json)
+        service.fetchSearchResult(for: keyword, coordinate: coordinate)
+    }
+    
+    func fetchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) -> Observable<RouteDTO> {
+        service.fetchRoute(for: point)
     }
 }

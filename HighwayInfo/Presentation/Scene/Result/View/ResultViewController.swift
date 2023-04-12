@@ -92,6 +92,14 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             })
             .disposed(by: disposeBag)
         
+        output.path
+            .subscribe(onNext: { path in
+                let polyline = TMapPolyline(coordinates: path)
+                polyline.strokeWidth = 4
+                polyline.strokeColor = .red
+                polyline.map = self.mapView
+            })
+            .disposed(by: disposeBag)
     }
     
     private func fitMapBoundsWithRectangles(startPoint: CLLocationCoordinate2D, endPoint: CLLocationCoordinate2D) {

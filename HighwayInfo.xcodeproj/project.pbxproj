@@ -70,6 +70,8 @@
 		3B97E47229E53F2C000F4B39 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47129E53F2C000F4B39 /* ResultViewModel.swift */; };
 		3B97E47429E55704000F4B39 /* DefaultResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47329E55704000F4B39 /* DefaultResultUseCase.swift */; };
 		3B97E47629E5572A000F4B39 /* ResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47529E5572A000F4B39 /* ResultUseCase.swift */; };
+		3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */; };
+		3B97E47A29E6DDC4000F4B39 /* RouteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */; };
 		3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC11C7429DF263D000B0290 /* RoadUseCase.swift */; };
 		3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
@@ -160,6 +162,8 @@
 		3B97E47129E53F2C000F4B39 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		3B97E47329E55704000F4B39 /* DefaultResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResultUseCase.swift; sourceTree = "<group>"; };
 		3B97E47529E5572A000F4B39 /* ResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUseCase.swift; sourceTree = "<group>"; };
+		3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRequest.swift; sourceTree = "<group>"; };
+		3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDTO.swift; sourceTree = "<group>"; };
 		3BC11C7429DF263D000B0290 /* RoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoadUseCase.swift; path = ../RoadUseCase.swift; sourceTree = "<group>"; };
 		3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVService.swift; sourceTree = "<group>"; };
 		3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRequest.swift; sourceTree = "<group>"; };
@@ -340,7 +344,7 @@
 				3B8F085D29B872EF009D7396 /* Protocol */,
 				3BD4EE9629C1CED50010FB25 /* Accident */,
 				3BD4EE9729C1CFF10010FB25 /* CCTV */,
-				3B6CF36F29D31523002289A0 /* Road */,
+				3B6CF36F29D31523002289A0 /* Tmap */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -421,13 +425,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		3B6CF36F29D31523002289A0 /* Road */ = {
+		3B6CF36F29D31523002289A0 /* Tmap */ = {
 			isa = PBXGroup;
 			children = (
 				3B6CF37029D31544002289A0 /* RoadService.swift */,
 				3B3CD27929DEFC6300D223AC /* SearchRequest.swift */,
+				3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */,
 			);
-			path = Road;
+			path = Tmap;
 			sourceTree = "<group>";
 		};
 		3B6CF37629D317DD002289A0 /* Protocol */ = {
@@ -483,6 +488,7 @@
 				3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */,
 				3BD4EEA629C980580010FB25 /* CCTVParser.swift */,
 				3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */,
+				3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -716,6 +722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */,
+				3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */,
 				3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */,
 				3B97E47629E5572A000F4B39 /* ResultUseCase.swift in Sources */,
 				3B97E47429E55704000F4B39 /* DefaultResultUseCase.swift in Sources */,
@@ -745,6 +752,7 @@
 				3B97E47229E53F2C000F4B39 /* ResultViewModel.swift in Sources */,
 				3B8F086E29B9C1F6009D7396 /* Observable+Extension.swift in Sources */,
 				3BD4EEA329C1F5C50010FB25 /* DefaultCCTVRepository.swift in Sources */,
+				3B97E47A29E6DDC4000F4B39 /* RouteDTO.swift in Sources */,
 				3B63BAB229B76C1E0055D3A4 /* DefaultAPIProvider.swift in Sources */,
 				3B63BABB29B84C5C0055D3A4 /* AccidentRepository.swift in Sources */,
 				3B7399F829DC34C200B5D1FF /* UIView+Extension.swift in Sources */,
