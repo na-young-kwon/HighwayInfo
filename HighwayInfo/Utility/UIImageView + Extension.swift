@@ -10,12 +10,12 @@ import UIKit
 extension UIImageView {
     func loadFrom(url: String?) {
         guard let url = url, let url = URL(string: url) else {
-            self.image = UIImage(named: "forbidden")
+            self.image = nil
             return
         }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let imageData = data else {
-                self.image = UIImage(named: "forbidden")
+                self.image = nil
                 return
             }
             DispatchQueue.main.async {
