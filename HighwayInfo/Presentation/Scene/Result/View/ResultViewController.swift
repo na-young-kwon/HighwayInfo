@@ -93,11 +93,12 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             .disposed(by: disposeBag)
         
         output.path
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { path in
-                let polyline = TMapPolyline(coordinates: path)
-                polyline.strokeWidth = 4
-                polyline.strokeColor = .red
-                polyline.map = self.mapView
+                let polyLine = TMapPolyline(coordinates: path)
+                polyLine.strokeWidth = 5
+                polyLine.strokeColor = .red
+                polyLine.map = self.mapView
             })
             .disposed(by: disposeBag)
     }

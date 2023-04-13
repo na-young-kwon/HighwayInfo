@@ -40,6 +40,15 @@ enum Coordinate: Decodable {
         }
         throw DecodingError.typeMismatch(Coordinate.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Coordinate"))
     }
+    
+    var point: Double? {
+        switch self {
+        case .double(let double):
+            return double
+        case .doubleArray(_):
+            return nil
+        }
+    }
 }
 
 struct Properties: Decodable {

@@ -20,21 +20,16 @@ final class DefaultResultUseCase: ResultUseCase {
     }
     
     func searchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) {
-        roadRepository.fetchRoute(for: point)
+        let result = roadRepository.fetchRoute(for: point).map { $0.features.flatMap { $0.geometry.coordinates }}
+        result
+            .map { $0.compactMap { $0.point } }
             .subscribe(onNext: { route in
-                print(route)
+                let latitude = route.filter { $0 < 100 }
+                let longitude = route.filter { $0 > 100 }
+                let coordinate = zip(latitude, longitude)
+                let path = coordinate.map { CLLocationCoordinate2D(latitude: $0.0, longitude: $0.1)}
+                self.path.onNext(path)
             })
             .disposed(by: disposeBag)
-    }
-    
-    func searchRoute() {
-        let position = CLLocationCoordinate2D(latitude: 37.57084, longitude: 126.985302)
-        var path = Array<CLLocationCoordinate2D>()
-        path.append(CLLocationCoordinate2D(latitude: position.latitude - 0.001, longitude: position.longitude - 0.001))
-        path.append(CLLocationCoordinate2D(latitude: position.latitude + 0.001, longitude: position.longitude - 0.0005))
-        path.append(CLLocationCoordinate2D(latitude: position.latitude, longitude: position.longitude))
-        path.append(CLLocationCoordinate2D(latitude: position.latitude + 0.001, longitude: position.longitude + 0.0005))
-        path.append(CLLocationCoordinate2D(latitude: position.latitude - 0.001, longitude: position.longitude + 0.001))
-        self.path.onNext(path)
     }
 }

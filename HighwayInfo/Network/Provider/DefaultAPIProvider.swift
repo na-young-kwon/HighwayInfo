@@ -83,7 +83,6 @@ final class DefaultAPIProvider: APIProvider {
         return Observable.create { observer in
             let request = self.createRequestPost(of: url,
                                                  with: ["Content-Type": "application/json",
-                                                        "Accept": "application/json",
                                                         "appKey": "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"],
                                                  httpMethod: .post,
                                                  with: httpBody)
