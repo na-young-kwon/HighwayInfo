@@ -11,10 +11,20 @@ import RxRelay
 import CoreLocation
 
 final class DefaultResultUseCase: ResultUseCase {
+    private let roadRepository: RoadRepository
     private let disposeBag = DisposeBag()
     var path = PublishSubject<[CLLocationCoordinate2D]>()
     
-    init() {
+    init(roadRepository: RoadRepository) {
+        self.roadRepository = roadRepository
+    }
+    
+    func searchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) {
+        roadRepository.fetchRoute(for: point)
+            .subscribe(onNext: { route in
+                print(route)
+            })
+            .disposed(by: disposeBag)
     }
     
     func searchRoute() {

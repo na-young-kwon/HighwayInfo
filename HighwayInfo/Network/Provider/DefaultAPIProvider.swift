@@ -76,15 +76,17 @@ final class DefaultAPIProvider: APIProvider {
     }
     
     func performPostDataTask<T: APIRequest>(_ data: Encodable, with requestType: T) -> Observable<T.Response> {
+        guard let url = requestType.url,
+              let httpBody = self.createPostPayload(from: data) else {
+            return Observable.error(NetworkingError.invalidRequest)
+        }
         return Observable.create { observer in
-            guard let url = requestType.url,
-                  let httpBody = self.createPostPayload(from: data) else {
-                observer.onError(NetworkingError.invalidRequest)
-                return Disposables.create()
-            }
-            // 이부분 개선하기
-            let request = self.createRequestPost(of: url, with: ["appKey": "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"], httpMethod: .post, with: httpBody)
-            
+            let request = self.createRequestPost(of: url,
+                                                 with: ["Content-Type": "application/json",
+                                                        "Accept": "application/json",
+                                                        "appKey": "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"],
+                                                 httpMethod: .post,
+                                                 with: httpBody)
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if error != nil {
                     observer.onError(NetworkingError.serverError)
@@ -117,9 +119,6 @@ final class DefaultAPIProvider: APIProvider {
 
 private extension DefaultAPIProvider {
     func createPostPayload(from requestBody: Encodable) -> Data? {
-        if let data = requestBody as? Data {
-            return data
-        }
         return try? JSONEncoder().encode(requestBody)
     }
     

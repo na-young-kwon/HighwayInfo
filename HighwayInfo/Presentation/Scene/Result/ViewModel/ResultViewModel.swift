@@ -37,15 +37,21 @@ final class ResultViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.viewWillAppear
             .subscribe(onNext: { _ in
-                self.useCase.searchRoute()
+               
             })
             .disposed(by: disposeBag)
         
-        let coordinate = CLLocationCoordinate2D(latitude: Double(locationInfo.coordy) ?? 0,
+        let endPoint = CLLocationCoordinate2D(latitude: Double(locationInfo.coordy) ?? 0,
                                                 longitude: Double(locationInfo.coordx) ?? 0)
         let endPointName = Observable.of(locationInfo.name).asDriver(onErrorJustReturn: "")
-        let markerPoint = Observable.of((currentLocation, coordinate))
+        let markerPoint = Observable.of((currentLocation, endPoint)).share()
         let path = useCase.path.asObservable()
+        
+        markerPoint.subscribe(onNext: { point in
+            self.useCase.searchRoute(for: point)
+        })
+        .disposed(by: disposeBag)
+        
         return Output(markerPoint: markerPoint, endPointName: endPointName, path: path)
     }
     

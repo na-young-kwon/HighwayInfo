@@ -14,6 +14,9 @@ struct RouteCoordinate: Encodable {
     let startY: String
     let endX: String
     let endY: String
+//    let searchOption = "4"
+//    let trafficInfo = "Y"
+//    let mainRoadInfo = "Y"
 }
 
 final class RoadService {
@@ -39,4 +42,3 @@ final class RoadService {
         return apiProvider.performPostDataTask(data, with: request)
     }
 }
-
