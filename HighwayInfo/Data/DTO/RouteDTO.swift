@@ -13,15 +13,21 @@ struct RouteDTO: Decodable {
 }
 
 struct Feature: Decodable {
-    let type: String
+    let type: FeatureType
     let geometry: Geometry
     let properties: Properties
 }
-
+enum FeatureType: String, Codable {
+    case feature = "Feature"
+}
 struct Geometry: Decodable {
-    let type: String
+    let type: GeometryType
     let coordinates: [Coordinate]
-//    let traffic: [[Int]]?
+}
+
+enum GeometryType: String, Codable {
+    case lineString = "LineString"
+    case point = "Point"
 }
 
 enum Coordinate: Decodable {
@@ -52,10 +58,11 @@ enum Coordinate: Decodable {
 }
 
 struct Properties: Decodable {
-    let index: Int
-    let name, description: String
-    let nextRoadName, pointType: String?
+    let index: Int?
+    let name: String
+    let nextRoadName, pointType, description: String?
     let totalDistance, totalTime, totalFare: Int?
     let taxiFare, pointIndex, turnType, lineIndex: Int?
     let distance, time, roadType, facilityType: Int?
+    let departIdx, destIdx: Int?
 }

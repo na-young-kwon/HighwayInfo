@@ -14,9 +14,8 @@ struct RouteCoordinate: Encodable {
     let startY: String
     let endX: String
     let endY: String
-//    let searchOption = "4"
-//    let trafficInfo = "Y"
-//    let mainRoadInfo = "Y"
+    let searchOption = "4"
+    let mainRoadInfo = "Y"
 }
 
 final class RoadService {
