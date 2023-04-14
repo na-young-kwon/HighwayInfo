@@ -83,11 +83,16 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             .disposed(by: disposeBag)
         
         output.markerPoint
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { (startPoint, endPoint) in
                 let startMarker = TMapMarker(position: startPoint)
                 let endMarker = TMapMarker(position: endPoint)
-                startMarker.map = self.mapView
+                
                 endMarker.map = self.mapView
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 50))
+                label.text = "좌측"
+                startMarker.leftCalloutView = label
+                startMarker.map = self.mapView
                 self.fitMapBoundsWithRectangles(startPoint: startPoint, endPoint: endPoint)
             })
             .disposed(by: disposeBag)
@@ -101,6 +106,27 @@ class ResultViewController: UIViewController, TMapViewDelegate {
                 polyLine.map = self.mapView
             })
             .disposed(by: disposeBag)
+
+        output.highwayInfo
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { info in
+                self.showCustomMarker(with: info)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showCustomMarker(with info: [HighwayInfo]) {
+        info.forEach { info in
+            let marker = TMapCustomMarker(position: info.coordinate)
+            marker.offset = CGSize(width: 0, height: 0)
+
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+            view.layer.cornerRadius = 10
+            view.backgroundColor = .orange
+
+            marker.view = view
+            marker.map = self.mapView
+        }
     }
     
     private func fitMapBoundsWithRectangles(startPoint: CLLocationCoordinate2D, endPoint: CLLocationCoordinate2D) {
