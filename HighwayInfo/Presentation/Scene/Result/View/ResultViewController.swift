@@ -78,6 +78,14 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         let input = ResultViewModel.Input(viewWillAppear: viewWillAppear)
         let output = viewModel.transform(input: input)
         
+        bindingOutput(for: output)
+    }
+    
+    private func bindingOutput(for output: ResultViewModel.Output) {
+        output.startPointName
+            .drive(endPointLabel.rx.text)
+            .disposed(by: disposeBag)
+        
         output.endPointName
             .drive(endPointLabel.rx.text)
             .disposed(by: disposeBag)
@@ -102,7 +110,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
                 polyLine.map = self.mapView
             })
             .disposed(by: disposeBag)
-
+        
         output.highwayInfo
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { info in
@@ -111,11 +119,17 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             .disposed(by: disposeBag)
     }
     
+    deinit {
+        viewModel.removeCoordinator()
+    }
+}
+
+extension ResultViewController {
     private func showCustomMarker(with info: [HighwayInfo]) {
         info.forEach { info in
             let marker = TMapCustomMarker(position: info.coordinate)
             marker.offset = CGSize(width: 0, height: 0)
-
+            
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
             view.layer.cornerRadius = 10
             view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
@@ -126,7 +140,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             view.addSubview(label)
             label.centerX(inView: view)
             label.centerY(inView: view)
-          
+            
             marker.view = view
             marker.map = self.mapView
         }
@@ -142,12 +156,6 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         self.mapView?.fitMapBoundsWithRectangles([rectangle])
     }
     
-    deinit {
-        viewModel.removeCoordinator()
-    }
-}
-
-extension ResultViewController {
     @objc func handleCardPan(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:

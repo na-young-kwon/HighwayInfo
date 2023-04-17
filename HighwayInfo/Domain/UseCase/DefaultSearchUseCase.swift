@@ -84,6 +84,8 @@ final class DefaultSearchUseCase: SearchUseCase {
                 if element.0.count > 0 {
                     let highwayInfo = self.makeHighwayInfo(element: element)
                     self.highwayInfo.onNext(highwayInfo)
+                } else {
+                    self.highwayInfo.onNext([])
                 }
             })
             .disposed(by: disposeBag)
