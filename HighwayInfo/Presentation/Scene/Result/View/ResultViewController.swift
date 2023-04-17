@@ -87,11 +87,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             .subscribe(onNext: { (startPoint, endPoint) in
                 let startMarker = TMapMarker(position: startPoint)
                 let endMarker = TMapMarker(position: endPoint)
-                
                 endMarker.map = self.mapView
-                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 50))
-                label.text = "좌측"
-                startMarker.leftCalloutView = label
                 startMarker.map = self.mapView
                 self.fitMapBoundsWithRectangles(startPoint: startPoint, endPoint: endPoint)
             })
@@ -101,8 +97,8 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { path in
                 let polyLine = TMapPolyline(coordinates: path)
-                polyLine.strokeWidth = 5
-                polyLine.strokeColor = .red
+                polyLine.strokeWidth = 6
+                polyLine.strokeColor = UIColor(named: "MainBlue")
                 polyLine.map = self.mapView
             })
             .disposed(by: disposeBag)
@@ -120,10 +116,17 @@ class ResultViewController: UIViewController, TMapViewDelegate {
             let marker = TMapCustomMarker(position: info.coordinate)
             marker.offset = CGSize(width: 0, height: 0)
 
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
             view.layer.cornerRadius = 10
-            view.backgroundColor = .orange
-
+            view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            let label = UILabel(frame: CGRect(x: 5, y: 5, width: 90, height: 20))
+            label.text = info.name
+            label.textColor = .white
+            label.font = .systemFont(ofSize: 13)
+            view.addSubview(label)
+            label.centerX(inView: view)
+            label.centerY(inView: view)
+          
             marker.view = view
             marker.map = self.mapView
         }
