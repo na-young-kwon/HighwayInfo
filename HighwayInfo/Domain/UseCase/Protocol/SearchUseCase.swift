@@ -11,5 +11,7 @@ import CoreLocation
 
 protocol SearchUseCase {
     var searchResult: PublishSubject<[LocationInfo]> { get }
+    var route: PublishSubject<Route> { get }
     func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?)
+    func searchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D))
 }

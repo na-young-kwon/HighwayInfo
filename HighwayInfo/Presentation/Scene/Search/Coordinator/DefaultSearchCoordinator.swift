@@ -19,13 +19,13 @@ final class DefaultSearchCoordinator: Coordinator {
     func start() {
     }
     
-    func toResultView(with info: LocationInfo, currentLocation: CLLocationCoordinate2D) {
+    func toResultView(with route: Route) {
         let resultCoordinator = DefaultResultCoordinator(
             navigationController: navigationController,
             parentCoordinator: self
         )
         childCoordinators.append(resultCoordinator)
         resultCoordinator.start()
-        resultCoordinator.start(with: info, currentLocation: currentLocation)
+        resultCoordinator.start(with: route)
     }
 }

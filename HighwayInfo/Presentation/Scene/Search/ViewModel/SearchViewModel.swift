@@ -31,22 +31,33 @@ final class SearchViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let coordinate = input.currentLocation.compactMap { $0 }.share()
+        let currentCoordinate = input.currentLocation.compactMap { $0 }.share()
         let searchKeyword = input.searchKeyword.compactMap { $0 }
-        let selectedLocation = input.itemSelected.compactMap { $0 }
+        let selectedLocationInfo = input.itemSelected.compactMap { $0 }
         
-        Observable.combineLatest(coordinate, searchKeyword)
+        let output = Output(searchResult: useCase.searchResult.asObservable())
+        Observable.combineLatest(currentCoordinate, searchKeyword)
             .subscribe(onNext: { coordinate, keyword in
                 self.useCase.fetchResult(for: keyword, coordinate: coordinate)
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(coordinate, selectedLocation)
-            .subscribe(onNext: { coordinate, currentLocation in
-                self.coordinator.toResultView(with: currentLocation, currentLocation: coordinate)
+        Observable.combineLatest(currentCoordinate, selectedLocationInfo)
+            .subscribe(onNext: { startPoint, selectedLocationInfo in
+                let endPoint = CLLocationCoordinate2D(latitude: Double(selectedLocationInfo.coordy) ?? 0,
+                                                      longitude: Double(selectedLocationInfo.coordx) ?? 0)
+                let markerPoint = (startPoint, endPoint)
+                self.useCase.searchRoute(for: markerPoint)
             })
             .disposed(by: disposeBag)
-            
-        return Output(searchResult: useCase.searchResult.asObservable())
+
+        useCase.route
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { route in
+                self.coordinator.toResultView(with: route)
+            })
+            .disposed(by: disposeBag)
+        
+        return output
     }
 }

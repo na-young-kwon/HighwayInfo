@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import CoreLocation
+import Lottie
 
 protocol SearchViewDelegate: AnyObject {
     func dismissSearchView()
@@ -27,7 +28,14 @@ class SearchView: UIView {
     }
     weak var delegate: SearchViewDelegate?
     private let disposeBag = DisposeBag()
+    private let tableView = UITableView()
     private var dataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
+    private var loadingIndicator: LottieAnimationView = {
+        let animation = LottieAnimation.named("GrayLoadingIndicator")
+        let view = LottieAnimationView(animation: animation)
+        view.loopMode = .loop
+        return view
+    }()
     
     lazy var textField: UITextField = {
         let textField = UITextField()
@@ -57,8 +65,6 @@ class SearchView: UIView {
         return button
     }()
     
-    private let tableView = UITableView()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -73,6 +79,9 @@ class SearchView: UIView {
     
     private func configureUI() {
         hideKeyboardWhenTappedAround()
+//        addSubview(loadingIndicator)
+//        loadingIndicator.centerX(inView: self)
+//        loadingIndicator.centerY(inView: self)
         backgroundColor = .white
         addSubview(textField)
         addSubview(backButton)
@@ -118,6 +127,7 @@ class SearchView: UIView {
         
         tableView.rx.itemSelected.subscribe(onNext: { index in
             let location = self.dataSource.itemIdentifier(for: index)
+            self.showLoadingIndicator()
             selectedLocation.onNext(location)
         })
         .disposed(by: disposeBag)
@@ -136,5 +146,14 @@ class SearchView: UIView {
         var snapShot = dataSource.snapshot()
         snapShot.deleteAllItems()
         dataSource.apply(snapShot)
+    }
+    
+    private func showLoadingIndicator() {
+        addSubview(loadingIndicator)
+        loadingIndicator.centerX(inView: self)
+        loadingIndicator.centerY(inView: self)
+        loadingIndicator.play { finished in
+            self.loadingIndicator.removeFromSuperview()
+        }
     }
 }

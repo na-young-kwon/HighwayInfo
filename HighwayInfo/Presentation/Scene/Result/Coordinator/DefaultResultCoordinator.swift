@@ -25,14 +25,13 @@ final class DefaultResultCoordinator: Coordinator {
         navigationController.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    func start(with info: LocationInfo, currentLocation: CLLocationCoordinate2D) {
+    func start(with route: Route) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: ResultViewController.self)
         let useCase = DefaultResultUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider())))
         controller.viewModel = ResultViewModel(coordinator: self,
-                                               locationInfo: info,
-                                               useCase: useCase,
-                                               currentLocation: currentLocation
+                                               route: route,
+                                               useCase: useCase
         )
         navigationController.pushViewController(controller, animated: true)
     }
