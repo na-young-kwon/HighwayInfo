@@ -439,9 +439,9 @@
 			isa = PBXGroup;
 			children = (
 				3B6CF37029D31544002289A0 /* RoadService.swift */,
-				3B97E48329ED6BF6000F4B39 /* AddressRequest.swift */,
 				3B3CD27929DEFC6300D223AC /* SearchRequest.swift */,
 				3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */,
+				3B97E48329ED6BF6000F4B39 /* AddressRequest.swift */,
 			);
 			path = Tmap;
 			sourceTree = "<group>";

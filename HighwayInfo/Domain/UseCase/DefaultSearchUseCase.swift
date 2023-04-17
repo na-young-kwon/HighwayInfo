@@ -39,13 +39,14 @@ final class DefaultSearchUseCase: SearchUseCase {
             .disposed(by: disposeBag)
     }
     
-    func searchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D), endPointName: String) {
+    func searchRoute(for point: (start: CLLocationCoordinate2D, end: CLLocationCoordinate2D), endPointName: String) {
         fetchPath(for: point)
         fetchHighway(for: point)
+       let currentLocation = roadRepository.fetchStartPointName(for: point.start)
         
-        Observable.zip(path, highwayInfo)
-            .subscribe(onNext: { path, highwayInfo in
-                let route = Route(startPointName: "리팩터링",
+        Observable.zip(path, highwayInfo, currentLocation)
+            .subscribe(onNext: { path, highwayInfo, startPointName in
+                let route = Route(startPointName: startPointName,
                                   endPointName: endPointName,
                                   path: path,
                                   markerPoint: point,
@@ -82,7 +83,7 @@ final class DefaultSearchUseCase: SearchUseCase {
         Observable.zip(names, coordinates)
             .subscribe(onNext: { element in
                 if element.0.count > 0 {
-                    let highwayInfo = self.makeHighwayInfo(element: element)
+                    let highwayInfo = self.makeHighwayInfo(names: element.0, coordinates: element.1)
                     self.highwayInfo.onNext(highwayInfo)
                 } else {
                     self.highwayInfo.onNext([])
@@ -91,10 +92,10 @@ final class DefaultSearchUseCase: SearchUseCase {
             .disposed(by: disposeBag)
     }
     
-    private func makeHighwayInfo(element: ([String], [[Double]])) -> [HighwayInfo] {
-        let name = Observable.of(element.0)
-        let coordinate = Observable.of(element.1)
-        let index = element.0.count
+    private func makeHighwayInfo(names: [String], coordinates: [[Double]]) -> [HighwayInfo] {
+        let name = Observable.of(names)
+        let coordinate = Observable.of(coordinates)
+        let index = names.count
         var highwayInfo: [HighwayInfo] = []
         
         Observable.zip(name, coordinate)

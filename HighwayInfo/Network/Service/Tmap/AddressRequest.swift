@@ -20,8 +20,8 @@ struct AddressRequest: APIRequest {
     
     var parameters: [String : String] {[
         "version": version,
-        "centerLat": String(latitude),
-        "centerLon": String(longitude),
+        "lat": String(latitude),
+        "lon": String(longitude),
         "appKey": "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
     ]}
 }

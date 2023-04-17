@@ -83,7 +83,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     
     private func bindingOutput(for output: ResultViewModel.Output) {
         output.startPointName
-            .drive(endPointLabel.rx.text)
+            .drive(startPointLabel.rx.text)
             .disposed(by: disposeBag)
         
         output.endPointName
