@@ -40,4 +40,9 @@ final class RoadService {
                                    endY: String(point.1.latitude))
         return apiProvider.performPostDataTask(data, with: request)
     }
+    
+    func fetchStartPointName(for point: CLLocationCoordinate2D) -> Observable<AddressDTO> {
+        let request = AddressRequest(latitude: point.latitude, longitude: point.longitude)
+        return apiProvider.performDataTask(with: request, decodeType: .json)
+    }
 }

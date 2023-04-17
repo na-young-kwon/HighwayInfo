@@ -39,14 +39,14 @@ final class DefaultSearchUseCase: SearchUseCase {
             .disposed(by: disposeBag)
     }
     
-    func searchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) {
+    func searchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D), endPointName: String) {
         fetchPath(for: point)
         fetchHighway(for: point)
         
         Observable.zip(path, highwayInfo)
             .subscribe(onNext: { path, highwayInfo in
                 let route = Route(startPointName: "리팩터링",
-                                  endPointName: "",
+                                  endPointName: endPointName,
                                   path: path,
                                   markerPoint: point,
                                   highwayInfo: highwayInfo)

@@ -74,6 +74,8 @@
 		3B97E47A29E6DDC4000F4B39 /* RouteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */; };
 		3B97E47E29E99200000F4B39 /* HighwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47D29E99200000F4B39 /* HighwayInfo.swift */; };
 		3B97E48229ED5479000F4B39 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E48129ED5479000F4B39 /* Route.swift */; };
+		3B97E48429ED6BF6000F4B39 /* AddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E48329ED6BF6000F4B39 /* AddressRequest.swift */; };
+		3B97E48629ED6C1A000F4B39 /* AddressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E48529ED6C1A000F4B39 /* AddressDTO.swift */; };
 		3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC11C7429DF263D000B0290 /* RoadUseCase.swift */; };
 		3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
@@ -168,6 +170,8 @@
 		3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDTO.swift; sourceTree = "<group>"; };
 		3B97E47D29E99200000F4B39 /* HighwayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighwayInfo.swift; sourceTree = "<group>"; };
 		3B97E48129ED5479000F4B39 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		3B97E48329ED6BF6000F4B39 /* AddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRequest.swift; sourceTree = "<group>"; };
+		3B97E48529ED6C1A000F4B39 /* AddressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDTO.swift; sourceTree = "<group>"; };
 		3BC11C7429DF263D000B0290 /* RoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoadUseCase.swift; path = ../RoadUseCase.swift; sourceTree = "<group>"; };
 		3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVService.swift; sourceTree = "<group>"; };
 		3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRequest.swift; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				3B6CF37029D31544002289A0 /* RoadService.swift */,
+				3B97E48329ED6BF6000F4B39 /* AddressRequest.swift */,
 				3B3CD27929DEFC6300D223AC /* SearchRequest.swift */,
 				3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */,
 			);
@@ -495,6 +500,7 @@
 				3BD4EEA629C980580010FB25 /* CCTVParser.swift */,
 				3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */,
 				3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */,
+				3B97E48529ED6C1A000F4B39 /* AddressDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 				3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */,
 				3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */,
 				3B97E46129E3FE76000F4B39 /* SearchUseCase.swift in Sources */,
+				3B97E48429ED6BF6000F4B39 /* AddressRequest.swift in Sources */,
 				3B63BABF29B860960055D3A4 /* AccidentUseCase.swift in Sources */,
 				3B97E46E29E42580000F4B39 /* CardViewController.swift in Sources */,
 				3B5AD12C29B1FB8200E2AFAA /* TabBarPage.swift in Sources */,
@@ -790,6 +797,7 @@
 				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,
 				3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */,
 				3B8F086529B9BDD1009D7396 /* ActivityIndicator.swift in Sources */,
+				3B97E48629ED6C1A000F4B39 /* AddressDTO.swift in Sources */,
 				3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */,
 				3B97E45529E0028E000F4B39 /* LocationInfo.swift in Sources */,
 				3B63BAB429B7711B0055D3A4 /* AccidentService.swift in Sources */,

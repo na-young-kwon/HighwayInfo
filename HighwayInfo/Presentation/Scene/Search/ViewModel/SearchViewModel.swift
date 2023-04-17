@@ -47,7 +47,7 @@ final class SearchViewModel: ViewModelType {
                 let endPoint = CLLocationCoordinate2D(latitude: Double(selectedLocationInfo.coordy) ?? 0,
                                                       longitude: Double(selectedLocationInfo.coordx) ?? 0)
                 let markerPoint = (startPoint, endPoint)
-                self.useCase.searchRoute(for: markerPoint)
+                self.useCase.searchRoute(for: markerPoint, endPointName: selectedLocationInfo.name)
             })
             .disposed(by: disposeBag)
 
