@@ -27,10 +27,6 @@ class AccidentCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -52,23 +48,5 @@ class AccidentCell: UITableViewCell {
     private func addTapGesture() {
         accidentImageView.addGestureRecognizer(tapGesture)
         accidentImageView.isUserInteractionEnabled = true
-    }
-}
-
-extension UIImageView {
-    func loadFrom(url: String?) {
-        guard let url = url, let url = URL(string: url) else {
-            self.image = UIImage(named: "forbidden")
-            return
-        }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let imageData = data else {
-                self.image = UIImage(named: "forbidden")
-                return
-            }
-            DispatchQueue.main.async {
-                self.image = UIImage(data: imageData)
-            }
-        }.resume()
     }
 }

@@ -9,8 +9,8 @@ import UIKit
 
 final class DefaultRoadCoordinator: Coordinator {
     var navigationController: UINavigationController
-    
     var childCoordinators: [Coordinator] = []
+    var searchViewModel: SearchViewModel?
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -19,7 +19,16 @@ final class DefaultRoadCoordinator: Coordinator {
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: RoadViewController.self)
+        let apiProvider = DefaultAPIProvider()
         
+        let roadUseCase = DefaultRoadUseCase(locationService: LocationService.shared)
+        let searchUseCase = DefaultSearchUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)))
+        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController)
+        searchCoordinator.start()
+        
+        searchViewModel = SearchViewModel(useCase: searchUseCase, coordinator: searchCoordinator)
+        vc.viewModel = RoadViewModel(coordinator: self, useCase: roadUseCase)
+        childCoordinators.append(searchCoordinator)
         navigationController.pushViewController(vc, animated: true)
     }
 }

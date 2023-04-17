@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3CD27229DD519C00D223AC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3CD27129DD519C00D223AC /* TMapSDK.framework */; };
+		3B3CD27329DD519C00D223AC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3CD27129DD519C00D223AC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */; };
+		3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */; };
+		3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27929DEFC6300D223AC /* SearchRequest.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -17,16 +22,12 @@
 		3B5AD13329B2291D00E2AFAA /* AccidentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */; };
 		3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */; };
 		3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13629B32E3900E2AFAA /* ShadowView.swift */; };
-		3B5AD13929B3456F00E2AFAA /* RoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AD13829B3456F00E2AFAA /* RoadCell.xib */; };
-		3B5AD13B29B3457B00E2AFAA /* RoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13A29B3457B00E2AFAA /* RoadCell.swift */; };
-		3B5AD13E29B34BE500E2AFAA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13D29B34BE500E2AFAA /* DetailViewController.swift */; };
 		3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */; };
 		3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */; };
 		3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */; };
 		3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9129B0CFDD00AECF22 /* Main.storyboard */; };
 		3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */; };
 		3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9629B0CFDE00AECF22 /* LaunchScreen.storyboard */; };
-		3B5FAE9C29BDD5DB00FC1772 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FAE9B29BDD5DB00FC1772 /* Route.swift */; };
 		3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA529B767EF0055D3A4 /* APIRequest.swift */; };
 		3B63BAA929B768860055D3A4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA829B768860055D3A4 /* HTTPMethod.swift */; };
 		3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAB29B768D20055D3A4 /* APIProvider.swift */; };
@@ -37,9 +38,13 @@
 		3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABC29B84C8D0055D3A4 /* Accident.swift */; };
 		3B63BABF29B860960055D3A4 /* AccidentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */; };
 		3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAC029B862D30055D3A4 /* DefaultAccidentUseCase.swift */; };
-		3B6CF35129C9CE14002289A0 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF35029C9CE14002289A0 /* info.plist */; };
 		3B6CF36929D2CF0D002289A0 /* GrayLoadingIndicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B6CF36829D2CF0D002289A0 /* GrayLoadingIndicator.json */; };
 		3B6CF36E29D313B0002289A0 /* RoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF36D29D313B0002289A0 /* RoadViewModel.swift */; };
+		3B6CF37129D31544002289A0 /* RoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37029D31544002289A0 /* RoadService.swift */; };
+		3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37429D31571002289A0 /* RoadRepository.swift */; };
+		3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */; };
+		3B7399F629DC2DE600B5D1FF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F529DC2DE600B5D1FF /* SearchView.swift */; };
+		3B7399F829DC34C200B5D1FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */; };
 		3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */; };
 		3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085929B87299009D7396 /* AccidentRequest.swift */; };
 		3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */; };
@@ -49,6 +54,26 @@
 		3B8F086929B9BEB2009D7396 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086829B9BEB2009D7396 /* ViewModelType.swift */; };
 		3B8F086E29B9C1F6009D7396 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */; };
 		3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086F29B9C2C6009D7396 /* AccidentViewModel.swift */; };
+		3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45229DF2756000F4B39 /* DefaultRoadUseCase.swift */; };
+		3B97E45529E0028E000F4B39 /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45429E0028E000F4B39 /* LocationInfo.swift */; };
+		3B97E45729E00397000F4B39 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45629E00397000F4B39 /* SearchResultCell.swift */; };
+		3B97E45929E003A1000F4B39 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B97E45829E003A1000F4B39 /* SearchResultCell.xib */; };
+		3B97E45B29E008A1000F4B39 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45A29E008A1000F4B39 /* UIImageView + Extension.swift */; };
+		3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */; };
+		3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45E29E3CA12000F4B39 /* LocationService.swift */; };
+		3B97E46129E3FE76000F4B39 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46029E3FE76000F4B39 /* SearchUseCase.swift */; };
+		3B97E46329E3FEB0000F4B39 /* DefaultSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */; };
+		3B97E46929E419FB000F4B39 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46829E419FB000F4B39 /* ResultViewController.swift */; };
+		3B97E46B29E41B24000F4B39 /* DefaultResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46A29E41B24000F4B39 /* DefaultResultCoordinator.swift */; };
+		3B97E46E29E42580000F4B39 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46D29E42580000F4B39 /* CardViewController.swift */; };
+		3B97E47029E42AE3000F4B39 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B97E46F29E42AE3000F4B39 /* CardViewController.xib */; };
+		3B97E47229E53F2C000F4B39 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47129E53F2C000F4B39 /* ResultViewModel.swift */; };
+		3B97E47429E55704000F4B39 /* DefaultResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47329E55704000F4B39 /* DefaultResultUseCase.swift */; };
+		3B97E47629E5572A000F4B39 /* ResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47529E5572A000F4B39 /* ResultUseCase.swift */; };
+		3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */; };
+		3B97E47A29E6DDC4000F4B39 /* RouteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */; };
+		3B97E47E29E99200000F4B39 /* HighwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47D29E99200000F4B39 /* HighwayInfo.swift */; };
+		3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC11C7429DF263D000B0290 /* RoadUseCase.swift */; };
 		3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
 		3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9C29C1ECF40010FB25 /* CCTVType.swift */; };
@@ -59,7 +84,25 @@
 		8FB86310EFF3889AA167FFFC /* Pods_HighwayInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3B3CD27429DD519C00D223AC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3B3CD27329DD519C00D223AC /* TMapSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3B3CD27129DD519C00D223AC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../[iOS_SWIFT]TmapSDK_2.12/배포/TMapSDK.framework"; sourceTree = "<group>"; };
+		3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
+		3B3CD27929DEFC6300D223AC /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -70,9 +113,6 @@
 		3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccidentCell.xib; sourceTree = "<group>"; };
 		3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentCell.swift; sourceTree = "<group>"; };
 		3B5AD13629B32E3900E2AFAA /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
-		3B5AD13829B3456F00E2AFAA /* RoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoadCell.xib; sourceTree = "<group>"; };
-		3B5AD13A29B3457B00E2AFAA /* RoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadCell.swift; sourceTree = "<group>"; };
-		3B5AD13D29B34BE500E2AFAA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3B5B0E8829B0CFDD00AECF22 /* HighwayInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighwayInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B5B0E8D29B0CFDD00AECF22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +120,6 @@
 		3B5B0E9229B0CFDD00AECF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B5B0E9729B0CFDE00AECF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3B5FAE9B29BDD5DB00FC1772 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3B63BAA529B767EF0055D3A4 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIRequest.swift; path = ../../Provider/APIRequest.swift; sourceTree = "<group>"; };
 		3B63BAA829B768860055D3A4 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		3B63BAAB29B768D20055D3A4 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
@@ -94,6 +133,11 @@
 		3B6CF35029C9CE14002289A0 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		3B6CF36829D2CF0D002289A0 /* GrayLoadingIndicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GrayLoadingIndicator.json; sourceTree = "<group>"; };
 		3B6CF36D29D313B0002289A0 /* RoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadViewModel.swift; sourceTree = "<group>"; };
+		3B6CF37029D31544002289A0 /* RoadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadService.swift; sourceTree = "<group>"; };
+		3B6CF37429D31571002289A0 /* RoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadRepository.swift; sourceTree = "<group>"; };
+		3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadRepository.swift; sourceTree = "<group>"; };
+		3B7399F529DC2DE600B5D1FF /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchView.swift; path = HighwayInfo/Presentation/Scene/Search/View/SearchView.swift; sourceTree = SOURCE_ROOT; };
+		3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentRepository.swift; sourceTree = "<group>"; };
 		3B8F085929B87299009D7396 /* AccidentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentRequest.swift; sourceTree = "<group>"; };
 		3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentDTO.swift; sourceTree = "<group>"; };
@@ -103,6 +147,26 @@
 		3B8F086829B9BEB2009D7396 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		3B8F086F29B9C2C6009D7396 /* AccidentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentViewModel.swift; sourceTree = "<group>"; };
+		3B97E45229DF2756000F4B39 /* DefaultRoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadUseCase.swift; sourceTree = "<group>"; };
+		3B97E45429E0028E000F4B39 /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
+		3B97E45629E00397000F4B39 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		3B97E45829E003A1000F4B39 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		3B97E45A29E008A1000F4B39 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
+		3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchCoordinator.swift; sourceTree = "<group>"; };
+		3B97E45E29E3CA12000F4B39 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		3B97E46029E3FE76000F4B39 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
+		3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchUseCase.swift; sourceTree = "<group>"; };
+		3B97E46829E419FB000F4B39 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		3B97E46A29E41B24000F4B39 /* DefaultResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResultCoordinator.swift; sourceTree = "<group>"; };
+		3B97E46D29E42580000F4B39 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		3B97E46F29E42AE3000F4B39 /* CardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
+		3B97E47129E53F2C000F4B39 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		3B97E47329E55704000F4B39 /* DefaultResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResultUseCase.swift; sourceTree = "<group>"; };
+		3B97E47529E5572A000F4B39 /* ResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUseCase.swift; sourceTree = "<group>"; };
+		3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRequest.swift; sourceTree = "<group>"; };
+		3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDTO.swift; sourceTree = "<group>"; };
+		3B97E47D29E99200000F4B39 /* HighwayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighwayInfo.swift; sourceTree = "<group>"; };
+		3BC11C7429DF263D000B0290 /* RoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoadUseCase.swift; path = ../RoadUseCase.swift; sourceTree = "<group>"; };
 		3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVService.swift; sourceTree = "<group>"; };
 		3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVRequest.swift; sourceTree = "<group>"; };
 		3BD4EE9C29C1ECF40010FB25 /* CCTVType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVType.swift; sourceTree = "<group>"; };
@@ -121,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FB86310EFF3889AA167FFFC /* Pods_HighwayInfo.framework in Frameworks */,
+				3B3CD27229DD519C00D223AC /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +227,8 @@
 			children = (
 				3B5AD12429B1F30E00E2AFAA /* Home */,
 				3B5AD12629B1F4EB00E2AFAA /* Road */,
-				3B5AD13C29B34BC600E2AFAA /* Detail */,
+				3B5AD13C29B34BC600E2AFAA /* Search */,
+				3B97E46429E4087E000F4B39 /* Result */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -204,16 +270,21 @@
 				3B5AD13629B32E3900E2AFAA /* ShadowView.swift */,
 				3B8F086429B9BDD1009D7396 /* ActivityIndicator.swift */,
 				3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */,
+				3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */,
+				3B97E45A29E008A1000F4B39 /* UIImageView + Extension.swift */,
+				3B97E45E29E3CA12000F4B39 /* LocationService.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		3B5AD13C29B34BC600E2AFAA /* Detail */ = {
+		3B5AD13C29B34BC600E2AFAA /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				3B5AD13D29B34BE500E2AFAA /* DetailViewController.swift */,
+				3B6CF38129D32AA8002289A0 /* Coordinator */,
+				3B6CF38829D43C78002289A0 /* ViewModel */,
+				3B6CF38929D43C84002289A0 /* View */,
 			);
-			path = Detail;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		3B5B0E7F29B0CFDD00AECF22 = {
@@ -275,6 +346,7 @@
 				3B8F085D29B872EF009D7396 /* Protocol */,
 				3BD4EE9629C1CED50010FB25 /* Accident */,
 				3BD4EE9729C1CFF10010FB25 /* CCTV */,
+				3B6CF36F29D31523002289A0 /* Tmap */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -293,7 +365,8 @@
 			isa = PBXGroup;
 			children = (
 				3B63BABC29B84C8D0055D3A4 /* Accident.swift */,
-				3B5FAE9B29BDD5DB00FC1772 /* Route.swift */,
+				3B97E45429E0028E000F4B39 /* LocationInfo.swift */,
+				3B97E47D29E99200000F4B39 /* HighwayInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,8 +374,11 @@
 		3B63BAB729B84A4F0055D3A4 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */,
+				3B6CF37629D317DD002289A0 /* Protocol */,
 				3B63BAC029B862D30055D3A4 /* DefaultAccidentUseCase.swift */,
+				3B97E45229DF2756000F4B39 /* DefaultRoadUseCase.swift */,
+				3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */,
+				3B97E47329E55704000F4B39 /* DefaultResultUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -312,6 +388,7 @@
 			children = (
 				3B63BABA29B84C5C0055D3A4 /* AccidentRepository.swift */,
 				3BD4EEA029C1F5910010FB25 /* CCTVRepository.swift */,
+				3B6CF37429D31571002289A0 /* RoadRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -322,6 +399,7 @@
 				3B8F085E29B87CD8009D7396 /* DTO */,
 				3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */,
 				3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */,
+				3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -338,8 +416,6 @@
 			isa = PBXGroup;
 			children = (
 				3B5AD12729B1F5E800E2AFAA /* RoadViewController.swift */,
-				3B5AD13A29B3457B00E2AFAA /* RoadCell.swift */,
-				3B5AD13829B3456F00E2AFAA /* RoadCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,6 +426,53 @@
 				3B6CF36D29D313B0002289A0 /* RoadViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B6CF36F29D31523002289A0 /* Tmap */ = {
+			isa = PBXGroup;
+			children = (
+				3B6CF37029D31544002289A0 /* RoadService.swift */,
+				3B3CD27929DEFC6300D223AC /* SearchRequest.swift */,
+				3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */,
+			);
+			path = Tmap;
+			sourceTree = "<group>";
+		};
+		3B6CF37629D317DD002289A0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */,
+				3BC11C7429DF263D000B0290 /* RoadUseCase.swift */,
+				3B97E46029E3FE76000F4B39 /* SearchUseCase.swift */,
+				3B97E47529E5572A000F4B39 /* ResultUseCase.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		3B6CF38129D32AA8002289A0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3B6CF38829D43C78002289A0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B6CF38929D43C84002289A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B7399F529DC2DE600B5D1FF /* SearchView.swift */,
+				3B97E45629E00397000F4B39 /* SearchResultCell.swift */,
+				3B97E45829E003A1000F4B39 /* SearchResultCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3B8F085D29B872EF009D7396 /* Protocol */ = {
@@ -367,6 +490,8 @@
 				3B8F086229B89AE7009D7396 /* AccidentParser.swift */,
 				3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */,
 				3BD4EEA629C980580010FB25 /* CCTVParser.swift */,
+				3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */,
+				3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -406,6 +531,42 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		3B97E46429E4087E000F4B39 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				3B97E46529E40891000F4B39 /* Coordinator */,
+				3B97E46729E408A1000F4B39 /* ViewModel */,
+				3B97E46629E40896000F4B39 /* View */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		3B97E46529E40891000F4B39 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3B97E46A29E41B24000F4B39 /* DefaultResultCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3B97E46629E40896000F4B39 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B97E46829E419FB000F4B39 /* ResultViewController.swift */,
+				3B97E46D29E42580000F4B39 /* CardViewController.swift */,
+				3B97E46F29E42AE3000F4B39 /* CardViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3B97E46729E408A1000F4B39 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B97E47129E53F2C000F4B39 /* ResultViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3BD4EE9629C1CED50010FB25 /* Accident */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +589,7 @@
 		46339A1A49DC70332F8414C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B3CD27129DD519C00D223AC /* TMapSDK.framework */,
 				7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */,
 			);
 			name = Frameworks;
@@ -454,6 +616,7 @@
 				3B5B0E8529B0CFDD00AECF22 /* Frameworks */,
 				3B5B0E8629B0CFDD00AECF22 /* Resources */,
 				022B6428FBE7D772D362C5DE /* [CP] Embed Pods Frameworks */,
+				3B3CD27429DD519C00D223AC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -504,10 +667,10 @@
 			files = (
 				3B5AD13329B2291D00E2AFAA /* AccidentCell.xib in Resources */,
 				3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */,
-				3B6CF35129C9CE14002289A0 /* info.plist in Resources */,
-				3B5AD13929B3456F00E2AFAA /* RoadCell.xib in Resources */,
 				3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */,
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,
+				3B97E47029E42AE3000F4B39 /* CardViewController.xib in Resources */,
+				3B97E45929E003A1000F4B39 /* SearchResultCell.xib in Resources */,
 				3B6CF36929D2CF0D002289A0 /* GrayLoadingIndicator.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,47 +725,70 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */,
+				3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */,
+				3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */,
+				3B97E47629E5572A000F4B39 /* ResultUseCase.swift in Sources */,
+				3B97E47429E55704000F4B39 /* DefaultResultUseCase.swift in Sources */,
 				3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */,
-				3B5AD13B29B3457B00E2AFAA /* RoadCell.swift in Sources */,
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,
 				3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */,
+				3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */,
+				3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */,
 				3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */,
 				3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */,
+				3B97E46B29E41B24000F4B39 /* DefaultResultCoordinator.swift in Sources */,
+				3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */,
 				3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */,
 				3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */,
-				3B5FAE9C29BDD5DB00FC1772 /* Route.swift in Sources */,
 				3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */,
 				3B8F086929B9BEB2009D7396 /* ViewModelType.swift in Sources */,
 				3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */,
 				3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */,
+				3B7399F629DC2DE600B5D1FF /* SearchView.swift in Sources */,
 				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,
+				3B97E46929E419FB000F4B39 /* ResultViewController.swift in Sources */,
 				3B8F086729B9BE73009D7396 /* HomeViewModel.swift in Sources */,
 				3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */,
+				3B97E45B29E008A1000F4B39 /* UIImageView + Extension.swift in Sources */,
+				3B97E47229E53F2C000F4B39 /* ResultViewModel.swift in Sources */,
 				3B8F086E29B9C1F6009D7396 /* Observable+Extension.swift in Sources */,
 				3BD4EEA329C1F5C50010FB25 /* DefaultCCTVRepository.swift in Sources */,
+				3B97E47A29E6DDC4000F4B39 /* RouteDTO.swift in Sources */,
 				3B63BAB229B76C1E0055D3A4 /* DefaultAPIProvider.swift in Sources */,
+				3B97E47E29E99200000F4B39 /* HighwayInfo.swift in Sources */,
 				3B63BABB29B84C5C0055D3A4 /* AccidentRepository.swift in Sources */,
+				3B7399F829DC34C200B5D1FF /* UIView+Extension.swift in Sources */,
 				3B5B0E8E29B0CFDD00AECF22 /* SceneDelegate.swift in Sources */,
+				3BC11C7529DF263D000B0290 /* RoadUseCase.swift in Sources */,
+				3B97E46129E3FE76000F4B39 /* SearchUseCase.swift in Sources */,
 				3B63BABF29B860960055D3A4 /* AccidentUseCase.swift in Sources */,
+				3B97E46E29E42580000F4B39 /* CardViewController.swift in Sources */,
 				3B5AD12C29B1FB8200E2AFAA /* TabBarPage.swift in Sources */,
+				3B97E46329E3FEB0000F4B39 /* DefaultSearchUseCase.swift in Sources */,
 				3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */,
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
+				3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
+				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
+				3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */,
 				3B63BAA929B768860055D3A4 /* HTTPMethod.swift in Sources */,
 				3B5AD12829B1F5E800E2AFAA /* RoadViewController.swift in Sources */,
 				3B63BAAE29B768EE0055D3A4 /* NetworkingError.swift in Sources */,
+				3B6CF37129D31544002289A0 /* RoadService.swift in Sources */,
 				3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */,
+				3B97E45729E00397000F4B39 /* SearchResultCell.swift in Sources */,
 				3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */,
+				3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */,
 				3B6CF36E29D313B0002289A0 /* RoadViewModel.swift in Sources */,
 				3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */,
 				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,
 				3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */,
 				3B8F086529B9BDD1009D7396 /* ActivityIndicator.swift in Sources */,
 				3BD4EE9B29C1D0350010FB25 /* CCTVRequest.swift in Sources */,
+				3B97E45529E0028E000F4B39 /* LocationInfo.swift in Sources */,
 				3B63BAB429B7711B0055D3A4 /* AccidentService.swift in Sources */,
-				3B5AD13E29B34BE500E2AFAA /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,8 +937,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UKU2UB96JP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HighwayInfo",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HighwayInfo/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "경로탐색을 위한 위치정보가 필요합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -781,8 +974,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UKU2UB96JP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HighwayInfo",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HighwayInfo/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "경로탐색을 위한 위치정보가 필요합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

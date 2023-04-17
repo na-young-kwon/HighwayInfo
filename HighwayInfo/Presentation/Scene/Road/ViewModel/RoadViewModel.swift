@@ -8,26 +8,49 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import CoreLocation
 
 final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
+    private let coordinator: DefaultRoadCoordinator
+    let useCase: RoadUseCase
+    let searchViewModel: SearchViewModel
     
     struct Input {
-        let trigger: Observable<Void>
+        let viewWillAppear: Observable<Void>
     }
     
     struct Output {
+        let showAuthorizationAlert = BehaviorRelay<Bool>(value: false)
+        let currentLocation = PublishRelay<CLLocationCoordinate2D>()
     }
     
-    private weak var coordinator: DefaultHomeCoordinator!
-    private let useCase: DefaultAccidentUseCase
-    
-    init(useCase: DefaultAccidentUseCase, coordinator: DefaultHomeCoordinator) {
-        self.useCase = useCase
+    init(coordinator: DefaultRoadCoordinator, useCase: RoadUseCase) {
         self.coordinator = coordinator
+        self.searchViewModel = coordinator.searchViewModel!
+        self.useCase = useCase
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        let output = Output()
+        
+        input.viewWillAppear
+            .subscribe(onNext: { [weak self] _ in
+                self?.useCase.checkAuthorization()
+                self?.useCase.observeLocation()
+            })
+            .disposed(by: disposeBag)
+        
+        useCase.authorizationStatus
+            .map { $0 == .notAllowed }
+            .bind(to: output.showAuthorizationAlert)
+            .disposed(by: disposeBag)
+      
+        useCase.currentLocation
+            .map { $0.coordinate }
+            .bind(to: output.currentLocation)
+            .disposed(by: disposeBag)
+        
+        return output
     }
 }

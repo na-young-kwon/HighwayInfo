@@ -8,12 +8,12 @@
 import Foundation
 
 enum TabBarPage: CaseIterable {
-    case home, road
+    case home, search
     
     init?(index: Int) {
         switch index {
             case 0: self = .home
-            case 1: self = .road
+            case 1: self = .search
             default: return nil
         }
     }
@@ -21,7 +21,7 @@ enum TabBarPage: CaseIterable {
     var pageNumber: Int {
         switch self {
             case .home: return 0
-            case .road: return 1
+            case .search: return 1
         }
     }
     
@@ -29,7 +29,7 @@ enum TabBarPage: CaseIterable {
         switch self {
         case .home:
             return "hi"
-        case .road:
+        case .search:
             return "high"
         }
     }
@@ -38,7 +38,7 @@ enum TabBarPage: CaseIterable {
         switch self {
         case .home:
             return "홈"
-        case .road:
+        case .search:
             return "고속도로"
         }
     }

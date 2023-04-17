@@ -11,9 +11,9 @@ struct CCTVRequest: APIRequest {
     typealias Response = CctvDTO?
     
     let httpMethod: HTTPMethod = .get
-    let urlHost: String = "https://openapi.its.go.kr:9443/"
-    let urlPath: String = "cctvInfo?"
-    let type: String = "ex"
+    let urlHost = "https://openapi.its.go.kr:9443/"
+    let urlPath = "cctvInfo?"
+    let type = "ex"
     let cctvType: CCTVType
     let minX: Double
     let maxX: Double

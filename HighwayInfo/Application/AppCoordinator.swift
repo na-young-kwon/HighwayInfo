@@ -19,7 +19,7 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let pages = TabBarPage.allCases
-        let controllers = pages.map({ makeTabNavigationController(of: $0) })
+        let controllers = pages.map { makeTabNavigationController(of: $0) }
         configureTabBar(with: controllers)
         showTabBar()
     }
@@ -51,7 +51,7 @@ final class AppCoordinator: Coordinator {
         case .home:
             let homeCoordinator = DefaultHomeCoordinator(navigationController)
             homeCoordinator.start()
-        case .road:
+        case .search:
             let roadCoordinator = DefaultRoadCoordinator(navigationController)
             roadCoordinator.start()
         }
@@ -62,7 +62,7 @@ final class AppCoordinator: Coordinator {
 extension AppCoordinator {
     private func configureTabBarShadow(tabBar: UITabBar) {
         let appearance = UITabBarAppearance()
-        // set tabbar opacity
+        // opacity
         appearance.configureWithOpaqueBackground()
         appearance.shadowColor = .clear
         appearance.backgroundColor = .white

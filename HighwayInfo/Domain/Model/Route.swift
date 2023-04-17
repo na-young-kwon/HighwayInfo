@@ -17,6 +17,13 @@ struct Route {
     let startNodeName: String
     let endNodeName: String
     let axis: Axis
+    
+    var upString: String {
+        return startNodeName + " > " + endNodeName
+    }
+    var downString: String {
+        return endNodeName + " > " + startNodeName
+    }
 }
 
 enum RouteList {
