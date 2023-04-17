@@ -18,5 +18,10 @@ class CardViewController: UIViewController {
     
     private func configureUI() {
         handleArea.layer.cornerRadius = 5
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 5
+        view.layer.shadowOpacity = 0.6
+        view.layer.shouldRasterize = true
+        view.layer.rasterizationScale = UIScreen.main.scale
     }
 }
