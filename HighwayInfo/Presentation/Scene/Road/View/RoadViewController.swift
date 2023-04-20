@@ -51,10 +51,6 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         currentLocationButton.layer.shadowRadius = 3
     }
     
-    @IBAction func tap(_ sender: UIButton) {
-        showCurrentLocation()
-    }
-    
     private func configureMapView() {
         mapView = TMapView(frame: backgroundView.frame)
         mapView?.delegate = self
@@ -82,23 +78,6 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         locationInputView.addGestureRecognizer(tap)
     }
     
-    private func showCurrentLocation() {
-        if let position = position {
-            let marker = TMapCustomMarker(position: position)
-            let view = UIImageView(image: UIImage(named: "marker"))
-            marker.view = view
-            mapView?.setCenter(position)
-            mapView?.setZoom(17)
-            marker.map = self.mapView
-        }
-    }
-    
-    @objc func showSearchView() {
-        locationInputView.alpha = 0
-        placeholderLabel.alpha = 0
-        configureSearchView()
-    }
-    
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
@@ -123,15 +102,34 @@ class RoadViewController: UIViewController, TMapViewDelegate {
                                       message: "경로탐색을 위한 위치정보가 필요합니다",
                                       preferredStyle: .alert
         )
-        let okAction = UIAlertAction(title: "확인",
-                                     style: .default,
-                                     handler: { _ in
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: { _ in
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
             }}
         )
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func tap(_ sender: UIButton) {
+        showCurrentLocation()
+    }
+    
+    private func showCurrentLocation() {
+        if let position = position {
+            let marker = TMapCustomMarker(position: position)
+            let view = UIImageView(image: UIImage(named: "marker"))
+            marker.view = view
+            mapView?.setCenter(position)
+            mapView?.setZoom(17)
+            marker.map = self.mapView
+        }
+    }
+    
+    @objc func showSearchView() {
+        locationInputView.alpha = 0
+        placeholderLabel.alpha = 0
+        configureSearchView()
     }
 }
 

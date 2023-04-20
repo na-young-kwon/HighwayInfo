@@ -79,9 +79,6 @@ class SearchView: UIView {
     
     private func configureUI() {
         hideKeyboardWhenTappedAround()
-//        addSubview(loadingIndicator)
-//        loadingIndicator.centerX(inView: self)
-//        loadingIndicator.centerY(inView: self)
         backgroundColor = .white
         addSubview(textField)
         addSubview(backButton)

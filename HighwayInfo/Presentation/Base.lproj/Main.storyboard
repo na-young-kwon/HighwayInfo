@@ -157,8 +157,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq2-gh-OTh" userLabel="TitleView">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bID-Lh-5KH">
-                                        <rect key="frame" x="40" y="55" width="283" height="55.666666666666657"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bID-Lh-5KH">
+                                        <rect key="frame" x="40" y="65" width="283" height="50.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5In-SE-tjp">
                                                 <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="20.333333333333332"/>
@@ -167,7 +167,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsL-8B-2et">
-                                                <rect key="frame" x="0.0" y="35.333333333333329" width="41.333333333333336" height="20.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="30.333333333333329" width="41.333333333333336" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -186,7 +186,7 @@
                                     <constraint firstItem="0uc-YK-hXF" firstAttribute="leading" secondItem="eq2-gh-OTh" secondAttribute="leading" id="BqP-1h-ZIy"/>
                                     <constraint firstAttribute="trailing" secondItem="0uc-YK-hXF" secondAttribute="trailing" id="Ekw-eQ-7wa"/>
                                     <constraint firstItem="bID-Lh-5KH" firstAttribute="leading" secondItem="eq2-gh-OTh" secondAttribute="leading" constant="40" id="FfS-He-3T1"/>
-                                    <constraint firstItem="bID-Lh-5KH" firstAttribute="top" secondItem="eq2-gh-OTh" secondAttribute="top" constant="55" id="XA6-CN-zkj"/>
+                                    <constraint firstItem="bID-Lh-5KH" firstAttribute="top" secondItem="eq2-gh-OTh" secondAttribute="top" constant="65" id="XA6-CN-zkj"/>
                                     <constraint firstAttribute="height" constant="130" id="fRZ-Fh-o1U"/>
                                     <constraint firstAttribute="bottom" secondItem="0uc-YK-hXF" secondAttribute="bottom" id="hQ4-RA-lAv"/>
                                     <constraint firstAttribute="trailing" secondItem="bID-Lh-5KH" secondAttribute="trailing" constant="70" id="kyz-Wm-fAK"/>
