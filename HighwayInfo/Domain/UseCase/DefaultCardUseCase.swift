@@ -8,9 +8,8 @@
 import Foundation
 import RxSwift
 import RxRelay
-import CoreLocation
 
-final class DefaultResultUseCase: ResultUseCase {
+final class DefaultCardUseCase: CardUseCase {
     private let roadRepository: RoadRepository
     private let disposeBag = DisposeBag()
     

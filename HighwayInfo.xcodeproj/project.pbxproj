@@ -12,6 +12,8 @@
 		3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */; };
 		3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */; };
 		3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27929DEFC6300D223AC /* SearchRequest.swift */; };
+		3B497AC229F3BA2500D3FAAC /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */; };
+		3B497AC429F3BA7B00D3FAAC /* DefaultCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -68,8 +70,8 @@
 		3B97E46E29E42580000F4B39 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46D29E42580000F4B39 /* CardViewController.swift */; };
 		3B97E47029E42AE3000F4B39 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B97E46F29E42AE3000F4B39 /* CardViewController.xib */; };
 		3B97E47229E53F2C000F4B39 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47129E53F2C000F4B39 /* ResultViewModel.swift */; };
-		3B97E47429E55704000F4B39 /* DefaultResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47329E55704000F4B39 /* DefaultResultUseCase.swift */; };
-		3B97E47629E5572A000F4B39 /* ResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47529E5572A000F4B39 /* ResultUseCase.swift */; };
+		3B97E47429E55704000F4B39 /* DefaultCardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47329E55704000F4B39 /* DefaultCardUseCase.swift */; };
+		3B97E47629E5572A000F4B39 /* CardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47529E5572A000F4B39 /* CardUseCase.swift */; };
 		3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */; };
 		3B97E47A29E6DDC4000F4B39 /* RouteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */; };
 		3B97E47E29E99200000F4B39 /* HighwayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E47D29E99200000F4B39 /* HighwayInfo.swift */; };
@@ -106,6 +108,8 @@
 		3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
 		3B3CD27929DEFC6300D223AC /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
+		3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCardCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -164,8 +168,8 @@
 		3B97E46D29E42580000F4B39 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		3B97E46F29E42AE3000F4B39 /* CardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		3B97E47129E53F2C000F4B39 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
-		3B97E47329E55704000F4B39 /* DefaultResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResultUseCase.swift; sourceTree = "<group>"; };
-		3B97E47529E5572A000F4B39 /* ResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUseCase.swift; sourceTree = "<group>"; };
+		3B97E47329E55704000F4B39 /* DefaultCardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCardUseCase.swift; sourceTree = "<group>"; };
+		3B97E47529E5572A000F4B39 /* CardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUseCase.swift; sourceTree = "<group>"; };
 		3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRequest.swift; sourceTree = "<group>"; };
 		3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDTO.swift; sourceTree = "<group>"; };
 		3B97E47D29E99200000F4B39 /* HighwayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighwayInfo.swift; sourceTree = "<group>"; };
@@ -385,7 +389,7 @@
 				3B63BAC029B862D30055D3A4 /* DefaultAccidentUseCase.swift */,
 				3B97E45229DF2756000F4B39 /* DefaultRoadUseCase.swift */,
 				3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */,
-				3B97E47329E55704000F4B39 /* DefaultResultUseCase.swift */,
+				3B97E47329E55704000F4B39 /* DefaultCardUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -452,7 +456,7 @@
 				3B63BABE29B860960055D3A4 /* AccidentUseCase.swift */,
 				3BC11C7429DF263D000B0290 /* RoadUseCase.swift */,
 				3B97E46029E3FE76000F4B39 /* SearchUseCase.swift */,
-				3B97E47529E5572A000F4B39 /* ResultUseCase.swift */,
+				3B97E47529E5572A000F4B39 /* CardUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -554,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				3B97E46A29E41B24000F4B39 /* DefaultResultCoordinator.swift */,
+				3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -572,6 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				3B97E47129E53F2C000F4B39 /* ResultViewModel.swift */,
+				3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -736,8 +742,8 @@
 				3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */,
 				3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */,
 				3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */,
-				3B97E47629E5572A000F4B39 /* ResultUseCase.swift in Sources */,
-				3B97E47429E55704000F4B39 /* DefaultResultUseCase.swift in Sources */,
+				3B97E47629E5572A000F4B39 /* CardUseCase.swift in Sources */,
+				3B97E47429E55704000F4B39 /* DefaultCardUseCase.swift in Sources */,
 				3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */,
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
@@ -755,6 +761,7 @@
 				3B8F086929B9BEB2009D7396 /* ViewModelType.swift in Sources */,
 				3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */,
 				3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */,
+				3B497AC429F3BA7B00D3FAAC /* DefaultCardCoordinator.swift in Sources */,
 				3B7399F629DC2DE600B5D1FF /* SearchView.swift in Sources */,
 				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,
 				3B97E46929E419FB000F4B39 /* ResultViewController.swift in Sources */,
@@ -792,6 +799,7 @@
 				3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */,
 				3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */,
 				3B97E48229ED5479000F4B39 /* Route.swift in Sources */,
+				3B497AC229F3BA2500D3FAAC /* CardViewModel.swift in Sources */,
 				3B6CF36E29D313B0002289A0 /* RoadViewModel.swift in Sources */,
 				3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */,
 				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,

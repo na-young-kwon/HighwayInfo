@@ -13,8 +13,8 @@ import CoreLocation
 final class ResultViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultResultCoordinator
-    private let useCase: ResultUseCase
     private let route: Route
+    let cardViewModel: CardViewModel
     
     struct Input {
         let viewWillAppear: Observable<Void>
@@ -28,16 +28,16 @@ final class ResultViewModel: ViewModelType {
         let highwayInfo: Observable<[HighwayInfo]>
     }
     
-    init(coordinator: DefaultResultCoordinator, route: Route, useCase: ResultUseCase) {
+    init(coordinator: DefaultResultCoordinator, route: Route, cardViewModel: CardViewModel) {
         self.coordinator = coordinator
-        self.useCase = useCase
         self.route = route
+        self.cardViewModel = cardViewModel
     }
     
     func transform(input: Input) -> Output {
         input.viewWillAppear
             .subscribe(onNext: { _ in
-                
+//                coordinator.showCardView(with: route.highwayInfo.first?.name)
             })
             .disposed(by: disposeBag)
         

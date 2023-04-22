@@ -7,8 +7,7 @@
 
 import Foundation
 import RxSwift
-import CoreLocation
 
-protocol ResultUseCase {
+protocol CardUseCase {
   
 }

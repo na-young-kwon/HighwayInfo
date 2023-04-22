@@ -61,6 +61,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         startCardHeight = self.view.frame.height * 0.1
         endCardHeight = self.view.frame.height * 0.85
         cardViewController = CardViewController(nibName: CardViewController.reuseID, bundle: nil)
+        cardViewController.viewModel = viewModel.cardViewModel
         self.view.addSubview(cardViewController.view)
         self.cardViewController.view.layer.cornerRadius = 30
         cardViewController.view.frame = CGRect(x: 0,

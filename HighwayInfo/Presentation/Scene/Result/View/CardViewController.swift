@@ -16,10 +16,13 @@ class CardViewController: UIViewController {
     @IBOutlet weak var convenienceButton: UIButton!
     @IBOutlet weak var petrolButton: UIButton!
     
+    var viewModel: CardViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        bindViewModel()
     }
     
     private func configureUI() {
@@ -29,5 +32,10 @@ class CardViewController: UIViewController {
         view.layer.shadowOpacity = 0.6
         view.layer.shouldRasterize = true
         view.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    private func bindViewModel() {
+        let input = CardViewModel.Input()
+        viewModel.transform(input: input)
     }
 }

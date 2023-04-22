@@ -12,6 +12,7 @@ final class DefaultResultCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private weak var parentCoordinator: Coordinator?
+    var cardViewModel: CardViewModel?
     
     init(navigationController: UINavigationController, parentCoordinator: Coordinator) {
         self.navigationController = navigationController
@@ -28,11 +29,12 @@ final class DefaultResultCoordinator: Coordinator {
     func start(with route: Route) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: ResultViewController.self)
-        let useCase = DefaultResultUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider())))
-        controller.viewModel = ResultViewModel(coordinator: self,
-                                               route: route,
-                                               useCase: useCase
-        )
+        let apiProvider = DefaultAPIProvider()
+        let cardCoordinator = DefaultCardCoordinator(navigationController: navigationController, parentCoordinator: self)
+        let cardUseCase = DefaultCardUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)))
+        
+        cardViewModel = CardViewModel(coordinator: cardCoordinator, useCase: cardUseCase, highwayInfo: route.highwayInfo)
+        controller.viewModel = ResultViewModel(coordinator: self, route: route, cardViewModel: cardViewModel!)
         navigationController.pushViewController(controller, animated: true)
     }
     
