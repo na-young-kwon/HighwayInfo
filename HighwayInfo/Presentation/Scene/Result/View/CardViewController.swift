@@ -9,6 +9,12 @@ import UIKit
 
 class CardViewController: UIViewController {
     @IBOutlet weak var handleArea: UIView!
+    @IBOutlet weak var roadImageView: UIImageView!
+    @IBOutlet weak var roadName: UILabel!
+    @IBOutlet weak var convenienceCollectionView: UICollectionView!
+    @IBOutlet weak var petrolCollectionView: UICollectionView!
+    @IBOutlet weak var convenienceButton: UIButton!
+    @IBOutlet weak var petrolButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

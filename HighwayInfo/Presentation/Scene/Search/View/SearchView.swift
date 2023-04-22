@@ -123,6 +123,7 @@ class SearchView: UIView {
         let output = viewModel?.transform(input: input)
         
         tableView.rx.itemSelected.subscribe(onNext: { index in
+            self.tableView.deselectRow(at: index, animated: false)
             let location = self.dataSource.itemIdentifier(for: index)
             self.showLoadingIndicator()
             selectedLocation.onNext(location)
