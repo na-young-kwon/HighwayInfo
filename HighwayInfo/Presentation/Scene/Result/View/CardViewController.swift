@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CardViewController: UIViewController {
     @IBOutlet weak var handleArea: UIView!
@@ -17,6 +19,7 @@ class CardViewController: UIViewController {
     @IBOutlet weak var petrolButton: UIButton!
     
     var viewModel: CardViewModel!
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,16 @@ class CardViewController: UIViewController {
     
     private func bindViewModel() {
         let input = CardViewModel.Input()
-        viewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
+        output.emptyHighway
+            .subscribe(onNext: { isEmpty in
+                if isEmpty {
+                    self.view = EmptyView()
+                    self.configureUI()
+                } else {
+                    print("fetch result")
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }

@@ -58,7 +58,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
     }
     
     private func setupCard() {
-        startCardHeight = self.view.frame.height * 0.1
+        startCardHeight = self.view.frame.height * 0.3
         endCardHeight = self.view.frame.height * 0.85
         cardViewController = CardViewController(nibName: CardViewController.reuseID, bundle: nil)
         cardViewController.viewModel = viewModel.cardViewModel

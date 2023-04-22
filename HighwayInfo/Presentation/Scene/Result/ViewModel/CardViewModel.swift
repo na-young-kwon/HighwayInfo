@@ -19,6 +19,7 @@ final class CardViewModel: ViewModelType {
     }
     
     struct Output {
+        let emptyHighway: Observable<Bool>
     }
     
     init(coordinator: DefaultCardCoordinator, useCase: CardUseCase, highwayInfo: [HighwayInfo]) {
@@ -28,8 +29,8 @@ final class CardViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        print(highwayInfo)
-        return Output()
+        let emptyHighway = Observable.just(highwayInfo.isEmpty)
+        
+        return Output(emptyHighway: emptyHighway)
     }
-
 }

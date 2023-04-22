@@ -14,6 +14,7 @@
 		3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27929DEFC6300D223AC /* SearchRequest.swift */; };
 		3B497AC229F3BA2500D3FAAC /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */; };
 		3B497AC429F3BA7B00D3FAAC /* DefaultCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */; };
+		3B497AC629F3CE6B00D3FAAC /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC529F3CE6B00D3FAAC /* EmptyView.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -110,6 +111,7 @@
 		3B3CD27929DEFC6300D223AC /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCardCoordinator.swift; sourceTree = "<group>"; };
+		3B497AC529F3CE6B00D3FAAC /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 			children = (
 				3B97E46829E419FB000F4B39 /* ResultViewController.swift */,
 				3B97E46D29E42580000F4B39 /* CardViewController.swift */,
+				3B497AC529F3CE6B00D3FAAC /* EmptyView.swift */,
 				3B97E46F29E42AE3000F4B39 /* CardViewController.xib */,
 			);
 			path = View;
@@ -752,6 +755,7 @@
 				3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */,
 				3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */,
 				3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */,
+				3B497AC629F3CE6B00D3FAAC /* EmptyView.swift in Sources */,
 				3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */,
 				3B97E46B29E41B24000F4B39 /* DefaultResultCoordinator.swift in Sources */,
 				3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */,
