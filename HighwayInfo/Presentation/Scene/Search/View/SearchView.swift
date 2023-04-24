@@ -99,18 +99,11 @@ class SearchView: UIView {
     
     private func configureDataSource() {
         self.dataSource = UITableViewDiffableDataSource<Section, LocationInfo>(tableView: tableView) { (tableView: UITableView, indexPath: IndexPath, viewModel: LocationInfo) in
-            if let text = self.textField.text, text.isEmpty {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchHistoryCell.reuseID, for: indexPath) as? SearchHistoryCell else {
-                    return UITableViewCell()
-                }
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.reuseID, for: indexPath) as? SearchResultCell else {
-                    return UITableViewCell()
-                }
-                cell.bind(viewModel: viewModel)
-                return cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.reuseID, for: indexPath) as? SearchResultCell else {
+                return UITableViewCell()
             }
+            cell.bind(viewModel)
+            return cell
         }
     }
     
@@ -122,11 +115,14 @@ class SearchView: UIView {
     }
     
     private func bindViewModel() {
+        let viewWillAppear = textField.rx.text.orEmpty
+            .map { $0.isEmpty }
         let keyword = textField.rx.text.orEmpty.asObservable()
         let selectedLocation = PublishSubject<LocationInfo?>()
         let currentLocation = delegate?.currentLocation()
 
-        let input = SearchViewModel.Input(searchKeyword: keyword,
+        let input = SearchViewModel.Input(viewWillAppear: viewWillAppear,
+                                          searchKeyword: keyword,
                                           itemSelected: selectedLocation.asObservable(),
                                           currentLocation: Observable.of(currentLocation))
         let output = viewModel?.transform(input: input)
@@ -140,6 +136,12 @@ class SearchView: UIView {
         .disposed(by: disposeBag)
         
         output?.searchResult
+            .subscribe(onNext: { result in
+                self.applySnapshot(with: result)
+            })
+            .disposed(by: disposeBag)
+        
+        output?.searchHistory
             .subscribe(onNext: { result in
                 self.applySnapshot(with: result)
             })

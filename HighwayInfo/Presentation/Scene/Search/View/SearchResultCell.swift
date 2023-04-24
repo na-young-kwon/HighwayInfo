@@ -17,7 +17,7 @@ class SearchResultCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func bind(viewModel: LocationInfo) {
+    func bind(_ viewModel: LocationInfo) {
         nameLabel.text = viewModel.name
         addressLabel.text = viewModel.address ?? ""
         businessLabel.text = viewModel.businessName

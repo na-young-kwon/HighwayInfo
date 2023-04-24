@@ -16,6 +16,7 @@ final class SearchViewModel: ViewModelType {
     private let coordinator: DefaultSearchCoordinator
     
     struct Input {
+        let viewWillAppear: Observable<Bool>
         let searchKeyword: Observable<String>
         let itemSelected: Observable<LocationInfo?>
         let currentLocation: Observable<CLLocationCoordinate2D?>
@@ -23,6 +24,7 @@ final class SearchViewModel: ViewModelType {
     
     struct Output {
         let searchResult: Observable<[LocationInfo]>
+        let searchHistory: Observable<[LocationInfo]>
     }
     
     init(useCase: SearchUseCase, coordinator: DefaultSearchCoordinator) {
@@ -33,9 +35,21 @@ final class SearchViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let currentCoordinate = input.currentLocation.compactMap { $0 }.share()
         let searchKeyword = input.searchKeyword.compactMap { $0 }
-        let selectedLocationInfo = input.itemSelected.compactMap { $0 }
+        let selectedLocationInfo = input.itemSelected.compactMap { $0 }.share()
         
-        let output = Output(searchResult: useCase.searchResult.asObservable())
+        let output = Output(searchResult: useCase.searchResult.asObservable(),
+                            searchHistory: useCase.searchHistory.asObservable())
+        input.viewWillAppear
+            .distinctUntilChanged()
+            .subscribe(onNext: { appear in
+                if appear {
+                    self.useCase.fetchSearchHistory()
+                } else {
+                    print("1-no")
+                }
+            })
+            .disposed(by: disposeBag)
+        
         Observable.combineLatest(currentCoordinate, searchKeyword)
             .subscribe(onNext: { coordinate, keyword in
                 self.useCase.fetchResult(for: keyword, coordinate: coordinate)
@@ -51,6 +65,12 @@ final class SearchViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
 
+        selectedLocationInfo
+            .subscribe(onNext: { location in
+                self.useCase.saveSearchTerm(with: location)
+        })
+        .disposed(by: disposeBag)
+        
         useCase.route
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { route in

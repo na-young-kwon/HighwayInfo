@@ -22,7 +22,7 @@ final class DefaultRoadCoordinator: Coordinator {
         let apiProvider = DefaultAPIProvider()
         
         let roadUseCase = DefaultRoadUseCase(locationService: LocationService.shared)
-        let searchUseCase = DefaultSearchUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)))
+        let searchUseCase = DefaultSearchUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)), userRepository: DefaultUserRepository())
         let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController)
         searchCoordinator.start()
         

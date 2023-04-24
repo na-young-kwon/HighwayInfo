@@ -12,14 +12,30 @@ import CoreLocation
 
 final class DefaultSearchUseCase: SearchUseCase {
     private let roadRepository: RoadRepository
+    private let userRepository: UserRepository
     private let disposeBag = DisposeBag()
     private var path = PublishSubject<[CLLocationCoordinate2D]>()
     private var highwayInfo = PublishSubject<[HighwayInfo]>()
     var searchResult = PublishSubject<[LocationInfo]>()
+    var searchHistory = PublishSubject<[LocationInfo]>()
     var route = PublishSubject<Route>()
     
-    init(roadRepository: RoadRepository) {
+    init(roadRepository: RoadRepository, userRepository: UserRepository) {
         self.roadRepository = roadRepository
+        self.userRepository = userRepository
+    }
+    
+    func fetchSearchHistory() {
+        userRepository.fetchSearchHistory()
+            .subscribe(onNext: { location in
+                guard let location = location else { return }
+                self.searchHistory.onNext(location)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func saveSearchTerm(with location: LocationInfo) {
+        userRepository.saveHistory(with: location)
     }
     
     func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?) {

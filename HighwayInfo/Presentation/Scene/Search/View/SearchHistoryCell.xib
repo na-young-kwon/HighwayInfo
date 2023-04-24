@@ -52,6 +52,10 @@
                     <constraint firstItem="Rer-rc-Y3O" firstAttribute="top" secondItem="hSh-eB-QTN" secondAttribute="top" constant="8" id="Qbv-Fb-Xar"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="1IP-jq-FYK" id="bSt-4P-Ze0"/>
+                <outlet property="titleLabel" destination="Nio-Wg-YoN" id="D1E-Tz-MbF"/>
+            </connections>
             <point key="canvasLocation" x="-90.839694656488547" y="-27.816901408450704"/>
         </tableViewCell>
     </objects>

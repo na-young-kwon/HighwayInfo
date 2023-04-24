@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationInfo: Hashable {
+struct LocationInfo: Hashable, Codable {
     let id = UUID()
     let name: String
     let businessName: String

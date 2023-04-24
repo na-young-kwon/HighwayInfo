@@ -8,16 +8,21 @@
 import UIKit
 
 class SearchHistoryCell: UITableViewCell {
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
-        // Configure the view for the selected state
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
     }
-
+    
+    func bind(_ viewModel: LocationInfo) {
+        titleLabel.text = viewModel.name
+        descriptionLabel.text = viewModel.address
+    }
 }
