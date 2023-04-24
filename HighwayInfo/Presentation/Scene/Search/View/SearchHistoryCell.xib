@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryCell" rowHeight="91" id="t17-u5-Cxf" customClass="SearchHistoryCell" customModule="HighwayInfo">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="91"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t17-u5-Cxf" id="hSh-eB-QTN">
+                <rect key="frame" x="0.0" y="0.0" width="323" height="91"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="206" translatesAutoresizingMaskIntoConstraints="NO" id="Rer-rc-Y3O">
+                        <rect key="frame" x="8" y="7.9999999999999964" width="305" height="50.666666666666657"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fn4-VV-ptO">
+                                <rect key="frame" x="0.0" y="0.0" width="59" height="50.666666666666664"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nio-Wg-YoN">
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상세주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IP-jq-FYK">
+                                        <rect key="frame" x="0.0" y="30.333333333333336" width="59" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20b-18-Z3A">
+                                <rect key="frame" x="265" y="18.666666666666671" width="40" height="32"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Fn4-VV-ptO" firstAttribute="width" secondItem="Rer-rc-Y3O" secondAttribute="width" multiplier="0.85" id="smP-v4-Aal"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Rer-rc-Y3O" firstAttribute="leading" secondItem="hSh-eB-QTN" secondAttribute="leading" constant="8" id="DuS-Z0-8bI"/>
+                    <constraint firstAttribute="trailing" secondItem="Rer-rc-Y3O" secondAttribute="trailing" constant="8" id="Fhw-ef-jXk"/>
+                    <constraint firstItem="Rer-rc-Y3O" firstAttribute="top" secondItem="hSh-eB-QTN" secondAttribute="top" constant="8" id="Qbv-Fb-Xar"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-90.839694656488547" y="-27.816901408450704"/>
+        </tableViewCell>
+    </objects>
+</document>

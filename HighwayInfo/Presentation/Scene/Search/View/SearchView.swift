@@ -90,18 +90,27 @@ class SearchView: UIView {
     }
     
     private func configureTableView() {
-        let nib = UINib(nibName: SearchResultCell.reuseID, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: SearchResultCell.reuseID)
+        let resultNib = UINib(nibName: SearchResultCell.reuseID, bundle: nil)
+        let historyNib = UINib(nibName: SearchHistoryCell.reuseID, bundle: nil)
+        tableView.register(resultNib, forCellReuseIdentifier: SearchResultCell.reuseID)
+        tableView.register(historyNib, forCellReuseIdentifier: SearchHistoryCell.reuseID)
         tableView.showsVerticalScrollIndicator = false
     }
     
     private func configureDataSource() {
         self.dataSource = UITableViewDiffableDataSource<Section, LocationInfo>(tableView: tableView) { (tableView: UITableView, indexPath: IndexPath, viewModel: LocationInfo) in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.reuseID, for: indexPath) as? SearchResultCell else {
-                return UITableViewCell()
+            if let text = self.textField.text, text.isEmpty {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchHistoryCell.reuseID, for: indexPath) as? SearchHistoryCell else {
+                    return UITableViewCell()
+                }
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.reuseID, for: indexPath) as? SearchResultCell else {
+                    return UITableViewCell()
+                }
+                cell.bind(viewModel: viewModel)
+                return cell
             }
-            cell.bind(viewModel: viewModel)
-            return cell
         }
     }
     

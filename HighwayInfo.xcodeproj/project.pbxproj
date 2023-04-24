@@ -15,6 +15,8 @@
 		3B497AC229F3BA2500D3FAAC /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */; };
 		3B497AC429F3BA7B00D3FAAC /* DefaultCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */; };
 		3B497AC629F3CE6B00D3FAAC /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC529F3CE6B00D3FAAC /* EmptyView.swift */; };
+		3B497AC829F3DC8700D3FAAC /* SearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B497AC729F3DC8600D3FAAC /* SearchHistoryCell.xib */; };
+		3B497ACA29F3DD7600D3FAAC /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC929F3DD7600D3FAAC /* SearchHistoryCell.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -112,6 +114,8 @@
 		3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCardCoordinator.swift; sourceTree = "<group>"; };
 		3B497AC529F3CE6B00D3FAAC /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		3B497AC729F3DC8600D3FAAC /* SearchHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryCell.xib; sourceTree = "<group>"; };
+		3B497AC929F3DD7600D3FAAC /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -484,7 +488,9 @@
 			children = (
 				3B7399F529DC2DE600B5D1FF /* SearchView.swift */,
 				3B97E45629E00397000F4B39 /* SearchResultCell.swift */,
+				3B497AC929F3DD7600D3FAAC /* SearchHistoryCell.swift */,
 				3B97E45829E003A1000F4B39 /* SearchResultCell.xib */,
+				3B497AC729F3DC8600D3FAAC /* SearchHistoryCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -689,6 +695,7 @@
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,
 				3B97E47029E42AE3000F4B39 /* CardViewController.xib in Resources */,
 				3B97E45929E003A1000F4B39 /* SearchResultCell.xib in Resources */,
+				3B497AC829F3DC8700D3FAAC /* SearchHistoryCell.xib in Resources */,
 				3B6CF36929D2CF0D002289A0 /* GrayLoadingIndicator.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -792,6 +799,7 @@
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
 				3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
+				3B497ACA29F3DD7600D3FAAC /* SearchHistoryCell.swift in Sources */,
 				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
 				3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */,
 				3B63BAA929B768860055D3A4 /* HTTPMethod.swift in Sources */,
