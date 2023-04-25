@@ -28,7 +28,6 @@ final class DefaultSearchUseCase: SearchUseCase {
     func fetchSearchHistory() {
         userRepository.fetchSearchHistory()
             .subscribe(onNext: { location in
-                guard let location = location else { return }
                 self.searchHistory.onNext(location)
             })
             .disposed(by: disposeBag)

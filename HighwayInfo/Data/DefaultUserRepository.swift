@@ -13,24 +13,33 @@ final class DefaultUserRepository: UserRepository {
     private let locationInfoKey = "locationInfo"
     
     func saveHistory(with locationInfo: LocationInfo) {
-        do {
-            let encoder = JSONEncoder()
-            let encoded = try encoder.encode([locationInfo])
-            userDefault.set(encoded, forKey: locationInfoKey)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func fetchSearchHistory() -> Observable<[LocationInfo]?> {
-        var info: [LocationInfo] = []
         if let data = userDefault.data(forKey: locationInfoKey) {
             do {
-                let decoder = JSONDecoder()
-                info = try decoder.decode([LocationInfo].self, from: data)
+                var info: [LocationInfo] = []
+                info = try JSONDecoder().decode([LocationInfo].self, from: data)
+                info.reverse()
+                info.append(locationInfo)
+                info.reverse()
+                let encoded = try JSONEncoder().encode(info)
+                userDefault.set(encoded, forKey: locationInfoKey)
             } catch {
                 print(error)
             }
+        } else {
+            // 처음저장할때 여기탈텐데
+            print("처음저장할 때")
+        }
+    }
+    
+    func fetchSearchHistory() -> Observable<[LocationInfo]> {
+        var info: [LocationInfo] = []
+        guard let data = userDefault.data(forKey: locationInfoKey) else {
+            return Observable.of([])
+        }
+        do {
+            info = try JSONDecoder().decode([LocationInfo].self, from: data)
+        } catch {
+            print(error)
         }
         return Observable.of(info)
     }
