@@ -28,8 +28,8 @@ class SearchView: UIView {
     }
     weak var delegate: SearchViewDelegate?
     private let disposeBag = DisposeBag()
-    private let historyTableView = UITableView()
     private let searchTableView = UITableView()
+    private let historyTableView = UITableView()
     private var searchDataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
     private var historyDataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
     private var loadingIndicator: LottieAnimationView = {
@@ -90,16 +90,18 @@ class SearchView: UIView {
         textField.anchor(top: backButton.topAnchor, left: backButton.rightAnchor, right: rightAnchor, paddingRight: 20, height: 40)
         textField.centerY(inView: backButton)
         searchTableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12)
-        historyTableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12)
+        historyTableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5)
     }
     
     private func configureTableView() {
         let searchNib = UINib(nibName: SearchResultCell.reuseID, bundle: nil)
         let historyNib = UINib(nibName: SearchHistoryCell.reuseID, bundle: nil)
-        searchTableView.register(searchNib, forCellReuseIdentifier: SearchResultCell.reuseID)
-        historyTableView.register(historyNib, forCellReuseIdentifier: SearchHistoryCell.reuseID)
+        historyTableView.delegate = self
         searchTableView.showsVerticalScrollIndicator = false
         historyTableView.showsVerticalScrollIndicator = false
+        searchTableView.register(searchNib, forCellReuseIdentifier: SearchResultCell.reuseID)
+        historyTableView.register(historyNib, forCellReuseIdentifier: SearchHistoryCell.reuseID)
+        historyTableView.register(SearchHeaderView.self, forHeaderFooterViewReuseIdentifier: SearchHeaderView.reuseIdentifier)
     }
     
     private func configureDataSource() {
@@ -190,5 +192,12 @@ class SearchView: UIView {
         loadingIndicator.play { finished in
             self.loadingIndicator.removeFromSuperview()
         }
+    }
+}
+
+extension SearchView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: SearchHeaderView.reuseIdentifier) as! SearchHeaderView
+        return view
     }
 }

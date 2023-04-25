@@ -19,6 +19,7 @@
 		3B497ACA29F3DD7600D3FAAC /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC929F3DD7600D3FAAC /* SearchHistoryCell.swift */; };
 		3B497ACC29F67B6600D3FAAC /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497ACB29F67B6600D3FAAC /* UserRepository.swift */; };
 		3B497ACE29F67CE800D3FAAC /* DefaultUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497ACD29F67CE800D3FAAC /* DefaultUserRepository.swift */; };
+		3B497AD029F80AB900D3FAAC /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497ACF29F80AB900D3FAAC /* SearchHeaderView.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -120,6 +121,7 @@
 		3B497AC929F3DD7600D3FAAC /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
 		3B497ACB29F67B6600D3FAAC /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		3B497ACD29F67CE800D3FAAC /* DefaultUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserRepository.swift; sourceTree = "<group>"; };
+		3B497ACF29F80AB900D3FAAC /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				3B497AC929F3DD7600D3FAAC /* SearchHistoryCell.swift */,
 				3B97E45829E003A1000F4B39 /* SearchResultCell.xib */,
 				3B497AC729F3DC8600D3FAAC /* SearchHistoryCell.xib */,
+				3B497ACF29F80AB900D3FAAC /* SearchHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 				3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */,
 				3B97E45729E00397000F4B39 /* SearchResultCell.swift in Sources */,
 				3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */,
+				3B497AD029F80AB900D3FAAC /* SearchHeaderView.swift in Sources */,
 				3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */,
 				3B97E48229ED5479000F4B39 /* Route.swift in Sources */,
 				3B497AC229F3BA2500D3FAAC /* CardViewModel.swift in Sources */,
