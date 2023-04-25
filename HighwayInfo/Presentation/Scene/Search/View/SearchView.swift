@@ -28,8 +28,10 @@ class SearchView: UIView {
     }
     weak var delegate: SearchViewDelegate?
     private let disposeBag = DisposeBag()
-    private let tableView = UITableView()
-    private var dataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
+    private let historyTableView = UITableView()
+    private let searchTableView = UITableView()
+    private var searchDataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
+    private var historyDataSource: UITableViewDiffableDataSource<Section, LocationInfo>!
     private var loadingIndicator: LottieAnimationView = {
         let animation = LottieAnimation.named("GrayLoadingIndicator")
         let view = LottieAnimationView(animation: animation)
@@ -82,24 +84,34 @@ class SearchView: UIView {
         backgroundColor = .white
         addSubview(textField)
         addSubview(backButton)
-        addSubview(tableView)
+        addSubview(historyTableView)
+        addSubview(searchTableView)
         backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 100, paddingLeft: 10, width: 40, height: 40)
         textField.anchor(top: backButton.topAnchor, left: backButton.rightAnchor, right: rightAnchor, paddingRight: 20, height: 40)
         textField.centerY(inView: backButton)
-        tableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12)
+        searchTableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12)
+        historyTableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12)
     }
     
     private func configureTableView() {
-        let resultNib = UINib(nibName: SearchResultCell.reuseID, bundle: nil)
+        let searchNib = UINib(nibName: SearchResultCell.reuseID, bundle: nil)
         let historyNib = UINib(nibName: SearchHistoryCell.reuseID, bundle: nil)
-        tableView.register(resultNib, forCellReuseIdentifier: SearchResultCell.reuseID)
-        tableView.register(historyNib, forCellReuseIdentifier: SearchHistoryCell.reuseID)
-        tableView.showsVerticalScrollIndicator = false
+        searchTableView.register(searchNib, forCellReuseIdentifier: SearchResultCell.reuseID)
+        historyTableView.register(historyNib, forCellReuseIdentifier: SearchHistoryCell.reuseID)
+        searchTableView.showsVerticalScrollIndicator = false
+        historyTableView.showsVerticalScrollIndicator = false
     }
     
     private func configureDataSource() {
-        self.dataSource = UITableViewDiffableDataSource<Section, LocationInfo>(tableView: tableView) { (tableView: UITableView, indexPath: IndexPath, viewModel: LocationInfo) in
+        searchDataSource = UITableViewDiffableDataSource<Section, LocationInfo>(tableView: searchTableView) { (tableView: UITableView, indexPath: IndexPath, viewModel: LocationInfo) in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.reuseID, for: indexPath) as? SearchResultCell else {
+                return UITableViewCell()
+            }
+            cell.bind(viewModel)
+            return cell
+        }
+        historyDataSource = UITableViewDiffableDataSource<Section, LocationInfo>(tableView: historyTableView) { (tableView: UITableView, indexPath: IndexPath, viewModel: LocationInfo) in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchHistoryCell.reuseID, for: indexPath) as? SearchHistoryCell else {
                 return UITableViewCell()
             }
             cell.bind(viewModel)
@@ -107,7 +119,7 @@ class SearchView: UIView {
         }
     }
     
-    private func applySnapshot(with viewModel: [LocationInfo]) {
+    private func applySnapshot(to dataSource: UITableViewDiffableDataSource<Section, LocationInfo>, with viewModel: [LocationInfo]) {
         var snapShot = NSDiffableDataSourceSnapshot<Section, LocationInfo>()
         snapShot.appendSections([.search])
         snapShot.appendItems(viewModel)
@@ -115,8 +127,7 @@ class SearchView: UIView {
     }
     
     private func bindViewModel() {
-        let viewWillAppear = textField.rx.text.orEmpty
-            .map { $0.isEmpty }
+        let viewWillAppear = textField.rx.text.orEmpty.map { $0.isEmpty }
         let keyword = textField.rx.text.orEmpty.asObservable()
         let selectedLocation = PublishSubject<LocationInfo?>()
         let currentLocation = delegate?.currentLocation()
@@ -127,9 +138,24 @@ class SearchView: UIView {
                                           currentLocation: Observable.of(currentLocation))
         let output = viewModel?.transform(input: input)
         
-        tableView.rx.itemSelected.subscribe(onNext: { index in
-            self.tableView.deselectRow(at: index, animated: false)
-            let location = self.dataSource.itemIdentifier(for: index)
+        textField.rx.text.orEmpty
+            .map { $0.isEmpty }
+            .subscribe(onNext: { empty in
+                self.searchTableView.alpha = empty ? 0 : 1
+            })
+            .disposed(by: disposeBag)
+        
+        searchTableView.rx.itemSelected.subscribe(onNext: { index in
+            self.searchTableView.deselectRow(at: index, animated: false)
+            let location = self.searchDataSource.itemIdentifier(for: index)
+            self.showLoadingIndicator()
+            selectedLocation.onNext(location)
+        })
+        .disposed(by: disposeBag)
+        
+        historyTableView.rx.itemSelected.subscribe(onNext: { index in
+            self.historyTableView.deselectRow(at: index, animated: false)
+            let location = self.historyDataSource.itemIdentifier(for: index)
             self.showLoadingIndicator()
             selectedLocation.onNext(location)
         })
@@ -137,13 +163,13 @@ class SearchView: UIView {
         
         output?.searchResult
             .subscribe(onNext: { result in
-                self.applySnapshot(with: result)
+                self.applySnapshot(to: self.searchDataSource, with: result)
             })
             .disposed(by: disposeBag)
         
         output?.searchHistory
-            .subscribe(onNext: { result in
-                self.applySnapshot(with: result)
+            .subscribe(onNext: { history in
+                self.applySnapshot(to: self.historyDataSource, with: history)
             })
             .disposed(by: disposeBag)
     }
@@ -152,9 +178,9 @@ class SearchView: UIView {
         endEditing(true)
         textField.text = ""
         delegate?.dismissSearchView()
-        var snapShot = dataSource.snapshot()
+        var snapShot = searchDataSource.snapshot()
         snapShot.deleteAllItems()
-        dataSource.apply(snapShot)
+        searchDataSource.apply(snapShot)
     }
     
     private func showLoadingIndicator() {
