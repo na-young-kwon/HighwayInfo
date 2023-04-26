@@ -37,6 +37,11 @@ final class DefaultSearchUseCase: SearchUseCase {
         userRepository.saveHistory(with: location)
     }
     
+    func deleteSearchHistory() {
+        userRepository.deleteAll()
+        searchHistory.onNext([])
+    }
+    
     func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?) {
         guard let coordinate = coordinate else { return }
         roadRepository.fetchSearchResult(for: keyword, coordinate: coordinate)

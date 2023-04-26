@@ -96,6 +96,7 @@ class SearchView: UIView {
     private func configureTableView() {
         let searchNib = UINib(nibName: SearchResultCell.reuseID, bundle: nil)
         let historyNib = UINib(nibName: SearchHistoryCell.reuseID, bundle: nil)
+        historyTableView.separatorStyle = .none
         historyTableView.delegate = self
         searchTableView.showsVerticalScrollIndicator = false
         historyTableView.showsVerticalScrollIndicator = false
@@ -198,6 +199,11 @@ class SearchView: UIView {
 extension SearchView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: SearchHeaderView.reuseIdentifier) as! SearchHeaderView
+        view.resetButtonTapped
+            .subscribe(onNext: { _ in
+                self.viewModel?.deleteHistory()
+            })
+            .disposed(by: disposeBag)
         return view
     }
 }

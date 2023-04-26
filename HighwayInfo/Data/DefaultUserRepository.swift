@@ -36,6 +36,10 @@ final class DefaultUserRepository: UserRepository {
         return Observable.of(decoded)
     }
     
+    func deleteAll() {
+        userDefault.removeObject(forKey: "locationInfo")
+    }
+    
     private func saveFirstLocation(_ locationInfo: LocationInfo) {
         guard let encoded = try? JSONEncoder().encode([locationInfo]) else {
             return

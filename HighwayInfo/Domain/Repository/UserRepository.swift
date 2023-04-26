@@ -11,4 +11,5 @@ import RxSwift
 protocol UserRepository {
     func saveHistory(with locationInfo: LocationInfo)
     func fetchSearchHistory() -> Observable<[LocationInfo]>
+    func deleteAll()
 }

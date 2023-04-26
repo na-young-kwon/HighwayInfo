@@ -82,4 +82,8 @@ final class SearchViewModel: ViewModelType {
         
         return output
     }
+    
+    func deleteHistory() {
+        useCase.deleteSearchHistory()
+    }
 }

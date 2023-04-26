@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SearchHeaderView: UITableViewHeaderFooterView {
     static let reuseIdentifier = "title-supplementary-reuse-identifier"
@@ -21,9 +23,12 @@ class SearchHeaderView: UITableViewHeaderFooterView {
         button.setTitle("전체 삭제", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13)
         button.setTitleColor(.secondaryLabel, for: .normal)
-        button.addTarget(self, action: #selector(reset), for: .touchUpInside)
         return button
     }()
+    
+    var resetButtonTapped: Observable<Void> {
+        resetButton.rx.tap.asObservable()
+    }
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -43,9 +48,5 @@ class SearchHeaderView: UITableViewHeaderFooterView {
         addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingLeft: 15, paddingBottom: 10, paddingRight: 15)
-    }
-    
-    @objc func reset() {
-        print("검색기록 삭제")
     }
 }
