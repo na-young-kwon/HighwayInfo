@@ -96,6 +96,8 @@ class SearchView: UIView {
     private func configureTableView() {
         let searchNib = UINib(nibName: SearchResultCell.reuseID, bundle: nil)
         let historyNib = UINib(nibName: SearchHistoryCell.reuseID, bundle: nil)
+        historyTableView.keyboardDismissMode = .onDrag
+        searchTableView.keyboardDismissMode = .onDrag
         historyTableView.separatorStyle = .none
         historyTableView.delegate = self
         searchTableView.showsVerticalScrollIndicator = false
@@ -130,13 +132,13 @@ class SearchView: UIView {
     }
     
     private func bindViewModel() {
-        let viewWillAppear = textField.rx.text.orEmpty.map { $0.isEmpty }
-        let keyword = textField.rx.text.orEmpty.asObservable()
+        let viewWillAppear = textField.rx.controlEvent(.editingDidBegin).asObservable()
+        let searchKeyword = textField.rx.text.orEmpty.asObservable()
         let selectedLocation = PublishSubject<LocationInfo?>()
         let currentLocation = delegate?.currentLocation()
 
         let input = SearchViewModel.Input(viewWillAppear: viewWillAppear,
-                                          searchKeyword: keyword,
+                                          searchKeyword: searchKeyword,
                                           itemSelected: selectedLocation.asObservable(),
                                           currentLocation: Observable.of(currentLocation))
         let output = viewModel?.transform(input: input)

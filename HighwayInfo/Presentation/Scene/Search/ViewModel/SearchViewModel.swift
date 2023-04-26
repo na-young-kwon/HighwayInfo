@@ -16,7 +16,7 @@ final class SearchViewModel: ViewModelType {
     private let coordinator: DefaultSearchCoordinator
     
     struct Input {
-        let viewWillAppear: Observable<Bool>
+        let viewWillAppear: Observable<Void>
         let searchKeyword: Observable<String>
         let itemSelected: Observable<LocationInfo?>
         let currentLocation: Observable<CLLocationCoordinate2D?>
@@ -40,13 +40,8 @@ final class SearchViewModel: ViewModelType {
         let output = Output(searchResult: useCase.searchResult.asObservable(),
                             searchHistory: useCase.searchHistory.asObservable())
         input.viewWillAppear
-            .distinctUntilChanged()
-            .subscribe(onNext: { appear in
-                if appear {
-                    self.useCase.fetchSearchHistory()
-                } else {
-                    print("1-no")
-                }
+            .subscribe(onNext: { _ in
+                self.useCase.fetchSearchHistory()
             })
             .disposed(by: disposeBag)
         
