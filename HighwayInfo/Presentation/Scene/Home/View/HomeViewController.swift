@@ -55,7 +55,6 @@ class HomeViewController: UIViewController {
     private func configureTableView() {
         let nib = UINib(nibName: AccidentCell.reuseID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: AccidentCell.reuseID)
-        tableView.refreshControl = UIRefreshControl()
         tableView.showsVerticalScrollIndicator = false
     }
     
@@ -76,15 +75,9 @@ class HomeViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
-            .mapToVoid()
-        let pull = tableView.refreshControl!.rx
-            .controlEvent(.valueChanged)
-            .asDriver()
-        
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
         let input = HomeViewModel.Input(trigger: viewWillAppear,
                                         refreshButtonTapped: refreshButton.rx.tap.asObservable())
-        
         let output = viewModel.transform(input: input)
         
         output.accidents
@@ -93,10 +86,6 @@ class HomeViewController: UIViewController {
                 self.applySnapshot(with: accidents)
             })
             .disposed(by: self.disposeBag)
-        
-        output.fetching
-            .drive(tableView.refreshControl!.rx.isRefreshing)
-            .disposed(by: disposeBag)
         
         refreshButton.rx.tap
             .bind { _ in

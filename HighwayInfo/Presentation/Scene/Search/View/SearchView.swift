@@ -183,9 +183,6 @@ class SearchView: UIView {
         endEditing(true)
         textField.text = ""
         delegate?.dismissSearchView()
-        var snapShot = searchDataSource.snapshot()
-        snapShot.deleteAllItems()
-        searchDataSource.apply(snapShot)
     }
     
     private func showLoadingIndicator() {

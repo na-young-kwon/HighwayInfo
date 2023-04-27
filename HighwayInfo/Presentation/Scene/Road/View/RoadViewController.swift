@@ -65,12 +65,9 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         searchView.delegate = self
         searchView.viewModel = viewModel.searchViewModel
         searchView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: view.frame.height)
-        
-        UIView.animate(withDuration: 0.5) {
-            self.searchView?.alpha = 1
-            self.searchView?.textField.becomeFirstResponder()
-            self.tabBarController?.tabBar.isHidden = true
-        }
+        searchView.alpha = 1
+        searchView.textField.becomeFirstResponder()
+        tabBarController?.tabBar.isHidden = true
     }
     
     private func configureTapGesture() {
