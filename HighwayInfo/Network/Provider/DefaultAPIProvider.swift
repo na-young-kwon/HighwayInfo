@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 enum DecodeType {
-    case accident, cctv, json
+    case accident, cctv, serviceArea, json
 }
 
 final class DefaultAPIProvider: APIProvider {
@@ -44,7 +44,7 @@ final class DefaultAPIProvider: APIProvider {
                 case .accident:
                     let parser = AccidentParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
-                        observer.onError(NetworkingError.convertToReponseError)
+                        observer.onError(NetworkingError.convertToResponseError)
                         return
                     }
                     observer.onNext(decoded)
@@ -53,7 +53,16 @@ final class DefaultAPIProvider: APIProvider {
                 case .cctv:
                     let parser = CCTVParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
-                        observer.onError(NetworkingError.convertToReponseError)
+                        observer.onError(NetworkingError.convertToResponseError)
+                        return
+                    }
+                    observer.onNext(decoded)
+                    observer.onCompleted()
+                    
+                case .serviceArea:
+                    let parser = ServiceAreaParser(data: data)
+                    guard let decoded = parser.parseXML() as? T.Response else {
+                        observer.onError(NetworkingError.convertToResponseError)
                         return
                     }
                     observer.onNext(decoded)

@@ -45,4 +45,9 @@ final class RoadService {
         let request = AddressRequest(latitude: point.latitude, longitude: point.longitude)
         return apiProvider.performDataTask(with: request, decodeType: .json)
     }
+    
+    func fetchServiceArea(routeName: String) -> Observable<ServiceAreaDTO> {
+        let request = ServiceAreaRequest(routeName: routeName)
+        return apiProvider.performDataTask(with: request, decodeType: .serviceArea)
+    }
 }

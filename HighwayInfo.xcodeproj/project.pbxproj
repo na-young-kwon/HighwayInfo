@@ -20,6 +20,9 @@
 		3B497ACC29F67B6600D3FAAC /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497ACB29F67B6600D3FAAC /* UserRepository.swift */; };
 		3B497ACE29F67CE800D3FAAC /* DefaultUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497ACD29F67CE800D3FAAC /* DefaultUserRepository.swift */; };
 		3B497AD029F80AB900D3FAAC /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497ACF29F80AB900D3FAAC /* SearchHeaderView.swift */; };
+		3B497AD229FAA16300D3FAAC /* ServiceAreaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AD129FAA16300D3FAAC /* ServiceAreaRequest.swift */; };
+		3B497AD429FAA17A00D3FAAC /* ServiceAreaDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AD329FAA17A00D3FAAC /* ServiceAreaDTO.swift */; };
+		3B497AD729FAA34000D3FAAC /* ServiceAreaParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AD629FAA34000D3FAAC /* ServiceAreaParser.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -122,6 +125,9 @@
 		3B497ACB29F67B6600D3FAAC /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		3B497ACD29F67CE800D3FAAC /* DefaultUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserRepository.swift; sourceTree = "<group>"; };
 		3B497ACF29F80AB900D3FAAC /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		3B497AD129FAA16300D3FAAC /* ServiceAreaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaRequest.swift; sourceTree = "<group>"; };
+		3B497AD329FAA17A00D3FAAC /* ServiceAreaDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaDTO.swift; sourceTree = "<group>"; };
+		3B497AD629FAA34000D3FAAC /* ServiceAreaParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaParser.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -214,6 +220,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B497AD529FAA32100D3FAAC /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				3B8F086229B89AE7009D7396 /* AccidentParser.swift */,
+				3BD4EEA629C980580010FB25 /* CCTVParser.swift */,
+				3B497AD629FAA34000D3FAAC /* ServiceAreaParser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
 		3B5AD11A29B1E7B300E2AFAA /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +436,7 @@
 		3B63BAB929B84BE90055D3A4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3B497AD529FAA32100D3FAAC /* Parser */,
 				3B8F085E29B87CD8009D7396 /* DTO */,
 				3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */,
 				3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */,
@@ -460,6 +477,7 @@
 				3B3CD27929DEFC6300D223AC /* SearchRequest.swift */,
 				3B97E47729E6DD9A000F4B39 /* RouteRequest.swift */,
 				3B97E48329ED6BF6000F4B39 /* AddressRequest.swift */,
+				3B497AD129FAA16300D3FAAC /* ServiceAreaRequest.swift */,
 			);
 			path = Tmap;
 			sourceTree = "<group>";
@@ -516,12 +534,11 @@
 			isa = PBXGroup;
 			children = (
 				3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */,
-				3B8F086229B89AE7009D7396 /* AccidentParser.swift */,
 				3BD4EE9E29C1EF940010FB25 /* CctvDTO.swift */,
-				3BD4EEA629C980580010FB25 /* CCTVParser.swift */,
 				3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */,
 				3B97E47929E6DDC4000F4B39 /* RouteDTO.swift */,
 				3B97E48529ED6C1A000F4B39 /* AddressDTO.swift */,
+				3B497AD329FAA17A00D3FAAC /* ServiceAreaDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -760,6 +777,7 @@
 			files = (
 				3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */,
 				3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */,
+				3B497AD229FAA16300D3FAAC /* ServiceAreaRequest.swift in Sources */,
 				3B497ACE29F67CE800D3FAAC /* DefaultUserRepository.swift in Sources */,
 				3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */,
 				3B97E47629E5572A000F4B39 /* CardUseCase.swift in Sources */,
@@ -776,6 +794,7 @@
 				3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */,
 				3B97E46B29E41B24000F4B39 /* DefaultResultCoordinator.swift in Sources */,
 				3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */,
+				3B497AD729FAA34000D3FAAC /* ServiceAreaParser.swift in Sources */,
 				3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */,
 				3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */,
 				3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */,
@@ -819,6 +838,7 @@
 				3B6CF37129D31544002289A0 /* RoadService.swift in Sources */,
 				3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */,
 				3B97E45729E00397000F4B39 /* SearchResultCell.swift in Sources */,
+				3B497AD429FAA17A00D3FAAC /* ServiceAreaDTO.swift in Sources */,
 				3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */,
 				3B497AD029F80AB900D3FAAC /* SearchHeaderView.swift in Sources */,
 				3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */,
