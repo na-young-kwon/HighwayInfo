@@ -16,4 +16,8 @@ struct HighwayInfo {
         self.name = name
         self.coordinate = CLLocationCoordinate2D(latitude: coordinate[1], longitude: coordinate[0])
     }
+    
+    var rawName: String{
+        name.replacingOccurrences(of: "고속도로", with: "").replacingOccurrences(of: " ", with: "")
+    }
 }

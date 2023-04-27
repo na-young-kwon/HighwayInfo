@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol CardUseCase {
-  
+    func fetchServiceArea(for routeName: String)
 }

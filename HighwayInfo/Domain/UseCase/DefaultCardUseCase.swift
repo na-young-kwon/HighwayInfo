@@ -16,4 +16,12 @@ final class DefaultCardUseCase: CardUseCase {
     init(roadRepository: RoadRepository) {
         self.roadRepository = roadRepository
     }
+    
+    func fetchServiceArea(for routeName: String) {
+        roadRepository.fetchServiceArea(for: routeName)
+            .subscribe(onNext: { serviceAreaDTO in
+                print("serviceAreaDTO \(serviceAreaDTO.first?.serviceAreaName)")
+            })
+            .disposed(by: disposeBag)
+    }
 }

@@ -70,7 +70,6 @@ final class SearchViewModel: ViewModelType {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { route in
                 // 왜 두번 들어오지
-                print(route)
                 self.coordinator.toResultView(with: route)
             })
             .disposed(by: disposeBag)

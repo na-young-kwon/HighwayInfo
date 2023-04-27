@@ -27,4 +27,8 @@ final class DefaultRoadRepository: RoadRepository {
     func fetchStartPointName(for point: CLLocationCoordinate2D) -> Observable<String> {
         service.fetchStartPointName(for: point).map { $0.addressInfo.cityDo + " " + $0.addressInfo.guGun + " " + $0.addressInfo.legalDong + " →" }
     }
+    
+    func fetchServiceArea(for routeName: String) -> Observable<[ServiceAreaDTO]> {
+        service.fetchServiceArea(routeName: routeName)
+    }
 }

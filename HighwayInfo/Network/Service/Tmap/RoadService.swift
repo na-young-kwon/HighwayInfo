@@ -46,7 +46,7 @@ final class RoadService {
         return apiProvider.performDataTask(with: request, decodeType: .json)
     }
     
-    func fetchServiceArea(routeName: String) -> Observable<ServiceAreaDTO> {
+    func fetchServiceArea(routeName: String) -> Observable<[ServiceAreaDTO]> {
         let request = ServiceAreaRequest(routeName: routeName)
         return apiProvider.performDataTask(with: request, decodeType: .serviceArea)
     }

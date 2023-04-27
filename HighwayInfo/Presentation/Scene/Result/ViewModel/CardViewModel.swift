@@ -31,6 +31,12 @@ final class CardViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let emptyHighway = Observable.just(highwayInfo.isEmpty)
         
+        Observable.just(highwayInfo)
+            .subscribe(onNext: { highway in
+                highway.map { self.useCase.fetchServiceArea(for: $0.rawName) }
+            })
+            .disposed(by: disposeBag)
+        
         return Output(emptyHighway: emptyHighway)
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct ServiceAreaRequest: APIRequest {
-    typealias Response = ServiceAreaDTO
+    typealias Response = [ServiceAreaDTO]
 
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/business/"

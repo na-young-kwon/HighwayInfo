@@ -25,7 +25,7 @@ final class ServiceAreaParser: NSObject, XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        if elementName == "data" {
+        if elementName == "list" {
             serviceArea = ServiceAreaDTO()
         }
     }
@@ -38,22 +38,21 @@ final class ServiceAreaParser: NSObject, XMLParserDelegate {
         }
     }
 
-    // 닫는 태그를 만났을 때
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "data" {
+        if elementName == "list" {
             serviceAreas.append(serviceArea)
         } else if elementName == "serviceAreaName" {
-            serviceArea.serviceAreaName = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
+            serviceArea.serviceAreaName = elementValue
         } else if elementName == "serviceAreaCode2" {
-            serviceArea.serviceAreaCode = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
+            serviceArea.serviceAreaCode = elementValue
         } else if elementName == "convenience" {
-            serviceArea.convenience = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
+            serviceArea.convenience = elementValue
         } else if elementName == "direction" {
-            serviceArea.direction = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
+            serviceArea.direction = elementValue
         } else if elementName == "svarAddr" {
-            serviceArea.address = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
+            serviceArea.address = elementValue
         } else if elementName == "telNo" {
-            serviceArea.telNo = elementValue?.replacingOccurrences(of: "\n\t\t", with: "")
+            serviceArea.telNo = elementValue
         }
         elementValue = nil
     }
