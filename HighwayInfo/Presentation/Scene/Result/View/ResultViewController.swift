@@ -18,20 +18,16 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         case expanded
     }
     
-    @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var startPointLabel: UILabel!
     @IBOutlet weak var endPointLabel: UILabel!
     
     var viewModel: ResultViewModel!
-    private var cardViewController:CardViewController!
+    private var cardViewController: CardViewController!
     private var mapView: TMapView?
     private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
     private let disposeBag = DisposeBag()
-    
-    //TMap
-    var markers: Array<TMapMarker> = []
-    
+    private var markers: Array<TMapMarker> = []
     // CardView
     private var startCardHeight: CGFloat = 0
     private var endCardHeight: CGFloat = 0
@@ -46,7 +42,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         super.viewDidLoad()
         
         configureMapView()
-        setupCard()
+        configureCardView()
         bindViewModel()
     }
     
@@ -57,7 +53,7 @@ class ResultViewController: UIViewController, TMapViewDelegate {
         backgroundView.addSubview(mapView!)
     }
     
-    private func setupCard() {
+    private func configureCardView() {
         startCardHeight = self.view.frame.height * 0.3
         endCardHeight = self.view.frame.height * 0.85
         cardViewController = CardViewController(nibName: CardViewController.reuseID, bundle: nil)
