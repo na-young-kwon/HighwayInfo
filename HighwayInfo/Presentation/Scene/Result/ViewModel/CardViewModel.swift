@@ -34,6 +34,7 @@ final class CardViewModel: ViewModelType {
         Observable.just(highwayInfo)
             .subscribe(onNext: { highway in
                 highway.map { self.useCase.fetchServiceArea(for: $0.rawName) }
+                highway.map { self.useCase.fetchGasStation(for: $0.rawName) }
             })
             .disposed(by: disposeBag)
         

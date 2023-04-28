@@ -29,6 +29,10 @@ final class DefaultRoadRepository: RoadRepository {
     }
     
     func fetchServiceArea(for routeName: String) -> Observable<[ServiceAreaDTO]> {
-        service.fetchServiceArea(routeName: routeName)
+        service.fetchServiceArea(for: routeName)
+    }
+    
+    func fetchGasStation(for routeName: String) -> Observable<[GasStationDTO]> {
+        service.fetchGasStation(for: routeName)
     }
 }

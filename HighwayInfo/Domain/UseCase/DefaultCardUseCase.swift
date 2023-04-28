@@ -24,4 +24,13 @@ final class DefaultCardUseCase: CardUseCase {
             })
             .disposed(by: disposeBag)
     }
+    
+    func fetchGasStation(for routeName: String) {
+        roadRepository.fetchGasStation(for: routeName)
+            .map { $0.map { $0.name } }
+            .subscribe(onNext: { gasStationDTO in
+                print("gas \(Set(gasStationDTO))")
+            })
+            .disposed(by: disposeBag)
+    }
 }

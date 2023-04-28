@@ -10,4 +10,5 @@ import RxSwift
 
 protocol CardUseCase {
     func fetchServiceArea(for routeName: String)
+    func fetchGasStation(for routeName: String)
 }
