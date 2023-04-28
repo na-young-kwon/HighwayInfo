@@ -11,7 +11,6 @@ final class GasPriceParser: NSObject, XMLParserDelegate {
     private let parser: XMLParser
     private var elementValue: String?
     private var gasPrice: GasPriceDTO!
-    private var gasPrices: [GasPriceDTO] = []
     
     init(data: Data) {
         self.parser = XMLParser(data: data)
@@ -19,9 +18,9 @@ final class GasPriceParser: NSObject, XMLParserDelegate {
         parser.delegate = self
     }
     
-    func parseXML() -> [GasPriceDTO] {
+    func parseXML() -> GasPriceDTO {
         parser.parse()
-        return gasPrices
+        return gasPrice
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -37,17 +36,15 @@ final class GasPriceParser: NSObject, XMLParserDelegate {
             elementValue = "\(elementValue!)\(string)"
         }
     }
-
+    
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "list" {
-            gasPrices.append(gasPrice)
-        } else if elementName == "serviceAreaName" {
+        if elementName == "serviceAreaName" {
             gasPrice.name = elementValue
         } else if elementName == "svarAddr" {
             gasPrice.address = elementValue
         }
         else if elementName == "diselPrice" {
-            gasPrice.diselPrice = elementValue
+            gasPrice.dieselPrice = elementValue
         }
         else if elementName == "gasolinePrice" {
             gasPrice.gasolinePrice = elementValue

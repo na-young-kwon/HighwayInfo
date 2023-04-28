@@ -15,4 +15,5 @@ protocol RoadRepository {
     func fetchStartPointName(for point: CLLocationCoordinate2D) -> Observable<String>
     func fetchServiceArea(for routeName: String) -> Observable<[ServiceAreaDTO]>
     func fetchGasStation(for routeName: String) -> Observable<[GasStationDTO]>
+    func fetchGasPrice(for serviceCode: String) -> Observable<GasPriceDTO>
 }

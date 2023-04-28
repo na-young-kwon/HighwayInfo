@@ -10,7 +10,7 @@ import Foundation
 class GasPriceDTO: Decodable {
     var name: String!
     var address: String!
-    var diselPrice: String!
+    var dieselPrice: String!
     var gasolinePrice: String!
     var lpgPrice: String!
 }

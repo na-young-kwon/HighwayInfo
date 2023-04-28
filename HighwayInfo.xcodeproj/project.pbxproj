@@ -29,6 +29,7 @@
 		3B497AE129FBE54400D3FAAC /* GasPriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE029FBE54400D3FAAC /* GasPriceRequest.swift */; };
 		3B497AE329FBE59500D3FAAC /* GasPriceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE229FBE59500D3FAAC /* GasPriceDTO.swift */; };
 		3B497AE529FBF00A00D3FAAC /* GasPriceParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE429FBF00A00D3FAAC /* GasPriceParser.swift */; };
+		3B497AE729FBF21700D3FAAC /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE629FBF21700D3FAAC /* GasStation.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -140,6 +141,7 @@
 		3B497AE029FBE54400D3FAAC /* GasPriceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasPriceRequest.swift; sourceTree = "<group>"; };
 		3B497AE229FBE59500D3FAAC /* GasPriceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasPriceDTO.swift; sourceTree = "<group>"; };
 		3B497AE429FBF00A00D3FAAC /* GasPriceParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasPriceParser.swift; sourceTree = "<group>"; };
+		3B497AE629FBF21700D3FAAC /* GasStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStation.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				3B97E45429E0028E000F4B39 /* LocationInfo.swift */,
 				3B97E47D29E99200000F4B39 /* HighwayInfo.swift */,
 				3B97E48129ED5479000F4B39 /* Route.swift */,
+				3B497AE629FBF21700D3FAAC /* GasStation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
 				3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
+				3B497AE729FBF21700D3FAAC /* GasStation.swift in Sources */,
 				3B497ACA29F3DD7600D3FAAC /* SearchHistoryCell.swift in Sources */,
 				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
 				3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */,

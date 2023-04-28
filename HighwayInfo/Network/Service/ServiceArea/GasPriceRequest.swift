@@ -8,7 +8,7 @@
 import Foundation
 
 struct GasPriceRequest: APIRequest {
-    typealias Response = [GasPriceDTO]
+    typealias Response = GasPriceDTO
 
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/business/"

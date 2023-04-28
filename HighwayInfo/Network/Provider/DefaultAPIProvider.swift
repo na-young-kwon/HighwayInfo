@@ -78,7 +78,7 @@ final class DefaultAPIProvider: APIProvider {
                     observer.onCompleted()
                     
                 case .gasPrice:
-                    let parser = GasStationParser(data: data)
+                    let parser = GasPriceParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
                         observer.onError(NetworkingError.convertToResponseError)
                         return

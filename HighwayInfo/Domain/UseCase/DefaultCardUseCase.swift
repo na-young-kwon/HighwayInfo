@@ -26,10 +26,19 @@ final class DefaultCardUseCase: CardUseCase {
     }
     
     func fetchGasStation(for routeName: String) {
-        roadRepository.fetchGasStation(for: routeName)
+        let serviceAreaCode = roadRepository.fetchGasStation(for: routeName)
+            .map { $0.compactMap { $0.serviceAreaCode } }
+        
+        let gasStation = serviceAreaCode.flatMap { serviceCode in
+            Observable.zip(
+                serviceCode.map { self.roadRepository.fetchGasPrice(for: $0) }
+            )
+        }
+        
+        gasStation
             .map { $0.map { $0.name } }
-            .subscribe(onNext: { gasStationDTO in
-                print("gas \(Set(gasStationDTO))")
+            .subscribe(onNext: { gasStation in
+                print("gasStation \(gasStation)")
             })
             .disposed(by: disposeBag)
     }
