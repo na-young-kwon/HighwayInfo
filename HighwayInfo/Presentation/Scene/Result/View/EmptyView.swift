@@ -28,6 +28,11 @@ class EmptyView: UIView {
     private func configureUI() {
         backgroundColor = .white
         addSubview(label)
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowRadius = 4
+        layer.shadowOpacity = 0.6
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
         label.anchor(top: topAnchor, paddingTop: 100)
         label.centerX(inView: self)
     }

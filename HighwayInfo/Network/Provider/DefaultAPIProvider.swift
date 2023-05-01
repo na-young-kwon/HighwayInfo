@@ -44,7 +44,7 @@ final class DefaultAPIProvider: APIProvider {
                 case .accident:
                     let parser = AccidentParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
-                        observer.onError(NetworkingError.convertToResponseError)
+                        observer.onError(NetworkingError.parsingError)
                         return
                     }
                     observer.onNext(decoded)
@@ -53,7 +53,7 @@ final class DefaultAPIProvider: APIProvider {
                 case .cctv:
                     let parser = CCTVParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
-                        observer.onError(NetworkingError.convertToResponseError)
+                        observer.onError(NetworkingError.parsingError)
                         return
                     }
                     observer.onNext(decoded)
@@ -62,7 +62,7 @@ final class DefaultAPIProvider: APIProvider {
                 case .serviceArea:
                     let parser = ServiceAreaParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
-                        observer.onError(NetworkingError.convertToResponseError)
+                        observer.onError(NetworkingError.parsingError)
                         return
                     }
                     observer.onNext(decoded)
@@ -71,7 +71,7 @@ final class DefaultAPIProvider: APIProvider {
                 case .gasStation:
                     let parser = GasStationParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
-                        observer.onError(NetworkingError.convertToResponseError)
+                        observer.onError(NetworkingError.parsingError)
                         return
                     }
                     observer.onNext(decoded)
@@ -80,7 +80,7 @@ final class DefaultAPIProvider: APIProvider {
                 case .gasPrice:
                     let parser = GasPriceParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
-                        observer.onError(NetworkingError.convertToResponseError)
+                        observer.onError(NetworkingError.parsingError)
                         return
                     }
                     observer.onNext(decoded)

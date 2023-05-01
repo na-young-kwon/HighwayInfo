@@ -13,31 +13,24 @@ final class CardViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultCardCoordinator
     private let useCase: CardUseCase
-    private let highwayInfo: [HighwayInfo]
+    private let highwayInfo: HighwayInfo?
     
     struct Input {
     }
     
     struct Output {
-        let emptyHighway: Observable<Bool>
+        let highway: Observable<HighwayInfo?>
     }
     
     init(coordinator: DefaultCardCoordinator, useCase: CardUseCase, highwayInfo: [HighwayInfo]) {
         self.coordinator = coordinator
         self.useCase = useCase
-        self.highwayInfo = highwayInfo
+        self.highwayInfo = highwayInfo.first
     }
     
     func transform(input: Input) -> Output {
-        let emptyHighway = Observable.just(highwayInfo.isEmpty)
-        
-        Observable.just(highwayInfo)
-            .subscribe(onNext: { highway in
-                highway.map { self.useCase.fetchServiceArea(for: $0.rawName) }
-                highway.map { self.useCase.fetchGasStation(for: $0.rawName) }
-            })
-            .disposed(by: disposeBag)
-        
-        return Output(emptyHighway: emptyHighway)
+        let highway = Observable.just(highwayInfo)
+       
+        return Output(highway: highway)
     }
 }

@@ -18,7 +18,7 @@ final class GasPriceParser: NSObject, XMLParserDelegate {
         parser.delegate = self
     }
     
-    func parseXML() -> GasPriceDTO {
+    func parseXML() -> GasPriceDTO? {
         parser.parse()
         return gasPrice
     }

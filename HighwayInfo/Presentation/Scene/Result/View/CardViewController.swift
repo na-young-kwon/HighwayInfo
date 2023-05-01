@@ -40,11 +40,10 @@ class CardViewController: UIViewController {
     private func bindViewModel() {
         let input = CardViewModel.Input()
         let output = viewModel.transform(input: input)
-        output.emptyHighway
-            .subscribe(onNext: { isEmpty in
-                if isEmpty {
+        output.highway
+            .subscribe(onNext: { highway in
+                if highway == nil {
                     self.view = EmptyView()
-                    self.configureUI()
                 } else {
                     print("fetch result")
                 }
