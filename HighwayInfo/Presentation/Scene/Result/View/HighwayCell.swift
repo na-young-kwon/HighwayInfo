@@ -10,9 +10,8 @@ import UIKit
 class HighwayCell: UICollectionViewCell {
     let label: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
-        label.backgroundColor = .brown
-        label.textColor = .systemGray2
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .black.withAlphaComponent(0.7)
         return label
     }()
     
@@ -31,10 +30,22 @@ class HighwayCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        // border 넣기
+        backgroundColor = .systemGray6
+        layer.masksToBounds = true
+        layer.cornerRadius = 10
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.systemBackground.cgColor
         contentView.addSubview(label)
-        let padding = 3.0
-        label.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor,
-                     paddingTop: padding, paddingLeft: padding, paddingBottom: padding, paddingRight: padding)
+        let horizontalPadding = 8.0
+        let verticalPadding = 12.0
+        label.anchor(top: contentView.topAnchor,
+                     left: contentView.leftAnchor,
+                     bottom: contentView.bottomAnchor,
+                     right: contentView.rightAnchor,
+                     paddingTop: horizontalPadding,
+                     paddingLeft: verticalPadding,
+                     paddingBottom: horizontalPadding,
+                     paddingRight: verticalPadding
+        )
     }
 }

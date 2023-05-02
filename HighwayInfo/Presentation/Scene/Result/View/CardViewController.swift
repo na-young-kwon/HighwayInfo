@@ -32,7 +32,6 @@ class CardViewController: UIViewController {
     
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var titleCollectionView: UICollectionView!
-    
     private let titleElementKind = "title-element-kind"
     var viewModel: CardViewModel!
     private let disposeBag = DisposeBag()
@@ -69,11 +68,9 @@ class CardViewController: UIViewController {
     }
     
     private func createTitleLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(30),
-                                             heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(30), heightDimension: .fractionalHeight(1.3))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .absolute(25))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(25))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let spacing = CGFloat(10)
         group.interItemSpacing = .fixed(spacing)

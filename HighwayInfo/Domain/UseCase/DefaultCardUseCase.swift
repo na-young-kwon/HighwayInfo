@@ -19,6 +19,7 @@ final class DefaultCardUseCase: CardUseCase {
     
     func fetchServiceArea(for routeName: String) {
         roadRepository.fetchServiceArea(for: routeName)
+            .take(15)
             .subscribe(onNext: { serviceAreaDTO in
                 print("serviceAreaDTO \(serviceAreaDTO.first?.serviceAreaName)")
             })
@@ -36,6 +37,7 @@ final class DefaultCardUseCase: CardUseCase {
         }
         
         gasStation
+            .take(15)
             .map { $0.map { $0.name } }
             .subscribe(onNext: { gasStation in
                 print("gasStation \(gasStation)")
