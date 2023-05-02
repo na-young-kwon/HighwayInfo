@@ -10,8 +10,10 @@ import RxSwift
 import RxCocoa
 
 class CardViewController: UIViewController {
-    
-    enum Section: Int, CaseIterable {
+    enum TitleSection: CaseIterable {
+        case main
+    }
+    enum DetailSection: Int, CaseIterable {
         case serviceArea, gasStation
         
         var description: String {
@@ -35,16 +37,16 @@ class CardViewController: UIViewController {
     var viewModel: CardViewModel!
     private let disposeBag = DisposeBag()
     private var detailCollectionView: UICollectionView!
-    private var titleDataSource: UICollectionViewDiffableDataSource<String, HighwayInfo>!
-    private var detailDataSource: UICollectionViewDiffableDataSource<Section, Item>!
+    private var titleDataSource: UICollectionViewDiffableDataSource<TitleSection, HighwayInfo>!
+    private var detailDataSource: UICollectionViewDiffableDataSource<DetailSection, Item>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         configureHierarchy()
-        bindViewModel()
         configureDataSource()
+        bindViewModel()
     }
     
     private func configureUI() {
@@ -57,13 +59,30 @@ class CardViewController: UIViewController {
     }
     
     private func configureHierarchy() {
-        detailCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
-//        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        collectionView.backgroundColor = .systemBackground
+        titleCollectionView.collectionViewLayout = createTitleLayout()
+        detailCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createDetailLayout())
+        detailCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(detailCollectionView)
+        detailCollectionView.backgroundColor = .red
+        detailCollectionView.anchor(top: titleCollectionView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,
+                                    paddingTop: 20, paddingLeft: 15, paddingBottom: 30, paddingRight: 15)
     }
     
-    private func createLayout() -> UICollectionViewLayout {
+    private func createTitleLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(30),
+                                             heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .absolute(25))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let spacing = CGFloat(10)
+        group.interItemSpacing = .fixed(spacing)
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
+    
+    private func createDetailLayout() -> UICollectionViewLayout {
         let sectionProvider = { (sectionIndex: Int,
             layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -110,8 +129,13 @@ class CardViewController: UIViewController {
         let gasCellRegistration = UICollectionView.CellRegistration<GasStationCell, GasStation> { (cell, indexPath, item) in
             cell.bindViewModel(with: item)
         }
+
+        titleDataSource  = UICollectionViewDiffableDataSource<TitleSection, HighwayInfo>(collectionView: titleCollectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: HighwayInfo) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: highwayCellRegistration, for: indexPath, item: item)
+        }
         
-        detailDataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: detailCollectionView) {
+        detailDataSource = UICollectionViewDiffableDataSource<DetailSection, Item>(collectionView: detailCollectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? in
             var value: Any
             switch item {
@@ -120,24 +144,18 @@ class CardViewController: UIViewController {
             case .gasStation(let item):
                 value = item
             }
-            
-            switch Section(rawValue: indexPath.section) {
-            case .serviceArea:
-                return collectionView.dequeueConfiguredReusableCell(using: serviceCellRegistration, for: indexPath, item: value as? ServiceArea)
-            case .gasStation:
-                return collectionView.dequeueConfiguredReusableCell(using: gasCellRegistration, for: indexPath, item: value as? GasStation)
-            case .none:
-                return UICollectionViewCell()
-            }
+            return DetailSection(rawValue: indexPath.section) == .serviceArea ?
+            collectionView.dequeueConfiguredReusableCell(using: serviceCellRegistration, for: indexPath, item: value as? ServiceArea) :
+            collectionView.dequeueConfiguredReusableCell(using: gasCellRegistration, for: indexPath, item: value as? GasStation)
         }
-        
+
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration
         <TitleView>(elementKind: titleElementKind) {
             (titleView, string, indexPath) in
             let section = self.detailDataSource.snapshot().sectionIdentifiers[indexPath.section]
             titleView.label.text = section.description
         }
-        
+
         detailDataSource.supplementaryViewProvider = { (view, kind, index) in
             return self.detailCollectionView.dequeueConfiguredReusableSupplementary(
                 using: supplementaryRegistration, for: index)
@@ -145,17 +163,32 @@ class CardViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = CardViewModel.Input()
+        let selectedHighway = PublishSubject<HighwayInfo?>()
+        let input = CardViewModel.Input(itemSelected: selectedHighway.asObservable())
         let output = viewModel.transform(input: input)
+                
+        titleCollectionView.rx.itemSelected
+            .subscribe(onNext: { index in
+                let highway = self.titleDataSource.itemIdentifier(for: index)
+                selectedHighway.onNext(highway)
+            })
+            .disposed(by: disposeBag)
         
         output.highway
             .subscribe(onNext: { highway in
                 if highway == [] {
                     self.view = EmptyView()
                 } else {
-                    print("fetch result")
+                    self.applySnapshot(with: highway)
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func applySnapshot(with highwayInfo: [HighwayInfo]) {
+        var snapshot = NSDiffableDataSourceSnapshot<TitleSection, HighwayInfo>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(highwayInfo)
+        titleDataSource.apply(snapshot, animatingDifferences: false)
     }
 }

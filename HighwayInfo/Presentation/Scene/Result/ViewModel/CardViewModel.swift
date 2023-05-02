@@ -16,6 +16,7 @@ final class CardViewModel: ViewModelType {
     private let highwayInfo: [HighwayInfo]
     
     struct Input {
+        let itemSelected: Observable<HighwayInfo?>
     }
     
     struct Output {
@@ -30,7 +31,14 @@ final class CardViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let highway = Observable.just(highwayInfo)
-       
+        
+        input.itemSelected
+            .map { $0.map { $0.name } }
+            .subscribe(onNext: { selectedRoute in
+                print(selectedRoute)
+            })
+            .disposed(by: disposeBag)
+        
         return Output(highway: highway)
     }
 }
