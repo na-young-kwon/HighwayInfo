@@ -32,6 +32,7 @@ class SearchHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        
         configureUI()
     }
     
@@ -46,7 +47,13 @@ class SearchHeaderView: UITableViewHeaderFooterView {
         stack.distribution = .fill
         stack.axis = .horizontal
         addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingLeft: 15, paddingBottom: 10, paddingRight: 15)
+        stack.anchor(top: topAnchor,
+                     left: leftAnchor,
+                     bottom: bottomAnchor,
+                     right: rightAnchor,
+                     paddingLeft: 15,
+                     paddingBottom: 10,
+                     paddingRight: 15
+        )
     }
 }

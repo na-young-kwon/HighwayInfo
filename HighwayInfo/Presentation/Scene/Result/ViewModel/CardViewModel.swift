@@ -21,6 +21,7 @@ final class CardViewModel: ViewModelType {
     
     struct Output {
         let highway: Observable<[HighwayInfo]>
+        let serviceArea: Observable<[ServiceArea]>
     }
     
     init(coordinator: DefaultCardCoordinator, useCase: CardUseCase, highwayInfo: [HighwayInfo]) {
@@ -31,7 +32,7 @@ final class CardViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let highway = Observable.just(highwayInfo)
-        
+        let serviceArea = useCase.serviceArea.asObservable()
         input.itemSelected
             .compactMap { $0.map { $0.rawName } }
             .subscribe(onNext: { selectedRoute in
@@ -40,6 +41,6 @@ final class CardViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        return Output(highway: highway)
+        return Output(highway: highway, serviceArea: serviceArea)
     }
 }

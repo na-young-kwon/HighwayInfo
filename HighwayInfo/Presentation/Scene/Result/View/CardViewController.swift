@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CardViewController: UIViewController {
+final class CardViewController: UIViewController {
     enum TitleSection: CaseIterable {
         case main
     }
@@ -62,7 +62,6 @@ class CardViewController: UIViewController {
         detailCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createDetailLayout())
         detailCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(detailCollectionView)
-        detailCollectionView.backgroundColor = .red
         detailCollectionView.anchor(top: titleCollectionView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,
                                     paddingTop: 20, paddingLeft: 15, paddingBottom: 30, paddingRight: 15)
     }
@@ -98,7 +97,7 @@ class CardViewController: UIViewController {
             section.interGroupSpacing = 20
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
 
-            let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+            let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.2),
                                                   heightDimension: .estimated(44))
             let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: titleSize,
@@ -146,11 +145,10 @@ class CardViewController: UIViewController {
             collectionView.dequeueConfiguredReusableCell(using: gasCellRegistration, for: indexPath, item: value as? GasStation)
         }
 
-        let supplementaryRegistration = UICollectionView.SupplementaryRegistration
-        <TitleView>(elementKind: titleElementKind) {
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration<TitleView>(elementKind: titleElementKind) {
             (titleView, string, indexPath) in
             let section = self.detailDataSource.snapshot().sectionIdentifiers[indexPath.section]
-            titleView.label.text = section.description
+            titleView.setTitle(with: section.description)
         }
 
         detailDataSource.supplementaryViewProvider = { (view, kind, index) in
@@ -180,6 +178,12 @@ class CardViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        output.serviceArea
+            .subscribe(onNext: { serviceArea in
+                self.applySnapshots(with: serviceArea)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func applySnapshot(with highwayInfo: [HighwayInfo]) {
@@ -187,5 +191,14 @@ class CardViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(highwayInfo)
         titleDataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func applySnapshots(with serviceArea: [ServiceArea]) {
+        var snapshot = NSDiffableDataSourceSnapshot<DetailSection, Item>()
+        snapshot.appendSections([.serviceArea])
+        serviceArea.forEach { area in
+            snapshot.appendItems([.serviceArea(area)])
+        }
+        detailDataSource.apply(snapshot, animatingDifferences: false)
     }
 }

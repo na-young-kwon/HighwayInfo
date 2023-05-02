@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ServiceCell: UICollectionViewCell {
+final class ServiceCell: UICollectionViewCell {
     func bindViewModel(with serviceArea: ServiceArea) {
-        
+        print("ServiceCell \(serviceArea)")
     }
 }

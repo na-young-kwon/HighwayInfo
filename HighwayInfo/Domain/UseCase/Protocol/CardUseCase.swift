@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 protocol CardUseCase {
+    var serviceArea: PublishSubject<[ServiceArea]> { get }
     func fetchServiceArea(for routeName: String)
     func fetchGasStation(for routeName: String)
 }

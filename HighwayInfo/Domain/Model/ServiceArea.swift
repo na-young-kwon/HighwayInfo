@@ -9,6 +9,11 @@ import Foundation
 
 struct ServiceArea {
     let name: String
+    var serviceAreaCode: String
+    var convenience: String
+    var direction: String
+    var address: String
+    var telNo: String
 }
 
 extension ServiceArea: Hashable {

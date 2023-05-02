@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmptyView: UIView {
+final class EmptyView: UIView {
     private let label: UILabel = {
         let label = UILabel()
         label.text = "이용예정인 고속도로가 없습니다"

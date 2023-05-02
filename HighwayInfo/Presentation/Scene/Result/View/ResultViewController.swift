@@ -11,7 +11,7 @@ import RxCocoa
 import TMapSDK
 import CoreLocation
 
-class ResultViewController: UIViewController, TMapViewDelegate {
+final class ResultViewController: UIViewController, TMapViewDelegate {
     
     private enum CardState {
         case collapsed

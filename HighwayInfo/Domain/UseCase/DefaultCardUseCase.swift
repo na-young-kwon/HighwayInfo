@@ -13,6 +13,8 @@ final class DefaultCardUseCase: CardUseCase {
     private let roadRepository: RoadRepository
     private let disposeBag = DisposeBag()
     
+    var serviceArea = PublishSubject<[ServiceArea]>()
+    
     init(roadRepository: RoadRepository) {
         self.roadRepository = roadRepository
     }
@@ -20,8 +22,15 @@ final class DefaultCardUseCase: CardUseCase {
     func fetchServiceArea(for routeName: String) {
         roadRepository.fetchServiceArea(for: routeName)
             .take(15)
-            .subscribe(onNext: { serviceAreaDTO in
-                print("serviceAreaDTO \(serviceAreaDTO.first?.serviceAreaName)")
+            .map { $0.map { ServiceArea(name: $0.serviceAreaName,
+                                        serviceAreaCode: $0.serviceAreaCode,
+                                        convenience: $0.convenience,
+                                        direction: $0.direction,
+                                        address: $0.address,
+                                        telNo: $0.telNo) }
+            }
+            .subscribe(onNext: { serviceArea in
+                self.serviceArea.onNext(serviceArea)
             })
             .disposed(by: disposeBag)
     }

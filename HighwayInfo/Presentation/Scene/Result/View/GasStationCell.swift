@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GasStationCell: UICollectionViewCell {
+final class GasStationCell: UICollectionViewCell {
     func bindViewModel(with gasStation: GasStation) {
         
     }

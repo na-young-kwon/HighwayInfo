@@ -7,8 +7,8 @@
 
 import UIKit
 
-class HighwayCell: UICollectionViewCell {
-    let label: UILabel = {
+final class HighwayCell: UICollectionViewCell {
+    private let label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textColor = .black.withAlphaComponent(0.7)
