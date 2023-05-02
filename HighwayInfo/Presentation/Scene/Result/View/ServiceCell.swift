@@ -8,7 +8,7 @@
 import UIKit
 
 class ServiceCell: UICollectionViewCell {
-    func bindViewModel(with serviceArea: ServiceAreaDTO) {
+    func bindViewModel(with serviceArea: ServiceArea) {
         
     }
 }

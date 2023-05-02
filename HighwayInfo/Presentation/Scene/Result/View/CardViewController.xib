@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardViewController" customModule="HighwayInfo" customModuleProvider="target">
             <connections>
                 <outlet property="handleArea" destination="Yux-c7-u2U" id="0hj-DP-Y9k"/>
+                <outlet property="titleCollectionView" destination="4nw-h3-tlf" id="GLj-0G-s0B"/>
                 <outlet property="view" destination="hX1-m0-yDP" id="0Gg-Ga-Sex"/>
             </connections>
         </placeholder>
@@ -28,12 +29,35 @@
                         <constraint firstAttribute="width" constant="60" id="PVO-7E-mdw"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용고속도로" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLL-tK-6bc">
+                    <rect key="frame" x="12" y="79" width="369" height="24"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4nw-h3-tlf">
+                    <rect key="frame" x="12" y="123" width="369" height="38"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YIm-Mi-eKc">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="EX5-qu-GoJ"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="KLL-tK-6bc" firstAttribute="top" secondItem="EX5-qu-GoJ" secondAttribute="top" constant="20" id="04B-WI-FUg"/>
                 <constraint firstItem="Yux-c7-u2U" firstAttribute="top" secondItem="hX1-m0-yDP" secondAttribute="top" constant="15" id="8hY-9C-OF7"/>
+                <constraint firstItem="4nw-h3-tlf" firstAttribute="trailing" secondItem="KLL-tK-6bc" secondAttribute="trailing" id="Lch-uP-mgL"/>
+                <constraint firstItem="4nw-h3-tlf" firstAttribute="leading" secondItem="KLL-tK-6bc" secondAttribute="leading" id="ZtF-Xw-h5h"/>
                 <constraint firstItem="Yux-c7-u2U" firstAttribute="centerX" secondItem="hX1-m0-yDP" secondAttribute="centerX" id="eGE-Pf-3U6"/>
+                <constraint firstItem="KLL-tK-6bc" firstAttribute="leading" secondItem="EX5-qu-GoJ" secondAttribute="leading" constant="12" id="lRT-Cp-Fbx"/>
+                <constraint firstItem="4nw-h3-tlf" firstAttribute="height" secondItem="EX5-qu-GoJ" secondAttribute="height" multiplier="0.05" id="qWj-C1-T8u"/>
+                <constraint firstItem="EX5-qu-GoJ" firstAttribute="trailing" secondItem="KLL-tK-6bc" secondAttribute="trailing" constant="12" id="ty2-Lr-0tv"/>
+                <constraint firstItem="4nw-h3-tlf" firstAttribute="top" secondItem="KLL-tK-6bc" secondAttribute="bottom" constant="20" id="uu3-Kd-N4m"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-147.32824427480915" y="-168.3098591549296"/>
@@ -42,6 +66,9 @@
     <resources>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

@@ -17,7 +17,29 @@ struct HighwayInfo {
         self.coordinate = CLLocationCoordinate2D(latitude: coordinate[1], longitude: coordinate[0])
     }
     
-    var rawName: String{
+    var rawName: String {
         name.replacingOccurrences(of: "고속도로", with: "").replacingOccurrences(of: " ", with: "")
+    }
+}
+
+extension HighwayInfo: Hashable {
+    static func == (lhs: HighwayInfo, rhs: HighwayInfo) -> Bool {
+        lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(coordinate)
+    }
+}
+
+extension CLLocationCoordinate2D: Hashable {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(latitude)
+        hasher.combine(longitude)
     }
 }

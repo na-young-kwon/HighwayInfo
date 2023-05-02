@@ -33,6 +33,8 @@
 		3B497AE929FFF4BB00D3FAAC /* HighwayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE829FFF4BB00D3FAAC /* HighwayCell.swift */; };
 		3B497AEB29FFF4C400D3FAAC /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AEA29FFF4C400D3FAAC /* ServiceCell.swift */; };
 		3B497AED29FFF4CF00D3FAAC /* GasStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AEC29FFF4CF00D3FAAC /* GasStationCell.swift */; };
+		3B497AF02A00DE4100D3FAAC /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AEF2A00DE4100D3FAAC /* TitleView.swift */; };
+		3B497AF22A00F42700D3FAAC /* ServiceArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF12A00F42700D3FAAC /* ServiceArea.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -148,6 +150,8 @@
 		3B497AE829FFF4BB00D3FAAC /* HighwayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighwayCell.swift; sourceTree = "<group>"; };
 		3B497AEA29FFF4C400D3FAAC /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		3B497AEC29FFF4CF00D3FAAC /* GasStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationCell.swift; sourceTree = "<group>"; };
+		3B497AEF2A00DE4100D3FAAC /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		3B497AF12A00F42700D3FAAC /* ServiceArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceArea.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -448,6 +452,7 @@
 				3B97E47D29E99200000F4B39 /* HighwayInfo.swift */,
 				3B97E48129ED5479000F4B39 /* Route.swift */,
 				3B497AE629FBF21700D3FAAC /* GasStation.swift */,
+				3B497AF12A00F42700D3FAAC /* ServiceArea.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -649,6 +654,7 @@
 				3B497AEA29FFF4C400D3FAAC /* ServiceCell.swift */,
 				3B497AEC29FFF4CF00D3FAAC /* GasStationCell.swift */,
 				3B497AC529F3CE6B00D3FAAC /* EmptyView.swift */,
+				3B497AEF2A00DE4100D3FAAC /* TitleView.swift */,
 				3B97E46F29E42AE3000F4B39 /* CardViewController.xib */,
 			);
 			path = View;
@@ -831,6 +837,7 @@
 				3B97E47429E55704000F4B39 /* DefaultCardUseCase.swift in Sources */,
 				3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */,
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
+				3B497AF22A00F42700D3FAAC /* ServiceArea.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,
 				3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */,
@@ -903,6 +910,7 @@
 				3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */,
 				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,
 				3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */,
+				3B497AF02A00DE4100D3FAAC /* TitleView.swift in Sources */,
 				3B8F086529B9BDD1009D7396 /* ActivityIndicator.swift in Sources */,
 				3B97E48629ED6C1A000F4B39 /* AddressDTO.swift in Sources */,
 				3B497AED29FFF4CF00D3FAAC /* GasStationCell.swift in Sources */,

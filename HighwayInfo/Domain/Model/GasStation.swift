@@ -17,3 +17,9 @@ struct GasStation {
     let evCharging: Bool
     let hydrogenCharging: Bool
 }
+
+extension GasStation: Hashable {
+    static func == (lhs: GasStation, rhs: GasStation) -> Bool {
+        lhs.serviceAreaCode == rhs.serviceAreaCode
+    }
+}

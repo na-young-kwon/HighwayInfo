@@ -13,19 +13,19 @@ final class CardViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultCardCoordinator
     private let useCase: CardUseCase
-    private let highwayInfo: HighwayInfo?
+    private let highwayInfo: [HighwayInfo]
     
     struct Input {
     }
     
     struct Output {
-        let highway: Observable<HighwayInfo?>
+        let highway: Observable<[HighwayInfo]>
     }
     
     init(coordinator: DefaultCardCoordinator, useCase: CardUseCase, highwayInfo: [HighwayInfo]) {
         self.coordinator = coordinator
         self.useCase = useCase
-        self.highwayInfo = highwayInfo.first
+        self.highwayInfo = highwayInfo
     }
     
     func transform(input: Input) -> Output {

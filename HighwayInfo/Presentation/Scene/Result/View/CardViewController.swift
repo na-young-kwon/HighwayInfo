@@ -12,19 +12,31 @@ import RxCocoa
 class CardViewController: UIViewController {
     
     enum Section: Int, CaseIterable {
-        case highway, serviceArea, gasStation
+        case serviceArea, gasStation
+        
+        var description: String {
+            switch self {
+            case .serviceArea:
+                return "휴게시설"
+            case .gasStation:
+                return "주유소"
+            }
+        }
     }
     
-    enum Item: Int, CaseIterable {
-        case highway, serviceArea, gasStation
+    enum Item: Hashable {
+        case serviceArea(ServiceArea), gasStation(GasStation)
     }
     
     @IBOutlet weak var handleArea: UIView!
+    @IBOutlet weak var titleCollectionView: UICollectionView!
     
+    private let titleElementKind = "title-element-kind"
     var viewModel: CardViewModel!
     private let disposeBag = DisposeBag()
-    private var collectionView: UICollectionView! = nil
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
+    private var detailCollectionView: UICollectionView!
+    private var titleDataSource: UICollectionViewDiffableDataSource<String, HighwayInfo>!
+    private var detailDataSource: UICollectionViewDiffableDataSource<Section, Item>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +57,10 @@ class CardViewController: UIViewController {
     }
     
     private func configureHierarchy() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        detailCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
 //        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //        collectionView.backgroundColor = .systemBackground
-        view.addSubview(collectionView)
+        view.addSubview(detailCollectionView)
     }
     
     private func createLayout() -> UICollectionViewLayout {
@@ -72,11 +84,11 @@ class CardViewController: UIViewController {
 
             let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: .estimated(44))
-//            let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
-//                layoutSize: titleSize,
-//                elementKind: ConferenceVideoSessionsViewController.titleElementKind,
-//                alignment: .top)
-//            section.boundarySupplementaryItems = [titleSupplementary]
+            let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: titleSize,
+                elementKind: self.titleElementKind,
+                alignment: .top)
+            section.boundarySupplementaryItems = [titleSupplementary]
             return section
         }
         
@@ -89,34 +101,56 @@ class CardViewController: UIViewController {
     }
     
     private func configureDataSource() {
-        let highwayCellRegistration = UICollectionView.CellRegistration<HighwayCell, Item> { (cell, indexPath, identifier) in
+        let highwayCellRegistration = UICollectionView.CellRegistration<HighwayCell, HighwayInfo> { (cell, indexPath, data) in
+            cell.bindViewModel(with: data)
         }
-        let serviceCellRegistration = UICollectionView.CellRegistration<ServiceCell, Item> { (cell, indexPath, identifier) in
+        let serviceCellRegistration = UICollectionView.CellRegistration<ServiceCell, ServiceArea> { (cell, indexPath, item) in
+            cell.bindViewModel(with: item)
         }
-        let gasCellRegistration = UICollectionView.CellRegistration<ServiceCell, Item> { (cell, indexPath, identifier) in
+        let gasCellRegistration = UICollectionView.CellRegistration<GasStationCell, GasStation> { (cell, indexPath, item) in
+            cell.bindViewModel(with: item)
         }
         
-        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) {
+        detailDataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: detailCollectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? in
-            switch Section(rawValue: indexPath.section) {
-            case .highway:
-                return collectionView.dequeueConfiguredReusableCell(using: highwayCellRegistration, for: indexPath, item: item)
-            case .serviceArea:
-                return collectionView.dequeueConfiguredReusableCell(using: serviceCellRegistration, for: indexPath, item: item)
-            case .gasStation:
-                return collectionView.dequeueConfiguredReusableCell(using: gasCellRegistration, for: indexPath, item: item)
-            case .none:
-                return collectionView.dequeueConfiguredReusableCell(using: highwayCellRegistration, for: indexPath, item: item)
+            var value: Any
+            switch item {
+            case .serviceArea(let item):
+                value = item
+            case .gasStation(let item):
+                value = item
             }
+            
+            switch Section(rawValue: indexPath.section) {
+            case .serviceArea:
+                return collectionView.dequeueConfiguredReusableCell(using: serviceCellRegistration, for: indexPath, item: value as? ServiceArea)
+            case .gasStation:
+                return collectionView.dequeueConfiguredReusableCell(using: gasCellRegistration, for: indexPath, item: value as? GasStation)
+            case .none:
+                return UICollectionViewCell()
+            }
+        }
+        
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration
+        <TitleView>(elementKind: titleElementKind) {
+            (titleView, string, indexPath) in
+            let section = self.detailDataSource.snapshot().sectionIdentifiers[indexPath.section]
+            titleView.label.text = section.description
+        }
+        
+        detailDataSource.supplementaryViewProvider = { (view, kind, index) in
+            return self.detailCollectionView.dequeueConfiguredReusableSupplementary(
+                using: supplementaryRegistration, for: index)
         }
     }
     
     private func bindViewModel() {
         let input = CardViewModel.Input()
         let output = viewModel.transform(input: input)
+        
         output.highway
             .subscribe(onNext: { highway in
-                if highway == nil {
+                if highway == [] {
                     self.view = EmptyView()
                 } else {
                     print("fetch result")
