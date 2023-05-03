@@ -79,26 +79,20 @@ final class CardViewController: UIViewController {
     }
     
     private func createDetailLayout() -> UICollectionViewLayout {
-        let sectionProvider = { (sectionIndex: Int,
-            layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                 heightDimension: .fractionalHeight(1.0))
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let sectionKind = DetailSection(rawValue: sectionIndex) else { return nil }
+            let widthDimension: NSCollectionLayoutDimension = sectionKind == .serviceArea ? .fractionalWidth(0.55) : .fractionalWidth(0.4)
+            let heightDimension: NSCollectionLayoutDimension = sectionKind == .serviceArea ? .fractionalHeight(0.3) : .fractionalHeight(0.2)
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-            // if we have the space, adapt and go 2-up + peeking 3rd item
-            let groupFractionalWidth = CGFloat(layoutEnvironment.container.effectiveContentSize.width > 500 ?
-                0.425 : 0.85)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth),
-                                                  heightDimension: .absolute(250))
+            let groupSize = NSCollectionLayoutSize(widthDimension: widthDimension, heightDimension: heightDimension)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
             let section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .continuous
+            section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
             section.interGroupSpacing = 20
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
-
-            let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.2),
-                                                  heightDimension: .estimated(44))
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 20)
+            let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.15),
+                                                   heightDimension: .fractionalWidth(0.2))
             let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: titleSize,
                 elementKind: self.titleElementKind,
@@ -106,13 +100,9 @@ final class CardViewController: UIViewController {
             section.boundarySupplementaryItems = [titleSupplementary]
             return section
         }
-        
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.interSectionSpacing = 20
-
-        let layout = UICollectionViewCompositionalLayout(
-            sectionProvider: sectionProvider, configuration: config)
-        return layout
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider, configuration: config)
     }
     
     private func configureDataSource() {
@@ -195,7 +185,8 @@ final class CardViewController: UIViewController {
     }
     
     private func selectFirstItem() {
-        titleCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .left)
+        let firstItem = IndexPath(item: 0, section: 0)
+        titleCollectionView.selectItem(at: firstItem, animated: false, scrollPosition: .left)
     }
     
     private func applySnapshots(with serviceArea: [ServiceArea]) {

@@ -31,7 +31,6 @@ final class HighwayCell: UICollectionViewCell {
     }
     
     func bindViewModel(with highway: HighwayInfo) {
-        print(highway.name)
         label.text = highway.name
     }
     
@@ -40,6 +39,7 @@ final class HighwayCell: UICollectionViewCell {
         layer.cornerRadius = 10
         layer.borderWidth = 1
         layer.borderColor = UIColor.systemBackground.cgColor
+        backgroundColor = .systemGray6
         contentView.addSubview(label)
         let horizontalPadding = 8.0
         let verticalPadding = 12.0

@@ -18,9 +18,13 @@ final class TitleView: UICollectionReusableView {
     
     private let button: UIButton = {
         let button = UIButton()
-        button.setTitle("더보기", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 12)
-        button.setTitleColor(.black.withAlphaComponent(0.7), for: .normal)
+        let attribute: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 12),
+            .foregroundColor: UIColor.black.withAlphaComponent(0.7),
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        let attributeString = NSMutableAttributedString(string: "더보기", attributes: attribute)
+        button.setAttributedTitle(attributeString, for: .normal)
         return button
     }()
     
