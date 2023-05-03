@@ -175,6 +175,7 @@ final class CardViewController: UIViewController {
                     self.view = EmptyView()
                 } else {
                     self.applySnapshot(with: highway)
+                    self.selectFirstItem()
                 }
             })
             .disposed(by: disposeBag)
@@ -191,6 +192,10 @@ final class CardViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(highwayInfo)
         titleDataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func selectFirstItem() {
+        titleCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .left)
     }
     
     private func applySnapshots(with serviceArea: [ServiceArea]) {

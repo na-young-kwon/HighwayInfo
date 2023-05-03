@@ -11,9 +11,15 @@ final class HighwayCell: UICollectionViewCell {
     private let label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .black.withAlphaComponent(0.7)
         return label
     }()
+    
+    override var isSelected: Bool {
+        didSet {
+            backgroundColor = isSelected ? .mainBlueColor: .systemGray6
+            label.textColor = isSelected ? .white : .black.withAlphaComponent(0.7)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +36,6 @@ final class HighwayCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        backgroundColor = .systemGray6
         layer.masksToBounds = true
         layer.cornerRadius = 10
         layer.borderWidth = 1

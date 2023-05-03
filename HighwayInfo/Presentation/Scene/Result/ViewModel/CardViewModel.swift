@@ -33,6 +33,11 @@ final class CardViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let highway = Observable.just(highwayInfo)
         let serviceArea = useCase.serviceArea.asObservable()
+        
+        if let first = highwayInfo.first {
+            useCase.fetchServiceArea(for: first.rawName)
+            useCase.fetchGasStation(for: first.rawName)
+        }
         input.itemSelected
             .compactMap { $0.map { $0.rawName } }
             .subscribe(onNext: { selectedRoute in

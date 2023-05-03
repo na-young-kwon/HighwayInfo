@@ -103,7 +103,7 @@ final class ResultViewController: UIViewController, TMapViewDelegate {
             .subscribe(onNext: { path in
                 let polyLine = TMapPolyline(coordinates: path)
                 polyLine.strokeWidth = 6
-                polyLine.strokeColor = UIColor(named: "MainBlue")
+                polyLine.strokeColor = .mainBlueColor
                 polyLine.map = self.mapView
             })
             .disposed(by: disposeBag)
