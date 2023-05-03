@@ -61,6 +61,8 @@ final class CardViewController: UIViewController {
         titleCollectionView.collectionViewLayout = createTitleLayout()
         detailCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createDetailLayout())
         detailCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        titleCollectionView.alwaysBounceVertical = false
+        detailCollectionView.alwaysBounceVertical = false
         view.addSubview(detailCollectionView)
         detailCollectionView.anchor(top: titleCollectionView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,
                                     paddingTop: 20, paddingLeft: 15, paddingBottom: 30, paddingRight: 15)

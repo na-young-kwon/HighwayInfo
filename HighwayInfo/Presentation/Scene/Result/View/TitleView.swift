@@ -49,7 +49,7 @@ final class TitleView: UICollectionReusableView {
     func configureUI() {
         let stack = UIStackView(arrangedSubviews: [label, button])
         stack.spacing = 10
-        stack.alignment = .fill
+        stack.alignment = .firstBaseline
         stack.distribution = .fill
         stack.axis = .horizontal
         addSubview(stack)
