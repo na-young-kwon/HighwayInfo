@@ -13,4 +13,5 @@ class GasPriceDTO: Decodable {
     var dieselPrice: String!
     var gasolinePrice: String!
     var lpgPrice: String!
+    var serviceAreaCode: String!
 }

@@ -26,10 +26,6 @@ final class CardViewController: UIViewController {
         }
     }
     
-    enum Item: Hashable {
-        case serviceArea(ServiceArea), gasStation(GasStation)
-    }
-    
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var titleCollectionView: UICollectionView!
     private let titleElementKind = "title-element-kind"
@@ -37,7 +33,7 @@ final class CardViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var detailCollectionView: UICollectionView!
     private var titleDataSource: UICollectionViewDiffableDataSource<TitleSection, HighwayInfo>!
-    private var detailDataSource: UICollectionViewDiffableDataSource<DetailSection, Item>!
+    private var detailDataSource: UICollectionViewDiffableDataSource<DetailSection, AnyHashable>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,32 +113,24 @@ final class CardViewController: UIViewController {
         let gasCellRegistration = UICollectionView.CellRegistration<GasStationCell, GasStation> { (cell, indexPath, item) in
             cell.bindViewModel(with: item)
         }
-
         titleDataSource  = UICollectionViewDiffableDataSource<TitleSection, HighwayInfo>(collectionView: titleCollectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, item: HighwayInfo) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: highwayCellRegistration, for: indexPath, item: item)
         }
-        
-        detailDataSource = UICollectionViewDiffableDataSource<DetailSection, Item>(collectionView: detailCollectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? in
-            var value: Any
-            switch item {
-            case .serviceArea(let item):
-                value = item
-            case .gasStation(let item):
-                value = item
+        detailDataSource = UICollectionViewDiffableDataSource<DetailSection, AnyHashable>(collectionView: detailCollectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: AnyHashable) -> UICollectionViewCell? in
+            if let service = item as? ServiceArea {
+                return collectionView.dequeueConfiguredReusableCell(using: serviceCellRegistration, for: indexPath, item: service)
+            } else if let gas = item as? GasStation {
+                return collectionView.dequeueConfiguredReusableCell(using: gasCellRegistration, for: indexPath, item: gas)
             }
-            return DetailSection(rawValue: indexPath.section) == .serviceArea ?
-            collectionView.dequeueConfiguredReusableCell(using: serviceCellRegistration, for: indexPath, item: value as? ServiceArea) :
-            collectionView.dequeueConfiguredReusableCell(using: gasCellRegistration, for: indexPath, item: value as? GasStation)
+            return nil
         }
-
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration<TitleView>(elementKind: titleElementKind) {
             (titleView, string, indexPath) in
             let section = self.detailDataSource.snapshot().sectionIdentifiers[indexPath.section]
             titleView.setTitle(with: section.description)
         }
-
         detailDataSource.supplementaryViewProvider = { (view, kind, index) in
             return self.detailCollectionView.dequeueConfiguredReusableSupplementary(
                 using: supplementaryRegistration, for: index)
@@ -172,9 +160,9 @@ final class CardViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        output.serviceArea
-            .subscribe(onNext: { serviceArea in
-                self.applySnapshots(with: serviceArea)
+        output.result
+            .subscribe(onNext: { result in
+                self.applySnapshot(for: result)
             })
             .disposed(by: disposeBag)
     }
@@ -186,17 +174,16 @@ final class CardViewController: UIViewController {
         titleDataSource.apply(snapshot, animatingDifferences: false)
     }
     
+    private func applySnapshot(for result: ([ServiceArea], [GasStation])) {
+        var snapshot = NSDiffableDataSourceSnapshot<DetailSection, AnyHashable>()
+        snapshot.appendSections([.serviceArea, .gasStation])
+        snapshot.appendItems(result.0, toSection: .serviceArea)
+        snapshot.appendItems(result.1, toSection: .gasStation)
+        detailDataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
     private func selectFirstItem() {
         let firstItem = IndexPath(item: 0, section: 0)
         titleCollectionView.selectItem(at: firstItem, animated: false, scrollPosition: .left)
-    }
-    
-    private func applySnapshots(with serviceArea: [ServiceArea]) {
-        var snapshot = NSDiffableDataSourceSnapshot<DetailSection, Item>()
-        snapshot.appendSections([.serviceArea])
-        serviceArea.forEach { area in
-            snapshot.appendItems([.serviceArea(area)])
-        }
-        detailDataSource.apply(snapshot, animatingDifferences: false)
     }
 }

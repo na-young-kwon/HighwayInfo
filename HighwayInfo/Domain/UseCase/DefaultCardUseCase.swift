@@ -14,6 +14,7 @@ final class DefaultCardUseCase: CardUseCase {
     private let disposeBag = DisposeBag()
     
     var serviceArea = PublishSubject<[ServiceArea]>()
+    var gasStation = PublishSubject<[GasStation]>()
     
     init(roadRepository: RoadRepository) {
         self.roadRepository = roadRepository
@@ -47,9 +48,17 @@ final class DefaultCardUseCase: CardUseCase {
         
         gasStation
             .take(15)
-            .map { $0.map { $0.name } }
+            .map { $0.map { GasStation(name: $0.name,
+                                       address: $0.address,
+                                       dieselPrice: $0.dieselPrice,
+                                       gasolinePrice: $0.gasolinePrice,
+                                       lpgPrice: $0.lpgPrice,
+                                       serviceAreaCode: $0.serviceAreaCode,
+                                       evCharging: false,
+                                       hydrogenCharging: false) }
+            }
             .subscribe(onNext: { gasStation in
-                print("gasStation \(gasStation)")
+                self.gasStation.onNext(gasStation)
             })
             .disposed(by: disposeBag)
     }

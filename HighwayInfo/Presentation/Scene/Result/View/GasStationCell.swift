@@ -9,6 +9,6 @@ import UIKit
 
 final class GasStationCell: UICollectionViewCell {
     func bindViewModel(with gasStation: GasStation) {
-        
+        print(gasStation)
     }
 }

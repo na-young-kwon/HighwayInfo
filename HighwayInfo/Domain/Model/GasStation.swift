@@ -8,6 +8,7 @@
 import Foundation
 
 struct GasStation {
+    let uuid = UUID()
     let name: String
     let address: String
     let dieselPrice: String
@@ -20,6 +21,6 @@ struct GasStation {
 
 extension GasStation: Hashable {
     static func == (lhs: GasStation, rhs: GasStation) -> Bool {
-        lhs.serviceAreaCode == rhs.serviceAreaCode
+        lhs.uuid == rhs.uuid
     }
 }

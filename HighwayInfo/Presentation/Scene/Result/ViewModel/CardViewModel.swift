@@ -21,7 +21,7 @@ final class CardViewModel: ViewModelType {
     
     struct Output {
         let highway: Observable<[HighwayInfo]>
-        let serviceArea: Observable<[ServiceArea]>
+        let result: Observable<([ServiceArea], [GasStation])>
     }
     
     init(coordinator: DefaultCardCoordinator, useCase: CardUseCase, highwayInfo: [HighwayInfo]) {
@@ -33,6 +33,8 @@ final class CardViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let highway = Observable.just(highwayInfo)
         let serviceArea = useCase.serviceArea.asObservable()
+        let gasStation = useCase.gasStation.asObservable()
+        let result = Observable.zip(serviceArea, gasStation)
         
         if let first = highwayInfo.first {
             useCase.fetchServiceArea(for: first.rawName)
@@ -46,6 +48,6 @@ final class CardViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        return Output(highway: highway, serviceArea: serviceArea)
+        return Output(highway: highway, result: result)
     }
 }

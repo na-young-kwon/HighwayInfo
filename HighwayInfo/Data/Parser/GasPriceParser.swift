@@ -51,6 +51,8 @@ final class GasPriceParser: NSObject, XMLParserDelegate {
         }
         else if elementName == "lpgPrice" {
             gasPrice.lpgPrice = elementValue
+        } else if elementName == "serviceAreaCode2" {
+            gasPrice.serviceAreaCode = elementValue
         }
         elementValue = nil
     }
