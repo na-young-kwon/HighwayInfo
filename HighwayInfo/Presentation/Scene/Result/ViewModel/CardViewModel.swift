@@ -14,6 +14,7 @@ final class CardViewModel: ViewModelType {
     private let coordinator: DefaultCardCoordinator
     private let useCase: CardUseCase
     private let highwayInfo: [HighwayInfo]
+    private var serviceArea: [ServiceArea] = []
     
     struct Input {
         let itemSelected: Observable<HighwayInfo?>
@@ -32,7 +33,7 @@ final class CardViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let highway = Observable.just(highwayInfo)
-        let serviceArea = useCase.serviceArea.asObservable()
+        let serviceArea = useCase.serviceArea.asObservable().share()
         let gasStation = useCase.gasStation.asObservable()
         let result = Observable.zip(serviceArea, gasStation)
         
@@ -48,11 +49,17 @@ final class CardViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        serviceArea
+            .subscribe(onNext: { serviceArea in
+                self.serviceArea.removeAll()
+                self.serviceArea = serviceArea
+            })
+            .disposed(by: disposeBag)
         return Output(highway: highway, result: result)
     }
     
     func showServiceDetail() {
-        coordinator.showServiceDetail(with: "dd")
+        self.coordinator.showServiceDetail(with: serviceArea)
     }
     
     func showGasStationDetail() {

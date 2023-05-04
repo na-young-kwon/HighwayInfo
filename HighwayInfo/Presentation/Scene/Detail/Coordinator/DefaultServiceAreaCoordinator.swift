@@ -24,10 +24,10 @@ final class DefaultServiceAreaCoordinator: Coordinator {
         navigationController.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    func start(with route: String) {
+    func start(with serviceArea: [ServiceArea]) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: ServiceAreaViewController.self)
-        controller.viewModel = ServiceAreaViewModel(coordinator: self)
+        controller.viewModel = ServiceAreaViewModel(coordinator: self, serviceArea: serviceArea)
         
         navigationController.pushViewController(controller, animated: true)
     }

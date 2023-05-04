@@ -11,20 +11,24 @@ import RxSwift
 final class ServiceAreaViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultServiceAreaCoordinator
+    private let serviceArea: [ServiceArea]
     
     struct Input {
         let viewWillAppear: Observable<Void>
     }
     
     struct Output {
+        let serviceArea: Observable<[ServiceArea]>
     }
     
-    init(coordinator: DefaultServiceAreaCoordinator) {
+    init(coordinator: DefaultServiceAreaCoordinator, serviceArea: [ServiceArea]) {
         self.coordinator = coordinator
+        self.serviceArea = serviceArea
     }
     
     func transform(input: Input) -> Output {
-        let output = Output()
+        let serviceArea = Observable.just(serviceArea)
+        let output = Output(serviceArea: serviceArea)
         
         return output
     }

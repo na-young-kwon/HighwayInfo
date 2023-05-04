@@ -25,7 +25,6 @@ final class CardViewController: UIViewController {
             }
         }
     }
-    
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var titleCollectionView: UICollectionView!
     private let titleElementKind = "title-element-kind"
