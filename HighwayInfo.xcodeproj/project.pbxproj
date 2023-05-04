@@ -36,6 +36,7 @@
 		3B497AF02A00DE4100D3FAAC /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AEF2A00DE4100D3FAAC /* TitleView.swift */; };
 		3B497AF22A00F42700D3FAAC /* ServiceArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF12A00F42700D3FAAC /* ServiceArea.swift */; };
 		3B497AF42A02449400D3FAAC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF32A02449400D3FAAC /* UIColor+Extension.swift */; };
+		3B497AF62A0392D500D3FAAC /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF52A0392D500D3FAAC /* PaddingLabel.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -154,6 +155,7 @@
 		3B497AEF2A00DE4100D3FAAC /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		3B497AF12A00F42700D3FAAC /* ServiceArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceArea.swift; sourceTree = "<group>"; };
 		3B497AF32A02449400D3FAAC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		3B497AF52A0392D500D3FAAC /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -275,6 +277,20 @@
 			path = ServiceArea;
 			sourceTree = "<group>";
 		};
+		3B497AF72A03B0AD00D3FAAC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3B5AD12E29B203F300E2AFAA /* Reusable.swift */,
+				3B5AD13629B32E3900E2AFAA /* ShadowView.swift */,
+				3B497AF52A0392D500D3FAAC /* PaddingLabel.swift */,
+				3B8F086429B9BDD1009D7396 /* ActivityIndicator.swift */,
+				3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */,
+				3B97E45A29E008A1000F4B39 /* UIImageView+Extension.swift */,
+				3B497AF32A02449400D3FAAC /* UIColor+Extension.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		3B5AD11A29B1E7B300E2AFAA /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +328,7 @@
 				3B5AD12629B1F4EB00E2AFAA /* Road */,
 				3B5AD13C29B34BC600E2AFAA /* Search */,
 				3B97E46429E4087E000F4B39 /* Result */,
+				3B497AF72A03B0AD00D3FAAC /* Utility */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -349,14 +366,8 @@
 		3B5AD12D29B203E200E2AFAA /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				3B5AD12E29B203F300E2AFAA /* Reusable.swift */,
-				3B5AD13629B32E3900E2AFAA /* ShadowView.swift */,
-				3B8F086429B9BDD1009D7396 /* ActivityIndicator.swift */,
 				3B97E45E29E3CA12000F4B39 /* LocationService.swift */,
 				3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */,
-				3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */,
-				3B97E45A29E008A1000F4B39 /* UIImageView+Extension.swift */,
-				3B497AF32A02449400D3FAAC /* UIColor+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -846,6 +857,7 @@
 				3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */,
 				3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */,
 				3B497AE529FBF00A00D3FAAC /* GasPriceParser.swift in Sources */,
+				3B497AF62A0392D500D3FAAC /* PaddingLabel.swift in Sources */,
 				3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */,
 				3B497AD929FBC02200D3FAAC /* GasStationRequest.swift in Sources */,
 				3B497AE929FFF4BB00D3FAAC /* HighwayCell.swift in Sources */,

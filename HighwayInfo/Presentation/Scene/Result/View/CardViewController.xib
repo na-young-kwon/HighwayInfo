@@ -36,7 +36,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4nw-h3-tlf">
-                    <rect key="frame" x="15" y="94" width="366" height="38"/>
+                    <rect key="frame" x="23" y="94" width="358" height="38"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YIm-Mi-eKc">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -51,7 +51,7 @@
                 <constraint firstItem="KLL-tK-6bc" firstAttribute="top" secondItem="Yux-c7-u2U" secondAttribute="bottom" constant="30" id="04B-WI-FUg"/>
                 <constraint firstItem="Yux-c7-u2U" firstAttribute="top" secondItem="hX1-m0-yDP" secondAttribute="top" constant="15" id="8hY-9C-OF7"/>
                 <constraint firstItem="4nw-h3-tlf" firstAttribute="trailing" secondItem="KLL-tK-6bc" secondAttribute="trailing" id="Lch-uP-mgL"/>
-                <constraint firstItem="4nw-h3-tlf" firstAttribute="leading" secondItem="KLL-tK-6bc" secondAttribute="leading" id="ZtF-Xw-h5h"/>
+                <constraint firstItem="4nw-h3-tlf" firstAttribute="leading" secondItem="KLL-tK-6bc" secondAttribute="leading" constant="8" id="ZtF-Xw-h5h"/>
                 <constraint firstItem="Yux-c7-u2U" firstAttribute="centerX" secondItem="hX1-m0-yDP" secondAttribute="centerX" id="eGE-Pf-3U6"/>
                 <constraint firstItem="KLL-tK-6bc" firstAttribute="leading" secondItem="EX5-qu-GoJ" secondAttribute="leading" constant="15" id="lRT-Cp-Fbx"/>
                 <constraint firstItem="4nw-h3-tlf" firstAttribute="height" secondItem="EX5-qu-GoJ" secondAttribute="height" multiplier="0.05" id="qWj-C1-T8u"/>
