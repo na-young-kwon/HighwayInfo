@@ -39,6 +39,8 @@
 		3B497AF62A0392D500D3FAAC /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF52A0392D500D3FAAC /* PaddingLabel.swift */; };
 		3B497AFA2A03BDCF00D3FAAC /* ServiceAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF92A03BDCF00D3FAAC /* ServiceAreaViewController.swift */; };
 		3B497AFC2A03BDEE00D3FAAC /* GasStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */; };
+		3B497B012A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B002A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift */; };
+		3B497B032A03C01F00D3FAAC /* ServiceAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B022A03C01F00D3FAAC /* ServiceAreaViewModel.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -160,6 +162,8 @@
 		3B497AF52A0392D500D3FAAC /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		3B497AF92A03BDCF00D3FAAC /* ServiceAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaViewController.swift; sourceTree = "<group>"; };
 		3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationViewController.swift; sourceTree = "<group>"; };
+		3B497B002A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServiceAreaCoordinator.swift; sourceTree = "<group>"; };
+		3B497B022A03C01F00D3FAAC /* ServiceAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaViewModel.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -298,10 +302,36 @@
 		3B497AF82A03BD9C00D3FAAC /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				3B497AFD2A03BF0D00D3FAAC /* Coordinator */,
+				3B497AFE2A03BF1100D3FAAC /* ViewModel */,
+				3B497AFF2A03BF1400D3FAAC /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		3B497AFD2A03BF0D00D3FAAC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3B497B002A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3B497AFE2A03BF1100D3FAAC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B497B022A03C01F00D3FAAC /* ServiceAreaViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B497AFF2A03BF1400D3FAAC /* View */ = {
+			isa = PBXGroup;
+			children = (
 				3B497AF92A03BDCF00D3FAAC /* ServiceAreaViewController.swift */,
 				3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */,
 			);
-			path = Detail;
+			path = View;
 			sourceTree = "<group>";
 		};
 		3B5AD11A29B1E7B300E2AFAA /* Application */ = {
@@ -866,6 +896,7 @@
 				3B97E47429E55704000F4B39 /* DefaultCardUseCase.swift in Sources */,
 				3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */,
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
+				3B497B012A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift in Sources */,
 				3B497AF22A00F42700D3FAAC /* ServiceArea.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,
@@ -929,6 +960,7 @@
 				3B497AE329FBE59500D3FAAC /* GasPriceDTO.swift in Sources */,
 				3B5AD12829B1F5E800E2AFAA /* RoadViewController.swift in Sources */,
 				3B63BAAE29B768EE0055D3A4 /* NetworkingError.swift in Sources */,
+				3B497B032A03C01F00D3FAAC /* ServiceAreaViewModel.swift in Sources */,
 				3B6CF37129D31544002289A0 /* RoadService.swift in Sources */,
 				3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */,
 				3B97E45729E00397000F4B39 /* SearchResultCell.swift in Sources */,

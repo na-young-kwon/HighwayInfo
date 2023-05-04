@@ -9,6 +9,8 @@ import UIKit
 
 class ServiceAreaViewController: UIViewController {
 
+    var viewModel: ServiceAreaViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
