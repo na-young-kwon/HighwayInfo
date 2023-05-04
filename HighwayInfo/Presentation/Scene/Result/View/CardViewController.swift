@@ -79,8 +79,8 @@ final class CardViewController: UIViewController {
     private func createDetailLayout() -> UICollectionViewLayout {
         let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             guard let sectionKind = DetailSection(rawValue: sectionIndex) else { return nil }
-            let widthDimension: NSCollectionLayoutDimension = sectionKind == .serviceArea ? .fractionalWidth(0.55) : .fractionalWidth(0.4)
-            let heightDimension: NSCollectionLayoutDimension = sectionKind == .serviceArea ? .fractionalHeight(0.35) : .fractionalHeight(0.2)
+            let widthDimension: NSCollectionLayoutDimension = sectionKind == .serviceArea ? .fractionalWidth(0.55) : .fractionalWidth(0.45)
+            let heightDimension: NSCollectionLayoutDimension = sectionKind == .serviceArea ? .fractionalHeight(0.3) : .fractionalHeight(0.22)
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: widthDimension, heightDimension: heightDimension)
@@ -130,6 +130,13 @@ final class CardViewController: UIViewController {
             (titleView, string, indexPath) in
             let section = self.detailDataSource.snapshot().sectionIdentifiers[indexPath.section]
             titleView.setTitle(with: section.description)
+            titleView.moreButtonTapped
+                .subscribe(onNext: { _ in
+                    section == .serviceArea ?
+                    self.viewModel.showServiceDetail() :
+                    self.viewModel.showGasStationDetail()
+                })
+                .disposed(by: self.disposeBag)
         }
         detailDataSource.supplementaryViewProvider = { (view, kind, index) in
             return self.detailCollectionView.dequeueConfiguredReusableSupplementary(

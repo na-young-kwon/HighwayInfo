@@ -50,4 +50,12 @@ final class CardViewModel: ViewModelType {
         
         return Output(highway: highway, result: result)
     }
+    
+    func showServiceDetail() {
+        coordinator.showServiceDetail(with: "dd")
+    }
+    
+    func showGasStationDetail() {
+        coordinator.showGasStationDetail(with: "DD")
+    }
 }

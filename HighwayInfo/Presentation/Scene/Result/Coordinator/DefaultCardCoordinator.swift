@@ -21,7 +21,17 @@ final class DefaultCardCoordinator: Coordinator {
        
     }
     
-    func showCardView(with name: String?) {
+    func showServiceDetail(with routeName: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(ofType: ServiceAreaViewController.self)
         
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showGasStationDetail(with routeName: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(ofType: GasStationViewController.self)
+        
+        navigationController.pushViewController(vc, animated: true)
     }
 }

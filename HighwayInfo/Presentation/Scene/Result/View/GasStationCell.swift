@@ -84,7 +84,7 @@ final class GasStationCell: UICollectionViewCell {
         addSubview(gasolineStack)
         addSubview(dieselStack)
         titleLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10)
-        gasolineStack.anchor(top: titleLabel.bottomAnchor, left: titleLabel.leftAnchor, right: titleLabel.rightAnchor, paddingTop: 20)
+        gasolineStack.anchor(top: titleLabel.bottomAnchor, left: titleLabel.leftAnchor, right: titleLabel.rightAnchor, paddingTop: 25)
         dieselStack.anchor(top: gasolineStack.bottomAnchor, left: titleLabel.leftAnchor, right: titleLabel.rightAnchor, paddingTop: 10)
         gasolinePriceLabel.widthAnchor.constraint(equalTo: gasolineStack.widthAnchor, multiplier: 0.55).isActive = true
         dieselPriceLabel.widthAnchor.constraint(equalTo: dieselStack.widthAnchor, multiplier: 0.55).isActive = true
