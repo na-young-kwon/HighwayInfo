@@ -126,19 +126,17 @@ extension ResultViewController {
         info.forEach { info in
             let marker = TMapCustomMarker(position: info.coordinate)
             marker.offset = CGSize(width: 0, height: 0)
-            
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
-            view.layer.cornerRadius = 10
-            view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-            let label = UILabel(frame: CGRect(x: 5, y: 5, width: 90, height: 20))
+            let label = PaddingLabel(padding: UIEdgeInsets(top: 5, left: 7, bottom: 5, right: 7))
+            label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
             label.text = info.name
+            label.layer.cornerRadius = 10
+            label.clipsToBounds = true
             label.textColor = .white
             label.font = .systemFont(ofSize: 13)
             view.addSubview(label)
             label.centerX(inView: view)
             label.centerY(inView: view)
-            
-            marker.view = view
+            marker.view = label
             marker.map = self.mapView
         }
     }
