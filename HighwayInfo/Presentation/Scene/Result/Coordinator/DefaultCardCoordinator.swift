@@ -20,13 +20,13 @@ final class DefaultCardCoordinator: Coordinator {
     func start() {
     }
     
-    func showServiceDetail(with serviceArea: [ServiceArea]) {
+    func showServiceDetail(with highwayName: String, serviceArea: [ServiceArea]) {
        let serviceCoordinator = DefaultServiceAreaCoordinator(
         navigationController: navigationController,
         parentCoordinator: self)
         childCoordinators.append(serviceCoordinator)
         serviceCoordinator.start()
-        serviceCoordinator.start(with: serviceArea)
+        serviceCoordinator.start(with: highwayName, serviceArea: serviceArea)
     }
     
     func showGasStationDetail(with routeName: String) {

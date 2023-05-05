@@ -15,6 +15,7 @@ final class CardViewModel: ViewModelType {
     private let useCase: CardUseCase
     private let highwayInfo: [HighwayInfo]
     private var serviceArea: [ServiceArea] = []
+    private var selectedHighway: String
     
     struct Input {
         let itemSelected: Observable<HighwayInfo?>
@@ -29,6 +30,7 @@ final class CardViewModel: ViewModelType {
         self.coordinator = coordinator
         self.useCase = useCase
         self.highwayInfo = highwayInfo
+        self.selectedHighway = highwayInfo.first?.name.replacingOccurrences(of: "고속도로", with: "") ?? ""
     }
     
     func transform(input: Input) -> Output {
@@ -44,6 +46,8 @@ final class CardViewModel: ViewModelType {
         input.itemSelected
             .compactMap { $0.map { $0.rawName } }
             .subscribe(onNext: { selectedRoute in
+                self.selectedHighway = ""
+                self.selectedHighway = selectedRoute
                 self.useCase.fetchServiceArea(for: selectedRoute)
                 self.useCase.fetchGasStation(for: selectedRoute)
             })
@@ -59,7 +63,7 @@ final class CardViewModel: ViewModelType {
     }
     
     func showServiceDetail() {
-        self.coordinator.showServiceDetail(with: serviceArea)
+        coordinator.showServiceDetail(with: selectedHighway, serviceArea: serviceArea)
     }
     
     func showGasStationDetail() {

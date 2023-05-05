@@ -71,6 +71,10 @@ class ServiceAreaViewController: UIViewController {
         let input = ServiceAreaViewModel.Input(viewWillAppear: viewWillAppear)
         let output = viewModel.transform(input: input)
         
+        output.highwayName
+            .drive(titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
         output.serviceArea
             .subscribe(onNext: { area in
                 print(area)

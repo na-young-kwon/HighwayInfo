@@ -7,10 +7,12 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 final class ServiceAreaViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultServiceAreaCoordinator
+    private let highwayName: String
     private let serviceArea: [ServiceArea]
     
     struct Input {
@@ -18,17 +20,20 @@ final class ServiceAreaViewModel: ViewModelType {
     }
     
     struct Output {
+        let highwayName: Driver<String>
         let serviceArea: Observable<[ServiceArea]>
     }
     
-    init(coordinator: DefaultServiceAreaCoordinator, serviceArea: [ServiceArea]) {
+    init(coordinator: DefaultServiceAreaCoordinator, highwayName: String, serviceArea: [ServiceArea]) {
         self.coordinator = coordinator
+        self.highwayName = highwayName + " 고속도로 휴게소"
         self.serviceArea = serviceArea
     }
     
     func transform(input: Input) -> Output {
+        let highwayName = Driver.of(highwayName)
         let serviceArea = Observable.just(serviceArea)
-        let output = Output(serviceArea: serviceArea)
+        let output = Output(highwayName: highwayName, serviceArea: serviceArea)
         
         return output
     }
