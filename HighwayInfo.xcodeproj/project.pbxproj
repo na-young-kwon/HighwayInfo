@@ -41,6 +41,8 @@
 		3B497AFC2A03BDEE00D3FAAC /* GasStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */; };
 		3B497B012A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B002A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift */; };
 		3B497B032A03C01F00D3FAAC /* ServiceAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B022A03C01F00D3FAAC /* ServiceAreaViewModel.swift */; };
+		3B497B052A05022A00D3FAAC /* ConvenienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B042A05022A00D3FAAC /* ConvenienceCell.swift */; };
+		3B497B072A05045600D3FAAC /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B062A05045600D3FAAC /* Convenience.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -164,6 +166,8 @@
 		3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationViewController.swift; sourceTree = "<group>"; };
 		3B497B002A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServiceAreaCoordinator.swift; sourceTree = "<group>"; };
 		3B497B022A03C01F00D3FAAC /* ServiceAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaViewModel.swift; sourceTree = "<group>"; };
+		3B497B042A05022A00D3FAAC /* ConvenienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceCell.swift; sourceTree = "<group>"; };
+		3B497B062A05045600D3FAAC /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				3B497B022A03C01F00D3FAAC /* ServiceAreaViewModel.swift */,
+				3B497B062A05045600D3FAAC /* Convenience.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 			children = (
 				3B497AF92A03BDCF00D3FAAC /* ServiceAreaViewController.swift */,
 				3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */,
+				3B497B042A05022A00D3FAAC /* ConvenienceCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -888,6 +894,7 @@
 				3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */,
 				3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */,
 				3B497AD229FAA16300D3FAAC /* ServiceAreaRequest.swift in Sources */,
+				3B497B072A05045600D3FAAC /* Convenience.swift in Sources */,
 				3B497ACE29F67CE800D3FAAC /* DefaultUserRepository.swift in Sources */,
 				3B497AFA2A03BDCF00D3FAAC /* ServiceAreaViewController.swift in Sources */,
 				3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */,
@@ -909,6 +916,7 @@
 				3B497AD929FBC02200D3FAAC /* GasStationRequest.swift in Sources */,
 				3B497AE929FFF4BB00D3FAAC /* HighwayCell.swift in Sources */,
 				3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */,
+				3B497B052A05022A00D3FAAC /* ConvenienceCell.swift in Sources */,
 				3B497AC629F3CE6B00D3FAAC /* EmptyView.swift in Sources */,
 				3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */,
 				3B497AEB29FFF4C400D3FAAC /* ServiceCell.swift in Sources */,

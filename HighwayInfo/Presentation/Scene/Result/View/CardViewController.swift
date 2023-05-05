@@ -112,7 +112,7 @@ final class CardViewController: UIViewController {
         let gasCellRegistration = UICollectionView.CellRegistration<GasStationCell, GasStation> { (cell, indexPath, item) in
             cell.bindViewModel(with: item)
         }
-        titleDataSource  = UICollectionViewDiffableDataSource<TitleSection, HighwayInfo>(collectionView: titleCollectionView) {
+        titleDataSource = UICollectionViewDiffableDataSource<TitleSection, HighwayInfo>(collectionView: titleCollectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, item: HighwayInfo) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: highwayCellRegistration, for: indexPath, item: item)
         }
