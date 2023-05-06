@@ -30,6 +30,7 @@ final class ServiceAreaViewController: UIViewController {
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createTitleLayout())
         collectionView.alwaysBounceVertical = false
+        collectionView.showsVerticalScrollIndicator = false
         view.addSubview(collectionView)
         collectionView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor ,right: view.rightAnchor,
                               paddingTop: 15, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
@@ -49,14 +50,17 @@ final class ServiceAreaViewController: UIViewController {
                 section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
                 section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
             } else if sectionKind == .list {
-                let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+                var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+                configuration.showsSeparators = false
                 section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
             } else {
                 fatalError("Unknown section")
             }
             return section
         }
-        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider, configuration: config)
     }
     
     private func configureDataSource() {
@@ -92,8 +96,11 @@ final class ServiceAreaViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.serviceArea
-            .subscribe(onNext: { area in
-                print(area)
+            .subscribe(onNext: { serviceArea in
+                var snapshot = self.dataSource.snapshot()
+                snapshot.appendSections([.list])
+                snapshot.appendItems(serviceArea)
+                self.dataSource.apply(snapshot, animatingDifferences: false)
             })
             .disposed(by: disposeBag)
         
