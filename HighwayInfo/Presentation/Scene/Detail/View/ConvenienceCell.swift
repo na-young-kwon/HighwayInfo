@@ -11,14 +11,19 @@ final class ConvenienceCell: UICollectionViewCell {
     private let titleImage: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .systemGray6
-//        image.layer.cornerRadius = 10
-//        image.clipsToBounds = true
+        image.layer.cornerRadius = 20
+        image.contentMode = .scaleAspectFit
+        image.clipsToBounds = true
         return image
     }()
     private let label: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 13)
         return label
+    }()
+    private let paddingView: UIView = {
+       let view = UIView()
+        return view
     }()
     
     override init(frame: CGRect) {
@@ -33,11 +38,12 @@ final class ConvenienceCell: UICollectionViewCell {
     private func configureUI() {
         let stackView = UIStackView(arrangedSubviews: [titleImage, label])
         stackView.axis = .vertical
-        stackView.spacing = 10
-//        stackView.distribution = .fillEqually
+        stackView.spacing = 3
         stackView.alignment = .center
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10)
+        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 0)
+        titleImage.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.65).isActive = true
+        titleImage.widthAnchor.constraint(equalTo: titleImage.heightAnchor, multiplier: 1).isActive = true
     }
     
     func bindViewModel(with convenience: Convenience) {

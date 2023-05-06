@@ -17,10 +17,10 @@ enum Convenience: Int, CaseIterable {
     var imageName: String {
         switch self {
         case .all: return "all"
-        case .feedingRoom: return "feedingRoom"
-        case .sleepingRoom: return "sleepingRoom"
-        case .showerRoom: return "showerRoom"
-        case .laundryRoom: return "laundryRoom"
+        case .feedingRoom: return "feeding"
+        case .sleepingRoom: return "sleeping"
+        case .showerRoom: return "shower"
+        case .laundryRoom: return "laundry"
         }
     }
     var stringValue: String {

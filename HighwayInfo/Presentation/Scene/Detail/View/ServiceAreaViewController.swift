@@ -9,12 +9,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ServiceAreaViewController: UIViewController {
+final class ServiceAreaViewController: UIViewController {
     enum TitleSection: CaseIterable {
         case main
     }
     @IBOutlet weak var titleLabel: UILabel!
-    
     var viewModel: ServiceAreaViewModel!
     private var collectionView: UICollectionView!
     private let disposeBag = DisposeBag()
@@ -22,7 +21,6 @@ class ServiceAreaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureCollectionView()
         configureDataSource()
         bindViewModel()
@@ -41,10 +39,9 @@ class ServiceAreaViewController: UIViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalWidth(0.22))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalWidth(0.22))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
         let layout = UICollectionViewCompositionalLayout(section: section)
