@@ -16,15 +16,18 @@ final class ConvenienceCell: UICollectionViewCell {
         image.clipsToBounds = true
         return image
     }()
+    
     private let label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13)
         return label
     }()
-    private let paddingView: UIView = {
-       let view = UIView()
-        return view
-    }()
+    
+    override var isSelected: Bool {
+        didSet {
+            backgroundColor = isSelected ? .mainBlueColor: .clear
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

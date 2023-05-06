@@ -10,14 +10,15 @@ import RxSwift
 import RxCocoa
 
 final class ServiceAreaViewController: UIViewController {
-    enum TitleSection: CaseIterable {
-        case main
+    enum Section: Int, CaseIterable {
+        case title
+        case list
     }
     @IBOutlet weak var titleLabel: UILabel!
     var viewModel: ServiceAreaViewModel!
     private var collectionView: UICollectionView!
     private let disposeBag = DisposeBag()
-    private var titleDataSource: UICollectionViewDiffableDataSource<TitleSection, Convenience>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,36 +31,54 @@ final class ServiceAreaViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createTitleLayout())
         collectionView.alwaysBounceVertical = false
         view.addSubview(collectionView)
-        collectionView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
-                              paddingTop: 15, paddingLeft: 10, paddingRight: 10)
-        collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
+        collectionView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor ,right: view.rightAnchor,
+                              paddingTop: 15, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
     }
     
     private func createTitleLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalWidth(0.22))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let sectionKind = Section(rawValue: sectionIndex) else { return nil }
+            let section: NSCollectionLayoutSection
+            if sectionKind == .title {
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalWidth(0.22))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)
+            } else if sectionKind == .list {
+                let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+                section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
+            } else {
+                fatalError("Unknown section")
+            }
+            return section
+        }
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
     }
     
     private func configureDataSource() {
         let convenienceCellRegistration = UICollectionView.CellRegistration<ConvenienceCell, Convenience> { (cell, indexPath, data) in
             cell.bindViewModel(with: data)
         }
-        titleDataSource = UICollectionViewDiffableDataSource<TitleSection, Convenience>(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: Convenience) -> UICollectionViewCell? in
-            return collectionView.dequeueConfiguredReusableCell(using: convenienceCellRegistration, for: indexPath, item: item)
+        let serviceListCell = UICollectionView.CellRegistration<ServiceListCell, ServiceArea> { (cell, indexPath, data) in
+            cell.bindViewModel(with: data)
         }
-        var snapshot = NSDiffableDataSourceSnapshot<TitleSection, Convenience>()
-        snapshot.appendSections([.main])
+        dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: AnyHashable) -> UICollectionViewCell? in
+            if let convenience = item as? Convenience {
+                return collectionView.dequeueConfiguredReusableCell(using: convenienceCellRegistration, for: indexPath, item: convenience)
+            } else if let serviceArea = item as? ServiceArea {
+                return collectionView.dequeueConfiguredReusableCell(using: serviceListCell, for: indexPath, item: serviceArea)
+            }
+            return nil
+        }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        snapshot.appendSections([.title])
         snapshot.appendItems(Convenience.allCases)
-        titleDataSource.apply(snapshot, animatingDifferences: false)
+        dataSource.apply(snapshot, animatingDifferences: false)
         collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .left)
     }
     
@@ -80,7 +99,7 @@ final class ServiceAreaViewController: UIViewController {
         
         collectionView.rx.itemSelected
             .subscribe(onNext: { index in
-                let selectedCategory = self.titleDataSource.itemIdentifier(for: index)
+                let selectedCategory = self.dataSource.itemIdentifier(for: index)
                 print(selectedCategory)
             })
             .disposed(by: disposeBag)
