@@ -47,4 +47,8 @@ final class ServiceAreaViewModel: ViewModelType {
         
         return output
     }
+    
+    func removeFromSuperview() {
+        coordinator.removeCoordinator()
+    }
 }

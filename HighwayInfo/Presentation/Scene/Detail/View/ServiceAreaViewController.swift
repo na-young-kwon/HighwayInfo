@@ -93,26 +93,30 @@ final class ServiceAreaViewController: UIViewController {
             .disposed(by: disposeBag)
         
         serviceArea
-            .subscribe(onNext: { serviceZip in
+            .subscribe(onNext: { [weak self] serviceZip in
                 var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
                 snapshot.appendSections([.title])
                 snapshot.appendItems(Convenience.allCases, toSection: .title)
                 snapshot.appendSections([.list])
                 snapshot.appendItems(serviceZip.0, toSection: .list)
-                self.dataSource.apply(snapshot, animatingDifferences: true)
-                self.collectionView.selectItem(at: IndexPath(item: serviceZip.1.rawValue, section: 0), animated: false, scrollPosition: .left)
+                self?.dataSource.apply(snapshot, animatingDifferences: true)
+                self?.collectionView.selectItem(at: IndexPath(item: serviceZip.1.rawValue, section: 0), animated: false, scrollPosition: .left)
             })
             .disposed(by: disposeBag)
         
         collectionView.rx.itemSelected
-            .subscribe(onNext: { index in
-                let convenience = self.dataSource.itemIdentifier(for: index)
+            .subscribe(onNext: { [weak self] index in
+                let convenience = self?.dataSource.itemIdentifier(for: index)
                 guard let convenience = convenience as? Convenience else {
                     return
                 }
                 selectedCategory.onNext(convenience)
-                self.collectionView.selectItem(at: IndexPath(item: convenience.rawValue, section: 0), animated: false, scrollPosition: .left)
+                self?.collectionView.selectItem(at: IndexPath(item: convenience.rawValue, section: 0), animated: false, scrollPosition: .left)
             })
             .disposed(by: disposeBag)
+    }
+    
+    deinit {
+        viewModel.removeFromSuperview()
     }
 }
