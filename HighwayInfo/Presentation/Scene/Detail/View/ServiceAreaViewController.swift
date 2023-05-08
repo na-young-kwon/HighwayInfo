@@ -79,35 +79,42 @@ final class ServiceAreaViewController: UIViewController {
             }
             return nil
         }
-        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
-        snapshot.appendSections([.title])
-        snapshot.appendItems(Convenience.allCases)
-        dataSource.apply(snapshot, animatingDifferences: false)
-        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .left)
+//        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+//        snapshot.appendSections([.title])
+//        snapshot.appendItems(Convenience.allCases)
+//        dataSource.apply(snapshot, animatingDifferences: false)
+//        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .left)
     }
     
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
-        let input = ServiceAreaViewModel.Input(viewWillAppear: viewWillAppear)
+        let selectedCategory = BehaviorSubject<Convenience>(value: .all)
+        let input = ServiceAreaViewModel.Input(viewWillAppear: viewWillAppear, selectedCategory: selectedCategory.asObservable())
         let output = viewModel.transform(input: input)
+        let serviceArea = Observable.zip(output.serviceArea, selectedCategory)
         
         output.highwayName
             .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        output.serviceArea
-            .subscribe(onNext: { serviceArea in
-                var snapshot = self.dataSource.snapshot()
+        serviceArea
+            .subscribe(onNext: { serviceZip in
+                var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+                snapshot.appendSections([.title])
+                snapshot.appendItems(Convenience.allCases, toSection: .title)
                 snapshot.appendSections([.list])
-                snapshot.appendItems(serviceArea)
+                snapshot.appendItems(serviceZip.0, toSection: .list)
                 self.dataSource.apply(snapshot, animatingDifferences: false)
+                self.collectionView.selectItem(at: IndexPath(item: serviceZip.1.rawValue, section: 0), animated: false, scrollPosition: .left)
             })
             .disposed(by: disposeBag)
         
         collectionView.rx.itemSelected
             .subscribe(onNext: { index in
-                let selectedCategory = self.dataSource.itemIdentifier(for: index)
-                print(selectedCategory)
+                let convenience = self.dataSource.itemIdentifier(for: index)
+                guard let convenience = convenience as? Convenience else {
+                    return
+                }
+                selectedCategory.onNext(convenience)
             })
             .disposed(by: disposeBag)
     }

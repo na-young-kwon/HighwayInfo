@@ -12,11 +12,13 @@ import RxCocoa
 final class ServiceAreaViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultServiceAreaCoordinator
+    private let useCase: ServiceAreaUseCase
     private let highwayName: String
     private let serviceArea: [ServiceArea]
     
     struct Input {
         let viewWillAppear: Observable<Void>
+        let selectedCategory: Observable<Convenience>
     }
     
     struct Output {
@@ -24,16 +26,24 @@ final class ServiceAreaViewModel: ViewModelType {
         let serviceArea: Observable<[ServiceArea]>
     }
     
-    init(coordinator: DefaultServiceAreaCoordinator, highwayName: String, serviceArea: [ServiceArea]) {
+    init(coordinator: DefaultServiceAreaCoordinator, useCase: ServiceAreaUseCase, highwayName: String, serviceArea: [ServiceArea]) {
         self.coordinator = coordinator
+        self.useCase = useCase
         self.highwayName = highwayName + " 고속도로 휴게소"
         self.serviceArea = serviceArea
     }
     
     func transform(input: Input) -> Output {
         let highwayName = Driver.of(highwayName)
-        let serviceArea = Observable.just(serviceArea)
-        let output = Output(highwayName: highwayName, serviceArea: serviceArea)
+        let serviceArea = BehaviorSubject<[ServiceArea]>(value: serviceArea)
+        let output = Output(highwayName: highwayName, serviceArea: serviceArea.asObservable())
+        
+        input.selectedCategory
+            .subscribe(onNext: { category in
+                let filteredArea = self.useCase.filterServiceArea(with: self.serviceArea, for: category)
+                serviceArea.onNext(filteredArea)
+            })
+            .disposed(by: disposeBag)
         
         return output
     }

@@ -27,7 +27,7 @@ final class DefaultServiceAreaCoordinator: Coordinator {
     func start(with highwayName: String, serviceArea: [ServiceArea]) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: ServiceAreaViewController.self)
-        controller.viewModel = ServiceAreaViewModel(coordinator: self, highwayName: highwayName, serviceArea: serviceArea)
+        controller.viewModel = ServiceAreaViewModel(coordinator: self, useCase: DefaultServiceAreaUseCase(), highwayName: highwayName, serviceArea: serviceArea)
         
         navigationController.pushViewController(controller, animated: true)
     }
