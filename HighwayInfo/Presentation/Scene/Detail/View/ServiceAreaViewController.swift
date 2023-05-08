@@ -79,11 +79,6 @@ final class ServiceAreaViewController: UIViewController {
             }
             return nil
         }
-//        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
-//        snapshot.appendSections([.title])
-//        snapshot.appendItems(Convenience.allCases)
-//        dataSource.apply(snapshot, animatingDifferences: false)
-//        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .left)
     }
     
     private func bindViewModel() {
@@ -96,6 +91,7 @@ final class ServiceAreaViewController: UIViewController {
         output.highwayName
             .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
+        
         serviceArea
             .subscribe(onNext: { serviceZip in
                 var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
@@ -103,7 +99,7 @@ final class ServiceAreaViewController: UIViewController {
                 snapshot.appendItems(Convenience.allCases, toSection: .title)
                 snapshot.appendSections([.list])
                 snapshot.appendItems(serviceZip.0, toSection: .list)
-                self.dataSource.apply(snapshot, animatingDifferences: false)
+                self.dataSource.apply(snapshot, animatingDifferences: true)
                 self.collectionView.selectItem(at: IndexPath(item: serviceZip.1.rawValue, section: 0), animated: false, scrollPosition: .left)
             })
             .disposed(by: disposeBag)
@@ -115,6 +111,7 @@ final class ServiceAreaViewController: UIViewController {
                     return
                 }
                 selectedCategory.onNext(convenience)
+                self.collectionView.selectItem(at: IndexPath(item: convenience.rawValue, section: 0), animated: false, scrollPosition: .left)
             })
             .disposed(by: disposeBag)
     }

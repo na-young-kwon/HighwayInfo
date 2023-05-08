@@ -8,14 +8,6 @@
 import UIKit
 
 final class CategoryStackView: UIView {
-    private let feedingView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.cornerRadius = 20
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
     private let sleepingView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 20
@@ -40,6 +32,22 @@ final class CategoryStackView: UIView {
         return imageView
     }()
     
+    private let restAreaView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 20
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    private let marketView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 20
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
     var serviceArea: ServiceArea? {
         didSet {
             configureUI(with: serviceArea!)
@@ -55,24 +63,27 @@ final class CategoryStackView: UIView {
     }
     
     private func configureUI(with serviceArea: ServiceArea) {
-        feedingView.image = serviceArea.feedingRoom == true ? UIImage(named: "feeding") : UIImage()
         sleepingView.image = serviceArea.sleepingRoom == true ? UIImage(named: "sleeping") : UIImage()
         showerView.image = serviceArea.showerRoom == true ? UIImage(named: "shower") : UIImage()
         laundryView.image = serviceArea.laundryRoom == true ? UIImage(named: "laundry") : UIImage()
-        let stackView = UIStackView(arrangedSubviews: [feedingView, sleepingView, showerView, laundryView])
+        restAreaView.image = serviceArea.restArea == true ? UIImage(named: "restArea") : UIImage()
+        marketView.image = serviceArea.market == true ? UIImage(named: "market") : UIImage()
+        let stackView = UIStackView(arrangedSubviews: [sleepingView, showerView, laundryView, restAreaView, marketView])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         addSubview(stackView)
         
         stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor,
                          paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
-        feedingView.widthAnchor.constraint(equalTo: feedingView.heightAnchor, multiplier: 1).isActive = true
         sleepingView.widthAnchor.constraint(equalTo: sleepingView.heightAnchor, multiplier: 1).isActive = true
         showerView.widthAnchor.constraint(equalTo: showerView.heightAnchor, multiplier: 1).isActive = true
         laundryView.widthAnchor.constraint(equalTo: laundryView.heightAnchor, multiplier: 1).isActive = true
-        feedingView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25).isActive = true
-        sleepingView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25).isActive = true
-        showerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25).isActive = true
-        laundryView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25).isActive = true
+        restAreaView.widthAnchor.constraint(equalTo: restAreaView.heightAnchor, multiplier: 1).isActive = true
+        marketView.widthAnchor.constraint(equalTo: marketView.heightAnchor, multiplier: 1).isActive = true
+        sleepingView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2).isActive = true
+        showerView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2).isActive = true
+        laundryView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2).isActive = true
+        restAreaView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2).isActive = true
+        marketView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2).isActive = true
     }
 }

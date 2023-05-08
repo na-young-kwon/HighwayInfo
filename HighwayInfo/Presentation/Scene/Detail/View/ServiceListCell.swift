@@ -33,7 +33,7 @@ final class ServiceListCell: UICollectionViewListCell {private let titleLabel: U
         stackView.distribution = .fill
         addSubview(stackView)
         stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 6, paddingLeft: 15, paddingBottom: 6, paddingRight: 4)
-        categoryStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.4).isActive = true
+        categoryStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5).isActive = true
     }
     
     func bindViewModel(with serviceArea: ServiceArea) {

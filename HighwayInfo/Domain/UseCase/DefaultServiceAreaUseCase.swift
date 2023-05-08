@@ -13,14 +13,16 @@ final class DefaultServiceAreaUseCase: ServiceAreaUseCase {
         switch convenience {
         case .all:
             return serviceArea
-        case .feedingRoom:
-            return serviceArea.filter { $0.feedingRoom == true }
         case .sleepingRoom:
             return serviceArea.filter { $0.sleepingRoom == true }
         case .showerRoom:
             return serviceArea.filter { $0.showerRoom == true }
         case .laundryRoom:
             return serviceArea.filter { $0.laundryRoom == true }
+        case .restArea:
+            return serviceArea.filter { $0.restArea == true }
+        case .market:
+            return serviceArea.filter { $0.market == true }
         }
     }
 }

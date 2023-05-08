@@ -16,9 +16,6 @@ struct ServiceArea {
     let address: String
     let telNo: String
     
-    var feedingRoom: Bool {
-        return convenience.contains("수유실")
-    }
     var sleepingRoom: Bool {
         return convenience.contains("수면실")
     }
@@ -27,6 +24,12 @@ struct ServiceArea {
     }
     var laundryRoom: Bool {
         return convenience.contains("세탁실")
+    }
+    var restArea: Bool {
+        return convenience.contains("쉼터")
+    }
+    var market: Bool {
+        return convenience.contains("농산물판매장")
     }
 }
 
