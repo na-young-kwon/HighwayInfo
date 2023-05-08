@@ -128,12 +128,11 @@ final class CardViewController: UIViewController {
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration<TitleView>(elementKind: titleElementKind) {
             (titleView, string, indexPath) in
             let section = self.detailDataSource.snapshot().sectionIdentifiers[indexPath.section]
+            if section == .gasStation { titleView.hideShowMoreButton() }
             titleView.setTitle(with: section.description)
             titleView.moreButtonTapped
                 .subscribe(onNext: { _ in
-                    section == .serviceArea ?
-                    self.viewModel.showServiceDetail() :
-                    self.viewModel.showGasStationDetail()
+                    self.viewModel.showServiceDetail()
                 })
                 .disposed(by: self.disposeBag)
         }

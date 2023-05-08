@@ -38,7 +38,6 @@
 		3B497AF42A02449400D3FAAC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF32A02449400D3FAAC /* UIColor+Extension.swift */; };
 		3B497AF62A0392D500D3FAAC /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF52A0392D500D3FAAC /* PaddingLabel.swift */; };
 		3B497AFA2A03BDCF00D3FAAC /* ServiceAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AF92A03BDCF00D3FAAC /* ServiceAreaViewController.swift */; };
-		3B497AFC2A03BDEE00D3FAAC /* GasStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */; };
 		3B497B012A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B002A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift */; };
 		3B497B032A03C01F00D3FAAC /* ServiceAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B022A03C01F00D3FAAC /* ServiceAreaViewModel.swift */; };
 		3B497B052A05022A00D3FAAC /* ConvenienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B042A05022A00D3FAAC /* ConvenienceCell.swift */; };
@@ -167,7 +166,6 @@
 		3B497AF32A02449400D3FAAC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3B497AF52A0392D500D3FAAC /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		3B497AF92A03BDCF00D3FAAC /* ServiceAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaViewController.swift; sourceTree = "<group>"; };
-		3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationViewController.swift; sourceTree = "<group>"; };
 		3B497B002A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultServiceAreaCoordinator.swift; sourceTree = "<group>"; };
 		3B497B022A03C01F00D3FAAC /* ServiceAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaViewModel.swift; sourceTree = "<group>"; };
 		3B497B042A05022A00D3FAAC /* ConvenienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceCell.swift; sourceTree = "<group>"; };
@@ -342,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				3B497AF92A03BDCF00D3FAAC /* ServiceAreaViewController.swift */,
-				3B497AFB2A03BDEE00D3FAAC /* GasStationViewController.swift */,
 				3B497B042A05022A00D3FAAC /* ConvenienceCell.swift */,
 				3B497B082A064F0B00D3FAAC /* ServiceListCell.swift */,
 				3B497B0A2A06517D00D3FAAC /* CategoryStackView.swift */,
@@ -924,7 +921,6 @@
 				3B497AE529FBF00A00D3FAAC /* GasPriceParser.swift in Sources */,
 				3B497AF62A0392D500D3FAAC /* PaddingLabel.swift in Sources */,
 				3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */,
-				3B497AFC2A03BDEE00D3FAAC /* GasStationViewController.swift in Sources */,
 				3B497AD929FBC02200D3FAAC /* GasStationRequest.swift in Sources */,
 				3B497AE929FFF4BB00D3FAAC /* HighwayCell.swift in Sources */,
 				3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */,

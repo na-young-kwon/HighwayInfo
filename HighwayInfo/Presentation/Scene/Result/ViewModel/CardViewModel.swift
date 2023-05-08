@@ -65,8 +65,4 @@ final class CardViewModel: ViewModelType {
     func showServiceDetail() {
         coordinator.showServiceDetail(with: selectedHighway, serviceArea: serviceArea)
     }
-    
-    func showGasStationDetail() {
-        coordinator.showGasStationDetail(with: "DD")
-    }
 }

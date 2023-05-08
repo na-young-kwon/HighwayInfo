@@ -28,11 +28,4 @@ final class DefaultCardCoordinator: Coordinator {
         serviceCoordinator.start()
         serviceCoordinator.start(with: highwayName, serviceArea: serviceArea)
     }
-    
-    func showGasStationDetail(with routeName: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(ofType: GasStationViewController.self)
-        
-        navigationController.pushViewController(vc, animated: true)
-    }
 }

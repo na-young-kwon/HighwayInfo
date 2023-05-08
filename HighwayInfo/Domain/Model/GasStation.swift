@@ -15,8 +15,6 @@ struct GasStation {
     let gasolinePrice: String
     let lpgPrice: String
     let serviceAreaCode: String
-    let evCharging: Bool
-    let hydrogenCharging: Bool
 }
 
 extension GasStation: Hashable {

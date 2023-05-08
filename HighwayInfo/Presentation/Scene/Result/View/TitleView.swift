@@ -36,6 +36,10 @@ final class TitleView: UICollectionReusableView {
         label.text = text
     }
     
+    func hideShowMoreButton() {
+        button.isHidden = true
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -46,7 +50,7 @@ final class TitleView: UICollectionReusableView {
         fatalError()
     }
     
-    func configureUI() {
+    private func configureUI() {
         let stack = UIStackView(arrangedSubviews: [label, button])
         stack.spacing = 10
         stack.alignment = .firstBaseline
