@@ -1,13 +1,13 @@
 //
-//  DefaultServiceAreaCoordinator.swift
+//  DefaultFacilityCoordinator.swift
 //  HighwayInfo
 //
-//  Created by 권나영 on 2023/05/04.
+//  Created by 권나영 on 2023/05/08.
 //
 
 import UIKit
 
-final class DefaultServiceAreaCoordinator: Coordinator {
+final class DefaultFacilityCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private weak var parentCoordinator: Coordinator?
@@ -24,16 +24,12 @@ final class DefaultServiceAreaCoordinator: Coordinator {
         navigationController.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    func start(with highwayName: String, serviceArea: [ServiceArea]) {
+    func start(with name: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(ofType: ServiceAreaViewController.self)
-        controller.viewModel = ServiceAreaViewModel(coordinator: self, useCase: DefaultServiceAreaUseCase(), highwayName: highwayName, serviceArea: serviceArea)
+        let controller = storyboard.instantiateViewController(ofType: FacilityViewController.self)
+        controller.viewModel = FacilityViewModel(coordinator: self)
         
         navigationController.pushViewController(controller, animated: true)
-    }
-    
-    func toFacilityView(with serviceArea: ServiceArea) {
-        print(serviceArea)
     }
     
     func removeCoordinator() {

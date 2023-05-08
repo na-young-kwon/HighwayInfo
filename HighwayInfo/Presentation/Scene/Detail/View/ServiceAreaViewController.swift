@@ -84,7 +84,10 @@ final class ServiceAreaViewController: UIViewController {
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
         let selectedCategory = BehaviorSubject<Convenience>(value: .all)
-        let input = ServiceAreaViewModel.Input(viewWillAppear: viewWillAppear, selectedCategory: selectedCategory.asObservable())
+        let selectedServiceArea = PublishSubject<ServiceArea>()
+        let input = ServiceAreaViewModel.Input(viewWillAppear: viewWillAppear,
+                                               selectedCategory: selectedCategory.asObservable(),
+                                               selectedServiceArea: selectedServiceArea.asObservable())
         let output = viewModel.transform(input: input)
         let serviceArea = Observable.zip(output.serviceArea, selectedCategory)
         
@@ -112,6 +115,16 @@ final class ServiceAreaViewController: UIViewController {
                 }
                 selectedCategory.onNext(convenience)
                 self?.collectionView.selectItem(at: IndexPath(item: convenience.rawValue, section: 0), animated: false, scrollPosition: .left)
+            })
+            .disposed(by: disposeBag)
+        
+        collectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] index in
+                let convenience = self?.dataSource.itemIdentifier(for: index)
+                guard let serviceArea = convenience as? ServiceArea else {
+                    return
+                }
+                selectedServiceArea.onNext(serviceArea)
             })
             .disposed(by: disposeBag)
     }

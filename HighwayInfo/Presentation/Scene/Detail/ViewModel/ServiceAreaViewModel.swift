@@ -19,6 +19,7 @@ final class ServiceAreaViewModel: ViewModelType {
     struct Input {
         let viewWillAppear: Observable<Void>
         let selectedCategory: Observable<Convenience>
+        let selectedServiceArea: Observable<ServiceArea>
     }
     
     struct Output {
@@ -42,6 +43,12 @@ final class ServiceAreaViewModel: ViewModelType {
             .subscribe(onNext: { category in
                 let filteredArea = self.useCase.filterServiceArea(with: self.serviceArea, for: category)
                 serviceArea.onNext(filteredArea)
+            })
+            .disposed(by: disposeBag)
+        
+        input.selectedServiceArea
+            .subscribe(onNext: { serviceArea in
+                self.coordinator.toFacilityView(with: serviceArea)
             })
             .disposed(by: disposeBag)
         
