@@ -25,7 +25,9 @@ final class ConvenienceCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? .mainBlueColor: .clear
+            titleImage.backgroundColor = isSelected ? .mainBlueColor?.withAlphaComponent(0.6) : .systemGray6
+            titleImage.layer.borderColor = isSelected ? UIColor.mainBlueColor?.cgColor : UIColor.clear.cgColor
+            titleImage.layer.borderWidth = 1
         }
     }
     
