@@ -51,6 +51,8 @@
 		3B497B1F2A09273700D3FAAC /* DefaultFacilityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B1E2A09273700D3FAAC /* DefaultFacilityCoordinator.swift */; };
 		3B497B212A0A207B00D3FAAC /* FacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B202A0A207B00D3FAAC /* FacilityUseCase.swift */; };
 		3B497B242A0A20B500D3FAAC /* DefaultFacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */; };
+		3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */; };
+		3B497B282A0A4C7300D3FAAC /* FoodDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -184,6 +186,8 @@
 		3B497B1E2A09273700D3FAAC /* DefaultFacilityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DefaultFacilityCoordinator.swift; path = HighwayInfo/Presentation/Scene/Facility/ViewModel/DefaultFacilityCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		3B497B202A0A207B00D3FAAC /* FacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityUseCase.swift; sourceTree = "<group>"; };
 		3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFacilityUseCase.swift; sourceTree = "<group>"; };
+		3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRequest.swift; sourceTree = "<group>"; };
+		3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDTO.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -288,19 +292,13 @@
 			path = Parser;
 			sourceTree = "<group>";
 		};
-		3B497ADC29FBCF1500D3FAAC /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		3B497ADD29FBCF4000D3FAAC /* ServiceArea */ = {
 			isa = PBXGroup;
 			children = (
 				3B497AD129FAA16300D3FAAC /* ServiceAreaRequest.swift */,
 				3B497AD829FBC02200D3FAAC /* GasStationRequest.swift */,
 				3B497AE029FBE54400D3FAAC /* GasPriceRequest.swift */,
+				3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */,
 			);
 			path = ServiceArea;
 			sourceTree = "<group>";
@@ -540,7 +538,6 @@
 		3B63BAAA29B768A60055D3A4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3B497ADC29FBCF1500D3FAAC /* New Group */,
 				3B8F085D29B872EF009D7396 /* Protocol */,
 				3BD4EE9629C1CED50010FB25 /* Accident */,
 				3BD4EE9729C1CFF10010FB25 /* CCTV */,
@@ -708,6 +705,7 @@
 				3B497AD329FAA17A00D3FAAC /* ServiceAreaDTO.swift */,
 				3B497ADA29FBC03900D3FAAC /* GasStationDTO.swift */,
 				3B497AE229FBE59500D3FAAC /* GasPriceDTO.swift */,
+				3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -989,7 +987,9 @@
 				3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */,
 				3B497AC429F3BA7B00D3FAAC /* DefaultCardCoordinator.swift in Sources */,
 				3B7399F629DC2DE600B5D1FF /* SearchView.swift in Sources */,
+				3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */,
 				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,
+				3B497B282A0A4C7300D3FAAC /* FoodDTO.swift in Sources */,
 				3B497B0D2A08C69000D3FAAC /* ServiceAreaUseCase.swift in Sources */,
 				3B97E46929E419FB000F4B39 /* ResultViewController.swift in Sources */,
 				3B8F086729B9BE73009D7396 /* HomeViewModel.swift in Sources */,
