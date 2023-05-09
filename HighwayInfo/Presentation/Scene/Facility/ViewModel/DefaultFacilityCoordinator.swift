@@ -27,9 +27,12 @@ final class DefaultFacilityCoordinator: Coordinator {
     func start(with serviceArea: ServiceArea) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: FacilityViewController.self)
-        let roadRepository = DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider()))
-        controller.viewModel = FacilityViewModel(coordinator: self, useCase: DefaultFacilityUseCase(roadRepository: roadRepository), serviceArea: serviceArea)
-        
+        let apiProvider = DefaultAPIProvider()
+        let roadService = RoadService(apiProvider: apiProvider)
+        let facilityService = FacilityService(apiProvider: apiProvider)
+        let roadRepository = DefaultRoadRepository(service: roadService)
+        let facilityRepository = DefaultFacilityRepository(service: facilityService)
+        controller.viewModel = FacilityViewModel(coordinator: self, useCase: DefaultFacilityUseCase(roadRepository: roadRepository, facilityRepository: facilityRepository), serviceArea: serviceArea)
         navigationController.pushViewController(controller, animated: true)
     }
     

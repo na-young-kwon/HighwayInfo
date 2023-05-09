@@ -35,6 +35,7 @@ final class FacilityViewModel: ViewModelType {
         input.viewWillAppear
             .subscribe(onNext: { _ in
                 self.useCase.fetchGasPrice(for: self.serviceArea.name)
+                self.useCase.fetchFoodMenu(for: self.serviceArea.name)
             })
             .disposed(by: disposeBag)
         

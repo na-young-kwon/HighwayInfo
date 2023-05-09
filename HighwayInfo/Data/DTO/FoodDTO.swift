@@ -8,8 +8,17 @@
 import Foundation
 
 struct FoodDTO: Decodable {
-    let pageNo: String
-    let numOfRows: String
+    let list: [Food]
+    let count: Int
+    let numOfRows: Int
+    let pageSize: Int
+    let message: String
+    let code: String
+}
+
+struct Food: Decodable {
+    let pageNo: String?
+    let numOfRows: String?
     let serviceCode: String
     let serviceName: String
     let address: String
@@ -20,14 +29,14 @@ struct FoodDTO: Decodable {
     let sequence: String
     let foodName: String
     let foodCost: String
-    let etc: String
+    let etc: String?
     let recommendYesOrNo: String
     let seasonMenu: String
     let bestFoodYesOrNo: String
     let premiumYesOrNo: String
     let app: String
     let restCd: String
-    let foodMaterial: String
+    let foodMaterial: String?
     let lastId: String
     let lastDtime: String
     

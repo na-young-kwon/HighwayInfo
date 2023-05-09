@@ -10,4 +10,5 @@ import RxSwift
 
 protocol FacilityUseCase {
     func fetchGasPrice(for name: String)
+    func fetchFoodMenu(for serviceName: String)
 }

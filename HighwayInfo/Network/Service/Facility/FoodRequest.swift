@@ -16,12 +16,12 @@ struct FoodRequest: APIRequest {
     let key = "6970526905"
     let type = "json"
     let numOfRows = "10"
-    let stdRestNm: String
+    let serviceName: String
     
     var parameters: [String : String] {[
         "key": key,
         "type": type,
         "numOfRows": numOfRows,
-        "stdRestNm": stdRestNm
+        "stdRestNm": serviceName
     ]}
 }

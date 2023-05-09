@@ -53,6 +53,9 @@
 		3B497B242A0A20B500D3FAAC /* DefaultFacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */; };
 		3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */; };
 		3B497B282A0A4C7300D3FAAC /* FoodDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */; };
+		3B497B2A2A0A502100D3FAAC /* FacilityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B292A0A502100D3FAAC /* FacilityRepository.swift */; };
+		3B497B2C2A0A505600D3FAAC /* DefaultFacilityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B2B2A0A505600D3FAAC /* DefaultFacilityRepository.swift */; };
+		3B497B2E2A0A65F100D3FAAC /* FacilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -188,6 +191,9 @@
 		3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFacilityUseCase.swift; sourceTree = "<group>"; };
 		3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRequest.swift; sourceTree = "<group>"; };
 		3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDTO.swift; sourceTree = "<group>"; };
+		3B497B292A0A502100D3FAAC /* FacilityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityRepository.swift; sourceTree = "<group>"; };
+		3B497B2B2A0A505600D3FAAC /* DefaultFacilityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFacilityRepository.swift; sourceTree = "<group>"; };
+		3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityService.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -292,15 +298,13 @@
 			path = Parser;
 			sourceTree = "<group>";
 		};
-		3B497ADD29FBCF4000D3FAAC /* ServiceArea */ = {
+		3B497ADD29FBCF4000D3FAAC /* Facility */ = {
 			isa = PBXGroup;
 			children = (
-				3B497AD129FAA16300D3FAAC /* ServiceAreaRequest.swift */,
-				3B497AD829FBC02200D3FAAC /* GasStationRequest.swift */,
-				3B497AE029FBE54400D3FAAC /* GasPriceRequest.swift */,
+				3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */,
 				3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */,
 			);
-			path = ServiceArea;
+			path = Facility;
 			sourceTree = "<group>";
 		};
 		3B497AF72A03B0AD00D3FAAC /* Utility */ = {
@@ -387,6 +391,16 @@
 				3B497B1C2A0926F000D3FAAC /* FacilityViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B497B2F2A0A662600D3FAAC /* ServiceArea */ = {
+			isa = PBXGroup;
+			children = (
+				3B497AD129FAA16300D3FAAC /* ServiceAreaRequest.swift */,
+				3B497AD829FBC02200D3FAAC /* GasStationRequest.swift */,
+				3B497AE029FBE54400D3FAAC /* GasPriceRequest.swift */,
+			);
+			path = ServiceArea;
 			sourceTree = "<group>";
 		};
 		3B5AD11A29B1E7B300E2AFAA /* Application */ = {
@@ -542,7 +556,8 @@
 				3BD4EE9629C1CED50010FB25 /* Accident */,
 				3BD4EE9729C1CFF10010FB25 /* CCTV */,
 				3B6CF36F29D31523002289A0 /* Tmap */,
-				3B497ADD29FBCF4000D3FAAC /* ServiceArea */,
+				3B497B2F2A0A662600D3FAAC /* ServiceArea */,
+				3B497ADD29FBCF4000D3FAAC /* Facility */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -592,6 +607,7 @@
 				3BD4EEA029C1F5910010FB25 /* CCTVRepository.swift */,
 				3B6CF37429D31571002289A0 /* RoadRepository.swift */,
 				3B497ACB29F67B6600D3FAAC /* UserRepository.swift */,
+				3B497B292A0A502100D3FAAC /* FacilityRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -605,6 +621,7 @@
 				3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */,
 				3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */,
 				3B497ACD29F67CE800D3FAAC /* DefaultUserRepository.swift */,
+				3B497B2B2A0A505600D3FAAC /* DefaultFacilityRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -978,9 +995,11 @@
 				3B497AEB29FFF4C400D3FAAC /* ServiceCell.swift in Sources */,
 				3B97E46B29E41B24000F4B39 /* DefaultResultCoordinator.swift in Sources */,
 				3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */,
+				3B497B2A2A0A502100D3FAAC /* FacilityRepository.swift in Sources */,
 				3B497AD729FAA34000D3FAAC /* ServiceAreaParser.swift in Sources */,
 				3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */,
 				3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */,
+				3B497B2C2A0A505600D3FAAC /* DefaultFacilityRepository.swift in Sources */,
 				3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */,
 				3B8F086929B9BEB2009D7396 /* ViewModelType.swift in Sources */,
 				3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */,
@@ -990,6 +1009,7 @@
 				3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */,
 				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,
 				3B497B282A0A4C7300D3FAAC /* FoodDTO.swift in Sources */,
+				3B497B2E2A0A65F100D3FAAC /* FacilityService.swift in Sources */,
 				3B497B0D2A08C69000D3FAAC /* ServiceAreaUseCase.swift in Sources */,
 				3B97E46929E419FB000F4B39 /* ResultViewController.swift in Sources */,
 				3B8F086729B9BE73009D7396 /* HomeViewModel.swift in Sources */,
