@@ -120,8 +120,8 @@ final class ServiceAreaViewController: UIViewController {
         
         collectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] index in
-                let convenience = self?.dataSource.itemIdentifier(for: index)
-                guard let serviceArea = convenience as? ServiceArea else {
+                let serviceArea = self?.dataSource.itemIdentifier(for: index)
+                guard let serviceArea = serviceArea as? ServiceArea else {
                     return
                 }
                 selectedServiceArea.onNext(serviceArea)

@@ -50,7 +50,7 @@ final class DefaultCardUseCase: CardUseCase {
                                        dieselPrice: $0.dieselPrice,
                                        gasolinePrice: $0.gasolinePrice,
                                        lpgPrice: $0.lpgPrice,
-                                       serviceAreaCode: $0.serviceAreaCode)}
+                                       serviceAreaCode: $0.serviceAreaCode) }
             }
             .subscribe(onNext: { gasStation in
                 self.gasStation.onNext(gasStation)

@@ -7,13 +7,9 @@
 
 import UIKit
 
-class SearchHistoryCell: UITableViewCell {
+final class SearchHistoryCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
     
     func bind(_ viewModel: LocationInfo) {
         titleLabel.text = viewModel.name

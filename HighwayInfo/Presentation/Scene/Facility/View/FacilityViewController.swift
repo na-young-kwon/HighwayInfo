@@ -8,6 +8,7 @@
 import UIKit
 
 class FacilityViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
     var viewModel: FacilityViewModel!
     
     override func viewDidLoad() {
@@ -20,5 +21,7 @@ class FacilityViewController: UIViewController {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
         let input = FacilityViewModel.Input(viewWillAppear: viewWillAppear)
         let output = viewModel.transform(input: input)
+        
+        titleLabel.text = output.serviceAreaName
     }
 }
