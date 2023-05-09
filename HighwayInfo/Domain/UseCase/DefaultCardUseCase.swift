@@ -28,8 +28,7 @@ final class DefaultCardUseCase: CardUseCase {
                                         convenience: $0.convenience,
                                         direction: $0.direction,
                                         address: $0.address,
-                                        telNo: $0.telNo,
-                                        gasStationCode: $0.gasStationCode) }
+                                        telNo: $0.telNo) }
             }
             .subscribe(onNext: { serviceArea in
                 self.serviceArea.onNext(serviceArea)
@@ -38,11 +37,11 @@ final class DefaultCardUseCase: CardUseCase {
     }
     
     func fetchGasStation(for routeName: String) {
-        let serviceAreaCode = roadRepository.fetchGasStation(for: routeName)
-            .map { $0.compactMap { $0.serviceAreaCode } }
-        let gasStation = serviceAreaCode.flatMap { serviceCode in
+        let serviceAreaNames = roadRepository.fetchGasStation(for: routeName)
+            .map { $0.compactMap { $0.name } }
+        let gasStation = serviceAreaNames.flatMap { serviceName in
             Observable.zip(
-                serviceCode.map { self.roadRepository.fetchGasPrice(for: $0) }
+                serviceName.map { self.roadRepository.fetchGasPrice(for: $0) }
             )}
         gasStation
             .take(15)

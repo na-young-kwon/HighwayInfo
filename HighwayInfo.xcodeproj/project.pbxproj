@@ -49,6 +49,8 @@
 		3B497B1B2A0926D600D3FAAC /* FacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B1A2A0926D600D3FAAC /* FacilityViewController.swift */; };
 		3B497B1D2A0926F000D3FAAC /* FacilityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B1C2A0926F000D3FAAC /* FacilityViewModel.swift */; };
 		3B497B1F2A09273700D3FAAC /* DefaultFacilityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B1E2A09273700D3FAAC /* DefaultFacilityCoordinator.swift */; };
+		3B497B212A0A207B00D3FAAC /* FacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B202A0A207B00D3FAAC /* FacilityUseCase.swift */; };
+		3B497B242A0A20B500D3FAAC /* DefaultFacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -180,6 +182,8 @@
 		3B497B1A2A0926D600D3FAAC /* FacilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityViewController.swift; sourceTree = "<group>"; };
 		3B497B1C2A0926F000D3FAAC /* FacilityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityViewModel.swift; sourceTree = "<group>"; };
 		3B497B1E2A09273700D3FAAC /* DefaultFacilityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DefaultFacilityCoordinator.swift; path = HighwayInfo/Presentation/Scene/Facility/ViewModel/DefaultFacilityCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		3B497B202A0A207B00D3FAAC /* FacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityUseCase.swift; sourceTree = "<group>"; };
+		3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFacilityUseCase.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -579,6 +583,7 @@
 				3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */,
 				3B97E47329E55704000F4B39 /* DefaultCardUseCase.swift */,
 				3B497B0E2A08C6BA00D3FAAC /* DefaultServiceAreaUseCase.swift */,
+				3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -650,6 +655,7 @@
 				3B97E46029E3FE76000F4B39 /* SearchUseCase.swift */,
 				3B97E47529E5572A000F4B39 /* CardUseCase.swift */,
 				3B497B0C2A08C69000D3FAAC /* ServiceAreaUseCase.swift */,
+				3B497B202A0A207B00D3FAAC /* FacilityUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1030,11 +1036,13 @@
 				3B497AD429FAA17A00D3FAAC /* ServiceAreaDTO.swift in Sources */,
 				3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */,
 				3B497AD029F80AB900D3FAAC /* SearchHeaderView.swift in Sources */,
+				3B497B212A0A207B00D3FAAC /* FacilityUseCase.swift in Sources */,
 				3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */,
 				3B97E48229ED5479000F4B39 /* Route.swift in Sources */,
 				3B497AC229F3BA2500D3FAAC /* CardViewModel.swift in Sources */,
 				3B6CF36E29D313B0002289A0 /* RoadViewModel.swift in Sources */,
 				3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */,
+				3B497B242A0A20B500D3FAAC /* DefaultFacilityUseCase.swift in Sources */,
 				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,
 				3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */,
 				3B497AF02A00DE4100D3FAAC /* TitleView.swift in Sources */,

@@ -12,6 +12,8 @@ import RxCocoa
 final class FacilityViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultFacilityCoordinator
+    private let useCase: DefaultFacilityUseCase
+    private let serviceArea: ServiceArea
     
     struct Input {
         let viewWillAppear: Observable<Void>
@@ -20,13 +22,16 @@ final class FacilityViewModel: ViewModelType {
     struct Output {
     }
     
-    init(coordinator: DefaultFacilityCoordinator) {
+    init(coordinator: DefaultFacilityCoordinator, useCase: DefaultFacilityUseCase, serviceArea: ServiceArea) {
         self.coordinator = coordinator
+        self.useCase = useCase
+        self.serviceArea = serviceArea
     }
     
     func transform(input: Input) -> Output {
         let output = Output()
 
+        useCase.fetchGasPrice(for: serviceArea.name)
         return output
     }
     

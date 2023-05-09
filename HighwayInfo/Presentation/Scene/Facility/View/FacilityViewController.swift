@@ -13,5 +13,12 @@ class FacilityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bindViewModel()
+    }
+    
+    private func bindViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
+        let input = FacilityViewModel.Input(viewWillAppear: viewWillAppear)
+        let output = viewModel.transform(input: input)
     }
 }

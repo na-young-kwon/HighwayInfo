@@ -33,7 +33,10 @@ final class DefaultServiceAreaCoordinator: Coordinator {
     }
     
     func toFacilityView(with serviceArea: ServiceArea) {
-        print(serviceArea)
+        let facilityCoordinator = DefaultFacilityCoordinator(navigationController: navigationController, parentCoordinator: self)
+        childCoordinators.append(facilityCoordinator)
+        facilityCoordinator.start()
+        facilityCoordinator.start(with: serviceArea)
     }
     
     func removeCoordinator() {

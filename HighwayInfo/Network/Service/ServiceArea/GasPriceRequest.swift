@@ -15,11 +15,11 @@ struct GasPriceRequest: APIRequest {
     let urlPath = "curStateStation?"
     let key = "6970526905"
     let type = "xml"
-    let serviceAreaCode2: String
+    let serviceAreaName: String
     
     var parameters: [String : String] {[
         "key": key,
         "type": type,
-        "serviceAreaCode2": serviceAreaCode2
+        "serviceAreaName": serviceAreaName
     ]}
 }

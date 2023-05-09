@@ -15,7 +15,6 @@ struct ServiceArea {
     let direction: String
     let address: String
     let telNo: String
-    let gasStationCode: String
     
     var sleepingRoom: Bool {
         return convenience.contains("수면실")

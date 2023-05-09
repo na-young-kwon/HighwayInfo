@@ -42,10 +42,9 @@ final class ServiceAreaParser: NSObject, XMLParserDelegate {
         if elementName == "list" {
             serviceAreas.append(serviceArea)
         } else if elementName == "serviceAreaName" {
-            serviceArea.serviceAreaName = elementValue
-        } else if elementName == "serviceAreaCode2" {let aaa = incrementNumericString(numericString: elementValue ?? "")
+            serviceArea.serviceAreaName = elementValue?.replacingOccurrences(of: "휴게소", with: "")
+        } else if elementName == "serviceAreaCode2" {
             serviceArea.serviceAreaCode = elementValue
-            serviceArea.gasStationCode = aaa!
         } else if elementName == "convenience" {
             serviceArea.convenience = elementValue
         } else if elementName == "direction" {
@@ -56,10 +55,5 @@ final class ServiceAreaParser: NSObject, XMLParserDelegate {
             serviceArea.telNo = elementValue
         }
         elementValue = nil
-    }
-    
-    private func incrementNumericString(numericString: String) -> String? {
-        guard let numericValue = Int(numericString) else { return nil }
-        return String(format: "%.6ld", numericValue + 1)
     }
 }

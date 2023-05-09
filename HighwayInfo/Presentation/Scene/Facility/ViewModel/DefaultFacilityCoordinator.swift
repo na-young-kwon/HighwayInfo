@@ -24,10 +24,11 @@ final class DefaultFacilityCoordinator: Coordinator {
         navigationController.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    func start(with name: String) {
+    func start(with serviceArea: ServiceArea) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: FacilityViewController.self)
-        controller.viewModel = FacilityViewModel(coordinator: self)
+        let roadRepository = DefaultRoadRepository(service: RoadService(apiProvider: DefaultAPIProvider()))
+        controller.viewModel = FacilityViewModel(coordinator: self, useCase: DefaultFacilityUseCase(roadRepository: roadRepository), serviceArea: serviceArea)
         
         navigationController.pushViewController(controller, animated: true)
     }
