@@ -46,11 +46,9 @@ final class DefaultCardUseCase: CardUseCase {
         gasStation
             .take(15)
             .map { $0.map { GasStation(name: $0.name,
-                                       address: $0.address,
                                        dieselPrice: $0.dieselPrice,
                                        gasolinePrice: $0.gasolinePrice,
-                                       lpgPrice: $0.lpgPrice,
-                                       serviceAreaCode: $0.serviceAreaCode) }
+                                       lpgPrice: $0.lpgPrice) }
             }
             .subscribe(onNext: { gasStation in
                 self.gasStation.onNext(gasStation)

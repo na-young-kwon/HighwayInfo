@@ -19,10 +19,10 @@ final class DefaultFacilityUseCase: FacilityUseCase {
         self.facilityRepository = facilityRepository
     }
     
-    func fetchGasPrice(for name: String) {
-        roadRepository.fetchGasPrice(for: name)
-            .subscribe(onNext: { price in
-                print(price.name)
+    func fetchGasPrice(for serviceName: String) {
+        roadRepository.fetchGasPrice(for: serviceName)
+            .subscribe(onNext: { gasPriceDTO in
+                print(gasPriceDTO.name)
             })
             .disposed(by: disposeBag)
     }

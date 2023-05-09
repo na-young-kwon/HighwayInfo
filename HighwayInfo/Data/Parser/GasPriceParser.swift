@@ -40,8 +40,6 @@ final class GasPriceParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "serviceAreaName" {
             gasPrice.name = elementValue
-        } else if elementName == "svarAddr" {
-            gasPrice.address = elementValue
         }
         else if elementName == "diselPrice" {
             gasPrice.dieselPrice = elementValue
@@ -51,8 +49,6 @@ final class GasPriceParser: NSObject, XMLParserDelegate {
         }
         else if elementName == "lpgPrice" {
             gasPrice.lpgPrice = elementValue
-        } else if elementName == "serviceAreaCode2" {
-            gasPrice.serviceAreaCode = elementValue
         }
         elementValue = nil
     }

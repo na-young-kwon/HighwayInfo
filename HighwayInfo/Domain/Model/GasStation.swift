@@ -10,11 +10,9 @@ import Foundation
 struct GasStation {
     let uuid = UUID()
     let name: String
-    let address: String
     let dieselPrice: String
     let gasolinePrice: String
     let lpgPrice: String
-    let serviceAreaCode: String
 }
 
 extension GasStation: Hashable {

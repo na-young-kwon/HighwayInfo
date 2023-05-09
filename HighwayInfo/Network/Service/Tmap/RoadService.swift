@@ -52,7 +52,7 @@ final class RoadService {
     }
     
     func fetchGasStation(for routeName: String) -> Observable<[GasStationDTO]> {
-        let request = GasStationRequest(routeNm: routeName)
+        let request = GasStationRequest(routeName: routeName)
         return apiProvider.performDataTask(with: request, decodeType: .gasStation)
     }
     
