@@ -28,7 +28,8 @@ final class DefaultCardUseCase: CardUseCase {
                                         convenience: $0.convenience,
                                         direction: $0.direction,
                                         address: $0.address,
-                                        telNo: $0.telNo) }
+                                        telNo: $0.telNo,
+                                        gasStationCode: $0.gasStationCode) }
             }
             .subscribe(onNext: { serviceArea in
                 self.serviceArea.onNext(serviceArea)

@@ -41,8 +41,6 @@ final class GasStationParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "list" {
             gasStations.append(gasStation)
-        } else if elementName == "stdRestNm" {
-            gasStation.name = elementValue
         } else if elementName == "stdRestCd" {
             gasStation.serviceAreaCode = elementValue
         }

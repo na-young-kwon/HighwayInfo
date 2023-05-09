@@ -8,6 +8,5 @@
 import Foundation
 
 class GasStationDTO: Decodable {
-    var name: String!
     var serviceAreaCode: String!
 }

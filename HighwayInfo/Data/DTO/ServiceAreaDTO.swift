@@ -14,4 +14,5 @@ class ServiceAreaDTO: Decodable {
     var direction: String!
     var address: String!
     var telNo: String!
+    var gasStationCode: String!
 }
