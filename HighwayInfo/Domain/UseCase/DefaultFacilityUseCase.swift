@@ -25,6 +25,12 @@ final class DefaultFacilityUseCase: FacilityUseCase {
                 print(gasPriceDTO.name)
             })
             .disposed(by: disposeBag)
+        
+        facilityRepository.fetchOilCompany(for: serviceName)
+            .subscribe(onNext: { oilDTO in
+                print("오일컴퍼니: \(oilDTO.companyName)")
+            })
+            .disposed(by: disposeBag)
     }
     
     func fetchFoodMenu(for serviceName: String) {

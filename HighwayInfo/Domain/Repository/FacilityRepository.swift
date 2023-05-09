@@ -10,4 +10,5 @@ import RxSwift
 
 protocol FacilityRepository {
     func fetchFoodMenu(for serviceName: String) -> Observable<FoodDTO>
+    func fetchOilCompany(for serviceName: String) -> Observable<OilCompanyDTO>
 }

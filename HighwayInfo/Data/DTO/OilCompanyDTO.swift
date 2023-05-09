@@ -8,25 +8,32 @@
 import Foundation
 
 struct OilCompanyDTO: Decodable {
-    let list: [OilCompony]
-    let count: Int
-    let pageNo: Int
-    let numOfRows: Int
-    let pageSize: Int
-    let message: String
-    let code: String
+    private let list: [OilCompony]
+    private let count: Int
+    private let pageNo: Int
+    private let numOfRows: Int
+    private let pageSize: Int
+    private let message: String
+    private let code: String
+    
+    var companyName: String {
+        guard let company = list.first else {
+            return ""
+        }
+        return company.oilCompany
+    }
 }
 
 struct OilCompony: Decodable {
-    let location: String
-    let pageNo: String?
-    let numOfRows: String?
-    let address: String
-    let routeName: String
+    private let location: String
+    private let pageNo: String?
+    private let numOfRows: String?
+    private let address: String
+    private let routeName: String
     let oilCompany: String
-    let serviceAreaCode: String
-    let serviceAreaName: String
-    let routeCode: String
+    private let serviceAreaCode: String
+    private let serviceAreaName: String
+    private let routeCode: String
   
     
     enum CodingKeys: String, CodingKey {

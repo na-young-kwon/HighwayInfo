@@ -19,4 +19,9 @@ final class FacilityService {
         let request = FoodRequest(serviceName: serviceName)
         return apiProvider.performDataTask(with: request, decodeType: .json)
     }
+    
+    func fetchOilCompany(for serviceName: String) -> Observable<OilCompanyDTO> {
+        let request = OilCompanyRequest(serviceAreaName: serviceName)
+        return apiProvider.performDataTask(with: request, decodeType: .json)
+    }
 }

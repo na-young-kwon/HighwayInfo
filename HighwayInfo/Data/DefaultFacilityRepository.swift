@@ -18,4 +18,8 @@ final class DefaultFacilityRepository: FacilityRepository {
     func fetchFoodMenu(for serviceName: String) -> Observable<FoodDTO> {
         return service.fetchFoodMenu(for: serviceName)
     }
+    
+    func fetchOilCompany(for serviceName: String) -> Observable<OilCompanyDTO> {
+        return service.fetchOilCompany(for: serviceName)
+    }
 }
