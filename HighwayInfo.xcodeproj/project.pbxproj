@@ -64,6 +64,8 @@
 		3B497B3B2A0B6ED500D3FAAC /* ConvenienceListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */; };
 		3B497B3D2A0B6EE800D3FAAC /* ConvenienceListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3C2A0B6EE800D3FAAC /* ConvenienceListDTO.swift */; };
 		3B497B3F2A0B708D00D3FAAC /* ConvenienceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3E2A0B708D00D3FAAC /* ConvenienceList.swift */; };
+		3B497B412A0B7D9A00D3FAAC /* FacilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B402A0B7D9A00D3FAAC /* FacilityCell.swift */; };
+		3B497B432A0B8F0E00D3FAAC /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B422A0B8F0E00D3FAAC /* Facility.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -210,6 +212,8 @@
 		3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceListRequest.swift; sourceTree = "<group>"; };
 		3B497B3C2A0B6EE800D3FAAC /* ConvenienceListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceListDTO.swift; sourceTree = "<group>"; };
 		3B497B3E2A0B708D00D3FAAC /* ConvenienceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceList.swift; sourceTree = "<group>"; };
+		3B497B402A0B7D9A00D3FAAC /* FacilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityCell.swift; sourceTree = "<group>"; };
+		3B497B422A0B8F0E00D3FAAC /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				3B497B1A2A0926D600D3FAAC /* FacilityViewController.swift */,
+				3B497B402A0B7D9A00D3FAAC /* FacilityCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -603,6 +608,7 @@
 				3B497B062A05045600D3FAAC /* Convenience.swift */,
 				3B497B382A0B6CA700D3FAAC /* Brand.swift */,
 				3B497B3E2A0B708D00D3FAAC /* ConvenienceList.swift */,
+				3B497B422A0B8F0E00D3FAAC /* Facility.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1033,6 +1039,7 @@
 				3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */,
 				3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */,
 				3B497AC429F3BA7B00D3FAAC /* DefaultCardCoordinator.swift in Sources */,
+				3B497B432A0B8F0E00D3FAAC /* Facility.swift in Sources */,
 				3B7399F629DC2DE600B5D1FF /* SearchView.swift in Sources */,
 				3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */,
 				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,
@@ -1069,6 +1076,7 @@
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
 				3B497B3D2A0B6EE800D3FAAC /* ConvenienceListDTO.swift in Sources */,
 				3B497AE729FBF21700D3FAAC /* GasStation.swift in Sources */,
+				3B497B412A0B7D9A00D3FAAC /* FacilityCell.swift in Sources */,
 				3B497ACA29F3DD7600D3FAAC /* SearchHistoryCell.swift in Sources */,
 				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
 				3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */,
