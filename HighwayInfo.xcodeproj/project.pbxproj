@@ -58,6 +58,9 @@
 		3B497B2E2A0A65F100D3FAAC /* FacilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */; };
 		3B497B312A0A7D4500D3FAAC /* OilCompanyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B302A0A7D4500D3FAAC /* OilCompanyRequest.swift */; };
 		3B497B332A0A7D5800D3FAAC /* OilCompanyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B322A0A7D5800D3FAAC /* OilCompanyDTO.swift */; };
+		3B497B352A0A8A1D00D3FAAC /* BrandListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */; };
+		3B497B372A0A8A3100D3FAAC /* BrandListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B362A0A8A3100D3FAAC /* BrandListDTO.swift */; };
+		3B497B392A0B6CA700D3FAAC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B382A0B6CA700D3FAAC /* Brand.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -198,6 +201,9 @@
 		3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityService.swift; sourceTree = "<group>"; };
 		3B497B302A0A7D4500D3FAAC /* OilCompanyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilCompanyRequest.swift; sourceTree = "<group>"; };
 		3B497B322A0A7D5800D3FAAC /* OilCompanyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilCompanyDTO.swift; sourceTree = "<group>"; };
+		3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListRequest.swift; sourceTree = "<group>"; };
+		3B497B362A0A8A3100D3FAAC /* BrandListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListDTO.swift; sourceTree = "<group>"; };
+		3B497B382A0B6CA700D3FAAC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -308,6 +314,7 @@
 				3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */,
 				3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */,
 				3B497B302A0A7D4500D3FAAC /* OilCompanyRequest.swift */,
+				3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */,
 			);
 			path = Facility;
 			sourceTree = "<group>";
@@ -587,6 +594,7 @@
 				3B497AF12A00F42700D3FAAC /* ServiceArea.swift */,
 				3B497AE629FBF21700D3FAAC /* GasStation.swift */,
 				3B497B062A05045600D3FAAC /* Convenience.swift */,
+				3B497B382A0B6CA700D3FAAC /* Brand.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -729,6 +737,7 @@
 				3B497AE229FBE59500D3FAAC /* GasPriceDTO.swift */,
 				3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */,
 				3B497B322A0A7D5800D3FAAC /* OilCompanyDTO.swift */,
+				3B497B362A0A8A3100D3FAAC /* BrandListDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -970,6 +979,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */,
+				3B497B392A0B6CA700D3FAAC /* Brand.swift in Sources */,
 				3B97E47829E6DD9A000F4B39 /* RouteRequest.swift in Sources */,
 				3B497AD229FAA16300D3FAAC /* ServiceAreaRequest.swift in Sources */,
 				3B497B072A05045600D3FAAC /* Convenience.swift in Sources */,
@@ -984,6 +994,7 @@
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
 				3B497B012A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift in Sources */,
 				3B497AF22A00F42700D3FAAC /* ServiceArea.swift in Sources */,
+				3B497B352A0A8A1D00D3FAAC /* BrandListRequest.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,
 				3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */,
@@ -1059,6 +1070,7 @@
 				3B6CF37129D31544002289A0 /* RoadService.swift in Sources */,
 				3B497B1F2A09273700D3FAAC /* DefaultFacilityCoordinator.swift in Sources */,
 				3BD4EE9D29C1ECF40010FB25 /* CCTVType.swift in Sources */,
+				3B497B372A0A8A3100D3FAAC /* BrandListDTO.swift in Sources */,
 				3B97E45729E00397000F4B39 /* SearchResultCell.swift in Sources */,
 				3B497AD429FAA17A00D3FAAC /* ServiceAreaDTO.swift in Sources */,
 				3B63BABD29B84C8D0055D3A4 /* Accident.swift in Sources */,

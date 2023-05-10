@@ -8,7 +8,7 @@
 import Foundation
 
 struct OilCompanyDTO: Decodable {
-    private let list: [OilCompony]
+    private let list: [OilCompany]
     private let count: Int
     private let pageNo: Int
     private let numOfRows: Int
@@ -16,15 +16,15 @@ struct OilCompanyDTO: Decodable {
     private let message: String
     private let code: String
     
-    var companyName: String {
+    var companyName: String? {
         guard let company = list.first else {
-            return ""
+            return nil
         }
         return company.oilCompany
     }
 }
 
-struct OilCompony: Decodable {
+struct OilCompany: Decodable {
     private let location: String
     private let pageNo: String?
     private let numOfRows: String?
