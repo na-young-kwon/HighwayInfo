@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class ServiceListCell: UICollectionViewListCell {private let titleLabel: UILabel = {
+final class ServiceListCell: UICollectionViewListCell {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         return label

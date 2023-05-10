@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 protocol FacilityUseCase {
+    var foodMenuList: PublishSubject<[FoodMenu]> { get }
     func fetchGasPrice(for name: String)
     func fetchFoodMenu(for serviceName: String)
 }

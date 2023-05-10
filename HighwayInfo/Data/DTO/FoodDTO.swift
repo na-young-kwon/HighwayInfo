@@ -8,50 +8,58 @@
 import Foundation
 
 struct FoodDTO: Decodable {
-    let list: [Food]
-    let count: Int
-    let numOfRows: Int
-    let pageSize: Int
-    let message: String
-    let code: String
-}
-
-struct Food: Decodable {
-    let pageNo: String?
-    let numOfRows: String?
-    let serviceCode: String
-    let serviceName: String
-    let address: String
-    let lastModifyUser: String
-    let lastModifyDate: String
-    let routeCd: String
-    let routeNm: String
-    let sequence: String
-    let foodName: String
-    let foodCost: String
-    let etc: String?
-    let recommendYesOrNo: String
-    let seasonMenu: String
-    let bestFoodYesOrNo: String
-    let premiumYesOrNo: String
-    let app: String
-    let restCd: String
-    let foodMaterial: String?
-    let lastId: String
-    let lastDtime: String
+    private let list: [Food]
+    private let count: Int
+    private  let numOfRows: Int
+    private let pageSize: Int
+    private let message: String
+    private let code: String
     
-    enum CodingKeys: String, CodingKey {
-        case serviceCode = "stdRestCd"
-        case serviceName = "stdRestNm"
-        case address = "svarAddr"
-        case lastModifyUser = "lsttmAltrUser"
-        case lastModifyDate = "lsttmAltrDttm"
-        case sequence = "seq"
-        case foodName = "foodNm"
-        case recommendYesOrNo = "recommendyn"
-        case bestFoodYesOrNo = "bestfoodyn"
-        case premiumYesOrNo = "premiumyn"
-        case pageNo, numOfRows, routeCd, routeNm, foodCost, etc, seasonMenu
-        case app, restCd, foodMaterial, lastId, lastDtime
+    var foodMenuList: [FoodMenu] {
+        if list.isEmpty {
+            return []
+        }
+        return list.map { FoodMenu(name: $0.foodName, price: $0.foodCost) }
     }
+    
+    struct Food: Decodable {
+        private let pageNo: String?
+        private let numOfRows: String?
+        private let serviceCode: String
+        private let serviceName: String
+        private let address: String
+        private let lastModifyUser: String
+        private let lastModifyDate: String
+        private let routeCd: String
+        private let routeNm: String
+        private let sequence: String
+        let foodName: String
+        let foodCost: String
+        private let etc: String?
+        private let recommendYesOrNo: String
+        private let seasonMenu: String
+        private let bestFoodYesOrNo: String
+        private let premiumYesOrNo: String
+        private let app: String
+        private let restCd: String
+        private let foodMaterial: String?
+        private let lastId: String
+        private let lastDtime: String
+        
+        enum CodingKeys: String, CodingKey {
+            case serviceCode = "stdRestCd"
+            case serviceName = "stdRestNm"
+            case address = "svarAddr"
+            case lastModifyUser = "lsttmAltrUser"
+            case lastModifyDate = "lsttmAltrDttm"
+            case sequence = "seq"
+            case foodName = "foodNm"
+            case recommendYesOrNo = "recommendyn"
+            case bestFoodYesOrNo = "bestfoodyn"
+            case premiumYesOrNo = "premiumyn"
+            case pageNo, numOfRows, routeCd, routeNm, foodCost, etc, seasonMenu
+            case app, restCd, foodMaterial, lastId, lastDtime
+        }
+    }
+
 }

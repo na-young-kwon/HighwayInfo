@@ -21,6 +21,7 @@ final class FacilityViewModel: ViewModelType {
     
     struct Output {
         let serviceAreaName: String
+        let foodMenuList: Observable<[FoodMenu]>
     }
     
     init(coordinator: DefaultFacilityCoordinator, useCase: DefaultFacilityUseCase, serviceArea: ServiceArea) {
@@ -30,16 +31,17 @@ final class FacilityViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let output = Output(serviceAreaName: serviceArea.serviceName)
+        let foodMenu = useCase.foodMenuList.asObservable()
         
         input.viewWillAppear
             .subscribe(onNext: { _ in
-                self.useCase.fetchGasPrice(for: self.serviceArea.name)
+//                self.useCase.fetchGasPrice(for: self.serviceArea.name)
                 self.useCase.fetchFoodMenu(for: self.serviceArea.name)
             })
             .disposed(by: disposeBag)
         
-        return output
+        return  Output(serviceAreaName: serviceArea.serviceName,
+                       foodMenuList: foodMenu)
     }
     
     func removeFromSuperview() {
