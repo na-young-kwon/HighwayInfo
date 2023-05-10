@@ -26,4 +26,8 @@ final class DefaultFacilityRepository: FacilityRepository {
     func fetchBrandList(for serviceName: String) -> Observable<BrandListDTO> {
         return service.fetchBrandList(for: serviceName)
     }
+    
+    func fetchConvenienceList(for serviceName: String) -> Observable<ConvenienceListDTO> {
+        return service.fetchConvenienceList(for: serviceName)
+    }
 }

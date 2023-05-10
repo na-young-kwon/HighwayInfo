@@ -20,12 +20,12 @@ struct ConvenienceListDTO: Decodable {
         if list.isEmpty {
             return nil
         }
-        return list.map { ConvenienceList(name: $0.name, description: $0.description) }
+        return list.map { ConvenienceList(name: $0.name, description: $0.description ?? "") }
     }
     
     struct Convenience: Decodable {
         let name: String
-        let description: String
+        let description: String?
         private let pageNo: String?
         private let numOfRows: String?
         private let stdRestCd: String

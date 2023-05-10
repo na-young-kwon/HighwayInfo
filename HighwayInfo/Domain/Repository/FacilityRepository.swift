@@ -12,4 +12,5 @@ protocol FacilityRepository {
     func fetchFoodMenu(for serviceName: String) -> Observable<FoodDTO>
     func fetchOilCompany(for serviceName: String) -> Observable<OilCompanyDTO>
     func fetchBrandList(for serviceName: String) -> Observable<BrandListDTO>
+    func fetchConvenienceList(for serviceName: String) -> Observable<ConvenienceListDTO>
 }

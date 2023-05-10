@@ -29,4 +29,9 @@ final class FacilityService {
         let request = BrandListRequest(serviceAreaName: serviceName)
         return apiProvider.performDataTask(with: request, decodeType: .json)
     }
+    
+    func fetchConvenienceList(for serviceName: String) -> Observable<ConvenienceListDTO> {
+        let request = ConvenienceListRequest(serviceAreaName: serviceName)
+        return apiProvider.performDataTask(with: request, decodeType: .json)
+    }
 }

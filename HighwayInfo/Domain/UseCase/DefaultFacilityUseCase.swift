@@ -37,6 +37,12 @@ final class DefaultFacilityUseCase: FacilityUseCase {
                 print("브랜드리스트: \(brandListDTO.brands)")
             })
             .disposed(by: disposeBag)
+        
+        facilityRepository.fetchConvenienceList(for: serviceName)
+            .subscribe(onNext: { convenienceListDTO in
+                print("편의시설리스트: \(convenienceListDTO.convenienceList)")
+            })
+            .disposed(by: disposeBag)
     }
     
     func fetchFoodMenu(for serviceName: String) {

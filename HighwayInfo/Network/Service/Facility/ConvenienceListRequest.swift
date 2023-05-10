@@ -11,7 +11,7 @@ struct ConvenienceListRequest: APIRequest {
     typealias Response = ConvenienceListDTO
     
     let httpMethod: HTTPMethod = .get
-    let urlHost = "http://data.ex.co.kr/openapi/restinfo"
+    let urlHost = "http://data.ex.co.kr/openapi/restinfo/"
     let urlPath = "restConvList?"
     let key = "6970526905"
     let type = "json"
