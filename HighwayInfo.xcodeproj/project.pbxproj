@@ -61,6 +61,9 @@
 		3B497B352A0A8A1D00D3FAAC /* BrandListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */; };
 		3B497B372A0A8A3100D3FAAC /* BrandListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B362A0A8A3100D3FAAC /* BrandListDTO.swift */; };
 		3B497B392A0B6CA700D3FAAC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B382A0B6CA700D3FAAC /* Brand.swift */; };
+		3B497B3B2A0B6ED500D3FAAC /* ConvenienceListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */; };
+		3B497B3D2A0B6EE800D3FAAC /* ConvenienceListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3C2A0B6EE800D3FAAC /* ConvenienceListDTO.swift */; };
+		3B497B3F2A0B708D00D3FAAC /* ConvenienceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3E2A0B708D00D3FAAC /* ConvenienceList.swift */; };
 		3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B5AD12029B1E91100E2AFAA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */; };
 		3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */; };
@@ -204,6 +207,9 @@
 		3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListRequest.swift; sourceTree = "<group>"; };
 		3B497B362A0A8A3100D3FAAC /* BrandListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListDTO.swift; sourceTree = "<group>"; };
 		3B497B382A0B6CA700D3FAAC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceListRequest.swift; sourceTree = "<group>"; };
+		3B497B3C2A0B6EE800D3FAAC /* ConvenienceListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceListDTO.swift; sourceTree = "<group>"; };
+		3B497B3E2A0B708D00D3FAAC /* ConvenienceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceList.swift; sourceTree = "<group>"; };
 		3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B5AD11F29B1E91100E2AFAA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12129B1F2D900E2AFAA /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
@@ -315,6 +321,7 @@
 				3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */,
 				3B497B302A0A7D4500D3FAAC /* OilCompanyRequest.swift */,
 				3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */,
+				3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */,
 			);
 			path = Facility;
 			sourceTree = "<group>";
@@ -595,6 +602,7 @@
 				3B497AE629FBF21700D3FAAC /* GasStation.swift */,
 				3B497B062A05045600D3FAAC /* Convenience.swift */,
 				3B497B382A0B6CA700D3FAAC /* Brand.swift */,
+				3B497B3E2A0B708D00D3FAAC /* ConvenienceList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -738,6 +746,7 @@
 				3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */,
 				3B497B322A0A7D5800D3FAAC /* OilCompanyDTO.swift */,
 				3B497B362A0A8A3100D3FAAC /* BrandListDTO.swift */,
+				3B497B3C2A0B6EE800D3FAAC /* ConvenienceListDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1002,6 +1011,7 @@
 				3B497B1D2A0926F000D3FAAC /* FacilityViewModel.swift in Sources */,
 				3B497AE529FBF00A00D3FAAC /* GasPriceParser.swift in Sources */,
 				3B497AF62A0392D500D3FAAC /* PaddingLabel.swift in Sources */,
+				3B497B3F2A0B708D00D3FAAC /* ConvenienceList.swift in Sources */,
 				3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */,
 				3B497AD929FBC02200D3FAAC /* GasStationRequest.swift in Sources */,
 				3B497AE929FFF4BB00D3FAAC /* HighwayCell.swift in Sources */,
@@ -1009,6 +1019,7 @@
 				3B497B052A05022A00D3FAAC /* ConvenienceCell.swift in Sources */,
 				3B497AC629F3CE6B00D3FAAC /* EmptyView.swift in Sources */,
 				3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */,
+				3B497B3B2A0B6ED500D3FAAC /* ConvenienceListRequest.swift in Sources */,
 				3B497AEB29FFF4C400D3FAAC /* ServiceCell.swift in Sources */,
 				3B97E46B29E41B24000F4B39 /* DefaultResultCoordinator.swift in Sources */,
 				3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */,
@@ -1056,6 +1067,7 @@
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
 				3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
+				3B497B3D2A0B6EE800D3FAAC /* ConvenienceListDTO.swift in Sources */,
 				3B497AE729FBF21700D3FAAC /* GasStation.swift in Sources */,
 				3B497ACA29F3DD7600D3FAAC /* SearchHistoryCell.swift in Sources */,
 				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
