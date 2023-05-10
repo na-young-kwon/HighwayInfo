@@ -73,7 +73,10 @@ final class FacilityViewController: UIViewController {
         let facilityCellRegistration = UICollectionView.CellRegistration<FacilityCell, Facility> { (cell, indexPath, data) in
             cell.bindViewModel(with: data)
         }
-        let foodMenuRegistration = UICollectionView.CellRegistration<FoodMenuCell, FoodMenu> { (cell, indexPath, data) in
+        let foodCellRegistration = UICollectionView.CellRegistration<FoodMenuCell, FoodMenu> { (cell, indexPath, data) in
+            cell.bindViewModel(with: data)
+        }
+        let convenienceCellRegistration = UICollectionView.CellRegistration<ConvenienceListCell, ConvenienceList> { (cell, indexPath, data) in
             cell.bindViewModel(with: data)
         }
         categoryDataSource = UICollectionViewDiffableDataSource<CategorySection, Facility>(collectionView: categoryCollectionView) {
@@ -81,9 +84,11 @@ final class FacilityViewController: UIViewController {
             return collectionView.dequeueConfiguredReusableCell(using: facilityCellRegistration, for: indexPath, item: item)
         }
         facilityDataSource = UICollectionViewDiffableDataSource<FacilitySection, AnyHashable>(collectionView: facilityCollectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: AnyHashable) -> UICollectionViewCell? in
+            (collectionView: UICollectionView, indexPath: IndexPath, item: AnyHashable?) -> UICollectionViewCell? in
             if let foodMenu = item as? FoodMenu {
-                return collectionView.dequeueConfiguredReusableCell(using: foodMenuRegistration, for: indexPath, item: foodMenu)
+                return collectionView.dequeueConfiguredReusableCell(using: foodCellRegistration, for: indexPath, item: foodMenu)
+            } else if let convenienceList = item as? ConvenienceList {
+                return collectionView.dequeueConfiguredReusableCell(using: convenienceCellRegistration, for: indexPath, item: convenienceList)
             }
             return nil
         }
@@ -91,25 +96,46 @@ final class FacilityViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(Facility.allCases)
         categoryDataSource.apply(snapshot)
-        categoryCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .bottom)
+        categoryCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .bottom)
     }
     
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
-        let input = FacilityViewModel.Input(viewWillAppear: viewWillAppear)
+        let selectedFacility = BehaviorSubject<Facility>(value: .foodMenu)
+        let input = FacilityViewModel.Input(viewWillAppear: viewWillAppear,
+                                            selectedFacility: selectedFacility.asObservable())
         let output = viewModel.transform(input: input)
         
         titleLabel.text = output.serviceAreaName
+        categoryCollectionView.rx.itemSelected
+            .subscribe(onNext: { index in
+                guard let facility = self.categoryDataSource.itemIdentifier(for: index) else {
+                    return
+                }
+                selectedFacility.onNext(facility)
+            })
+            .disposed(by: disposeBag)
         
         output.foodMenuList
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { foodMenu in
-                var snapshot = NSDiffableDataSourceSnapshot<FacilitySection, AnyHashable>()
-                snapshot.appendSections([.main])
-                snapshot.appendItems(foodMenu)
-                self.facilityDataSource.apply(snapshot)
+                self.appleSnapShot(with: foodMenu)
             })
             .disposed(by: disposeBag)
+        
+        output.convenienceList
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { convenienceList in
+                self.appleSnapShot(with: convenienceList)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func appleSnapShot(with item: [AnyHashable]) {
+        var snapshot = NSDiffableDataSourceSnapshot<FacilitySection, AnyHashable>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(item)
+        self.facilityDataSource.apply(snapshot)
     }
     
     deinit {

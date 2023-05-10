@@ -16,9 +16,9 @@ struct ConvenienceListDTO: Decodable {
     private let message: String
     private let code: String
     
-    var convenienceList: [ConvenienceList]? {
+    var convenienceList: [ConvenienceList] {
         if list.isEmpty {
-            return nil
+            return []
         }
         return list.map { ConvenienceList(name: $0.name, description: $0.description ?? "") }
     }

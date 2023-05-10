@@ -14,6 +14,7 @@ final class DefaultFacilityUseCase: FacilityUseCase {
     private let facilityRepository: FacilityRepository
     private let disposeBag = DisposeBag()
     var foodMenuList = PublishSubject<[FoodMenu]>()
+    var convenienceList = PublishSubject<[ConvenienceList]>()
     
     init(roadRepository: RoadRepository, facilityRepository: FacilityRepository) {
         self.roadRepository = roadRepository
@@ -39,9 +40,13 @@ final class DefaultFacilityUseCase: FacilityUseCase {
             })
             .disposed(by: disposeBag)
         
+       
+    }
+    
+    func fetchConvenienceList(for serviceName: String) {
         facilityRepository.fetchConvenienceList(for: serviceName)
             .subscribe(onNext: { convenienceListDTO in
-//                print("편의시설리스트: \(convenienceListDTO.convenienceList)")
+                self.convenienceList.onNext(convenienceListDTO.convenienceList)
             })
             .disposed(by: disposeBag)
     }

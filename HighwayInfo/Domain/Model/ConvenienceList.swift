@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ConvenienceList {
+struct ConvenienceList: Hashable {
+    let uuid = UUID()
     let name: String
     let description: String
 }

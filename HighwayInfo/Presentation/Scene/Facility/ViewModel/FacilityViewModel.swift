@@ -17,11 +17,13 @@ final class FacilityViewModel: ViewModelType {
     
     struct Input {
         let viewWillAppear: Observable<Void>
+        let selectedFacility: Observable<Facility>
     }
     
     struct Output {
         let serviceAreaName: String
         let foodMenuList: Observable<[FoodMenu]>
+        let convenienceList: Observable<[ConvenienceList]>
     }
     
     init(coordinator: DefaultFacilityCoordinator, useCase: DefaultFacilityUseCase, serviceArea: ServiceArea) {
@@ -32,16 +34,31 @@ final class FacilityViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let foodMenu = useCase.foodMenuList.asObservable()
+        let convenienceList = useCase.convenienceList.asObservable()
+        let serviceName = serviceArea.name
         
         input.viewWillAppear
             .subscribe(onNext: { _ in
-//                self.useCase.fetchGasPrice(for: self.serviceArea.name)
-                self.useCase.fetchFoodMenu(for: self.serviceArea.name)
+                self.useCase.fetchFoodMenu(for: serviceName)
+            })
+            .disposed(by: disposeBag)
+        
+        input.selectedFacility
+            .subscribe(onNext: { facility in
+                switch facility {
+                case .foodMenu:
+                    self.useCase.fetchFoodMenu(for: serviceName)
+                case .convenienceList:
+                    self.useCase.fetchConvenienceList(for: serviceName)
+                case .brandList:
+                    self.useCase.fetchConvenienceList(for: serviceName)
+                }
             })
             .disposed(by: disposeBag)
         
         return  Output(serviceAreaName: serviceArea.serviceName,
-                       foodMenuList: foodMenu)
+                       foodMenuList: foodMenu,
+                       convenienceList: convenienceList)
     }
     
     func removeFromSuperview() {
