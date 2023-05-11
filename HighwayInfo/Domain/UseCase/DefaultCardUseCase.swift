@@ -23,13 +23,7 @@ final class DefaultCardUseCase: CardUseCase {
     func fetchServiceArea(for routeName: String) {
         roadRepository.fetchServiceArea(for: routeName)
             .take(15)
-            .map { $0.map { ServiceArea(name: $0.serviceAreaName,
-                                        serviceAreaCode: $0.serviceAreaCode,
-                                        convenience: $0.convenience,
-                                        direction: $0.direction,
-                                        address: $0.address,
-                                        telNo: $0.telNo) }
-            }
+            .map { $0.map { $0.toDomain } }
             .subscribe(onNext: { serviceArea in
                 self.serviceArea.onNext(serviceArea)
             })
@@ -45,11 +39,7 @@ final class DefaultCardUseCase: CardUseCase {
             )}
         gasStation
             .take(15)
-            .map { $0.map { GasStation(name: $0.name,
-                                       dieselPrice: $0.dieselPrice,
-                                       gasolinePrice: $0.gasolinePrice,
-                                       lpgPrice: $0.lpgPrice) }
-            }
+            .map { $0.map { $0.toDomain } }
             .subscribe(onNext: { gasStation in
                 self.gasStation.onNext(gasStation)
             })

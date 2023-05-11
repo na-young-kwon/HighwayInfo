@@ -14,4 +14,14 @@ class ServiceAreaDTO: Decodable {
     var direction: String!
     var address: String!
     var telNo: String!
+    
+    var toDomain: ServiceArea {
+        return ServiceArea(name: serviceAreaName,
+                           serviceAreaCode: serviceAreaCode,
+                           convenience: convenience,
+                           direction: direction,
+                           address: address,
+                           telNo: telNo
+        )
+    }
 }

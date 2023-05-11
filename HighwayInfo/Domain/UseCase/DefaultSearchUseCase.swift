@@ -45,14 +45,7 @@ final class DefaultSearchUseCase: SearchUseCase {
     func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?) {
         guard let coordinate = coordinate else { return }
         roadRepository.fetchSearchResult(for: keyword, coordinate: coordinate)
-            .map { $0.searchPoiInfo.pois.poi.map {
-                LocationInfo(name: $0.name,
-                             businessName: $0.lowerBizName,
-                             distance: $0.radius,
-                             coordx: $0.frontLon,
-                             coordy: $0.frontLat,
-                             address: $0.newAddressList.newAddress.first?.fullAddressRoad) }
-            }
+            .map { $0.toDomain }
             .subscribe(onNext: { searchResult in
                 self.searchResult.onNext(searchResult)
             })
@@ -94,7 +87,7 @@ final class DefaultSearchUseCase: SearchUseCase {
     private func fetchHighway(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) {
         let highway = roadRepository
             .fetchRoute(for: point)
-            .map { $0.features.filter { $0.properties.pointType == "rs6" && $0.properties.name.contains("고속도로")}}.share()
+            .map { $0.features.filter { $0.properties.pointType == "rs6" && $0.properties.name.contains("고속도로") } }.share()
         let names = highway.map { $0.map { $0.properties.name } }
         let coordinates = highway
             .map { $0.map { $0.geometry.coordinates } }

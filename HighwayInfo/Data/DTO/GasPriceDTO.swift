@@ -12,4 +12,12 @@ class GasPriceDTO: Decodable {
     var dieselPrice: String!
     var gasolinePrice: String!
     var lpgPrice: String!
+    
+    var toDomain: GasStation {
+        return GasStation(name: name,
+                          dieselPrice: dieselPrice,
+                          gasolinePrice: gasolinePrice,
+                          lpgPrice: lpgPrice
+        )
+    }
 }

@@ -10,6 +10,17 @@ import Foundation
 struct SearchResultDTO: Decodable {
     let searchPoiInfo: SearchPoiInfo
     
+    var toDomain: [LocationInfo] {
+        return searchPoiInfo.pois.poi.map {
+            LocationInfo(name: $0.name,
+                         businessName: $0.lowerBizName,
+                         distance: $0.radius,
+                         coordx: $0.frontLon,
+                         coordy: $0.frontLat,
+                         address: $0.newAddressList.newAddress.first?.fullAddressRoad)
+        }
+    }
+    
     // MARK: - SearchPoiInfo
     struct SearchPoiInfo: Decodable {
         let totalCount, count, page: String

@@ -15,4 +15,15 @@ class AccidentDTO: Decodable {
     var inciPlace2: String!
     var coord_x: String!
     var coord_y: String!
+    
+    var toDomain: Accident {
+        return Accident(startTime: startDate,
+                        place: inciPlace1,
+                        direction: inciPlace2,
+                        restrictType: restrictType,
+                        description: inciDesc,
+                        coord_x: Double(coord_x) ?? 0,
+                        coord_y: Double(coord_y) ?? 0
+        )
+    }
 }

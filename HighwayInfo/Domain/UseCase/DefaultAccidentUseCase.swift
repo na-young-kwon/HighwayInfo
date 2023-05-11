@@ -21,18 +21,8 @@ final class DefaultAccidentUseCase: AccidentUseCase {
     }
     
     func fetchAccidents() {
-        let accidentDTOs = accidentRepository.fetchAllAccidents()
-            .map { $0.map {
-                Accident(
-                    startTime: $0.startDate,
-                    place: $0.inciPlace1,
-                    direction: $0.inciPlace2,
-                    restrictType: $0.restrictType,
-                    description: $0.inciDesc,
-                    coord_x: Double($0.coord_x) ?? 0,
-                    coord_y: Double($0.coord_y) ?? 0)
-            }}
-        accidentDTOs
+        accidentRepository.fetchAllAccidents()
+            .map { $0.map { $0.toDomain } }
             .subscribe(onNext: { accidents in
                 self.fetchImage(for: accidents)
             })
