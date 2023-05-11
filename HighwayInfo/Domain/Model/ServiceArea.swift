@@ -31,7 +31,7 @@ struct ServiceArea {
     var market: Bool {
         return convenience.contains("농산물판매장")
     }
-    var serviceName: String {
+    var fullName: String {
         return name + "휴게소"
     }
     var gasStationName: String {

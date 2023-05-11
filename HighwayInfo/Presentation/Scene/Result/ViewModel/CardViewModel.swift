@@ -22,8 +22,8 @@ final class CardViewModel: ViewModelType {
     }
     
     struct Output {
-        let highway: Observable<[HighwayInfo]>
-        let result: Observable<([ServiceArea], [GasStation])>
+        let highway: Driver<[HighwayInfo]>
+        let result: Driver<([ServiceArea], [GasStation])>
     }
     
     init(coordinator: DefaultCardCoordinator, useCase: CardUseCase, highwayInfo: [HighwayInfo]) {
@@ -34,10 +34,10 @@ final class CardViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let highway = Observable.just(highwayInfo)
+        let highway = Observable.just(highwayInfo).asDriver(onErrorJustReturn: [])
         let serviceArea = useCase.serviceArea.asObservable().share()
         let gasStation = useCase.gasStation.asObservable()
-        let result = Observable.zip(serviceArea, gasStation)
+        let result = Observable.zip(serviceArea, gasStation).asDriver(onErrorJustReturn: ([], []))
         
         if let first = highwayInfo.first {
             useCase.fetchServiceArea(for: first.rawName)

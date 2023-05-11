@@ -22,9 +22,9 @@ final class FacilityViewModel: ViewModelType {
     
     struct Output {
         let serviceAreaName: String
-        let foodMenuList: Observable<[FoodMenu]>
-        let convenienceList: Observable<[ConvenienceList]>
-        let brandList: Observable<[Brand]>
+        let foodMenuList: Driver<[FoodMenu]>
+        let convenienceList: Driver<[ConvenienceList]>
+        let brandList: Driver<[Brand]>
     }
     
     init(coordinator: DefaultFacilityCoordinator, useCase: DefaultFacilityUseCase, serviceArea: ServiceArea) {
@@ -34,9 +34,9 @@ final class FacilityViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let foodMenu = useCase.foodMenuList.asObservable()
-        let convenienceList = useCase.convenienceList.asObservable()
-        let brandList = useCase.brandList.asObservable()
+        let foodMenu = useCase.foodMenuList.asDriver(onErrorJustReturn: [])
+        let convenienceList = useCase.convenienceList.asDriver(onErrorJustReturn: [])
+        let brandList = useCase.brandList.asDriver(onErrorJustReturn: [])
         let serviceName = serviceArea.name
         
         input.viewWillAppear
@@ -58,7 +58,7 @@ final class FacilityViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        return  Output(serviceAreaName: serviceArea.serviceName,
+        return  Output(serviceAreaName: serviceArea.fullName,
                        foodMenuList: foodMenu,
                        convenienceList: convenienceList,
                        brandList: brandList)

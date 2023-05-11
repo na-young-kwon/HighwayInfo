@@ -38,7 +38,7 @@ final class ServiceListCell: UICollectionViewListCell {
     }
     
     func bindViewModel(with serviceArea: ServiceArea) {
-        titleLabel.text = serviceArea.serviceName
+        titleLabel.text = serviceArea.fullName
         categoryStackView.serviceArea = serviceArea
     }
 }

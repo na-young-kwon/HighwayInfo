@@ -155,7 +155,7 @@ final class CardViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.highway
-            .subscribe(onNext: { highway in
+            .drive(onNext: { highway in
                 if highway == [] {
                     self.view = EmptyView()
                 } else {
@@ -166,7 +166,7 @@ final class CardViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.result
-            .subscribe(onNext: { result in
+            .drive(onNext: { result in
                 self.applySnapshot(for: result)
             })
             .disposed(by: disposeBag)

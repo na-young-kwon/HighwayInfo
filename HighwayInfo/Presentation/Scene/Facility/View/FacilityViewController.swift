@@ -122,18 +122,16 @@ final class FacilityViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.foodMenuList
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { foodMenu in
+            .drive(onNext: { foodMenu in
                 self.appleSnapShot(with: foodMenu)
             })
             .disposed(by: disposeBag)
         
-        
-        // TODO: - 옵저버블 -> drive로 바꾸기
-        // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         // TODO: - 셀 디바이더 구현하기
         // TODO: - 메뉴명 및 가격 헤더뷰로 구현할지 고민하기
-        // TODO: - toDomain() 메서드 만들기
+        // TODO: - toDomain() 메서드 만들기        
+        
+        // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         // TODO: - API키 관리
         // TODO: - 파서 정리
         // TODO: - 캐싱
@@ -145,15 +143,13 @@ final class FacilityViewController: UIViewController {
         
         
         output.convenienceList
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { convenienceList in
+            .drive(onNext: { convenienceList in
                 self.appleSnapShot(with: convenienceList)
             })
             .disposed(by: disposeBag)
         
         output.brandList
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { brandList in
+            .drive(onNext: { brandList in
                 self.appleSnapShot(with: brandList)
             })
             .disposed(by: disposeBag)

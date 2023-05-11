@@ -96,14 +96,9 @@ final class ServiceAreaViewController: UIViewController {
             .disposed(by: disposeBag)
         
         serviceArea
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] serviceZip in
-                var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
-                snapshot.appendSections([.title])
-                snapshot.appendItems(Convenience.allCases, toSection: .title)
-                snapshot.appendSections([.list])
-                snapshot.appendItems(serviceZip.0, toSection: .list)
-                self?.dataSource.apply(snapshot, animatingDifferences: true)
-                self?.collectionView.selectItem(at: IndexPath(item: serviceZip.1.rawValue, section: 0), animated: false, scrollPosition: .left)
+                self?.applySnapShot(with: serviceZip)
             })
             .disposed(by: disposeBag)
         
@@ -127,6 +122,16 @@ final class ServiceAreaViewController: UIViewController {
                 selectedServiceArea.onNext(serviceArea)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func applySnapShot(with service: ([ServiceArea], Convenience)) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        snapshot.appendSections([.title])
+        snapshot.appendItems(Convenience.allCases, toSection: .title)
+        snapshot.appendSections([.list])
+        snapshot.appendItems(service.0, toSection: .list)
+        dataSource.apply(snapshot, animatingDifferences: true)
+        collectionView.selectItem(at: IndexPath(item: service.1.rawValue, section: 0), animated: false, scrollPosition: .left)
     }
     
     deinit {
