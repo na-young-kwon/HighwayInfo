@@ -145,36 +145,42 @@ class SearchView: UIView {
         
         textField.rx.text.orEmpty
             .map { $0.isEmpty }
-            .subscribe(onNext: { empty in
-                self.searchTableView.alpha = empty ? 0 : 1
+            .subscribe(onNext: { [weak self] empty in
+                self?.searchTableView.alpha = empty ? 0 : 1
             })
             .disposed(by: disposeBag)
         
-        searchTableView.rx.itemSelected.subscribe(onNext: { index in
-            self.searchTableView.deselectRow(at: index, animated: false)
-            let location = self.searchDataSource.itemIdentifier(for: index)
-            self.showLoadingIndicator()
+        searchTableView.rx.itemSelected.subscribe(onNext: { [weak self] index in
+            self?.searchTableView.deselectRow(at: index, animated: false)
+            let location = self?.searchDataSource.itemIdentifier(for: index)
+            self?.showLoadingIndicator()
             selectedLocation.onNext(location)
         })
         .disposed(by: disposeBag)
         
-        historyTableView.rx.itemSelected.subscribe(onNext: { index in
-            self.historyTableView.deselectRow(at: index, animated: false)
-            let location = self.historyDataSource.itemIdentifier(for: index)
-            self.showLoadingIndicator()
+        historyTableView.rx.itemSelected.subscribe(onNext: { [weak self] index in
+            self?.historyTableView.deselectRow(at: index, animated: false)
+            let location = self?.historyDataSource.itemIdentifier(for: index)
+            self?.showLoadingIndicator()
             selectedLocation.onNext(location)
         })
         .disposed(by: disposeBag)
         
         output?.searchResult
-            .subscribe(onNext: { result in
-                self.applySnapshot(to: self.searchDataSource, with: result)
+            .subscribe(onNext: { [weak self] result in
+                var snapShot = NSDiffableDataSourceSnapshot<Section, LocationInfo>()
+                snapShot.appendSections([.search])
+                snapShot.appendItems(result)
+                self?.searchDataSource.apply(snapShot, animatingDifferences: false)
             })
             .disposed(by: disposeBag)
         
         output?.searchHistory
-            .subscribe(onNext: { history in
-                self.applySnapshot(to: self.historyDataSource, with: history)
+            .subscribe(onNext: { [weak self] history in
+                var snapShot = NSDiffableDataSourceSnapshot<Section, LocationInfo>()
+                snapShot.appendSections([.search])
+                snapShot.appendItems(history)
+                self?.historyDataSource.apply(snapShot, animatingDifferences: false)
             })
             .disposed(by: disposeBag)
     }
@@ -189,8 +195,8 @@ class SearchView: UIView {
         addSubview(loadingIndicator)
         loadingIndicator.centerX(inView: self)
         loadingIndicator.centerY(inView: self)
-        loadingIndicator.play { finished in
-            self.loadingIndicator.removeFromSuperview()
+        loadingIndicator.play { [weak self] finished in
+            self?.loadingIndicator.removeFromSuperview()
         }
     }
 }
@@ -199,8 +205,8 @@ extension SearchView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: SearchHeaderView.reuseIdentifier) as! SearchHeaderView
         view.resetButtonTapped
-            .subscribe(onNext: { _ in
-                self.viewModel?.deleteHistory()
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel?.deleteHistory()
             })
             .disposed(by: disposeBag)
         return view

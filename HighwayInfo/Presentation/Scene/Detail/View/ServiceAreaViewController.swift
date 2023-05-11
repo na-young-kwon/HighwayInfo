@@ -43,6 +43,7 @@ final class ServiceAreaViewController: UIViewController {
         facilityCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createListLayout())
         facilityCollectionView.showsVerticalScrollIndicator = false
         view.addSubview(facilityCollectionView)
+        facilityCollectionView.delegate = self
         facilityCollectionView.anchor(top: titleCollectionView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor ,right: view.rightAnchor,
                               paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
     }
@@ -135,5 +136,11 @@ final class ServiceAreaViewController: UIViewController {
     
     deinit {
         viewModel.removeFromSuperview()
+    }
+}
+
+extension ServiceAreaViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }

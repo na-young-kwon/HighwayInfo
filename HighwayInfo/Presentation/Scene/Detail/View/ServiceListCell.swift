@@ -19,7 +19,6 @@ final class ServiceListCell: UICollectionViewListCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
-        backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {

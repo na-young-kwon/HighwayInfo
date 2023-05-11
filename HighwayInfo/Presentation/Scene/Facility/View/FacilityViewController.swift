@@ -129,7 +129,6 @@ final class FacilityViewController: UIViewController {
         
         // TODO: - 셀 디바이더 구현하기
         // TODO: - 메뉴명 및 가격 헤더뷰로 구현할지 고민하기
-        // TODO: - 셀 선택 유지되는거 어떻게 없애지
         
         // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         // TODO: - API키 관리
