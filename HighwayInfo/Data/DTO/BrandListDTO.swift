@@ -16,9 +16,9 @@ struct BrandListDTO: Decodable {
     private let message: String
     private let code: String
     
-    var brands: [Brand]? {
+    var brands: [Brand] {
         if list.isEmpty {
-            return nil
+            return []
         }
         return list.map { Brand(name: $0.brandName, startTime: $0.startTime, endTime: $0.endTime) }
     }
@@ -32,7 +32,7 @@ struct BrandListDTO: Decodable {
         private let stdRestCd: String
         private let stdRestNm: String
         private let brdCode: String
-        private let brdDesc: String
+        private let brdDesc: String?
         private let redId: String
         private let redDtime: String
         private let lsttmAltrUser: String

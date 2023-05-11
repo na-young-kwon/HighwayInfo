@@ -79,6 +79,9 @@ final class FacilityViewController: UIViewController {
         let convenienceCellRegistration = UICollectionView.CellRegistration<ConvenienceListCell, ConvenienceList> { (cell, indexPath, data) in
             cell.bindViewModel(with: data)
         }
+        let brandCellRegistration = UICollectionView.CellRegistration<BrandListCell, Brand> { (cell, indexPath, data) in
+            cell.bindViewModel(with: data)
+        }
         categoryDataSource = UICollectionViewDiffableDataSource<CategorySection, Facility>(collectionView: categoryCollectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, item: Facility) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: facilityCellRegistration, for: indexPath, item: item)
@@ -89,6 +92,8 @@ final class FacilityViewController: UIViewController {
                 return collectionView.dequeueConfiguredReusableCell(using: foodCellRegistration, for: indexPath, item: foodMenu)
             } else if let convenienceList = item as? ConvenienceList {
                 return collectionView.dequeueConfiguredReusableCell(using: convenienceCellRegistration, for: indexPath, item: convenienceList)
+            } else if let brandList = item as? Brand {
+                return collectionView.dequeueConfiguredReusableCell(using: brandCellRegistration, for: indexPath, item: brandList)
             }
             return nil
         }
@@ -123,6 +128,8 @@ final class FacilityViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        
+        // TODO: - 옵저버블 -> drive로 바꾸기
         // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         // TODO: - 셀 디바이더 구현하기
         // TODO: - 메뉴명 및 가격 헤더뷰로 구현할지 고민하기
@@ -143,13 +150,20 @@ final class FacilityViewController: UIViewController {
                 self.appleSnapShot(with: convenienceList)
             })
             .disposed(by: disposeBag)
+        
+        output.brandList
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { brandList in
+                self.appleSnapShot(with: brandList)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func appleSnapShot(with item: [AnyHashable]) {
         var snapshot = NSDiffableDataSourceSnapshot<FacilitySection, AnyHashable>()
         snapshot.appendSections([.main])
         snapshot.appendItems(item)
-        self.facilityDataSource.apply(snapshot)
+        self.facilityDataSource.apply(snapshot, animatingDifferences: false)
     }
     
     deinit {
