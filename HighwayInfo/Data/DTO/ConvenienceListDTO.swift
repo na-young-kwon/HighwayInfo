@@ -20,18 +20,18 @@ struct ConvenienceListDTO: Decodable {
         if list.isEmpty {
             return []
         }
-        return list.map { ConvenienceList(name: $0.name, description: $0.description ?? "") }
+        return list.map { ConvenienceList(name: $0.name, startTime: $0.startTime, endTime: $0.endTime) }
     }
     
     struct Convenience: Decodable {
         let name: String
-        let description: String?
+        private let psDesc: String?
         private let pageNo: String?
         private let numOfRows: String?
         private let stdRestCd: String
         private let stdRestNm: String
-        private let stime: String
-        private let etime: String
+        let startTime: String
+        let endTime: String
         private let redId: String
         private let redDtime: String
         private let lsttmAltrUser: String
@@ -43,8 +43,9 @@ struct ConvenienceListDTO: Decodable {
         
         enum CodingKeys: String, CodingKey {
             case name = "psName"
-            case description = "psDesc"
-            case pageNo, numOfRows, stdRestCd, stdRestNm, stime, etime, psCode
+            case startTime = "stime"
+            case endTime = "etime"
+            case psDesc, pageNo, numOfRows, stdRestCd, stdRestNm, psCode
             case redId, redDtime, lsttmAltrUser, lsttmAltrDttm, svarAddr, routeCd, routeNm
         }
     }

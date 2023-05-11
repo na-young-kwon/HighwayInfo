@@ -14,7 +14,7 @@ final class ConvenienceListCell: UICollectionViewCell {
         return label
     }()
     
-    private let priceLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .center
@@ -31,7 +31,7 @@ final class ConvenienceListCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, priceLabel])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         stackView.axis = .horizontal
         stackView.spacing = 5
         stackView.alignment = .leading
@@ -39,12 +39,12 @@ final class ConvenienceListCell: UICollectionViewCell {
         addSubview(stackView)
         stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         titleLabel.centerY(inView: stackView)
-        priceLabel.centerY(inView: stackView)
-        titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.7).isActive = true
+        descriptionLabel.centerY(inView: stackView)
+        titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5).isActive = true
     }
     
     func bindViewModel(with convenience: ConvenienceList) {
         titleLabel.text = convenience.name
-        titleLabel.text = convenience.description
+        descriptionLabel.text = convenience.operatingTime
     }
 }

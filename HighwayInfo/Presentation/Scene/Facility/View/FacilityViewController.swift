@@ -123,6 +123,20 @@ final class FacilityViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
+        // TODO: - 셀 디바이더 구현하기
+        // TODO: - 메뉴명 및 가격 헤더뷰로 구현할지 고민하기
+        // TODO: - toDomain() 메서드 만들기
+        // TODO: - API키 관리
+        // TODO: - 파서 정리
+        // TODO: - 캐싱
+        
+        
+        // MARK: - 앱 출시하고 할 일
+        // TODO: - 카드뷰컨 placeHolderCell 만들어서 보여주기
+        // TODO: - 카드뷰컨 세그멘트전환할때 컬렉션뷰 좀 더 빠릿빠릿하게 바꾸기
+        
+        
         output.convenienceList
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { convenienceList in
