@@ -40,6 +40,7 @@ final class FacilityViewController: UIViewController {
         categoryCollectionView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10)
         facilityCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFacilityLayout())
         facilityCollectionView.showsVerticalScrollIndicator = false
+        facilityCollectionView.layer.cornerRadius = 15
         view.addSubview(facilityCollectionView)
         facilityCollectionView.backgroundColor = .systemGray6
         facilityCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
@@ -65,7 +66,7 @@ final class FacilityViewController: UIViewController {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.2))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15)
         return UICollectionViewCompositionalLayout(section: section)
     }
     
@@ -127,7 +128,6 @@ final class FacilityViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // TODO: - 셀 디바이더 구현하기
         // TODO: - 메뉴명 및 가격 헤더뷰로 구현할지 고민하기
         
         // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기

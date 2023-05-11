@@ -37,7 +37,13 @@ final class FoodMenuCell: UICollectionViewCell {
         stackView.alignment = .leading
         stackView.distribution = .fill
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        stackView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0)
+        
+        let divider = UIView()
+        divider.backgroundColor = .white
+        divider.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
+        addSubview(divider)
+        divider.anchor(top: stackView.bottomAnchor, left: leftAnchor, right: rightAnchor)
         titleLabel.centerY(inView: stackView)
         priceLabel.centerY(inView: stackView)
         titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.7).isActive = true

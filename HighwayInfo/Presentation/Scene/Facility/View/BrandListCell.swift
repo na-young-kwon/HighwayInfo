@@ -37,10 +37,16 @@ final class BrandListCell: UICollectionViewCell {
         stackView.alignment = .leading
         stackView.distribution = .fill
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0)
         titleLabel.centerY(inView: stackView)
         descriptionLabel.centerY(inView: stackView)
         titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5).isActive = true
+        
+        let divider = UIView()
+        divider.backgroundColor = .white
+        divider.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
+        addSubview(divider)
+        divider.anchor(top: stackView.bottomAnchor, left: leftAnchor, right: rightAnchor)
     }
     
     func bindViewModel(with brand: Brand) {
