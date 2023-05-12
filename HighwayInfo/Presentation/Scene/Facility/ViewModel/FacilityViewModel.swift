@@ -21,7 +21,7 @@ final class FacilityViewModel: ViewModelType {
     }
     
     struct Output {
-        let serviceAreaName: String
+        let serviceArea: ServiceArea
         let foodMenuList: Driver<[FoodMenu]>
         let convenienceList: Driver<[ConvenienceList]>
         let brandList: Driver<[Brand]>
@@ -58,7 +58,7 @@ final class FacilityViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        return  Output(serviceAreaName: serviceArea.fullName,
+        return  Output(serviceArea: serviceArea,
                        foodMenuList: foodMenu,
                        convenienceList: convenienceList,
                        brandList: brandList)

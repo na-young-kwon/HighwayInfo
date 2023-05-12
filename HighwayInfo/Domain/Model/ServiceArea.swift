@@ -34,7 +34,7 @@ struct ServiceArea {
     var fullName: String {
         return name + "휴게소"
     }
-    var gasStationName: String {
+    var gasStationFullName: String {
         return name + "주유소"
     }
 }

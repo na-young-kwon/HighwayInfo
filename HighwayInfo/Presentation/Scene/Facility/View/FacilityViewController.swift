@@ -17,6 +17,7 @@ final class FacilityViewController: UIViewController {
         case main
     }
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     var viewModel: FacilityViewModel!
     private let disposeBag = DisposeBag()
     private var categoryCollectionView: UICollectionView!
@@ -37,7 +38,7 @@ final class FacilityViewController: UIViewController {
         view.addSubview(categoryCollectionView)
         categoryCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.27).isActive = true
         categoryCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.18).isActive = true
-        categoryCollectionView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10)
+        categoryCollectionView.anchor(top: addressLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10)
         facilityCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFacilityLayout())
         facilityCollectionView.showsVerticalScrollIndicator = false
         facilityCollectionView.layer.cornerRadius = 15
@@ -45,7 +46,7 @@ final class FacilityViewController: UIViewController {
         facilityCollectionView.backgroundColor = .systemGray6
         facilityCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
         facilityCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3).isActive = true
-        facilityCollectionView.anchor(top: titleLabel.bottomAnchor, left: categoryCollectionView.rightAnchor, paddingTop: 15, paddingLeft: 0)
+        facilityCollectionView.anchor(top: addressLabel.bottomAnchor, left: categoryCollectionView.rightAnchor, paddingTop: 15, paddingLeft: 0)
     }
     
     private func createCategoryLayout() -> UICollectionViewLayout {
@@ -112,7 +113,8 @@ final class FacilityViewController: UIViewController {
                                             selectedFacility: selectedFacility.asObservable())
         let output = viewModel.transform(input: input)
         
-        titleLabel.text = output.serviceAreaName
+        titleLabel.text = output.serviceArea.fullName
+        addressLabel.text = output.serviceArea.address
         categoryCollectionView.rx.itemSelected
             .subscribe(onNext: { index in
                 guard let facility = self.categoryDataSource.itemIdentifier(for: index) else {
@@ -128,7 +130,7 @@ final class FacilityViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // TODO: - 메뉴명 및 가격 헤더뷰로 구현할지 고민하기
+        // TODO: - 메뉴명 및 가격 헤더뷰로 구현할지 고민하기 (x / 불가능)
         
         // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         // TODO: - API키 관리
