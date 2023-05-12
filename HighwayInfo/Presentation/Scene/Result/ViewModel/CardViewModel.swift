@@ -65,4 +65,8 @@ final class CardViewModel: ViewModelType {
     func showServiceDetail() {
         coordinator.showServiceDetail(with: selectedHighway, serviceArea: serviceArea)
     }
+    
+    func removeCoordinator() {
+        coordinator.removeCoordinator()
+    }
 }

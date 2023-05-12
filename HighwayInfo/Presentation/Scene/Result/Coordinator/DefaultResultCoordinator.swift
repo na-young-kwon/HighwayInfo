@@ -32,7 +32,7 @@ final class DefaultResultCoordinator: Coordinator {
         let apiProvider = DefaultAPIProvider()
         let cardCoordinator = DefaultCardCoordinator(navigationController: navigationController, parentCoordinator: self)
         let cardUseCase = DefaultCardUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)))
-        
+        childCoordinators.append(cardCoordinator)
         cardViewModel = CardViewModel(coordinator: cardCoordinator, useCase: cardUseCase, highwayInfo: route.highwayInfo)
         controller.viewModel = ResultViewModel(coordinator: self, route: route, cardViewModel: cardViewModel!)
         navigationController.pushViewController(controller, animated: true)

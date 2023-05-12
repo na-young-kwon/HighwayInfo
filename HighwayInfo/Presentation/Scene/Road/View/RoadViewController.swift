@@ -135,6 +135,7 @@ extension RoadViewController: SearchViewDelegate {
         locationInputView.alpha = 1
         placeholderLabel.alpha = 1
         searchView?.alpha = 0
+        searchView?.removeFromSuperview()
         searchView = nil
         self.tabBarController?.tabBar.isHidden = false
     }

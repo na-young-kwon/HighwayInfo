@@ -28,4 +28,8 @@ final class DefaultCardCoordinator: Coordinator {
         serviceCoordinator.start()
         serviceCoordinator.start(with: highwayName, serviceArea: serviceArea)
     }
+    
+    func removeCoordinator() {
+        parentCoordinator?.removeChildCoordinator(self)
+    }
 }

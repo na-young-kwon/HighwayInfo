@@ -27,8 +27,8 @@ final class CardViewController: UIViewController {
     }
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var titleCollectionView: UICollectionView!
+    weak var viewModel: CardViewModel!
     private let titleElementKind = "title-element-kind"
-    var viewModel: CardViewModel!
     private let disposeBag = DisposeBag()
     private var detailCollectionView: UICollectionView!
     private var titleDataSource: UICollectionViewDiffableDataSource<TitleSection, HighwayInfo>!
@@ -92,7 +92,7 @@ final class CardViewController: UIViewController {
                                                    heightDimension: .fractionalWidth(0.2))
             let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: titleSize,
-                elementKind: self.titleElementKind,
+                elementKind: "title-element-kind",
                 alignment: .top)
             section.boundarySupplementaryItems = [titleSupplementary]
             return section
@@ -126,18 +126,20 @@ final class CardViewController: UIViewController {
             return nil
         }
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration<TitleView>(elementKind: titleElementKind) {
-            (titleView, string, indexPath) in
-            let section = self.detailDataSource.snapshot().sectionIdentifiers[indexPath.section]
+            [weak self] (titleView, string, indexPath) in
+            guard let section = self?.detailDataSource.snapshot().sectionIdentifiers[indexPath.section] else {
+                return
+            }
             if section == .gasStation { titleView.hideShowMoreButton() }
             titleView.setTitle(with: section.description)
             titleView.moreButtonTapped
-                .subscribe(onNext: { _ in
-                    self.viewModel.showServiceDetail()
+                .subscribe(onNext: { [weak self] _ in
+                    self?.viewModel.showServiceDetail()
                 })
-                .disposed(by: self.disposeBag)
+                .disposed(by: self!.disposeBag)
         }
-        detailDataSource.supplementaryViewProvider = { (view, kind, index) in
-            return self.detailCollectionView.dequeueConfiguredReusableSupplementary(
+        detailDataSource.supplementaryViewProvider = { [weak self] (view, kind, index) in
+            return self?.detailCollectionView.dequeueConfiguredReusableSupplementary(
                 using: supplementaryRegistration, for: index)
         }
     }
@@ -148,26 +150,26 @@ final class CardViewController: UIViewController {
         let output = viewModel.transform(input: input)
                 
         titleCollectionView.rx.itemSelected
-            .subscribe(onNext: { index in
-                let highway = self.titleDataSource.itemIdentifier(for: index)
+            .subscribe(onNext: { [weak self] index in
+                let highway = self?.titleDataSource.itemIdentifier(for: index)
                 selectedHighway.onNext(highway)
             })
             .disposed(by: disposeBag)
         
         output.highway
-            .drive(onNext: { highway in
+            .drive(onNext: { [weak self] highway in
                 if highway == [] {
-                    self.view = EmptyView()
+                    self?.view = EmptyView()
                 } else {
-                    self.applySnapshot(with: highway)
-                    self.selectFirstItem()
+                    self?.applySnapshot(with: highway)
+                    self?.selectFirstItem()
                 }
             })
             .disposed(by: disposeBag)
         
         output.result
-            .drive(onNext: { result in
-                self.applySnapshot(for: result)
+            .drive(onNext: { [weak self] result in
+                self?.applySnapshot(for: result)
             })
             .disposed(by: disposeBag)
     }

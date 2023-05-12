@@ -28,7 +28,6 @@ final class ResultViewController: UIViewController, TMapViewDelegate {
     private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
     private let disposeBag = DisposeBag()
     private var markers: Array<TMapMarker> = []
-    // CardView
     private var startCardHeight: CGFloat = 0
     private var endCardHeight: CGFloat = 0
     private var cardVisible = false
@@ -54,15 +53,15 @@ final class ResultViewController: UIViewController, TMapViewDelegate {
     }
     
     private func configureCardView() {
-        startCardHeight = self.view.frame.height * 0.3
-        endCardHeight = self.view.frame.height * 0.85
+        startCardHeight = view.frame.height * 0.3
+        endCardHeight = view.frame.height * 0.85
         cardViewController = CardViewController(nibName: CardViewController.reuseID, bundle: nil)
         cardViewController.viewModel = viewModel.cardViewModel
-        self.view.addSubview(cardViewController.view)
-        self.cardViewController.view.layer.cornerRadius = 30
+        view.addSubview(cardViewController.view)
+        cardViewController.view.layer.cornerRadius = 30
         cardViewController.view.frame = CGRect(x: 0,
-                                               y: self.view.frame.height - startCardHeight,
-                                               width: self.view.bounds.width,
+                                               y: view.frame.height - startCardHeight,
+                                               width: view.bounds.width,
                                                height: endCardHeight)
         
         let panGestureRecognizer = UIPanGestureRecognizer(target: self,
@@ -117,6 +116,10 @@ final class ResultViewController: UIViewController, TMapViewDelegate {
     }
     
     deinit {
+        cardViewController.viewModel.removeCoordinator()
+        cardViewController.removeFromParent()
+        cardViewController = nil
+        
         viewModel.removeCoordinator()
     }
 }
@@ -157,7 +160,7 @@ extension ResultViewController {
             startInteractiveTransition(state: nextState, duration: 0.9)
             
         case .changed:
-            let translation = recognizer.translation(in: self.cardViewController.handleArea)
+            let translation = recognizer.translation(in: cardViewController.handleArea)
             var fractionComplete = translation.y / endCardHeight
             fractionComplete = cardVisible ? fractionComplete : -fractionComplete
             updateInteractiveTransition(fractionCompleted: fractionComplete)
