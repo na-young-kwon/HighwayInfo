@@ -258,20 +258,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6i-kC-nKA">
-                                <rect key="frame" x="15" y="89" width="363" height="27"/>
+                                <rect key="frame" x="15" y="89" width="363" height="26.333333333333329"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="OAf-7c-OWk">
-                                <rect key="frame" x="20" y="126" width="15" height="15"/>
+                                <rect key="frame" x="20" y="125.33333333333331" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="8B9-nT-m5A"/>
                                     <constraint firstAttribute="width" secondItem="OAf-7c-OWk" secondAttribute="height" multiplier="1:1" id="ena-Hf-zdQ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-h0-9Dq">
-                                <rect key="frame" x="37" y="126.00000000000001" width="346" height="15.666666666666671"/>
+                                <rect key="frame" x="37" y="125.33333333333333" width="346" height="15.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.21811378000000001" green="0.27937170620000001" blue="0.34181660349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

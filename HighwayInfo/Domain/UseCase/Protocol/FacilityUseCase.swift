@@ -12,7 +12,8 @@ protocol FacilityUseCase {
     var foodMenuList: PublishSubject<[FoodMenu]> { get }
     var convenienceList: PublishSubject<[ConvenienceList]> { get }
     var brandList: PublishSubject<[Brand]> { get }
-    func fetchGasPrice(for name: String)
+    var gasStation: PublishSubject<GasStation> { get }
     func fetchFoodMenu(for serviceName: String)
     func fetchBrandList(for serviceName: String)
+    func fetchGasStation(for name: String)
 }

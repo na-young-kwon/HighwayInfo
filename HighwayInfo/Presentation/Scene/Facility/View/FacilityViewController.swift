@@ -24,12 +24,23 @@ final class FacilityViewController: UIViewController {
     private var facilityCollectionView: UICollectionView!
     private var categoryDataSource: UICollectionViewDiffableDataSource<CategorySection, Facility>!
     private var facilityDataSource: UICollectionViewDiffableDataSource<FacilitySection, AnyHashable>!
+    private let gasStationLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        configureUI()
         configureDataSource()
         bindViewModel()
+    }
+    
+    private func configureUI() {
+        view.addSubview(gasStationLabel)
+        gasStationLabel.anchor(top: facilityCollectionView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 15, paddingRight: 15)
     }
     
     private func configureCollectionView() {
@@ -112,9 +123,9 @@ final class FacilityViewController: UIViewController {
         let input = FacilityViewModel.Input(viewWillAppear: viewWillAppear,
                                             selectedFacility: selectedFacility.asObservable())
         let output = viewModel.transform(input: input)
-        
         titleLabel.text = output.serviceArea.fullName
         addressLabel.text = output.serviceArea.address
+        
         categoryCollectionView.rx.itemSelected
             .subscribe(onNext: { index in
                 guard let facility = self.categoryDataSource.itemIdentifier(for: index) else {
@@ -130,17 +141,17 @@ final class FacilityViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // TODO: - 메뉴명 및 가격 헤더뷰로 구현할지 고민하기 (x / 불가능)
-        
+        // TODO: - 유가정보 UI완성
         // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         // TODO: - API키 관리
-        // TODO: - 파서 정리
-        // TODO: - 캐싱
         
+        // TODO: - 로드뷰 화면 개선하기
         
         // MARK: - 앱 출시하고 할 일
         // TODO: - 카드뷰컨 placeHolderCell 만들어서 보여주기
         // TODO: - 카드뷰컨 세그멘트전환할때 컬렉션뷰 좀 더 빠릿빠릿하게 바꾸기
+        // TODO: - 캐싱
+        // TODO: - 유가 API로 주변지역보다 유가높/낮음 나타내기
         
         
         output.convenienceList
@@ -152,6 +163,14 @@ final class FacilityViewController: UIViewController {
         output.brandList
             .drive(onNext: { brandList in
                 self.appleSnapShot(with: brandList)
+            })
+            .disposed(by: disposeBag)
+        
+        output.gasStation
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { gasStation in
+                // gasStation이 있을때만 나타내기
+                self.gasStationLabel.text = output.serviceArea.gasStationFullName
             })
             .disposed(by: disposeBag)
     }

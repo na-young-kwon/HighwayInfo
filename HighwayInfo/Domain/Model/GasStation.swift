@@ -13,6 +13,7 @@ struct GasStation {
     let dieselPrice: String
     let gasolinePrice: String
     let lpgPrice: String
+    let oilCompany: String?
 }
 
 extension GasStation: Hashable {

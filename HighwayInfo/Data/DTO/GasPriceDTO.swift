@@ -17,7 +17,8 @@ class GasPriceDTO: Decodable {
         return GasStation(name: name,
                           dieselPrice: dieselPrice,
                           gasolinePrice: gasolinePrice,
-                          lpgPrice: lpgPrice
+                          lpgPrice: lpgPrice,
+                          oilCompany: nil
         )
     }
 }
