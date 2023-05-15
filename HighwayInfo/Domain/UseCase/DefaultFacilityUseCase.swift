@@ -48,16 +48,11 @@ final class DefaultFacilityUseCase: FacilityUseCase {
     }
     
     func fetchGasStation(for serviceName: String) {
-        let gasPrice = roadRepository.fetchGasPrice(for: serviceName)
+        let gasPrice = roadRepository.fetchGasPrice(for: serviceName).compactMap { $0.gasStation }
         let oilCompany = facilityRepository.fetchOilCompany(for: serviceName)
-        
-        // 정유사 nil일때 어떻게 처리하지?
-        // compactMap 사용하면 뭐 하나라도 nil일때 요소가 전달이안됨
-        // GasPriceDTO를 json으로 바꾸자
-        
         Observable.zip(gasPrice, oilCompany)
-            .compactMap { GasStation(name: $0.0.name,
-                              dieselPrice: $0.0.dieselPrice,
+            .map { GasStation(name: $0.0.name,
+                              dieselPrice: $0.0.diselPrice,
                               gasolinePrice: $0.0.gasolinePrice,
                               lpgPrice: $0.0.lpgPrice,
                               oilCompany: $0.1.companyName
@@ -66,5 +61,6 @@ final class DefaultFacilityUseCase: FacilityUseCase {
                 self.gasStation.onNext(gasStation)
             })
             .disposed(by: disposeBag)
+        
     }
 }

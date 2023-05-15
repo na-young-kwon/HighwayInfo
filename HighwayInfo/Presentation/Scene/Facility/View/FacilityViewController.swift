@@ -169,7 +169,6 @@ final class FacilityViewController: UIViewController {
         output.gasStation
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { gasStation in
-                // gasStation이 있을때만 나타내기
                 self.gasStationLabel.text = output.serviceArea.gasStationFullName
             })
             .disposed(by: disposeBag)

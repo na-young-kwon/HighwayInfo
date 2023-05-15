@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 enum DecodeType {
-    case accident, cctv, serviceArea, gasStation, gasPrice, json
+    case accident, cctv, serviceArea, gasStation, json
 }
 
 final class DefaultAPIProvider: APIProvider {
@@ -70,15 +70,6 @@ final class DefaultAPIProvider: APIProvider {
                     
                 case .gasStation:
                     let parser = GasStationParser(data: data)
-                    guard let decoded = parser.parseXML() as? T.Response else {
-                        observer.onError(NetworkingError.parsingError)
-                        return
-                    }
-                    observer.onNext(decoded)
-                    observer.onCompleted()
-                    
-                case .gasPrice:
-                    let parser = GasPriceParser(data: data)
                     guard let decoded = parser.parseXML() as? T.Response else {
                         observer.onError(NetworkingError.parsingError)
                         return

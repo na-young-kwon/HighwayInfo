@@ -14,7 +14,7 @@ struct GasPriceRequest: APIRequest {
     let urlHost = "http://data.ex.co.kr/openapi/business/"
     let urlPath = "curStateStation?"
     let key = "6970526905"
-    let type = "xml"
+    let type = "json"
     let serviceAreaName: String
     
     var parameters: [String : String] {[

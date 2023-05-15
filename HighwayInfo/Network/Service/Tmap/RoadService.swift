@@ -58,6 +58,6 @@ final class RoadService {
     
     func fetchGasPrice(for serviceName: String) -> Observable<GasPriceDTO> {
         let request = GasPriceRequest(serviceAreaName: serviceName)
-        return apiProvider.performDataTask(with: request, decodeType: .gasPrice)
+        return apiProvider.performDataTask(with: request, decodeType: .json)
     }
 }

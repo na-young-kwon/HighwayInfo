@@ -39,7 +39,7 @@ final class DefaultCardUseCase: CardUseCase {
             )}
         gasStation
             .take(15)
-            .map { $0.map { $0.toDomain } }
+            .map { $0.compactMap { $0.toDomain } }
             .subscribe(onNext: { gasStation in
                 self.gasStation.onNext(gasStation)
             })

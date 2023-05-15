@@ -28,7 +28,6 @@
 		3B497ADF29FBCF7600D3FAAC /* GasStationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497ADE29FBCF7600D3FAAC /* GasStationParser.swift */; };
 		3B497AE129FBE54400D3FAAC /* GasPriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE029FBE54400D3FAAC /* GasPriceRequest.swift */; };
 		3B497AE329FBE59500D3FAAC /* GasPriceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE229FBE59500D3FAAC /* GasPriceDTO.swift */; };
-		3B497AE529FBF00A00D3FAAC /* GasPriceParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE429FBF00A00D3FAAC /* GasPriceParser.swift */; };
 		3B497AE729FBF21700D3FAAC /* GasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE629FBF21700D3FAAC /* GasStation.swift */; };
 		3B497AE929FFF4BB00D3FAAC /* HighwayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AE829FFF4BB00D3FAAC /* HighwayCell.swift */; };
 		3B497AEB29FFF4C400D3FAAC /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AEA29FFF4C400D3FAAC /* ServiceCell.swift */; };
@@ -180,7 +179,6 @@
 		3B497ADE29FBCF7600D3FAAC /* GasStationParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationParser.swift; sourceTree = "<group>"; };
 		3B497AE029FBE54400D3FAAC /* GasPriceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasPriceRequest.swift; sourceTree = "<group>"; };
 		3B497AE229FBE59500D3FAAC /* GasPriceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasPriceDTO.swift; sourceTree = "<group>"; };
-		3B497AE429FBF00A00D3FAAC /* GasPriceParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasPriceParser.swift; sourceTree = "<group>"; };
 		3B497AE629FBF21700D3FAAC /* GasStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStation.swift; sourceTree = "<group>"; };
 		3B497AE829FFF4BB00D3FAAC /* HighwayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighwayCell.swift; sourceTree = "<group>"; };
 		3B497AEA29FFF4C400D3FAAC /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 				3BD4EEA629C980580010FB25 /* CCTVParser.swift */,
 				3B497AD629FAA34000D3FAAC /* ServiceAreaParser.swift */,
 				3B497ADE29FBCF7600D3FAAC /* GasStationParser.swift */,
-				3B497AE429FBF00A00D3FAAC /* GasPriceParser.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -1027,7 +1024,6 @@
 				3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */,
 				3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */,
 				3B497B1D2A0926F000D3FAAC /* FacilityViewModel.swift in Sources */,
-				3B497AE529FBF00A00D3FAAC /* GasPriceParser.swift in Sources */,
 				3B497AF62A0392D500D3FAAC /* PaddingLabel.swift in Sources */,
 				3B497B3F2A0B708D00D3FAAC /* ConvenienceList.swift in Sources */,
 				3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */,
