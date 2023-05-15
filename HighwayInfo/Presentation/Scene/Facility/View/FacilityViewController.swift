@@ -24,11 +24,9 @@ final class FacilityViewController: UIViewController {
     private var facilityCollectionView: UICollectionView!
     private var categoryDataSource: UICollectionViewDiffableDataSource<CategorySection, Facility>!
     private var facilityDataSource: UICollectionViewDiffableDataSource<FacilitySection, AnyHashable>!
-    private let gasStationLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 22, weight: .bold)
-        return label
-    }()
+    private let gasStationLabel = UILabel()
+    private let telNoLabel = UILabel()
+    private let telImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +38,17 @@ final class FacilityViewController: UIViewController {
     
     private func configureUI() {
         view.addSubview(gasStationLabel)
-        gasStationLabel.anchor(top: facilityCollectionView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 15, paddingRight: 15)
+        gasStationLabel.font = .systemFont(ofSize: 22, weight: .bold)
+        gasStationLabel.anchor(top: facilityCollectionView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 25, paddingLeft: 15, paddingRight: 15)
+        view.addSubview(telImageView)
+        telImageView.image = UIImage(systemName: "phone.fill")
+        telImageView.tintColor = .black
+        telImageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
+        telImageView.widthAnchor.constraint(equalTo: telImageView.heightAnchor).isActive = true
+        telImageView.anchor(top: gasStationLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 10, paddingLeft: 15)
+        view.addSubview(telNoLabel)
+        telNoLabel.font = .systemFont(ofSize: 13)
+        telNoLabel.anchor(top: gasStationLabel.bottomAnchor, left: telImageView.rightAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 3, paddingRight: 15)
     }
     
     private func configureCollectionView() {
@@ -141,7 +149,6 @@ final class FacilityViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // TODO: - 유가정보 UI완성
         // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         // TODO: - API키 관리
         
@@ -170,6 +177,8 @@ final class FacilityViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { gasStation in
                 self.gasStationLabel.text = output.serviceArea.gasStationFullName
+                self.telNoLabel.text = output.serviceArea.telNo
+                self.showGasStackView(gasStation: gasStation)
             })
             .disposed(by: disposeBag)
     }
@@ -179,6 +188,14 @@ final class FacilityViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(item)
         self.facilityDataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func showGasStackView(gasStation: GasStation) {
+        let gasPriceView = GasPriceStackView()
+        view.addSubview(gasPriceView)
+        gasPriceView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12).isActive = true
+        gasPriceView.anchor(top: telNoLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 10)
+        gasPriceView.bindViewModel(with: gasStation)
     }
     
     deinit {

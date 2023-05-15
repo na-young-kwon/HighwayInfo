@@ -24,6 +24,7 @@ struct GasPriceDTO: Decodable {
                                      dieselPrice: $0.diselPrice,
                                      gasolinePrice: $0.gasolinePrice,
                                      lpgPrice: $0.lpgPrice,
+                                     telNo: $0.telNo,
                                      oilCompany: nil) }.first
     }
     var gasStation: GasPrice? {
@@ -45,7 +46,7 @@ struct GasPrice: Decodable {
     let diselPrice: String
     let gasolinePrice: String
     let lpgPrice: String
-    private let telNo: String
+    let telNo: String
     private let serviceAreaCode: String
     private let routeCode: String
     private let lpgYn: String

@@ -55,6 +55,7 @@ final class DefaultFacilityUseCase: FacilityUseCase {
                               dieselPrice: $0.0.diselPrice,
                               gasolinePrice: $0.0.gasolinePrice,
                               lpgPrice: $0.0.lpgPrice,
+                              telNo: $0.0.telNo,
                               oilCompany: $0.1.companyName
             )}
             .subscribe(onNext: { gasStation in
