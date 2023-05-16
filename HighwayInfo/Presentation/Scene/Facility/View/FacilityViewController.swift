@@ -150,7 +150,7 @@ final class FacilityViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // TODO: - 휴게소 셀 ui마무리
+        // TODO: - 휴게소 셀 레이블 짤리는거 다 나타내기
         // TODO: - 천안논산고속도로 휴게소 없을 떄 아얘 테이블뷰 안보여주기
         
         // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
