@@ -136,8 +136,8 @@ final class FacilityViewController: UIViewController {
         addressLabel.text = output.serviceArea.address
         
         categoryCollectionView.rx.itemSelected
-            .subscribe(onNext: { index in
-                guard let facility = self.categoryDataSource.itemIdentifier(for: index) else {
+            .subscribe(onNext: { [weak self] index in
+                guard let facility = self?.categoryDataSource.itemIdentifier(for: index) else {
                     return
                 }
                 selectedFacility.onNext(facility)
@@ -145,8 +145,8 @@ final class FacilityViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.foodMenuList
-            .drive(onNext: { foodMenu in
-                self.appleSnapShot(with: foodMenu)
+            .drive(onNext: { [weak self] foodMenu in
+                self?.appleSnapShot(with: foodMenu)
             })
             .disposed(by: disposeBag)
         
@@ -166,23 +166,23 @@ final class FacilityViewController: UIViewController {
         
         
         output.convenienceList
-            .drive(onNext: { convenienceList in
-                self.appleSnapShot(with: convenienceList)
+            .drive(onNext: { [weak self] convenienceList in
+                self?.appleSnapShot(with: convenienceList)
             })
             .disposed(by: disposeBag)
         
         output.brandList
-            .drive(onNext: { brandList in
-                self.appleSnapShot(with: brandList)
+            .drive(onNext: { [weak self] brandList in
+                self?.appleSnapShot(with: brandList)
             })
             .disposed(by: disposeBag)
         
         output.gasStation
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { gasStation in
-                self.gasStationLabel.text = output.serviceArea.gasStationFullName
-                self.telNoLabel.text = output.serviceArea.telNo
-                self.showGasStackView(gasStation: gasStation)
+            .subscribe(onNext: { [weak self] gasStation in
+                self?.gasStationLabel.text = output.serviceArea.gasStationFullName
+                self?.telNoLabel.text = output.serviceArea.telNo
+                self?.showGasStackView(gasStation: gasStation)
             })
             .disposed(by: disposeBag)
     }
@@ -191,7 +191,7 @@ final class FacilityViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<FacilitySection, AnyHashable>()
         snapshot.appendSections([.main])
         snapshot.appendItems(item)
-        self.facilityDataSource.apply(snapshot, animatingDifferences: false)
+        facilityDataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func showGasStackView(gasStation: GasStation) {
