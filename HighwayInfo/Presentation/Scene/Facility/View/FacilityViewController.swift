@@ -42,13 +42,14 @@ final class FacilityViewController: UIViewController {
         gasStationLabel.anchor(top: facilityCollectionView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 25, paddingLeft: 15, paddingRight: 15)
         view.addSubview(telImageView)
         telImageView.image = UIImage(systemName: "phone.fill")
-        telImageView.tintColor = .black
+        telImageView.tintColor = UIColor.blueGray_textColor
         telImageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
         telImageView.widthAnchor.constraint(equalTo: telImageView.heightAnchor).isActive = true
-        telImageView.anchor(top: gasStationLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 10, paddingLeft: 15)
+        telImageView.anchor(top: gasStationLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 10, paddingLeft: 18)
         view.addSubview(telNoLabel)
         telNoLabel.font = .systemFont(ofSize: 13)
-        telNoLabel.anchor(top: gasStationLabel.bottomAnchor, left: telImageView.rightAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 3, paddingRight: 15)
+        telNoLabel.textColor = UIColor.blueGray_textColor
+        telNoLabel.anchor(top: gasStationLabel.bottomAnchor, left: telImageView.rightAnchor, right: view.rightAnchor, paddingTop: 10, paddingRight: 15)
     }
     
     private func configureCollectionView() {
@@ -148,6 +149,11 @@ final class FacilityViewController: UIViewController {
                 self.appleSnapShot(with: foodMenu)
             })
             .disposed(by: disposeBag)
+        
+        // TODO: - 휴게소 셀 ui마무리
+        // TODO: - 휴게소 셀 didselectrowAt연결
+        // TODO: - 이용하는 고속도로 없음 뷰에 popViewController 버튼추가
+        // TODO: - 천안논산고속도로 휴게소 없을 떄 아얘 테이블뷰 안보여주기
         
         // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         // TODO: - API키 관리

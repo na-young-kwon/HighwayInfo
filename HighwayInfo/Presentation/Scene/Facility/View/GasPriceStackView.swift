@@ -88,8 +88,7 @@ final class GasPriceStackView: UIView {
         titleImage.widthAnchor.constraint(equalTo: titleImage.heightAnchor).isActive = true
         titleImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2).isActive = true
         titleImage.anchor(top: topAnchor, left: leftAnchor, paddingTop: 10, paddingLeft: 10)
-        stackView.anchor(top: topAnchor, left: titleImage.rightAnchor, bottom: bottomAnchor, right: rightAnchor,
-                         paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
+        stackView.anchor(top: topAnchor, left: titleImage.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingLeft: 10)
         
         let divider = UIView()
         addSubview(divider)

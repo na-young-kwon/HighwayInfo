@@ -15,6 +15,15 @@ final class EmptyView: UIView {
         return label
     }()
     
+    private let backButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 10
+        button.backgroundColor = UIColor.skyBlueColor
+        button.setTitle("돌아가기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -35,5 +44,10 @@ final class EmptyView: UIView {
         layer.rasterizationScale = UIScreen.main.scale
         label.anchor(top: topAnchor, paddingTop: 100)
         label.centerX(inView: self)
+        
+        addSubview(backButton)
+        backButton.anchor(top: label.bottomAnchor, paddingTop: 20)
+        backButton.centerX(inView: self)
+        backButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
     }
 }
