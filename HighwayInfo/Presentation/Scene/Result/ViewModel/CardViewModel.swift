@@ -69,4 +69,8 @@ final class CardViewModel: ViewModelType {
     func removeCoordinator() {
         coordinator.removeCoordinator()
     }
+    
+    func popViewController() {
+        coordinator.popViewController()
+    }
 }

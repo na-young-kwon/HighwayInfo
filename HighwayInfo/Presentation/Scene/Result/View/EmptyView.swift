@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class EmptyView: UIView {
     private let label: UILabel = {
         let label = UILabel()
-        label.text = "이용예정인 고속도로가 없습니다"
+        label.text = "경로상 이용예정인 고속도로가 없습니다."
         label.font = .systemFont(ofSize: 20)
+        label.textColor = UIColor.blueGray_textColor
         return label
     }()
     
@@ -20,9 +23,14 @@ final class EmptyView: UIView {
         button.layer.cornerRadius = 10
         button.backgroundColor = UIColor.skyBlueColor
         button.setTitle("돌아가기", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
+    
+    var backButtonTapped: Observable<Void> {
+        backButton.rx.tap.asObservable()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,6 +56,6 @@ final class EmptyView: UIView {
         addSubview(backButton)
         backButton.anchor(top: label.bottomAnchor, paddingTop: 20)
         backButton.centerX(inView: self)
-        backButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
     }
 }

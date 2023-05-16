@@ -159,7 +159,13 @@ final class CardViewController: UIViewController {
         output.highway
             .drive(onNext: { [weak self] highway in
                 if highway == [] {
-                    self?.view = EmptyView()
+                    let emptyView = EmptyView()
+                    self?.view = emptyView
+                    emptyView.backButtonTapped
+                        .subscribe(onNext: { _ in
+                            self?.viewModel.popViewController()
+                        })
+                        .disposed(by: self!.disposeBag)
                 } else {
                     self?.applySnapshot(with: highway)
                     self?.selectFirstItem()

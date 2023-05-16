@@ -35,12 +35,6 @@ final class ResultViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        input.viewWillAppear
-            .subscribe(onNext: { _ in
-//                coordinator.showCardView(with: route.highwayInfo.first?.name)
-            })
-            .disposed(by: disposeBag)
-        
         return Output(markerPoint: Observable.of(route.markerPoint),
                       startPointName: Observable.of(route.startPointName).asDriver(onErrorJustReturn: ""),
                       endPointName: Observable.of(route.endPointName).asDriver(onErrorJustReturn: ""),

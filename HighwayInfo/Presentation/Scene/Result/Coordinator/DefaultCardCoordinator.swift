@@ -32,4 +32,8 @@ final class DefaultCardCoordinator: Coordinator {
     func removeCoordinator() {
         parentCoordinator?.removeChildCoordinator(self)
     }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
+    }
 }

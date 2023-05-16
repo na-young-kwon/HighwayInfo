@@ -7,10 +7,7 @@
 
 import UIKit
 
-final class ServiceCell: UICollectionViewCell {
-    private lazy var spinner = UIActivityIndicatorView(style: .medium)
-    
-    private let titleLabel: UILabel = {
+final class ServiceCell: UICollectionViewCell {private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         return label
@@ -30,19 +27,11 @@ final class ServiceCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSpinner()
         configureUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
-    }
-    
-    private func addSpinner() {
-        contentView.addSubview(spinner)
-        spinner.startAnimating()
-        spinner.centerX(inView: contentView)
-        spinner.centerY(inView: contentView)
     }
     
     private func configureUI() {
@@ -57,7 +46,6 @@ final class ServiceCell: UICollectionViewCell {
     }
     
     func bindViewModel(with serviceArea: ServiceArea) {
-        spinner.stopAnimating()
         titleLabel.text = serviceArea.name
         addressLabel.text = serviceArea.address
         telLabel.text = serviceArea.telNo
