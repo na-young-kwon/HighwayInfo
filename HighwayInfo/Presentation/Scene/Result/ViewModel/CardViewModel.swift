@@ -18,7 +18,8 @@ final class CardViewModel: ViewModelType {
     private var selectedHighway: String
     
     struct Input {
-        let itemSelected: Observable<HighwayInfo?>
+        let selectedHighway: Observable<HighwayInfo?>
+        let selectedServiceArea: Observable<ServiceArea>
     }
     
     struct Output {
@@ -43,13 +44,19 @@ final class CardViewModel: ViewModelType {
             useCase.fetchServiceArea(for: first.rawName)
             useCase.fetchGasStation(for: first.rawName)
         }
-        input.itemSelected
+        input.selectedHighway
             .compactMap { $0.map { $0.rawName } }
             .subscribe(onNext: { selectedRoute in
                 self.selectedHighway = ""
                 self.selectedHighway = selectedRoute
                 self.useCase.fetchServiceArea(for: selectedRoute)
                 self.useCase.fetchGasStation(for: selectedRoute)
+            })
+            .disposed(by: disposeBag)
+        
+        input.selectedServiceArea
+            .subscribe(onNext: { serviceArea in
+                self.coordinator.toFacilityView(with: serviceArea)
             })
             .disposed(by: disposeBag)
         

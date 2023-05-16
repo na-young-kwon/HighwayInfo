@@ -29,6 +29,13 @@ final class DefaultCardCoordinator: Coordinator {
         serviceCoordinator.start(with: highwayName, serviceArea: serviceArea)
     }
     
+    func toFacilityView(with serviceArea: ServiceArea) {
+        let facilityCoordinator = DefaultFacilityCoordinator(navigationController: navigationController, parentCoordinator: self)
+        childCoordinators.append(facilityCoordinator)
+        facilityCoordinator.start()
+        facilityCoordinator.start(with: serviceArea)
+    }
+    
     func removeCoordinator() {
         parentCoordinator?.removeChildCoordinator(self)
     }

@@ -146,13 +146,24 @@ final class CardViewController: UIViewController {
     
     private func bindViewModel() {
         let selectedHighway = PublishSubject<HighwayInfo?>()
-        let input = CardViewModel.Input(itemSelected: selectedHighway.asObservable())
+        let selectedServiceArea = PublishSubject<ServiceArea>()
+        let input = CardViewModel.Input(selectedHighway: selectedHighway.asObservable(),
+                                        selectedServiceArea: selectedServiceArea.asObservable())
         let output = viewModel.transform(input: input)
                 
         titleCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] index in
                 let highway = self?.titleDataSource.itemIdentifier(for: index)
                 selectedHighway.onNext(highway)
+            })
+            .disposed(by: disposeBag)
+        
+        detailCollectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] index in
+                guard let serviceArea = self?.detailDataSource.itemIdentifier(for: index) as? ServiceArea else {
+                    return
+                }
+                selectedServiceArea.onNext(serviceArea)
             })
             .disposed(by: disposeBag)
         
