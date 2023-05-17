@@ -13,7 +13,7 @@ struct GasStationRequest: APIRequest {
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/restinfo/"
     let urlPath = "restOilList?"
-    let key = "6970526905"
+    let key = Bundle.main.serviceAreaKey
     let type = "xml"
     let routeName: String
     

@@ -13,7 +13,7 @@ struct OilCompanyRequest: APIRequest {
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/business/"
     let urlPath = "lpgServiceAreaInfo?"
-    let key = "6970526905"
+    let key = Bundle.main.serviceAreaKey
     let type = "json"
     let serviceAreaName: String
     

@@ -13,5 +13,7 @@ struct AccidentRequest: APIRequest {
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://openapigits.gg.go.kr/api/rest/"
     let urlPath = "getIncidentInfo?"
-    let parameters: [String : String] = ["serviceKey": "952f3149f2bac24e515f8fb0b84bcc14ba2edc"]
+    var parameters: [String : String] {[
+        "serviceKey": Bundle.main.accidentApiKey
+    ]}
 }

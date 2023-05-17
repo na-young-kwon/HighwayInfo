@@ -13,6 +13,7 @@ struct CCTVRequest: APIRequest {
     let httpMethod: HTTPMethod = .get
     let urlHost = "https://openapi.its.go.kr:9443/"
     let urlPath = "cctvInfo?"
+    let apiKey = Bundle.main.cctvApiKey
     let type = "ex"
     let cctvType: CCTVType
     let minX: Double
@@ -22,7 +23,7 @@ struct CCTVRequest: APIRequest {
     let getType = "xml"
     
     var parameters: [String : String] {[
-        "apiKey": "5178d00cd45340f58aedda032872a0e0",
+        "apiKey": apiKey,
         "type": type,
         "cctvType": cctvType.rawValue,
         "minX": String(minX),

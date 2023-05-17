@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3429EA2A14C69200A88F4C /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3429E92A14C69200A88F4C /* Secret.plist */; };
+		3B3429EC2A14C6D400A88F4C /* HighwayInfo++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */; };
 		3B3CD27229DD519C00D223AC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3CD27129DD519C00D223AC /* TMapSDK.framework */; };
 		3B3CD27329DD519C00D223AC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3CD27129DD519C00D223AC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */; };
@@ -160,6 +162,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B3429E92A14C69200A88F4C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
+		3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighwayInfo++Bundle.swift"; sourceTree = "<group>"; };
 		3B3CD27129DD519C00D223AC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../[iOS_SWIFT]TmapSDK_2.12/배포/TMapSDK.framework"; sourceTree = "<group>"; };
 		3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
@@ -553,6 +557,8 @@
 			isa = PBXGroup;
 			children = (
 				3B6CF35029C9CE14002289A0 /* info.plist */,
+				3B3429E92A14C69200A88F4C /* Secret.plist */,
+				3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */,
 				3B5AD11A29B1E7B300E2AFAA /* Application */,
 				3B5AD11B29B1E8D500E2AFAA /* Presentation */,
 				3B63BAB529B84A460055D3A4 /* Domain */,
@@ -951,6 +957,7 @@
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,
 				3B97E47029E42AE3000F4B39 /* CardViewController.xib in Resources */,
 				3B97E45929E003A1000F4B39 /* SearchResultCell.xib in Resources */,
+				3B3429EA2A14C69200A88F4C /* Secret.plist in Resources */,
 				3B497AC829F3DC8700D3FAAC /* SearchHistoryCell.xib in Resources */,
 				3B6CF36929D2CF0D002289A0 /* GrayLoadingIndicator.json in Resources */,
 			);
@@ -1028,6 +1035,7 @@
 				3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */,
 				3B497B1D2A0926F000D3FAAC /* FacilityViewModel.swift in Sources */,
 				3B497AF62A0392D500D3FAAC /* PaddingLabel.swift in Sources */,
+				3B3429EC2A14C6D400A88F4C /* HighwayInfo++Bundle.swift in Sources */,
 				3B497B3F2A0B708D00D3FAAC /* ConvenienceList.swift in Sources */,
 				3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */,
 				3B497AD929FBC02200D3FAAC /* GasStationRequest.swift in Sources */,

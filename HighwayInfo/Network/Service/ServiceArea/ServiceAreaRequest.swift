@@ -13,7 +13,7 @@ struct ServiceAreaRequest: APIRequest {
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/business/"
     let urlPath = "serviceAreaRoute?"
-    let key = "6970526905"
+    let key = Bundle.main.serviceAreaKey
     let type = "xml"
     let numOfRows = "15"
     let routeName: String

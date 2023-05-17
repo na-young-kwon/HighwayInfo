@@ -13,7 +13,7 @@ struct FoodRequest: APIRequest {
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/restinfo/"
     let urlPath = "restBestfoodList?"
-    let key = "6970526905"
+    let key = Bundle.main.serviceAreaKey
     let type = "json"
     let numOfRows = "10"
     let serviceName: String

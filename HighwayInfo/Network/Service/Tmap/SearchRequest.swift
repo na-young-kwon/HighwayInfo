@@ -17,6 +17,7 @@ struct SearchRequest: APIRequest {
     let searchKeyword: String
     let longitude: Double
     let latitude: Double
+    let appKey = Bundle.main.tmapApiKey
     
     var parameters: [String : String] {[
         "version": version,
@@ -25,6 +26,6 @@ struct SearchRequest: APIRequest {
         "radius": "0",
         "centerLon": String(longitude),
         "centerLat": String(latitude),
-        "appKey": "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
+        "appKey": appKey
     ]}
 }

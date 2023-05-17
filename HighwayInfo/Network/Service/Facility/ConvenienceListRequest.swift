@@ -13,7 +13,7 @@ struct ConvenienceListRequest: APIRequest {
     let httpMethod: HTTPMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/restinfo/"
     let urlPath = "restConvList?"
-    let key = "6970526905"
+    let key = Bundle.main.serviceAreaKey
     let type = "json"
     let serviceAreaName: String
     
