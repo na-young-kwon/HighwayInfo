@@ -19,7 +19,7 @@ final class CardViewController: UIViewController {
         var description: String {
             switch self {
             case .serviceArea:
-                return "휴게시설"
+                return "휴게소"
             case .gasStation:
                 return "주유소"
             }
@@ -77,9 +77,8 @@ final class CardViewController: UIViewController {
     
     private func createDetailLayout() -> UICollectionViewLayout {
         let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            guard let sectionKind = DetailSection(rawValue: sectionIndex) else { return nil }
-            let widthDimension: NSCollectionLayoutDimension = sectionKind == .serviceArea ? .fractionalWidth(0.55) : .fractionalWidth(0.45)
-            let heightDimension: NSCollectionLayoutDimension = sectionKind == .serviceArea ? .fractionalHeight(0.3) : .fractionalHeight(0.22)
+            let widthDimension: NSCollectionLayoutDimension = .fractionalWidth(0.5)
+            let heightDimension: NSCollectionLayoutDimension = .fractionalHeight(0.25)
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: widthDimension, heightDimension: heightDimension)

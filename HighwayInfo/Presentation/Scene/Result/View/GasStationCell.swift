@@ -13,14 +13,12 @@ final class GasStationCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 14)
         return label
     }()
-    
     private let gasolineLabel: UILabel = {
         let label = UILabel()
         label.text = "휘발유"
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 13)
         return label
     }()
-    
     private let gasolinePriceLabel: UILabel = {
         let label = PaddingLabel()
         label.textColor = .white
@@ -31,14 +29,12 @@ final class GasStationCell: UICollectionViewCell {
         label.backgroundColor = .mainBlueColor
         return label
     }()
-    
     private let dieselLabel: UILabel = {
         let label = UILabel()
         label.text = "경유"
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 13)
         return label
     }()
-    
     private let dieselPriceLabel: UILabel = {
         let label = PaddingLabel()
         label.textColor = .white
@@ -85,7 +81,7 @@ final class GasStationCell: UICollectionViewCell {
         addSubview(dieselStack)
         titleLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10)
         gasolineStack.anchor(top: titleLabel.bottomAnchor, left: titleLabel.leftAnchor, right: titleLabel.rightAnchor, paddingTop: 25)
-        dieselStack.anchor(top: gasolineStack.bottomAnchor, left: titleLabel.leftAnchor, right: titleLabel.rightAnchor, paddingTop: 10)
+        dieselStack.anchor(top: gasolineStack.bottomAnchor, left: titleLabel.leftAnchor, right: titleLabel.rightAnchor, paddingTop: 15)
         gasolinePriceLabel.widthAnchor.constraint(equalTo: gasolineStack.widthAnchor, multiplier: 0.55).isActive = true
         dieselPriceLabel.widthAnchor.constraint(equalTo: dieselStack.widthAnchor, multiplier: 0.55).isActive = true
     }

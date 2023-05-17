@@ -141,11 +141,11 @@ final class FacilityViewController: UIViewController {
         // TODO: - 휴게소 셀 레이블 짤리는거 다 나타내기
         // TODO: - 천안논산고속도로 휴게소 없을 떄 아얘 테이블뷰 안보여주기
         
-        // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기 
+        // TODO: - 빈배열일때 어떻게 정보없음 나타낼지 생각하기
         
-        // TODO: - 로드뷰 화면 개선하기
         
         // MARK: - 앱 출시하고 할 일
+        // TODO: - 로드뷰 화면 개선하기
         // TODO: - 카드뷰컨 placeHolderCell 만들어서 보여주기
         // TODO: - 카드뷰컨 세그멘트전환할때 컬렉션뷰 좀 더 빠릿빠릿하게 바꾸기
         // TODO: - 캐싱
