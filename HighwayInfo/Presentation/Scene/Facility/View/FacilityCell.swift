@@ -26,6 +26,7 @@ final class FacilityCell: UICollectionViewCell {
         super.init(frame: frame)
         configureUI()
         backgroundColor = UIColor.red.withAlphaComponent(0.1)
+        layer.cornerRadius = 5
     }
     
     required init?(coder: NSCoder) {

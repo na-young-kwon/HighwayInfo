@@ -10,7 +10,7 @@ import UIKit
 final class ConvenienceCell: UICollectionViewCell {
     private let titleImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .systemGray6
+//        image.backgroundColor = .systemGray6
         image.layer.cornerRadius = 20
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
@@ -25,8 +25,8 @@ final class ConvenienceCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            titleImage.backgroundColor = isSelected ? .mainBlueColor?.withAlphaComponent(0.6) : .systemGray6
-            titleImage.layer.borderColor = isSelected ? UIColor.mainBlueColor?.cgColor : UIColor.clear.cgColor
+            titleImage.backgroundColor = isSelected ? UIColor.systemGray6 : UIColor.clear
+            titleImage.layer.borderColor = isSelected ? UIColor.clear.cgColor : UIColor.clear.cgColor
             titleImage.layer.borderWidth = 1
         }
     }

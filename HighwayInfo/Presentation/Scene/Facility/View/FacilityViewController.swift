@@ -25,8 +25,6 @@ final class FacilityViewController: UIViewController {
     private var categoryDataSource: UICollectionViewDiffableDataSource<CategorySection, Facility>!
     private var facilityDataSource: UICollectionViewDiffableDataSource<FacilitySection, AnyHashable>!
     private let gasStationLabel = UILabel()
-    private let telNoLabel = UILabel()
-    private let telImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +38,6 @@ final class FacilityViewController: UIViewController {
         view.addSubview(gasStationLabel)
         gasStationLabel.font = .systemFont(ofSize: 22, weight: .bold)
         gasStationLabel.anchor(top: facilityCollectionView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 25, paddingLeft: 15, paddingRight: 15)
-        view.addSubview(telImageView)
-        telImageView.image = UIImage(systemName: "phone.fill")
-        telImageView.tintColor = UIColor.blueGray_textColor
-        telImageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
-        telImageView.widthAnchor.constraint(equalTo: telImageView.heightAnchor).isActive = true
-        telImageView.anchor(top: gasStationLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 10, paddingLeft: 18)
-        view.addSubview(telNoLabel)
-        telNoLabel.font = .systemFont(ofSize: 13)
-        telNoLabel.textColor = UIColor.blueGray_textColor
-        telNoLabel.anchor(top: gasStationLabel.bottomAnchor, left: telImageView.rightAnchor, right: view.rightAnchor, paddingTop: 10, paddingRight: 15)
     }
     
     private func configureCollectionView() {
@@ -61,7 +49,7 @@ final class FacilityViewController: UIViewController {
         categoryCollectionView.anchor(top: addressLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10)
         facilityCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFacilityLayout())
         facilityCollectionView.showsVerticalScrollIndicator = false
-        facilityCollectionView.layer.cornerRadius = 15
+        facilityCollectionView.layer.cornerRadius = 5
         view.addSubview(facilityCollectionView)
         facilityCollectionView.backgroundColor = .systemGray6
         facilityCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.65).isActive = true
@@ -181,7 +169,6 @@ final class FacilityViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] gasStation in
                 self?.gasStationLabel.text = output.serviceArea.gasStationFullName
-                self?.telNoLabel.text = output.serviceArea.telNo
                 self?.showGasStackView(gasStation: gasStation)
             })
             .disposed(by: disposeBag)
@@ -198,7 +185,7 @@ final class FacilityViewController: UIViewController {
         let gasPriceView = GasPriceStackView()
         view.addSubview(gasPriceView)
         gasPriceView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12).isActive = true
-        gasPriceView.anchor(top: telNoLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 10)
+        gasPriceView.anchor(top: gasStationLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 10, paddingRight: 18)
         gasPriceView.bindViewModel(with: gasStation)
     }
     

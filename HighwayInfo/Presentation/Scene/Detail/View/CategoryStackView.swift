@@ -63,11 +63,11 @@ final class CategoryStackView: UIView {
     }
     
     private func configureUI(with serviceArea: ServiceArea) {
-        sleepingView.image = serviceArea.sleepingRoom == true ? UIImage(named: "sleeping") : UIImage()
-        showerView.image = serviceArea.showerRoom == true ? UIImage(named: "shower") : UIImage()
-        laundryView.image = serviceArea.laundryRoom == true ? UIImage(named: "laundry") : UIImage()
-        restAreaView.image = serviceArea.restArea == true ? UIImage(named: "restArea") : UIImage()
-        marketView.image = serviceArea.market == true ? UIImage(named: "market") : UIImage()
+        sleepingView.image = serviceArea.hasSleepingRoom ? UIImage(named: "sleeping") : UIImage()
+        showerView.image = serviceArea.hasShowerRoom ? UIImage(named: "shower") : UIImage()
+        laundryView.image = serviceArea.hasLaundryRoom ? UIImage(named: "laundry") : UIImage()
+        restAreaView.image = serviceArea.hasRestArea ? UIImage(named: "restArea") : UIImage()
+        marketView.image = serviceArea.hasMarket ? UIImage(named: "market") : UIImage()
         let stackView = UIStackView(arrangedSubviews: [sleepingView, showerView, laundryView, restAreaView, marketView])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually

@@ -16,19 +16,19 @@ struct ServiceArea {
     let address: String
     let telNo: String
     
-    var sleepingRoom: Bool {
+    var hasSleepingRoom: Bool {
         return convenience.contains("수면실")
     }
-    var showerRoom: Bool {
+    var hasShowerRoom: Bool {
         return convenience.contains("샤워실")
     }
-    var laundryRoom: Bool {
+    var hasLaundryRoom: Bool {
         return convenience.contains("세탁실")
     }
-    var restArea: Bool {
+    var hasRestArea: Bool {
         return convenience.contains("쉼터")
     }
-    var market: Bool {
+    var hasMarket: Bool {
         return convenience.contains("농산물판매장")
     }
     var fullName: String {

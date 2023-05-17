@@ -103,8 +103,8 @@ final class ServiceAreaViewController: UIViewController {
         
         output.serviceArea
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] serviceZip in
-                self?.applySnapShot(with: serviceZip)
+            .subscribe(onNext: { [weak self] serviceArea in
+                self?.applySnapShot(with: serviceArea)
             })
             .disposed(by: disposeBag)
         

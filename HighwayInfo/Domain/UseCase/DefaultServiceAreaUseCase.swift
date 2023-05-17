@@ -14,15 +14,15 @@ final class DefaultServiceAreaUseCase: ServiceAreaUseCase {
         case .all:
             return serviceArea
         case .sleepingRoom:
-            return serviceArea.filter { $0.sleepingRoom == true }
+            return serviceArea.filter { $0.hasSleepingRoom }
         case .showerRoom:
-            return serviceArea.filter { $0.showerRoom == true }
+            return serviceArea.filter { $0.hasShowerRoom }
         case .laundryRoom:
-            return serviceArea.filter { $0.laundryRoom == true }
+            return serviceArea.filter { $0.hasLaundryRoom }
         case .restArea:
-            return serviceArea.filter { $0.restArea == true }
+            return serviceArea.filter { $0.hasRestArea }
         case .market:
-            return serviceArea.filter { $0.market == true }
+            return serviceArea.filter { $0.hasMarket }
         }
     }
 }

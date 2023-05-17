@@ -93,7 +93,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBP-4F-wij">
-                                <rect key="frame" x="30" y="109" width="333" height="40"/>
+                                <rect key="frame" x="30" y="100" width="333" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로 갈까요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOG-ph-noE">
                                         <rect key="frame" x="20" y="4" width="293" height="32"/>
@@ -127,7 +127,7 @@
                         <constraints>
                             <constraint firstItem="9Ej-IM-2Ik" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" id="29A-AW-fGS"/>
                             <constraint firstItem="kby-z9-vwm" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="10" id="3RH-8W-9Oa"/>
-                            <constraint firstItem="OBP-4F-wij" firstAttribute="top" secondItem="Slq-y6-mci" secondAttribute="top" constant="50" id="IHJ-WE-1LD"/>
+                            <constraint firstItem="OBP-4F-wij" firstAttribute="top" secondItem="LpD-5O-foU" secondAttribute="top" constant="100" id="IHJ-WE-1LD"/>
                             <constraint firstItem="Slq-y6-mci" firstAttribute="bottom" secondItem="kby-z9-vwm" secondAttribute="bottom" constant="50" id="Moh-CI-fnf"/>
                             <constraint firstItem="9Ej-IM-2Ik" firstAttribute="top" secondItem="LpD-5O-foU" secondAttribute="top" id="QVT-G9-Opm"/>
                             <constraint firstItem="OBP-4F-wij" firstAttribute="leading" secondItem="Slq-y6-mci" secondAttribute="leading" constant="30" id="S26-dx-rxY"/>
@@ -304,7 +304,7 @@
     <resources>
         <image name="pin" width="512" height="512"/>
         <namedColor name="BlueGray_textColor">
-            <color red="0.2196078431372549" green="0.27843137254901962" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.2199999988079071" green="0.27799999713897705" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
