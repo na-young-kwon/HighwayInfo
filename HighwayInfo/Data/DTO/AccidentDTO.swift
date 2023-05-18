@@ -19,11 +19,20 @@ class AccidentDTO: Decodable {
     var toDomain: Accident {
         return Accident(startTime: startDate,
                         place: inciPlace1,
-                        direction: inciPlace2,
+                        direction: inciPlace2.removeDirection(),
                         restrictType: restrictType,
                         description: inciDesc,
                         coord_x: Double(coord_x) ?? 0,
                         coord_y: Double(coord_y) ?? 0
         )
+    }
+}
+
+extension String {
+    func removeDirection() -> String {
+        guard let startPoint = self.firstIndex(of: " ") else {
+            return self
+        }
+        return String(self[startPoint...])
     }
 }

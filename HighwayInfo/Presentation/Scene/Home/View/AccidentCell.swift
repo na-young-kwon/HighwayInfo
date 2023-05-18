@@ -11,9 +11,13 @@ import RxCocoa
 
 class AccidentCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var directionTitleLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var startTimeTitleLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var restrictTitleLabel: UILabel!
     @IBOutlet weak var restrictLabel: UILabel!
+    @IBOutlet weak var descriptionTitleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var accidentImageView: UIImageView!
     
@@ -30,6 +34,14 @@ class AccidentCell: UITableViewCell {
         accidentImageView.clipsToBounds = true
         accidentImageView.layer.cornerRadius = 5
         accidentImageView.contentMode = .scaleToFill
+        directionTitleLabel.clipsToBounds = true
+        startTimeTitleLabel.clipsToBounds = true
+        restrictTitleLabel.clipsToBounds = true
+        descriptionTitleLabel.clipsToBounds = true
+        directionTitleLabel.layer.cornerRadius = 3
+        startTimeTitleLabel.layer.cornerRadius = 3
+        restrictTitleLabel.layer.cornerRadius = 3
+        descriptionTitleLabel.layer.cornerRadius = 3
     }
 
     override func layoutSubviews() {
@@ -43,7 +55,7 @@ class AccidentCell: UITableViewCell {
     func bind(_ viewModel: AccidentViewModel) {
         titleLabel.text = viewModel.place
         directionLabel.text = viewModel.direction
-        startTimeLabel.text = "사고시각: " + viewModel.startTime
+        startTimeLabel.text = viewModel.startTime
         restrictLabel.text = viewModel.restrictType + "통제"
         descriptionLabel.text = viewModel.description
         accidentImageView.loadFrom(url: viewModel.preview)
