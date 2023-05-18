@@ -209,4 +209,8 @@ final class CardViewController: UIViewController {
         let firstItem = IndexPath(item: 0, section: 0)
         titleCollectionView.selectItem(at: firstItem, animated: false, scrollPosition: .left)
     }
+    
+    deinit {
+        print("카드뷰 디이닛")
+    }
 }

@@ -47,12 +47,13 @@ final class AppCoordinator: Coordinator {
     }
     
     private func startTabCoordinator(of page: TabBarPage, to navigationController: UINavigationController) {
+        let apiProvider = DefaultAPIProvider()
         switch page {
         case .home:
-            let homeCoordinator = DefaultHomeCoordinator(navigationController)
+            let homeCoordinator = DefaultHomeCoordinator(navigationController, apiProvider: apiProvider)
             homeCoordinator.start()
         case .search:
-            let roadCoordinator = DefaultRoadCoordinator(navigationController)
+            let roadCoordinator = DefaultRoadCoordinator(navigationController, apiProvider: apiProvider)
             roadCoordinator.start()
         }
     }

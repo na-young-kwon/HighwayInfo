@@ -11,9 +11,11 @@ import CoreLocation
 final class DefaultSearchCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
+    let apiProvider: DefaultAPIProvider
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, apiProvider: DefaultAPIProvider) {
         self.navigationController = navigationController
+        self.apiProvider = apiProvider
     }
     
     func start() {
@@ -22,7 +24,7 @@ final class DefaultSearchCoordinator: Coordinator {
     func toResultView(with route: Route) {
         let resultCoordinator = DefaultResultCoordinator(
             navigationController: navigationController,
-            parentCoordinator: self
+            parentCoordinator: self, apiProvider: apiProvider
         )
         childCoordinators.append(resultCoordinator)
         resultCoordinator.start()

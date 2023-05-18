@@ -11,9 +11,11 @@ final class DefaultRoadCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var searchViewModel: SearchViewModel?
+    let apiProvider: DefaultAPIProvider
     
-    init(_ navigationController: UINavigationController) {
+    init(_ navigationController: UINavigationController, apiProvider: DefaultAPIProvider) {
         self.navigationController = navigationController
+        self.apiProvider = apiProvider
     }
     
     func start() {
@@ -23,7 +25,7 @@ final class DefaultRoadCoordinator: Coordinator {
         
         let roadUseCase = DefaultRoadUseCase(locationService: LocationService.shared)
         let searchUseCase = DefaultSearchUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)), userRepository: DefaultUserRepository())
-        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController)
+        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController, apiProvider: apiProvider)
         searchCoordinator.start()
         
         searchViewModel = SearchViewModel(useCase: searchUseCase, coordinator: searchCoordinator)

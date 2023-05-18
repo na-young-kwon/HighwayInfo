@@ -9,17 +9,17 @@ import UIKit
 
 final class DefaultHomeCoordinator: Coordinator {
     var navigationController: UINavigationController
-    
+    let apiProvider: DefaultAPIProvider
     var childCoordinators: [Coordinator] = []
     
-    init(_ navigationController: UINavigationController) {
+    init(_ navigationController: UINavigationController, apiProvider: DefaultAPIProvider) {
         self.navigationController = navigationController
+        self.apiProvider = apiProvider
     }
     
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: HomeViewController.self)
-        let apiProvider = DefaultAPIProvider()
         let accidentRepository = DefaultAccidentRepository(service: AccidentService(apiProvider: apiProvider))
         let cctvRepository = DefaultCCTVRepository(service: CCTVService(apiProvider: apiProvider))
         
