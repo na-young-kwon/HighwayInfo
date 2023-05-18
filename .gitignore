@@ -5,6 +5,7 @@
 Secret.plist
 Info.plist
 .DS_Store
+TMapSDK.framework
 
 ### CocoaPods ###
 ## CocoaPods GitIgnore Template
