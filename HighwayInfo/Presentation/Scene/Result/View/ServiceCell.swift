@@ -15,19 +15,19 @@ final class ServiceCell: UICollectionViewCell {
     }()
     private let addressLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12)
         label.numberOfLines = 0
         label.textAlignment = .left
+        label.font = .systemFont(ofSize: 12)
         return label
     }()
     private let brandTitleLabel: UILabel = {
         let label = PaddingLabel()
         label.text = "편의시설"
-        label.textAlignment = .left
-        label.font = .systemFont(ofSize: 12)
         label.textColor = .gray
+        label.textAlignment = .left
         label.layer.cornerRadius = 2
         label.backgroundColor = .white
+        label.font = .systemFont(ofSize: 12)
         return label
     }()
     private let brandLabel: UILabel = {

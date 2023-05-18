@@ -26,6 +26,10 @@ class AccidentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        accidentImageView.layoutIfNeeded()
+        accidentImageView.clipsToBounds = true
+        accidentImageView.layer.cornerRadius = 5
+        accidentImageView.contentMode = .scaleToFill
     }
 
     override func layoutSubviews() {

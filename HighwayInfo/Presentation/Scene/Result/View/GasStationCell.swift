@@ -22,7 +22,7 @@ final class GasStationCell: UICollectionViewCell {
     private let gasolinePriceLabel: UILabel = {
         let label = PaddingLabel()
         label.textColor = .white
-        label.layer.cornerRadius = 2
+        label.layer.cornerRadius = 5
         label.textAlignment = .center
         label.layer.masksToBounds = true
         label.font = .systemFont(ofSize: 13)
@@ -38,7 +38,7 @@ final class GasStationCell: UICollectionViewCell {
     private let dieselPriceLabel: UILabel = {
         let label = PaddingLabel()
         label.textColor = .white
-        label.layer.cornerRadius = 2
+        label.layer.cornerRadius = 5
         label.textAlignment = .center
         label.layer.masksToBounds = true
         label.font = .systemFont(ofSize: 13)
