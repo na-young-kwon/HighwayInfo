@@ -198,11 +198,19 @@ final class CardViewController: UIViewController {
     }
     
     private func applySnapshot(for result: ([ServiceArea], [GasStation])) {
-        var snapshot = NSDiffableDataSourceSnapshot<DetailSection, AnyHashable>()
-        snapshot.appendSections([.serviceArea, .gasStation])
-        snapshot.appendItems(result.0, toSection: .serviceArea)
-        snapshot.appendItems(result.1, toSection: .gasStation)
-        detailDataSource.apply(snapshot, animatingDifferences: false)
+        if result.0.isEmpty {
+            detailCollectionView.backgroundView = EmptyServiceAreaView()
+            var snapshot = NSDiffableDataSourceSnapshot<DetailSection, AnyHashable>()
+            snapshot.appendSections([.serviceArea])
+            detailDataSource.apply(snapshot, animatingDifferences: false)
+        } else {
+            detailCollectionView.backgroundView = nil
+            var snapshot = NSDiffableDataSourceSnapshot<DetailSection, AnyHashable>()
+            snapshot.appendSections([.serviceArea, .gasStation])
+            snapshot.appendItems(result.0, toSection: .serviceArea)
+            snapshot.appendItems(result.1, toSection: .gasStation)
+            detailDataSource.apply(snapshot, animatingDifferences: false)
+        }
     }
     
     private func selectFirstItem() {

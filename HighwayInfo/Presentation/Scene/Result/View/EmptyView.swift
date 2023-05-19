@@ -13,7 +13,7 @@ final class EmptyView: UIView {
     private let label: UILabel = {
         let label = UILabel()
         label.text = "경로상 이용예정인 고속도로가 없습니다."
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 18)
         label.textColor = UIColor.blueGray_textColor
         return label
     }()

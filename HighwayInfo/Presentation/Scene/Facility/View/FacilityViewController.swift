@@ -140,8 +140,6 @@ final class FacilityViewController: UIViewController {
         
         // TODO: - 서치뷰
         // TODO: - 스택뷰
-        // TODO: - 천안논산고속도로 휴게소 없을 떄 아얘 테이블뷰 안보여주기
-        // TODO: - 티맵프레임워크 제외하고 올리기
         
         // MARK: - 앱 출시하고 할 일
         // TODO: - 로드뷰 화면 개선하기
