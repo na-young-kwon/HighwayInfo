@@ -21,11 +21,11 @@ struct GasStation {
         case "SK":
             return "oilCompany_SK"
         case "현대":
-            return "oilCompany_현대"
+            return "oilCompany_hyundai"
         case "GS-Caltex":
             return "oilCompany_GS-Caltex"
         case "알뜰":
-            return "oilCompany_알뜰"
+            return "oilCompany_alddeul"
         case "S-Oil":
             return "oilCompany_S-Oil"
         default:
