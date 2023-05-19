@@ -32,7 +32,15 @@ final class DefaultCardUseCase: CardUseCase {
     
     func fetchGasStation(for routeName: String) {
         let serviceAreaNames = roadRepository.fetchGasStation(for: routeName)
-            .map { $0.compactMap { $0.name } }
+            .map { $0.compactMap { $0.name } }.share()
+        serviceAreaNames
+            .subscribe(onNext: { gasStation in
+                if gasStation.isEmpty {
+                    self.gasStation.onNext([])
+                }
+            })
+            .disposed(by: disposeBag)
+        
         let gasStation = serviceAreaNames.flatMap { serviceName in
             Observable.zip(
                 serviceName.map { self.roadRepository.fetchGasPrice(for: $0) }
