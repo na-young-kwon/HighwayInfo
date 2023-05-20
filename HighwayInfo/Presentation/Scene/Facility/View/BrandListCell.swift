@@ -50,7 +50,6 @@ final class BrandListCell: UICollectionViewCell {
     }
     
     func bindViewModel(with brand: Brand) {
-        print(brand)
         titleLabel.text = brand.name
         descriptionLabel.text = brand.operatingTime
     }

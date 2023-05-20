@@ -46,24 +46,24 @@ final class CardViewModel: ViewModelType {
         }
         input.selectedHighway
             .compactMap { $0.map { $0.rawName } }
-            .subscribe(onNext: { selectedRoute in
-                self.selectedHighway = ""
-                self.selectedHighway = selectedRoute
-                self.useCase.fetchServiceArea(for: selectedRoute)
-                self.useCase.fetchGasStation(for: selectedRoute)
+            .subscribe(onNext: { [weak self] selectedRoute in
+                self?.selectedHighway = ""
+                self?.selectedHighway = selectedRoute
+                self?.useCase.fetchServiceArea(for: selectedRoute)
+                self?.useCase.fetchGasStation(for: selectedRoute)
             })
             .disposed(by: disposeBag)
         
         input.selectedServiceArea
-            .subscribe(onNext: { serviceArea in
-                self.coordinator.toFacilityView(with: serviceArea)
+            .subscribe(onNext: { [weak self] serviceArea in
+                self?.coordinator.toFacilityView(with: serviceArea)
             })
             .disposed(by: disposeBag)
         
         serviceArea
-            .subscribe(onNext: { serviceArea in
-                self.serviceArea.removeAll()
-                self.serviceArea = serviceArea
+            .subscribe(onNext: { [weak self] serviceArea in
+                self?.serviceArea.removeAll()
+                self?.serviceArea = serviceArea
             })
             .disposed(by: disposeBag)
         return Output(highway: highway, result: result)

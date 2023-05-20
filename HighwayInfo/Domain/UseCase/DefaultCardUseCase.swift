@@ -24,8 +24,8 @@ final class DefaultCardUseCase: CardUseCase {
         roadRepository.fetchServiceArea(for: routeName)
             .take(15)
             .map { $0.map { $0.toDomain } }
-            .subscribe(onNext: { serviceArea in
-                self.serviceArea.onNext(serviceArea)
+            .subscribe(onNext: { [weak self] serviceArea in
+                self?.serviceArea.onNext(serviceArea)
             })
             .disposed(by: disposeBag)
     }
@@ -34,22 +34,22 @@ final class DefaultCardUseCase: CardUseCase {
         let serviceAreaNames = roadRepository.fetchGasStation(for: routeName)
             .map { $0.compactMap { $0.name } }.share()
         serviceAreaNames
-            .subscribe(onNext: { gasStation in
+            .subscribe(onNext: { [weak self] gasStation in
                 if gasStation.isEmpty {
-                    self.gasStation.onNext([])
+                    self?.gasStation.onNext([])
                 }
             })
             .disposed(by: disposeBag)
         
-        let gasStation = serviceAreaNames.flatMap { serviceName in
+        let gasStation = serviceAreaNames.flatMap { [weak self] serviceName in
             Observable.zip(
-                serviceName.map { self.roadRepository.fetchGasPrice(for: $0) }
+                serviceName.map { self!.roadRepository.fetchGasPrice(for: $0) }
             )}
         gasStation
             .take(15)
             .map { $0.compactMap { $0.toDomain } }
-            .subscribe(onNext: { gasStation in
-                self.gasStation.onNext(gasStation)
+            .subscribe(onNext: { [weak self] gasStation in
+                self?.gasStation.onNext(gasStation)
             })
             .disposed(by: disposeBag)
     }
