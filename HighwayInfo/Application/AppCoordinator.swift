@@ -11,6 +11,7 @@ final class AppCoordinator: Coordinator {
     private let window: UIWindow
     var tabBarController: UITabBarController
     var childCoordinators: [Coordinator] = []
+    private let apiProvider = DefaultAPIProvider()
     
     init(window: UIWindow) {
         self.window = window
@@ -47,7 +48,6 @@ final class AppCoordinator: Coordinator {
     }
     
     private func startTabCoordinator(of page: TabBarPage, to navigationController: UINavigationController) {
-        let apiProvider = DefaultAPIProvider()
         switch page {
         case .home:
             let homeCoordinator = DefaultHomeCoordinator(navigationController, apiProvider: apiProvider)

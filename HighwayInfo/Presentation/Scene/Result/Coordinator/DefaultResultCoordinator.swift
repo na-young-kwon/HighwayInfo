@@ -11,9 +11,9 @@ import CoreLocation
 final class DefaultResultCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    private weak var parentCoordinator: Coordinator?
     var cardViewModel: CardViewModel?
-    let apiProvider: DefaultAPIProvider
+    private weak var parentCoordinator: Coordinator?
+    private let apiProvider: DefaultAPIProvider
     
     init(navigationController: UINavigationController, parentCoordinator: Coordinator, apiProvider: DefaultAPIProvider) {
         self.navigationController = navigationController

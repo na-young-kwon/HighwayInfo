@@ -11,7 +11,7 @@ import CoreLocation
 final class DefaultSearchCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    let apiProvider: DefaultAPIProvider
+    private let apiProvider: DefaultAPIProvider
     
     init(navigationController: UINavigationController, apiProvider: DefaultAPIProvider) {
         self.navigationController = navigationController
