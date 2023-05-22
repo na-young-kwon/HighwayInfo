@@ -11,10 +11,12 @@ import CoreLocation
 final class DefaultSearchCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
+    private weak var parentCoordinator: Coordinator?
     private let apiProvider: DefaultAPIProvider
     
-    init(navigationController: UINavigationController, apiProvider: DefaultAPIProvider) {
+    init(navigationController: UINavigationController, parentCoordinator: Coordinator, apiProvider: DefaultAPIProvider) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
         self.apiProvider = apiProvider
     }
 
@@ -45,5 +47,9 @@ final class DefaultSearchCoordinator: Coordinator {
         childCoordinators.append(resultCoordinator)
         resultCoordinator.start()
         resultCoordinator.start(with: route)
+    }
+    
+    func removeCoordinator() {
+        parentCoordinator?.removeChildCoordinator(self)
     }
 }

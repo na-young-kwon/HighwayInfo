@@ -30,8 +30,8 @@ final class DefaultSearchUseCase: SearchUseCase {
     
     func fetchSearchHistory() {
         userRepository.fetchSearchHistory()
-            .subscribe(onNext: { location in
-                self.searchHistory.onNext(location)
+            .subscribe(onNext: { [weak self] location in
+                self?.searchHistory.onNext(location)
             })
             .disposed(by: disposeBag)
     }
@@ -58,8 +58,8 @@ final class DefaultSearchUseCase: SearchUseCase {
         guard let coordinate = coordinate else { return }
         roadRepository.fetchSearchResult(for: keyword, coordinate: coordinate)
             .map { $0.toDomain }
-            .subscribe(onNext: { searchResult in
-                self.searchResult.onNext(searchResult)
+            .subscribe(onNext: { [weak self] searchResult in
+                self?.searchResult.onNext(searchResult)
             })
             .disposed(by: disposeBag)
     }
@@ -70,13 +70,13 @@ final class DefaultSearchUseCase: SearchUseCase {
        let currentLocation = roadRepository.fetchStartPointName(for: point.start)
         
         Observable.zip(path, highwayInfo, currentLocation)
-            .subscribe(onNext: { path, highwayInfo, startPointName in
+            .subscribe(onNext: { [weak self] path, highwayInfo, startPointName in
                 let route = Route(startPointName: startPointName,
                                   endPointName: endPointName,
                                   path: path,
                                   markerPoint: point,
                                   highwayInfo: highwayInfo)
-                self.route.onNext(route)
+                self?.route.onNext(route)
             })
             .disposed(by: disposeBag)
     }
@@ -86,12 +86,12 @@ final class DefaultSearchUseCase: SearchUseCase {
         let coordinate = route.map { $0.flatMap { $0.geometry.coordinates } }.map { $0.compactMap { $0.point } }
         
         coordinate
-            .subscribe(onNext: { route in
+            .subscribe(onNext: { [weak self] route in
                 let latitude = route.filter { $0 < 100 }
                 let longitude = route.filter { $0 > 100 }
                 let coordinate = zip(latitude, longitude)
                 let path = coordinate.map { CLLocationCoordinate2D(latitude: $0.0, longitude: $0.1) }
-                self.path.onNext(path)
+                self?.path.onNext(path)
             })
             .disposed(by: disposeBag)
     }
@@ -106,7 +106,8 @@ final class DefaultSearchUseCase: SearchUseCase {
             .map { $0.map { $0.compactMap { $0.point } } }
         
         Observable.zip(names, coordinates)
-            .subscribe(onNext: { element in
+            .subscribe(onNext: { [weak self] element in
+                guard let self = self else { return }
                 if element.0.count > 0 {
                     let highwayInfo = self.makeHighwayInfo(names: element.0, coordinates: element.1)
                     self.highwayInfo.onNext(highwayInfo)

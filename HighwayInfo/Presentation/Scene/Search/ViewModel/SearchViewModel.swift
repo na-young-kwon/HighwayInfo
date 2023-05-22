@@ -40,20 +40,22 @@ final class SearchViewModel: ViewModelType {
         let output = Output(searchResult: useCase.searchResult.asObservable(),
                             searchHistory: useCase.searchHistory.asObservable())
         input.viewWillAppear
-            .subscribe(onNext: { _ in
-                self.useCase.observeLocation()
-                self.useCase.fetchSearchHistory()
+            .subscribe(onNext: { [weak self] _ in
+                self?.useCase.observeLocation()
+                self?.useCase.fetchSearchHistory()
             })
             .disposed(by: disposeBag)
         
         searchKeyword
-            .subscribe(onNext: { keyword in
+            .subscribe(onNext: { [weak self] keyword in
+                guard let self = self else { return }
                 self.useCase.fetchResult(for: keyword, coordinate: self.currentLocation)
             })
             .disposed(by: disposeBag)
         
         selectedLocationInfo
-            .subscribe(onNext: { selectedLocationInfo in
+            .subscribe(onNext: { [weak self] selectedLocationInfo in
+                guard let self = self else { return }
                 let endPoint = CLLocationCoordinate2D(latitude: Double(selectedLocationInfo.coordy) ?? 0,
                                                       longitude: Double(selectedLocationInfo.coordx) ?? 0)
                 let markerPoint = (self.currentLocation, endPoint)
@@ -62,8 +64,8 @@ final class SearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         selectedLocationInfo
-            .subscribe(onNext: { location in
-                self.useCase.saveSearchTerm(with: location)
+            .subscribe(onNext: { [weak self] location in
+                self?.useCase.saveSearchTerm(with: location)
         })
         .disposed(by: disposeBag)
         
@@ -79,5 +81,9 @@ final class SearchViewModel: ViewModelType {
     
     func deleteHistory() {
         useCase.deleteSearchHistory()
+    }
+    
+    func removeCoordinator() {
+        coordinator?.removeCoordinator()
     }
 }

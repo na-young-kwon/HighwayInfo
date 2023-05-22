@@ -15,8 +15,7 @@ final class SearchViewController: UIViewController {
     enum Section {
         case search
     }
-    
-    var viewModel: SearchViewModel?
+    var viewModel: SearchViewModel!
     private let disposeBag = DisposeBag()
     private let searchTableView = UITableView()
     private let historyTableView = UITableView()
@@ -168,6 +167,10 @@ final class SearchViewController: UIViewController {
         loadingIndicator.play { [weak self] finished in
             self?.loadingIndicator.removeFromSuperview()
         }
+    }
+    
+    deinit {
+        viewModel.removeCoordinator()
     }
 }
 

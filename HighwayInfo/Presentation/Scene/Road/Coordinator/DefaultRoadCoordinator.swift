@@ -28,7 +28,8 @@ final class DefaultRoadCoordinator: Coordinator {
     }
     
     func showSearchView(with currentLocation: CLLocationCoordinate2D) {
-        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController, apiProvider: apiProvider)
+        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController, parentCoordinator: self, apiProvider: apiProvider)
+        
         childCoordinators.append(searchCoordinator)
         searchCoordinator.start()
         searchCoordinator.start(with: currentLocation)
