@@ -49,6 +49,14 @@ final class SearchViewController: UIViewController {
         return textField
     }()
     
+    private lazy var backButton: UIButton = {
+            let button = UIButton()
+            button.setImage(UIImage(systemName: "chevron.backward")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            button.addTarget(self, action: #selector(dismissSearchView), for: .touchUpInside)
+            return button
+        }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
@@ -59,13 +67,17 @@ final class SearchViewController: UIViewController {
     }
     
     private func configureUI() {
+        navigationItem.hidesBackButton = true
         view.hideKeyboardWhenTappedAround()
         view.backgroundColor = .white
         view.addSubview(textField)
+        view.addSubview(backButton)
         view.addSubview(historyTableView)
         view.addSubview(searchTableView)
-
-        textField.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 100, paddingLeft: 20, paddingRight: 20, height: 40)
+        textField.becomeFirstResponder()
+        backButton.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 100, paddingLeft: 10, width: 40, height: 40)
+        textField.anchor(top: backButton.topAnchor, left: backButton.rightAnchor, right: view.rightAnchor, paddingRight: 20, height: 40)
+        textField.centerY(inView: backButton)
         searchTableView.anchor(top: textField.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 12)
         historyTableView.anchor(top: textField.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 5)
     }
@@ -167,6 +179,10 @@ final class SearchViewController: UIViewController {
         loadingIndicator.play { [weak self] finished in
             self?.loadingIndicator.removeFromSuperview()
         }
+    }
+    
+    @objc func dismissSearchView() {
+        viewModel.popViewController()
     }
     
     deinit {

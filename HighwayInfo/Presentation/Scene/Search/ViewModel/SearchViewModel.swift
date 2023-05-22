@@ -79,6 +79,10 @@ final class SearchViewModel: ViewModelType {
         return output
     }
     
+    func popViewController() {
+        coordinator?.popViewController()
+    }
+    
     func deleteHistory() {
         useCase.deleteSearchHistory()
     }

@@ -21,10 +21,6 @@ final class DefaultSearchCoordinator: Coordinator {
     }
 
     func start() {
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        backButton.tintColor = .black
-        navigationController.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     func start(with currentLocation: CLLocationCoordinate2D) {
@@ -47,6 +43,10 @@ final class DefaultSearchCoordinator: Coordinator {
         childCoordinators.append(resultCoordinator)
         resultCoordinator.start()
         resultCoordinator.start(with: route)
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: false)
     }
     
     func removeCoordinator() {
