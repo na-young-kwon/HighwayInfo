@@ -11,22 +11,12 @@ import RxCocoa
 import CoreLocation
 import Lottie
 
-protocol SearchViewDelegate: AnyObject {
-    func dismissSearchView()
-    func currentLocation() -> CLLocationCoordinate2D?
-}
-
-class SearchView: UIView {
+final class SearchViewController: UIViewController {
     enum Section {
         case search
     }
     
-    var viewModel: SearchViewModel? {
-        didSet {
-            bindViewModel()
-        }
-    }
-    weak var delegate: SearchViewDelegate?
+    var viewModel: SearchViewModel?
     private let disposeBag = DisposeBag()
     private let searchTableView = UITableView()
     private let historyTableView = UITableView()
@@ -56,41 +46,29 @@ class SearchView: UIView {
         // padding
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: textField.frame.height))
         textField.leftViewMode = UITextField.ViewMode.always
-        textField.placeholder = "검색"
+        textField.placeholder = " 검색"
         return textField
     }()
     
-    private lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "chevron.backward")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(dismissSearchView), for: .touchUpInside)
-        return button
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         configureUI()
         configureTableView()
         configureDataSource()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        bindViewModel()
     }
     
     private func configureUI() {
-        hideKeyboardWhenTappedAround()
-        backgroundColor = .white
-        addSubview(textField)
-        addSubview(backButton)
-        addSubview(historyTableView)
-        addSubview(searchTableView)
-        backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 100, paddingLeft: 10, width: 40, height: 40)
-        textField.anchor(top: backButton.topAnchor, left: backButton.rightAnchor, right: rightAnchor, paddingRight: 20, height: 40)
-        textField.centerY(inView: backButton)
-        searchTableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12)
-        historyTableView.anchor(top: textField.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5)
+        view.hideKeyboardWhenTappedAround()
+        view.backgroundColor = .white
+        view.addSubview(textField)
+        view.addSubview(historyTableView)
+        view.addSubview(searchTableView)
+
+        textField.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 100, paddingLeft: 20, paddingRight: 20, height: 40)
+        searchTableView.anchor(top: textField.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 12)
+        historyTableView.anchor(top: textField.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 5)
     }
     
     private func configureTableView() {
@@ -132,15 +110,13 @@ class SearchView: UIView {
     }
     
     private func bindViewModel() {
-        let viewWillAppear = textField.rx.controlEvent(.editingDidBegin).asObservable()
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
         let searchKeyword = textField.rx.text.orEmpty.asObservable()
         let selectedLocation = PublishSubject<LocationInfo?>()
-        let currentLocation = delegate?.currentLocation()
-
+        
         let input = SearchViewModel.Input(viewWillAppear: viewWillAppear,
                                           searchKeyword: searchKeyword,
-                                          itemSelected: selectedLocation.asObservable(),
-                                          currentLocation: Observable.of(currentLocation))
+                                          itemSelected: selectedLocation.asObservable())
         let output = viewModel?.transform(input: input)
         
         textField.rx.text.orEmpty
@@ -185,23 +161,17 @@ class SearchView: UIView {
             .disposed(by: disposeBag)
     }
     
-    @objc func dismissSearchView() {
-        endEditing(true)
-        textField.text = ""
-        delegate?.dismissSearchView()
-    }
-    
     private func showLoadingIndicator() {
-        addSubview(loadingIndicator)
-        loadingIndicator.centerX(inView: self)
-        loadingIndicator.centerY(inView: self)
+        view.addSubview(loadingIndicator)
+        loadingIndicator.centerX(inView: view)
+        loadingIndicator.centerY(inView: view)
         loadingIndicator.play { [weak self] finished in
             self?.loadingIndicator.removeFromSuperview()
         }
     }
 }
 
-extension SearchView: UITableViewDelegate {
+extension SearchViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: SearchHeaderView.reuseIdentifier) as! SearchHeaderView
         view.resetButtonTapped

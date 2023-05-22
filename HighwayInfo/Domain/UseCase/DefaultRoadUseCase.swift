@@ -15,7 +15,7 @@ enum LocationAuthorizationStatus {
 }
 
 final class DefaultRoadUseCase: RoadUseCase {
-    var currentLocation = PublishSubject<CLLocation>()
+    var currentLocation = PublishSubject<CLLocationCoordinate2D>()
     var authorizationStatus = BehaviorSubject<LocationAuthorizationStatus?>(value: nil)
     private let locationService: LocationService
     private let disposeBag = DisposeBag()
@@ -47,7 +47,7 @@ final class DefaultRoadUseCase: RoadUseCase {
         return locationService.currentLocation()
             .compactMap { $0.last }
             .subscribe(onNext: { [weak self] location in
-                self?.currentLocation.onNext(location)
+                self?.currentLocation.onNext(location.coordinate)
             })
             .disposed(by: disposeBag)
     }

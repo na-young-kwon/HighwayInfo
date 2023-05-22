@@ -10,7 +10,7 @@ import RxSwift
 import CoreLocation
 
 protocol RoadUseCase {
-    var currentLocation: PublishSubject<CLLocation> { get }
+    var currentLocation: PublishSubject<CLLocationCoordinate2D> { get }
     var authorizationStatus: BehaviorSubject<LocationAuthorizationStatus?> { get }
     func checkAuthorization()
     func observeLocation()

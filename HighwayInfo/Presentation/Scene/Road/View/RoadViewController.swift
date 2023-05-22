@@ -19,9 +19,8 @@ class RoadViewController: UIViewController, TMapViewDelegate {
     
     var viewModel: RoadViewModel!
     private let disposeBag = DisposeBag()
-    private var searchView: SearchView?
     private var mapView: TMapView?
-    private let apiKey = "XdvNDcFXsW9TcheSg1zN7YiDmu1bN6o9N3Mvxooj"
+    private let apiKey = Bundle.main.mapViewApiKey
     private var position: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
@@ -31,6 +30,11 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         configureMapView()
         configureTapGesture()
         bindViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func configureUI() {
@@ -58,18 +62,6 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         backgroundView.addSubview(mapView!)
     }
     
-    private func configureSearchView() {
-        searchView = SearchView()
-        guard let searchView = searchView else { return }
-        view.addSubview(searchView)
-        searchView.delegate = self
-        searchView.viewModel = viewModel.searchViewModel
-        searchView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: view.frame.height)
-        searchView.alpha = 1
-        searchView.textField.becomeFirstResponder()
-        tabBarController?.tabBar.isHidden = true
-    }
-    
     private func configureTapGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(showSearchView))
         locationInputView.addGestureRecognizer(tap)
@@ -82,8 +74,8 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         let output = viewModel.transform(input: input)
         
         output.currentLocation
-            .subscribe(onNext: { location in
-                self.position = location
+            .subscribe(onNext: { [weak self] location in
+                self?.position = location
             })
             .disposed(by: disposeBag)
         
@@ -105,7 +97,7 @@ class RoadViewController: UIViewController, TMapViewDelegate {
             }}
         )
         alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tap(_ sender: UIButton) {
@@ -124,23 +116,6 @@ class RoadViewController: UIViewController, TMapViewDelegate {
     }
     
     @objc func showSearchView() {
-        locationInputView.alpha = 0
-        placeholderLabel.alpha = 0
-        configureSearchView()
-    }
-}
-
-extension RoadViewController: SearchViewDelegate {
-    func dismissSearchView() {
-        locationInputView.alpha = 1
-        placeholderLabel.alpha = 1
-        searchView?.alpha = 0
-        searchView?.removeFromSuperview()
-        searchView = nil
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    func currentLocation() -> CLLocationCoordinate2D? {
-        return position
+        viewModel.showSearchView()
     }
 }

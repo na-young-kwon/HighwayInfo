@@ -104,7 +104,7 @@
 		3B6CF37129D31544002289A0 /* RoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37029D31544002289A0 /* RoadService.swift */; };
 		3B6CF37529D31571002289A0 /* RoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37429D31571002289A0 /* RoadRepository.swift */; };
 		3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */; };
-		3B7399F629DC2DE600B5D1FF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F529DC2DE600B5D1FF /* SearchView.swift */; };
+		3B7399F629DC2DE600B5D1FF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F529DC2DE600B5D1FF /* SearchViewController.swift */; };
 		3B7399F829DC34C200B5D1FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */; };
 		3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */; };
 		3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085929B87299009D7396 /* AccidentRequest.swift */; };
@@ -261,7 +261,7 @@
 		3B6CF37029D31544002289A0 /* RoadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadService.swift; sourceTree = "<group>"; };
 		3B6CF37429D31571002289A0 /* RoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadRepository.swift; sourceTree = "<group>"; };
 		3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadRepository.swift; sourceTree = "<group>"; };
-		3B7399F529DC2DE600B5D1FF /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchView.swift; path = HighwayInfo/Presentation/Scene/Search/View/SearchView.swift; sourceTree = SOURCE_ROOT; };
+		3B7399F529DC2DE600B5D1FF /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = HighwayInfo/Presentation/Scene/Search/View/SearchViewController.swift; sourceTree = SOURCE_ROOT; };
 		3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentRepository.swift; sourceTree = "<group>"; };
 		3B8F085929B87299009D7396 /* AccidentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentRequest.swift; sourceTree = "<group>"; };
@@ -740,7 +740,7 @@
 		3B6CF38929D43C84002289A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3B7399F529DC2DE600B5D1FF /* SearchView.swift */,
+				3B7399F529DC2DE600B5D1FF /* SearchViewController.swift */,
 				3B97E45629E00397000F4B39 /* SearchResultCell.swift */,
 				3B497AC929F3DD7600D3FAAC /* SearchHistoryCell.swift */,
 				3B97E45829E003A1000F4B39 /* SearchResultCell.xib */,
@@ -1066,7 +1066,7 @@
 				3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */,
 				3B497AC429F3BA7B00D3FAAC /* DefaultCardCoordinator.swift in Sources */,
 				3B497B432A0B8F0E00D3FAAC /* Facility.swift in Sources */,
-				3B7399F629DC2DE600B5D1FF /* SearchView.swift in Sources */,
+				3B7399F629DC2DE600B5D1FF /* SearchViewController.swift in Sources */,
 				3B3429EE2A176C8300A88F4C /* EmptyServiceAreaView.swift in Sources */,
 				3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */,
 				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,

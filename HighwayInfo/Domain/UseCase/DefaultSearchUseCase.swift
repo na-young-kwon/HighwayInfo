@@ -13,16 +13,19 @@ import CoreLocation
 final class DefaultSearchUseCase: SearchUseCase {
     private let roadRepository: RoadRepository
     private let userRepository: UserRepository
+    private let locationService: LocationService
     private let disposeBag = DisposeBag()
     private var path = PublishSubject<[CLLocationCoordinate2D]>()
     private var highwayInfo = PublishSubject<[HighwayInfo]>()
+    var currentLocation = PublishSubject<CLLocationCoordinate2D>()
     var searchResult = PublishSubject<[LocationInfo]>()
     var searchHistory = PublishSubject<[LocationInfo]>()
     var route = PublishSubject<Route>()
     
-    init(roadRepository: RoadRepository, userRepository: UserRepository) {
+    init(roadRepository: RoadRepository, userRepository: UserRepository, locationService: LocationService) {
         self.roadRepository = roadRepository
         self.userRepository = userRepository
+        self.locationService = locationService
     }
     
     func fetchSearchHistory() {
@@ -40,6 +43,15 @@ final class DefaultSearchUseCase: SearchUseCase {
     func deleteSearchHistory() {
         userRepository.deleteAll()
         searchHistory.onNext([])
+    }
+    
+    func observeLocation() {
+        return locationService.currentLocation()
+            .compactMap { $0.last }
+            .subscribe(onNext: { [weak self] location in
+                self?.currentLocation.onNext(location.coordinate)
+            })
+            .disposed(by: disposeBag)
     }
     
     func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?) {

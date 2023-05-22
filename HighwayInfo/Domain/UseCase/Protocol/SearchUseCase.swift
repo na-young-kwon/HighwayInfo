@@ -13,6 +13,8 @@ protocol SearchUseCase {
     var searchResult: PublishSubject<[LocationInfo]> { get }
     var searchHistory: PublishSubject<[LocationInfo]> { get }
     var route: PublishSubject<Route> { get }
+    var currentLocation: PublishSubject<CLLocationCoordinate2D> { get }
+    func observeLocation()
     func fetchSearchHistory()
     func deleteSearchHistory()
     func saveSearchTerm(with highwayInfo: LocationInfo)

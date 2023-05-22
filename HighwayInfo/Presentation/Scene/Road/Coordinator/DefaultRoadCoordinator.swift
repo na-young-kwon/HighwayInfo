@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class DefaultRoadCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    var searchViewModel: SearchViewModel?
     private let apiProvider: DefaultAPIProvider
     
     init(_ navigationController: UINavigationController, apiProvider: DefaultAPIProvider) {
@@ -22,13 +22,15 @@ final class DefaultRoadCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: RoadViewController.self)  
         let roadUseCase = DefaultRoadUseCase(locationService: LocationService.shared)
-        let searchUseCase = DefaultSearchUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)), userRepository: DefaultUserRepository())
-        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController, apiProvider: apiProvider)
-        searchCoordinator.start()
-        
-        searchViewModel = SearchViewModel(useCase: searchUseCase, coordinator: searchCoordinator)
         vc.viewModel = RoadViewModel(coordinator: self, useCase: roadUseCase)
-        childCoordinators.append(searchCoordinator)
+        
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showSearchView(with currentLocation: CLLocationCoordinate2D) {
+        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController, apiProvider: apiProvider)
+        childCoordinators.append(searchCoordinator)
+        searchCoordinator.start()
+        searchCoordinator.start(with: currentLocation)
     }
 }

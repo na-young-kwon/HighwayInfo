@@ -17,8 +17,24 @@ final class DefaultSearchCoordinator: Coordinator {
         self.navigationController = navigationController
         self.apiProvider = apiProvider
     }
-    
+
     func start() {
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        backButton.tintColor = .black
+        navigationController.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
+    func start(with currentLocation: CLLocationCoordinate2D) {
+        let controller = SearchViewController()
+        let searchUseCase = DefaultSearchUseCase(
+            roadRepository: DefaultRoadRepository(
+                service: RoadService(apiProvider: apiProvider)),
+            userRepository: DefaultUserRepository(),
+            locationService: LocationService.shared
+        )
+        controller.viewModel = SearchViewModel(useCase: searchUseCase, coordinator: self, currentLocation: currentLocation)
+        navigationController.pushViewController(controller, animated: false)
     }
     
     func toResultView(with route: Route) {

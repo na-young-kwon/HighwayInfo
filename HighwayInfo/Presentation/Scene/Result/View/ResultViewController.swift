@@ -117,9 +117,6 @@ final class ResultViewController: UIViewController, TMapViewDelegate {
     
     deinit {
         cardViewController.viewModel.removeCoordinator()
-        cardViewController.removeFromParent()
-        cardViewController = nil
-        print("resultView 디이닛")
         viewModel.removeCoordinator()
     }
 }

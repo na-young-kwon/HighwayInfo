@@ -13,8 +13,8 @@ import CoreLocation
 final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultRoadCoordinator
+    private var currentLocation: CLLocationCoordinate2D?
     let useCase: RoadUseCase
-    let searchViewModel: SearchViewModel
     
     struct Input {
         let viewWillAppear: Observable<Void>
@@ -22,17 +22,16 @@ final class RoadViewModel: ViewModelType {
     
     struct Output {
         let showAuthorizationAlert = BehaviorRelay<Bool>(value: false)
-        let currentLocation = PublishRelay<CLLocationCoordinate2D>()
+        let currentLocation: Observable<CLLocationCoordinate2D>
     }
     
     init(coordinator: DefaultRoadCoordinator, useCase: RoadUseCase) {
         self.coordinator = coordinator
-        self.searchViewModel = coordinator.searchViewModel!
         self.useCase = useCase
     }
     
     func transform(input: Input) -> Output {
-        let output = Output()
+        let output = Output(currentLocation: useCase.currentLocation.asObservable())
         
         input.viewWillAppear
             .subscribe(onNext: { [weak self] _ in
@@ -47,10 +46,16 @@ final class RoadViewModel: ViewModelType {
             .disposed(by: disposeBag)
       
         useCase.currentLocation
-            .map { $0.coordinate }
-            .bind(to: output.currentLocation)
+            .subscribe(onNext: { location in
+                self.currentLocation = location
+            })
             .disposed(by: disposeBag)
         
         return output
+    }
+    
+    func showSearchView() {
+        guard let currentLocation = currentLocation else { return }
+        coordinator.showSearchView(with: currentLocation)
     }
 }

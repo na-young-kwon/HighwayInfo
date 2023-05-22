@@ -8,6 +8,16 @@
 import Foundation
 
 extension Bundle {
+    var mapViewApiKey: String {
+        guard let file = self.path(forResource: "Secret", ofType: "plist"),
+              let resource = NSDictionary(contentsOfFile: file),
+              let key = resource["API_KEY_MapView"] as? String
+        else {
+            fatalError("API키가 없습니다.")
+        }
+        return key
+    }
+    
     var accidentApiKey: String {
         guard let file = self.path(forResource: "Secret", ofType: "plist"),
               let resource = NSDictionary(contentsOfFile: file),
