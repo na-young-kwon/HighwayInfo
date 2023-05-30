@@ -9,6 +9,7 @@ import Foundation
 import CoreLocation
 
 struct HighwayInfo {
+    let uuid = UUID()
     let name: String
     let coordinate: CLLocationCoordinate2D
     

@@ -12,6 +12,8 @@
 		3B3429EE2A176C8300A88F4C /* EmptyServiceAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */; };
 		3B3429F02A17771500A88F4C /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3429EF2A17771500A88F4C /* TMapSDK.framework */; };
 		3B3429F12A17771500A88F4C /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3429EF2A17771500A88F4C /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B3429FE2A25093200A88F4C /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429FD2A25093200A88F4C /* CacheManager.swift */; };
+		3B342A002A25B51900A88F4C /* CacheValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429FF2A25B51900A88F4C /* CacheValue.swift */; };
 		3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */; };
 		3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */; };
 		3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27929DEFC6300D223AC /* SearchRequest.swift */; };
@@ -167,6 +169,8 @@
 		3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighwayInfo++Bundle.swift"; sourceTree = "<group>"; };
 		3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyServiceAreaView.swift; sourceTree = "<group>"; };
 		3B3429EF2A17771500A88F4C /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TMapSDK.framework; path = "../[iOS_SWIFT]TmapSDK_2.12/배포/TMapSDK.framework"; sourceTree = "<group>"; };
+		3B3429FD2A25093200A88F4C /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		3B3429FF2A25B51900A88F4C /* CacheValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheValue.swift; sourceTree = "<group>"; };
 		3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
 		3B3CD27929DEFC6300D223AC /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
@@ -320,6 +324,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B3429FC2A25090500A88F4C /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				3B3429FD2A25093200A88F4C /* CacheManager.swift */,
+				3B3429FF2A25B51900A88F4C /* CacheValue.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		3B497AD529FAA32100D3FAAC /* Parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +590,7 @@
 			children = (
 				3B63BAA729B768760055D3A4 /* Provider */,
 				3B63BAAA29B768A60055D3A4 /* Service */,
+				3B3429FC2A25090500A88F4C /* Cache */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1033,6 +1047,7 @@
 				3B497AF22A00F42700D3FAAC /* ServiceArea.swift in Sources */,
 				3B497B352A0A8A1D00D3FAAC /* BrandListRequest.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
+				3B3429FE2A25093200A88F4C /* CacheManager.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,
 				3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */,
 				3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */,
@@ -1101,6 +1116,7 @@
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
 				3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
+				3B342A002A25B51900A88F4C /* CacheValue.swift in Sources */,
 				3B497B3D2A0B6EE800D3FAAC /* ConvenienceListDTO.swift in Sources */,
 				3B497AE729FBF21700D3FAAC /* GasStation.swift in Sources */,
 				3B497B412A0B7D9A00D3FAAC /* FacilityCell.swift in Sources */,

@@ -40,17 +40,15 @@ final class CardViewModel: ViewModelType {
         let gasStation = useCase.gasStation.asObservable()
         let result = Observable.zip(serviceArea, gasStation).asDriver(onErrorJustReturn: ([], []))
         
-        if let first = highwayInfo.first {
-            useCase.fetchServiceArea(for: first.rawName)
-            useCase.fetchGasStation(for: first.rawName)
+        if let highway = highwayInfo.first {
+            useCase.fetchService(for: highway)
         }
         input.selectedHighway
-            .compactMap { $0.map { $0.rawName } }
-            .subscribe(onNext: { [weak self] selectedRoute in
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] highway in
                 self?.selectedHighway = ""
-                self?.selectedHighway = selectedRoute
-                self?.useCase.fetchServiceArea(for: selectedRoute)
-                self?.useCase.fetchGasStation(for: selectedRoute)
+                self?.selectedHighway = highway.rawName
+                self?.useCase.fetchService(for: highway)
             })
             .disposed(by: disposeBag)
         
