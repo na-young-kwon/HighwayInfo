@@ -23,28 +23,43 @@ final class DefaultFacilityUseCase: FacilityUseCase {
         self.facilityRepository = facilityRepository
     }
     
-    func fetchConvenienceList(for serviceName: String) {
-        facilityRepository.fetchConvenienceList(for: serviceName)
-            .subscribe(onNext: { convenienceListDTO in
-                self.convenienceList.onNext(convenienceListDTO.convenienceList)
-            })
-            .disposed(by: disposeBag)
+    func fetchConvenienceList(for service: ServiceArea) {
+        if let cachedList = CacheManager.shared.fetchConvenienceList(for: service.uuid) {
+            convenienceList.onNext(cachedList)
+        } else {
+            facilityRepository.fetchConvenienceList(for: service.name)
+                .subscribe(onNext: { convenienceListDTO in
+                    self.convenienceList.onNext(convenienceListDTO.convenienceList)
+                    CacheManager.shared.saveConvenienceList(data: convenienceListDTO.convenienceList, for: service.uuid)
+                })
+                .disposed(by: disposeBag)
+        }
     }
     
-    func fetchFoodMenu(for serviceName: String) {
-        facilityRepository.fetchFoodMenu(for: serviceName)
-            .subscribe(onNext: { foodDTO in 
-                self.foodMenuList.onNext(foodDTO.foodMenuList)
-            })
-            .disposed(by: disposeBag)
+    func fetchFoodMenu(for service: ServiceArea) {
+        if let cachedFoodMenu = CacheManager.shared.fetchFoodMenu(for: service.uuid) {
+            foodMenuList.onNext(cachedFoodMenu)
+        } else {
+            facilityRepository.fetchFoodMenu(for: service.name)
+                .subscribe(onNext: { foodDTO in
+                    self.foodMenuList.onNext(foodDTO.foodMenuList)
+                    CacheManager.shared.saveFoodMenu(data: foodDTO.foodMenuList, for: service.uuid)
+                })
+                .disposed(by: disposeBag)
+        }
     }
     
-    func fetchBrandList(for serviceName: String) {
-        facilityRepository.fetchBrandList(for: serviceName)
-            .subscribe(onNext: { brandListDTO in
-                self.brandList.onNext(brandListDTO.brands)
-            })
-            .disposed(by: disposeBag)
+    func fetchBrandList(for service: ServiceArea) {
+        if let cachedBrand = CacheManager.shared.fetchBrand(for: service.uuid) {
+            brandList.onNext(cachedBrand)
+        } else {
+            facilityRepository.fetchBrandList(for: service.name)
+                .subscribe(onNext: { brandListDTO in
+                    self.brandList.onNext(brandListDTO.brands)
+                    CacheManager.shared.saveBrand(data: brandListDTO.brands, for: service.uuid)
+                })
+                .disposed(by: disposeBag)
+        }
     }
     
     func fetchGasStation(for serviceName: String) {

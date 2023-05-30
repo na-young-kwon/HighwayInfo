@@ -12,7 +12,7 @@ import RxCocoa
 final class FacilityViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let coordinator: DefaultFacilityCoordinator
-    private let useCase: DefaultFacilityUseCase
+    private let useCase: FacilityUseCase
     private let serviceArea: ServiceArea
     
     struct Input {
@@ -28,7 +28,7 @@ final class FacilityViewModel: ViewModelType {
         let gasStation: Observable<GasStation>
     }
     
-    init(coordinator: DefaultFacilityCoordinator, useCase: DefaultFacilityUseCase, serviceArea: ServiceArea) {
+    init(coordinator: DefaultFacilityCoordinator, useCase: FacilityUseCase, serviceArea: ServiceArea) {
         self.coordinator = coordinator
         self.useCase = useCase
         self.serviceArea = serviceArea
@@ -43,7 +43,7 @@ final class FacilityViewModel: ViewModelType {
         
         input.viewWillAppear
             .subscribe(onNext: { _ in
-                self.useCase.fetchFoodMenu(for: serviceName)
+                self.useCase.fetchFoodMenu(for: self.serviceArea)
                 self.useCase.fetchGasStation(for: serviceName)
             })
             .disposed(by: disposeBag)
@@ -52,11 +52,11 @@ final class FacilityViewModel: ViewModelType {
             .subscribe(onNext: { facility in
                 switch facility {
                 case .foodMenu:
-                    self.useCase.fetchFoodMenu(for: serviceName)
+                    self.useCase.fetchFoodMenu(for: self.serviceArea)
                 case .convenienceList:
-                    self.useCase.fetchConvenienceList(for: serviceName)
+                    self.useCase.fetchConvenienceList(for: self.serviceArea)
                 case .brandList:
-                    self.useCase.fetchBrandList(for: serviceName)
+                    self.useCase.fetchBrandList(for: self.serviceArea)
                 }
             })
             .disposed(by: disposeBag)

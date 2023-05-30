@@ -137,18 +137,7 @@ final class FacilityViewController: UIViewController {
                 self?.appleSnapShot(with: foodMenu)
             })
             .disposed(by: disposeBag)
-        
-        // TODO: - 서치뷰
-        // TODO: - 스택뷰
-        
-        // MARK: - 앱 출시하고 할 일
-        // TODO: - 로드뷰 화면 개선하기
-        // TODO: - 카드뷰컨 placeHolderCell 만들어서 보여주기
-        // TODO: - 카드뷰컨 세그멘트전환할때 컬렉션뷰 좀 더 빠릿빠릿하게 바꾸기
-        // TODO: - 캐싱
-        // TODO: - 유가 API로 주변지역보다 유가높/낮음 나타내기
-        
-        
+
         output.convenienceList
             .drive(onNext: { [weak self] convenienceList in
                 self?.appleSnapShot(with: convenienceList)
