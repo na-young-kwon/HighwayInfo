@@ -26,7 +26,7 @@ final class DefaultCardUseCase: CardUseCase {
     }
     
     private func fetchServiceArea(for highway: HighwayInfo) {
-        if let cachedServiceArea = CacheManager.shared.fetchServiceArea(for: highway.uuid) {
+        if let cachedServiceArea = CacheManager.shared.fetchServiceArea(for: highway.name) {
             serviceArea.onNext(cachedServiceArea)
         } else {
             roadRepository.fetchServiceArea(for: highway.rawName)
@@ -34,14 +34,14 @@ final class DefaultCardUseCase: CardUseCase {
                 .map { $0.map { $0.toDomain } }
                 .subscribe(onNext: { [weak self] serviceArea in
                     self?.serviceArea.onNext(serviceArea)
-                    CacheManager.shared.saveServiceArea(data: serviceArea, for: highway.uuid)
+                    CacheManager.shared.saveServiceArea(data: serviceArea, for: highway.name)
                 })
                 .disposed(by: disposeBag)
         }
     }
     
     private func fetchGasStation(for highway: HighwayInfo) {
-        if let cachedGasStation = CacheManager.shared.fetchGasStation(for: highway.uuid) {
+        if let cachedGasStation = CacheManager.shared.fetchGasStation(for: highway.name) {
             gasStation.onNext(cachedGasStation)
         } else {
             let serviceAreaNames = roadRepository.fetchGasStation(for: highway.rawName)
@@ -63,7 +63,7 @@ final class DefaultCardUseCase: CardUseCase {
                 .map { $0.compactMap { $0.toDomain } }
                 .subscribe(onNext: { [weak self] gasStation in
                     self?.gasStation.onNext(gasStation)
-                    CacheManager.shared.saveGasStation(data: gasStation, for: highway.uuid)
+                    CacheManager.shared.saveGasStation(data: gasStation, for: highway.name)
                 })
                 .disposed(by: disposeBag)
         }
