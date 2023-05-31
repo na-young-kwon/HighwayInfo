@@ -1,8 +1,6 @@
 # HighwayInfo
 > 고속도로 교통정보
-개발기간: 2023.03.02 ~ 2023.05.22 (총 12주)
 
-<br>
 
 
 ### 앱 다운받기
@@ -11,6 +9,8 @@
 
 <br>
 
+
+개발기간: 2023.03.02 ~ 2023.05.22 (총 12주)
 
 ### 개발환경
 ![iOS badge](https://img.shields.io/badge/iOS-14.0%2B-9cf) ![](https://img.shields.io/badge/RxSwift-6.5.0-ff69b4) ![](https://img.shields.io/badge/Swift-5.7-blue) ![](https://img.shields.io/badge/CocoaPods-1.11.2-orange)
@@ -95,3 +95,8 @@
 - CodingKeys 프로토콜을 사용하여 API 명세에 맞도록 타입 구현했습니다.
 - API통신 결과를 이용하기 위해 JSONDecoder 사용했습니다.
 
+<br>
+
+### 구조 한눈에 보기
+
+<img src="https://github.com/na-young-kwon/HighwayInfo/assets/74536728/c9925a37-ac65-407d-ba5d-4beb05eae4bb" width="700" height="350">
