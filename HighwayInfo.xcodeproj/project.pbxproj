@@ -17,6 +17,7 @@
 		3B3CD27629DEE3EB00D223AC /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */; };
 		3B3CD27829DEFAF500D223AC /* SearchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */; };
 		3B3CD27A29DEFC6300D223AC /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CD27929DEFC6300D223AC /* SearchRequest.swift */; };
+		3B3D53132A276630002FF6AE /* HighwayInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D53122A276630002FF6AE /* HighwayInfoTests.swift */; };
 		3B497AC229F3BA2500D3FAAC /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */; };
 		3B497AC429F3BA7B00D3FAAC /* DefaultCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */; };
 		3B497AC629F3CE6B00D3FAAC /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497AC529F3CE6B00D3FAAC /* EmptyView.swift */; };
@@ -148,7 +149,18 @@
 		3BD4EEA329C1F5C50010FB25 /* DefaultCCTVRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EEA229C1F5C50010FB25 /* DefaultCCTVRepository.swift */; };
 		3BD4EEA729C980580010FB25 /* CCTVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EEA629C980580010FB25 /* CCTVParser.swift */; };
 		8FB86310EFF3889AA167FFFC /* Pods_HighwayInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */; };
+		BB43B6E9D5EE29AC45397119 /* Pods_HighwayInfo_HighwayInfoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6BFCD412AEF09651EAC416 /* Pods_HighwayInfo_HighwayInfoTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B3D53142A276630002FF6AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B5B0E8029B0CFDD00AECF22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B5B0E8729B0CFDD00AECF22;
+			remoteInfo = HighwayInfo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3B3429F22A17771500A88F4C /* Embed Frameworks */ = {
@@ -165,6 +177,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		36FBD3AB7DBAA5E141D0E55A /* Pods-HighwayInfo-HighwayInfoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo-HighwayInfoTests.release.xcconfig"; path = "Target Support Files/Pods-HighwayInfo-HighwayInfoTests/Pods-HighwayInfo-HighwayInfoTests.release.xcconfig"; sourceTree = "<group>"; };
 		3B3429E92A14C69200A88F4C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighwayInfo++Bundle.swift"; sourceTree = "<group>"; };
 		3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyServiceAreaView.swift; sourceTree = "<group>"; };
@@ -174,6 +187,8 @@
 		3B3CD27529DEE3EB00D223AC /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3B3CD27729DEFAF500D223AC /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
 		3B3CD27929DEFC6300D223AC /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
+		3B3D53102A276630002FF6AE /* HighwayInfoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HighwayInfoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3D53122A276630002FF6AE /* HighwayInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighwayInfoTests.swift; sourceTree = "<group>"; };
 		3B497AC129F3BA2500D3FAAC /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		3B497AC329F3BA7B00D3FAAC /* DefaultCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCardCoordinator.swift; sourceTree = "<group>"; };
 		3B497AC529F3CE6B00D3FAAC /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -309,9 +324,19 @@
 		483DF070A3B5717B415683AC /* Pods-HighwayInfo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo.release.xcconfig"; path = "Target Support Files/Pods-HighwayInfo/Pods-HighwayInfo.release.xcconfig"; sourceTree = "<group>"; };
 		5606F3F1012B7A9156D35823 /* Pods-HighwayInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo.debug.xcconfig"; path = "Target Support Files/Pods-HighwayInfo/Pods-HighwayInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HighwayInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD17CC0578C9527ACB603784 /* Pods-HighwayInfo-HighwayInfoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo-HighwayInfoTests.debug.xcconfig"; path = "Target Support Files/Pods-HighwayInfo-HighwayInfoTests/Pods-HighwayInfo-HighwayInfoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF6BFCD412AEF09651EAC416 /* Pods_HighwayInfo_HighwayInfoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HighwayInfo_HighwayInfoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3B3D530D2A276630002FF6AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB43B6E9D5EE29AC45397119 /* Pods_HighwayInfo_HighwayInfoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B5B0E8529B0CFDD00AECF22 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,6 +356,14 @@
 				3B3429FF2A25B51900A88F4C /* CacheValue.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		3B3D53112A276630002FF6AE /* HighwayInfoTests */ = {
+			isa = PBXGroup;
+			children = (
+				3B3D53122A276630002FF6AE /* HighwayInfoTests.swift */,
+			);
+			path = HighwayInfoTests;
 			sourceTree = "<group>";
 		};
 		3B497AD529FAA32100D3FAAC /* Parser */ = {
@@ -554,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				3B5B0E8A29B0CFDD00AECF22 /* HighwayInfo */,
+				3B3D53112A276630002FF6AE /* HighwayInfoTests */,
 				3B5B0E8929B0CFDD00AECF22 /* Products */,
 				D67B399BF71743F1D55A02ED /* Pods */,
 				46339A1A49DC70332F8414C5 /* Frameworks */,
@@ -564,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				3B5B0E8829B0CFDD00AECF22 /* HighwayInfo.app */,
+				3B3D53102A276630002FF6AE /* HighwayInfoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -894,6 +929,7 @@
 			children = (
 				3B3429EF2A17771500A88F4C /* TMapSDK.framework */,
 				7DD4BD5197ED3CBF66F5356A /* Pods_HighwayInfo.framework */,
+				EF6BFCD412AEF09651EAC416 /* Pods_HighwayInfo_HighwayInfoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -903,6 +939,8 @@
 			children = (
 				5606F3F1012B7A9156D35823 /* Pods-HighwayInfo.debug.xcconfig */,
 				483DF070A3B5717B415683AC /* Pods-HighwayInfo.release.xcconfig */,
+				BD17CC0578C9527ACB603784 /* Pods-HighwayInfo-HighwayInfoTests.debug.xcconfig */,
+				36FBD3AB7DBAA5E141D0E55A /* Pods-HighwayInfo-HighwayInfoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -910,6 +948,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3B3D530F2A276630002FF6AE /* HighwayInfoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B3D53182A276630002FF6AE /* Build configuration list for PBXNativeTarget "HighwayInfoTests" */;
+			buildPhases = (
+				5EAB0F2888A8D8069DBA166D /* [CP] Check Pods Manifest.lock */,
+				3B3D530C2A276630002FF6AE /* Sources */,
+				3B3D530D2A276630002FF6AE /* Frameworks */,
+				3B3D530E2A276630002FF6AE /* Resources */,
+				EA088B107E1B4C638259D530 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B3D53152A276630002FF6AE /* PBXTargetDependency */,
+			);
+			name = HighwayInfoTests;
+			productName = HighwayInfoTests;
+			productReference = 3B3D53102A276630002FF6AE /* HighwayInfoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3B5B0E8729B0CFDD00AECF22 /* HighwayInfo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B5B0E9C29B0CFDE00AECF22 /* Build configuration list for PBXNativeTarget "HighwayInfo" */;
@@ -937,9 +995,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					3B3D530F2A276630002FF6AE = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 3B5B0E8729B0CFDD00AECF22;
+					};
 					3B5B0E8729B0CFDD00AECF22 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -959,11 +1021,19 @@
 			projectRoot = "";
 			targets = (
 				3B5B0E8729B0CFDD00AECF22 /* HighwayInfo */,
+				3B3D530F2A276630002FF6AE /* HighwayInfoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3B3D530E2A276630002FF6AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B5B0E8629B0CFDD00AECF22 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1022,9 +1092,56 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5EAB0F2888A8D8069DBA166D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HighwayInfo-HighwayInfoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA088B107E1B4C638259D530 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HighwayInfo-HighwayInfoTests/Pods-HighwayInfo-HighwayInfoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HighwayInfo-HighwayInfoTests/Pods-HighwayInfo-HighwayInfoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HighwayInfo-HighwayInfoTests/Pods-HighwayInfo-HighwayInfoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3B3D530C2A276630002FF6AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B3D53132A276630002FF6AE /* HighwayInfoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B5B0E8429B0CFDD00AECF22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1163,6 +1280,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3B3D53152A276630002FF6AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B5B0E8729B0CFDD00AECF22 /* HighwayInfo */;
+			targetProxy = 3B3D53142A276630002FF6AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		3B5B0E9129B0CFDD00AECF22 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1183,6 +1308,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3B3D53162A276630002FF6AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD17CC0578C9527ACB603784 /* Pods-HighwayInfo-HighwayInfoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UKU2UB96JP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = zoe.HighwayInfoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HighwayInfo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HighwayInfo";
+			};
+			name = Debug;
+		};
+		3B3D53172A276630002FF6AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36FBD3AB7DBAA5E141D0E55A /* Pods-HighwayInfo-HighwayInfoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UKU2UB96JP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = zoe.HighwayInfoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HighwayInfo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HighwayInfo";
+			};
+			name = Release;
+		};
 		3B5B0E9A29B0CFDE00AECF22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1374,6 +1545,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3B3D53182A276630002FF6AE /* Build configuration list for PBXNativeTarget "HighwayInfoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B3D53162A276630002FF6AE /* Debug */,
+				3B3D53172A276630002FF6AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3B5B0E8329B0CFDD00AECF22 /* Build configuration list for PBXProject "HighwayInfo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

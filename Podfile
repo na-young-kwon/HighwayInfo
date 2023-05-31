@@ -7,4 +7,9 @@ target 'HighwayInfo' do
   pod 'RxSwift', '~> 6.5.0'
   pod 'RxCocoa', '~> 6.5.0'
   pod 'lottie-ios'
+
+target 'HighwayInfoTests' do
+  pod 'RxSwift'
+  pod 'RxTest'
+  end
 end
