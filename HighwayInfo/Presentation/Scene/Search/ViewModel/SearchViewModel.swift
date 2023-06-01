@@ -14,7 +14,7 @@ final class SearchViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let useCase: SearchUseCase
     private let currentLocation: CLLocationCoordinate2D
-    private weak var coordinator: DefaultSearchCoordinator?
+    private weak var coordinator: SearchCoordinator?
     
     struct Input {
         let viewWillAppear: Observable<Void>
@@ -27,7 +27,7 @@ final class SearchViewModel: ViewModelType {
         let searchHistory: Observable<[LocationInfo]>
     }
     
-    init(useCase: SearchUseCase, coordinator: DefaultSearchCoordinator?, currentLocation: CLLocationCoordinate2D) {
+    init(useCase: SearchUseCase, coordinator: SearchCoordinator?, currentLocation: CLLocationCoordinate2D) {
         self.useCase = useCase
         self.coordinator = coordinator
         self.currentLocation = currentLocation

@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-final class DefaultRoadCoordinator: Coordinator {
+final class DefaultRoadCoordinator: RoadCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private let apiProvider: DefaultAPIProvider

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DefaultCardCoordinator: Coordinator {
+final class DefaultCardCoordinator: CardCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private weak var parentCoordinator: Coordinator?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DefaultServiceAreaCoordinator: Coordinator {
+final class DefaultServiceAreaCoordinator: ServiceAreaCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private weak var parentCoordinator: Coordinator?

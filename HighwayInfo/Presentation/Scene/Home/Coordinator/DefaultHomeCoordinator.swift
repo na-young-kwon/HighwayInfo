@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DefaultHomeCoordinator: Coordinator {
+final class DefaultHomeCoordinator: HomeCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private let apiProvider: DefaultAPIProvider

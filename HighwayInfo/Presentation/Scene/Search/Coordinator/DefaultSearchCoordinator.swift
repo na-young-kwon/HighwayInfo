@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-final class DefaultSearchCoordinator: Coordinator {
+final class DefaultSearchCoordinator: SearchCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private weak var parentCoordinator: Coordinator?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DefaultFacilityCoordinator: Coordinator {
+final class DefaultFacilityCoordinator: FacilityCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private weak var parentCoordinator: Coordinator?

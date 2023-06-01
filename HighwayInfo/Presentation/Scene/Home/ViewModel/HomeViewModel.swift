@@ -22,10 +22,10 @@ final class HomeViewModel: ViewModelType {
         let accidents = BehaviorRelay<[AccidentViewModel]>(value: [])
     }
     
-    private weak var coordinator: DefaultHomeCoordinator!
-    private let useCase: DefaultAccidentUseCase
+    private weak var coordinator: HomeCoordinator?
+    private let useCase: AccidentUseCase
     
-    init(useCase: DefaultAccidentUseCase, coordinator: DefaultHomeCoordinator) {
+    init(useCase: AccidentUseCase, coordinator: HomeCoordinator?) {
         self.useCase = useCase
         self.coordinator = coordinator
     }

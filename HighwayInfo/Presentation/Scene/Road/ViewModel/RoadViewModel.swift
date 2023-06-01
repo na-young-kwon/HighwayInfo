@@ -12,7 +12,7 @@ import CoreLocation
 
 final class RoadViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private let coordinator: DefaultRoadCoordinator
+    private let coordinator: RoadCoordinator?
     private var currentLocation: CLLocationCoordinate2D?
     let useCase: RoadUseCase
     
@@ -25,7 +25,7 @@ final class RoadViewModel: ViewModelType {
         let currentLocation: Observable<CLLocationCoordinate2D>
     }
     
-    init(coordinator: DefaultRoadCoordinator, useCase: RoadUseCase) {
+    init(coordinator: RoadCoordinator, useCase: RoadUseCase) {
         self.coordinator = coordinator
         self.useCase = useCase
     }
@@ -56,6 +56,6 @@ final class RoadViewModel: ViewModelType {
     
     func showSearchView() {
         guard let currentLocation = currentLocation else { return }
-        coordinator.showSearchView(with: currentLocation)
+        coordinator?.showSearchView(with: currentLocation)
     }
 }

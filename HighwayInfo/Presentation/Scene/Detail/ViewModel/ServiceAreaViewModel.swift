@@ -11,7 +11,7 @@ import RxCocoa
 
 final class ServiceAreaViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private let coordinator: DefaultServiceAreaCoordinator
+    private let coordinator: ServiceAreaCoordinator?
     private let useCase: ServiceAreaUseCase
     private let highwayName: String
     private let serviceArea: [ServiceArea]
@@ -27,7 +27,7 @@ final class ServiceAreaViewModel: ViewModelType {
         let serviceArea: Observable<[ServiceArea]>
     }
     
-    init(coordinator: DefaultServiceAreaCoordinator, useCase: ServiceAreaUseCase, highwayName: String, serviceArea: [ServiceArea]) {
+    init(coordinator: ServiceAreaCoordinator?, useCase: ServiceAreaUseCase, highwayName: String, serviceArea: [ServiceArea]) {
         self.coordinator = coordinator
         self.useCase = useCase
         self.highwayName = highwayName + " 고속도로 휴게소"
@@ -48,7 +48,7 @@ final class ServiceAreaViewModel: ViewModelType {
         
         input.selectedServiceArea
             .subscribe(onNext: { serviceArea in
-                self.coordinator.toFacilityView(with: serviceArea)
+                self.coordinator?.toFacilityView(with: serviceArea)
             })
             .disposed(by: disposeBag)
         
@@ -56,6 +56,6 @@ final class ServiceAreaViewModel: ViewModelType {
     }
     
     func removeFromSuperview() {
-        coordinator.removeCoordinator()
+        coordinator?.removeCoordinator()
     }
 }

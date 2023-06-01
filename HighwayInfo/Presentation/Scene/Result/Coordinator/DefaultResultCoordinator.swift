@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-final class DefaultResultCoordinator: Coordinator {
+final class DefaultResultCoordinator: ResultCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var cardViewModel: CardViewModel?

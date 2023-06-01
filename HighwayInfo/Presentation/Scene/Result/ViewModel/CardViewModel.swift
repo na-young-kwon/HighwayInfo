@@ -11,7 +11,7 @@ import RxCocoa
 
 final class CardViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private let coordinator: DefaultCardCoordinator
+    private let coordinator: CardCoordinator?
     private let useCase: CardUseCase
     private let highwayInfo: [HighwayInfo]
     private var serviceArea: [ServiceArea] = []
@@ -27,7 +27,7 @@ final class CardViewModel: ViewModelType {
         let result: Driver<([ServiceArea], [GasStation])>
     }
     
-    init(coordinator: DefaultCardCoordinator, useCase: CardUseCase, highwayInfo: [HighwayInfo]) {
+    init(coordinator: CardCoordinator?, useCase: CardUseCase, highwayInfo: [HighwayInfo]) {
         self.coordinator = coordinator
         self.useCase = useCase
         self.highwayInfo = highwayInfo
@@ -54,7 +54,7 @@ final class CardViewModel: ViewModelType {
         
         input.selectedServiceArea
             .subscribe(onNext: { [weak self] serviceArea in
-                self?.coordinator.toFacilityView(with: serviceArea)
+                self?.coordinator?.toFacilityView(with: serviceArea)
             })
             .disposed(by: disposeBag)
         
@@ -68,14 +68,14 @@ final class CardViewModel: ViewModelType {
     }
     
     func showServiceDetail() {
-        coordinator.showServiceDetail(with: selectedHighway, serviceArea: serviceArea)
+        coordinator?.showServiceDetail(with: selectedHighway, serviceArea: serviceArea)
     }
     
     func removeCoordinator() {
-        coordinator.removeCoordinator()
+        coordinator?.removeCoordinator()
     }
     
     func popViewController() {
-        coordinator.popViewController()
+        coordinator?.popViewController()
     }
 }

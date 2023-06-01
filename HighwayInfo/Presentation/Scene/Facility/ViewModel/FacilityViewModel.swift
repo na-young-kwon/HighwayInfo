@@ -11,7 +11,7 @@ import RxCocoa
 
 final class FacilityViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private let coordinator: DefaultFacilityCoordinator
+    private let coordinator: FacilityCoordinator?
     private let useCase: FacilityUseCase
     private let serviceArea: ServiceArea
     
@@ -28,7 +28,7 @@ final class FacilityViewModel: ViewModelType {
         let gasStation: Observable<GasStation>
     }
     
-    init(coordinator: DefaultFacilityCoordinator, useCase: FacilityUseCase, serviceArea: ServiceArea) {
+    init(coordinator: FacilityCoordinator, useCase: FacilityUseCase, serviceArea: ServiceArea) {
         self.coordinator = coordinator
         self.useCase = useCase
         self.serviceArea = serviceArea
@@ -69,6 +69,6 @@ final class FacilityViewModel: ViewModelType {
     }
     
     func removeFromSuperview() {
-        coordinator.removeCoordinator()
+        coordinator?.removeCoordinator()
     }
 }
