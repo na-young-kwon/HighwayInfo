@@ -17,10 +17,10 @@ enum LocationAuthorizationStatus {
 final class DefaultRoadUseCase: RoadUseCase {
     var currentLocation = PublishSubject<CLLocationCoordinate2D>()
     var authorizationStatus = BehaviorSubject<LocationAuthorizationStatus?>(value: nil)
-    private let locationService: LocationService
+    private let locationService: DefaultLocationService
     private let disposeBag = DisposeBag()
     
-    init(locationService: LocationService) {
+    init(locationService: DefaultLocationService) {
         self.locationService = locationService
     }
     

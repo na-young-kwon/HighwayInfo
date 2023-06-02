@@ -25,9 +25,9 @@ final class RoadViewModel: ViewModelType {
         let currentLocation: Observable<CLLocationCoordinate2D>
     }
     
-    init(coordinator: RoadCoordinator, useCase: RoadUseCase) {
-        self.coordinator = coordinator
+    init(useCase: RoadUseCase, coordinator: RoadCoordinator?) {
         self.useCase = useCase
+        self.coordinator = coordinator
     }
     
     func transform(input: Input) -> Output {

@@ -29,7 +29,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
             roadRepository: DefaultRoadRepository(
                 service: RoadService(apiProvider: apiProvider)),
             userRepository: DefaultUserRepository(),
-            locationService: LocationService.shared
+            locationService: DefaultLocationService.shared
         )
         controller.viewModel = SearchViewModel(useCase: searchUseCase, coordinator: self, currentLocation: currentLocation)
         navigationController.pushViewController(controller, animated: false)

@@ -13,7 +13,7 @@ import CoreLocation
 final class DefaultSearchUseCase: SearchUseCase {
     private let roadRepository: RoadRepository
     private let userRepository: UserRepository
-    private let locationService: LocationService
+    private let locationService: DefaultLocationService
     private let disposeBag = DisposeBag()
     private var path = PublishSubject<[CLLocationCoordinate2D]>()
     private var highwayInfo = PublishSubject<[HighwayInfo]>()
@@ -22,7 +22,7 @@ final class DefaultSearchUseCase: SearchUseCase {
     var searchHistory = PublishSubject<[LocationInfo]>()
     var route = PublishSubject<Route>()
     
-    init(roadRepository: RoadRepository, userRepository: UserRepository, locationService: LocationService) {
+    init(roadRepository: RoadRepository, userRepository: UserRepository, locationService: DefaultLocationService) {
         self.roadRepository = roadRepository
         self.userRepository = userRepository
         self.locationService = locationService

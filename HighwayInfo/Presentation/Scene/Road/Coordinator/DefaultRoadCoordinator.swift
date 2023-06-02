@@ -21,8 +21,8 @@ final class DefaultRoadCoordinator: RoadCoordinator {
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: RoadViewController.self)  
-        let roadUseCase = DefaultRoadUseCase(locationService: LocationService.shared)
-        vc.viewModel = RoadViewModel(coordinator: self, useCase: roadUseCase)
+        let roadUseCase = DefaultRoadUseCase(locationService: DefaultLocationService.shared)
+        vc.viewModel = RoadViewModel(useCase: roadUseCase, coordinator: self)
         
         navigationController.pushViewController(vc, animated: true)
     }

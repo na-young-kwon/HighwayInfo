@@ -10,8 +10,8 @@ import CoreLocation
 import RxSwift
 import RxRelay
 
-final class LocationService: NSObject {
-    static let shared = LocationService()
+final class DefaultLocationService: NSObject, LocationService {
+    static let shared = DefaultLocationService()
     
     private let locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -20,7 +20,7 @@ final class LocationService: NSObject {
         return manager
     }()
     private let disposeBag: DisposeBag = DisposeBag()
-    private let authorizationStatus = BehaviorRelay<CLAuthorizationStatus>(value: .notDetermined)
+    private var authorizationStatus = BehaviorRelay<CLAuthorizationStatus>(value: .notDetermined)
     
     override init() {
         super.init()
@@ -52,7 +52,7 @@ final class LocationService: NSObject {
     }
 }
 
-extension LocationService: CLLocationManagerDelegate {
+extension DefaultLocationService: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     }
     

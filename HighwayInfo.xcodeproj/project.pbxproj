@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3087312A29F42B000D8F2C /* RoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087302A29F42B000D8F2C /* RoadViewModelTests.swift */; };
+		3B3087332A29F454000D8F2C /* MockRoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087322A29F454000D8F2C /* MockRoadUseCase.swift */; };
+		3B3087362A29FADC000D8F2C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087352A29FADC000D8F2C /* LocationService.swift */; };
+		3B3087382A29FC58000D8F2C /* MockLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087372A29FC58000D8F2C /* MockLocationService.swift */; };
+		3B3087392A29FC6D000D8F2C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087352A29FADC000D8F2C /* LocationService.swift */; };
 		3B3429EA2A14C69200A88F4C /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3429E92A14C69200A88F4C /* Secret.plist */; };
 		3B3429EC2A14C6D400A88F4C /* HighwayInfo++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */; };
 		3B3429EE2A176C8300A88F4C /* EmptyServiceAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */; };
@@ -39,7 +44,7 @@
 		3B3D53342A284E00002FF6AE /* FoodMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B442A0B90A700D3FAAC /* FoodMenu.swift */; };
 		3B3D53352A284E44002FF6AE /* DefaultRoadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45229DF2756000F4B39 /* DefaultRoadUseCase.swift */; };
 		3B3D53362A284E54002FF6AE /* AccidentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086F29B9C2C6009D7396 /* AccidentViewModel.swift */; };
-		3B3D53372A284E62002FF6AE /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45E29E3CA12000F4B39 /* LocationService.swift */; };
+		3B3D53372A284E62002FF6AE /* DefaultLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45E29E3CA12000F4B39 /* DefaultLocationService.swift */; };
 		3B3D53382A284E74002FF6AE /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086829B9BEB2009D7396 /* ViewModelType.swift */; };
 		3B3D53392A284EE0002FF6AE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B3D533A2A284EE8002FF6AE /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAD29B768EE0055D3A4 /* NetworkingError.swift */; };
@@ -229,7 +234,7 @@
 		3B97E45929E003A1000F4B39 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B97E45829E003A1000F4B39 /* SearchResultCell.xib */; };
 		3B97E45B29E008A1000F4B39 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45A29E008A1000F4B39 /* UIImageView+Extension.swift */; };
 		3B97E45D29E02398000F4B39 /* DefaultSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */; };
-		3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45E29E3CA12000F4B39 /* LocationService.swift */; };
+		3B97E45F29E3CA12000F4B39 /* DefaultLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E45E29E3CA12000F4B39 /* DefaultLocationService.swift */; };
 		3B97E46129E3FE76000F4B39 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46029E3FE76000F4B39 /* SearchUseCase.swift */; };
 		3B97E46329E3FEB0000F4B39 /* DefaultSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */; };
 		3B97E46929E419FB000F4B39 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E46829E419FB000F4B39 /* ResultViewController.swift */; };
@@ -283,6 +288,10 @@
 
 /* Begin PBXFileReference section */
 		36FBD3AB7DBAA5E141D0E55A /* Pods-HighwayInfo-HighwayInfoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HighwayInfo-HighwayInfoTests.release.xcconfig"; path = "Target Support Files/Pods-HighwayInfo-HighwayInfoTests/Pods-HighwayInfo-HighwayInfoTests.release.xcconfig"; sourceTree = "<group>"; };
+		3B3087302A29F42B000D8F2C /* RoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadViewModelTests.swift; sourceTree = "<group>"; };
+		3B3087322A29F454000D8F2C /* MockRoadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRoadUseCase.swift; sourceTree = "<group>"; };
+		3B3087352A29FADC000D8F2C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		3B3087372A29FC58000D8F2C /* MockLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationService.swift; sourceTree = "<group>"; };
 		3B3429E92A14C69200A88F4C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighwayInfo++Bundle.swift"; sourceTree = "<group>"; };
 		3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyServiceAreaView.swift; sourceTree = "<group>"; };
@@ -410,7 +419,7 @@
 		3B97E45829E003A1000F4B39 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		3B97E45A29E008A1000F4B39 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		3B97E45C29E02398000F4B39 /* DefaultSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchCoordinator.swift; sourceTree = "<group>"; };
-		3B97E45E29E3CA12000F4B39 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		3B97E45E29E3CA12000F4B39 /* DefaultLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationService.swift; sourceTree = "<group>"; };
 		3B97E46029E3FE76000F4B39 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
 		3B97E46229E3FEB0000F4B39 /* DefaultSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchUseCase.swift; sourceTree = "<group>"; };
 		3B97E46829E419FB000F4B39 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -462,6 +471,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B30872F2A29F421000D8F2C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				3B3087322A29F454000D8F2C /* MockRoadUseCase.swift */,
+				3B3087372A29FC58000D8F2C /* MockLocationService.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		3B3087342A29FAD1000D8F2C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3B3087352A29FADC000D8F2C /* LocationService.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		3B3429FC2A25090500A88F4C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +521,8 @@
 		3B3D531A2A2767F3002FF6AE /* RoadScene */ = {
 			isa = PBXGroup;
 			children = (
+				3B30872F2A29F421000D8F2C /* Mock */,
+				3B3087302A29F42B000D8F2C /* RoadViewModelTests.swift */,
 			);
 			path = RoadScene;
 			sourceTree = "<group>";
@@ -780,7 +808,8 @@
 		3B5AD12D29B203E200E2AFAA /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				3B97E45E29E3CA12000F4B39 /* LocationService.swift */,
+				3B3087342A29FAD1000D8F2C /* Protocol */,
+				3B97E45E29E3CA12000F4B39 /* DefaultLocationService.swift */,
 				3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */,
 			);
 			path = Utility;
@@ -1382,6 +1411,7 @@
 				3B3D533D2A284F08002FF6AE /* DefaultAPIProvider.swift in Sources */,
 				3B3D53362A284E54002FF6AE /* AccidentViewModel.swift in Sources */,
 				3B3D53542A28501E002FF6AE /* AccidentParser.swift in Sources */,
+				3B3087382A29FC58000D8F2C /* MockLocationService.swift in Sources */,
 				3B3D53712A2850AC002FF6AE /* RoadViewModel.swift in Sources */,
 				3B3D53692A28505B002FF6AE /* AccidentRepository.swift in Sources */,
 				3B3D535D2A28503A002FF6AE /* ServiceAreaDTO.swift in Sources */,
@@ -1390,13 +1420,14 @@
 				3B3D53252A276A29002FF6AE /* ServiceAreaUseCase.swift in Sources */,
 				3B3D53442A284F23002FF6AE /* RoadService.swift in Sources */,
 				3B3D53602A285040002FF6AE /* FoodDTO.swift in Sources */,
-				3B3D53372A284E62002FF6AE /* LocationService.swift in Sources */,
+				3B3D53372A284E62002FF6AE /* DefaultLocationService.swift in Sources */,
 				3B3D532D2A284DF3002FF6AE /* Route.swift in Sources */,
 				3B3D535E2A28503C002FF6AE /* GasStationDTO.swift in Sources */,
 				3B3D532A2A284DED002FF6AE /* Accident.swift in Sources */,
 				3B3D535B2A285037002FF6AE /* AddressDTO.swift in Sources */,
 				3B3D537B2A2850D8002FF6AE /* FacilityViewModel.swift in Sources */,
 				3B3D53582A285029002FF6AE /* AccidentDTO.swift in Sources */,
+				3B3087332A29F454000D8F2C /* MockRoadUseCase.swift in Sources */,
 				3B3D532B2A284DEF002FF6AE /* LocationInfo.swift in Sources */,
 				3B3D53422A284F1A002FF6AE /* CCTVRequest.swift in Sources */,
 				3B3D53792A2850D0002FF6AE /* ServiceAreaViewModel.swift in Sources */,
@@ -1417,6 +1448,7 @@
 				3B3D53772A2850C8002FF6AE /* CardViewModel.swift in Sources */,
 				3B3D53382A284E74002FF6AE /* ViewModelType.swift in Sources */,
 				3B3D539D2A2855F4002FF6AE /* ServiceAreaCoordinator.swift in Sources */,
+				3B3087312A29F42B000D8F2C /* RoadViewModelTests.swift in Sources */,
 				3B3D53212A276943002FF6AE /* MockAccidentUseCase.swift in Sources */,
 				3B3D53632A285045002FF6AE /* ConvenienceListDTO.swift in Sources */,
 				3B3D538B2A28529D002FF6AE /* HomeCoordinator.swift in Sources */,
@@ -1453,6 +1485,7 @@
 				3B3D53922A285505002FF6AE /* SearchCoordinator.swift in Sources */,
 				3B3D536D2A285061002FF6AE /* FacilityRepository.swift in Sources */,
 				3B3D536C2A285060002FF6AE /* UserRepository.swift in Sources */,
+				3B3087392A29FC6D000D8F2C /* LocationService.swift in Sources */,
 				3B3D535C2A285038002FF6AE /* RouteDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1549,10 +1582,11 @@
 				3B97E46329E3FEB0000F4B39 /* DefaultSearchUseCase.swift in Sources */,
 				3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */,
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
-				3B97E45F29E3CA12000F4B39 /* LocationService.swift in Sources */,
+				3B97E45F29E3CA12000F4B39 /* DefaultLocationService.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
 				3B342A002A25B51900A88F4C /* CacheValue.swift in Sources */,
 				3B497B3D2A0B6EE800D3FAAC /* ConvenienceListDTO.swift in Sources */,
+				3B3087362A29FADC000D8F2C /* LocationService.swift in Sources */,
 				3B497AE729FBF21700D3FAAC /* GasStation.swift in Sources */,
 				3B497B412A0B7D9A00D3FAAC /* FacilityCell.swift in Sources */,
 				3B497ACA29F3DD7600D3FAAC /* SearchHistoryCell.swift in Sources */,

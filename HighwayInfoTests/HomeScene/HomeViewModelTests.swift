@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import RxRelay
 import RxSwift
 import RxTest
 
