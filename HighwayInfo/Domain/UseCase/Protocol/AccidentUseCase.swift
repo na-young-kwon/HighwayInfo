@@ -11,5 +11,4 @@ import RxSwift
 protocol AccidentUseCase {
     var accidents: BehaviorSubject<[AccidentViewModel]> { get }
     func fetchAccidents()
-    func fetchImage(for accidents: [Accident])
 }

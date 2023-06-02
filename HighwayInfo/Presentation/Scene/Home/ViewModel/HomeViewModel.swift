@@ -13,12 +13,11 @@ final class HomeViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     struct Input {
-        let trigger: Observable<Void>
+        let viewWillAppear: Observable<Void>
         let refreshButtonTapped: Observable<Void>
     }
     
     struct Output {
-        let fetching: Driver<Bool>
         let accidents = BehaviorRelay<[AccidentViewModel]>(value: [])
     }
     
@@ -32,9 +31,7 @@ final class HomeViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let activityIndicator = ActivityIndicator()
-        let fetching = activityIndicator.asDriver()
-        
-        let output = Output(fetching: fetching)
+        let output = Output()
         
         useCase.accidents
             .trackActivity(activityIndicator)
@@ -43,7 +40,7 @@ final class HomeViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        input.trigger
+        input.viewWillAppear
             .trackActivity(activityIndicator)
             .subscribe { _ in
                 self.useCase.fetchAccidents()

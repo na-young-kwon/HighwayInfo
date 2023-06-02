@@ -12,7 +12,7 @@ struct AccidentViewModel: Identifiable, Hashable {
         lhs.id == rhs.id
     }
     
-    let id = UUID()
+    let id: String
     let startTime: String
     let place: String
     let direction: String
@@ -23,7 +23,8 @@ struct AccidentViewModel: Identifiable, Hashable {
     let preview: String?
     let video: String?
     
-    init(accident: Accident, preview: String?, video: String?) {
+    init(id: String, accident: Accident, preview: String?, video: String?) {
+        self.id = id
         self.startTime = accident.startTime.toShortDate
         self.place = accident.place
         self.direction = accident.direction

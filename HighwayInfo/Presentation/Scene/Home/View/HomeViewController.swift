@@ -76,7 +76,7 @@ class HomeViewController: UIViewController {
     
     private func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid()
-        let input = HomeViewModel.Input(trigger: viewWillAppear,
+        let input = HomeViewModel.Input(viewWillAppear: viewWillAppear,
                                         refreshButtonTapped: refreshButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
         

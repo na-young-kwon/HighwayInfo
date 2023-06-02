@@ -29,7 +29,7 @@ final class DefaultAccidentUseCase: AccidentUseCase {
             .disposed(by: self.disposeBag)
     }
     
-    func fetchImage(for accidents: [Accident]) {
+    private func fetchImage(for accidents: [Accident]) {
         let coordinates = accidents.map { ($0.coord_x, $0.coord_y) }
         
         let previewsObservable = Observable<CctvDTO?>.zip(coordinates.map { coord in
@@ -57,7 +57,7 @@ final class DefaultAccidentUseCase: AccidentUseCase {
         
         Observable.zip(accident, url, video)
             .subscribe(onNext: { (accident, url, video) in
-                viewModels.append(AccidentViewModel(accident: accident, preview: url, video: video))
+                viewModels.append(AccidentViewModel(id: UUID().uuidString, accident: accident, preview: url, video: video))
             })
             .disposed(by: disposeBag)
         return viewModels
