@@ -8,7 +8,7 @@
 import Foundation
 
 struct LocationInfo: Hashable, Codable {
-    let id = UUID()
+    let id: String
     let name: String
     let businessName: String
     let distance: String
@@ -16,13 +16,15 @@ struct LocationInfo: Hashable, Codable {
     let coordy: String
     let address: String?
     
-    init(name: String,
+    init(uuid: String,
+         name: String,
          businessName: String,
          distance: String,
          coordx: String,
          coordy: String,
          address: String?
     ) {
+        self.id = uuid
         self.name = name
         self.businessName = businessName
         self.coordx = coordx

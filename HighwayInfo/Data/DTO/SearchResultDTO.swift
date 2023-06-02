@@ -12,7 +12,8 @@ struct SearchResultDTO: Decodable {
     
     var toDomain: [LocationInfo] {
         return searchPoiInfo.pois.poi.map {
-            LocationInfo(name: $0.name,
+            LocationInfo(uuid: UUID().uuidString,
+                         name: $0.name,
                          businessName: $0.lowerBizName,
                          distance: $0.radius,
                          coordx: $0.frontLon,

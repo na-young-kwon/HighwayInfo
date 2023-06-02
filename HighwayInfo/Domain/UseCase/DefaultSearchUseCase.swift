@@ -17,7 +17,6 @@ final class DefaultSearchUseCase: SearchUseCase {
     private let disposeBag = DisposeBag()
     private var path = PublishSubject<[CLLocationCoordinate2D]>()
     private var highwayInfo = PublishSubject<[HighwayInfo]>()
-    var currentLocation = PublishSubject<CLLocationCoordinate2D>()
     var searchResult = PublishSubject<[LocationInfo]>()
     var searchHistory = PublishSubject<[LocationInfo]>()
     var route = PublishSubject<Route>()
@@ -45,17 +44,7 @@ final class DefaultSearchUseCase: SearchUseCase {
         searchHistory.onNext([])
     }
     
-    func observeLocation() {
-        return locationService.currentLocation()
-            .compactMap { $0.last }
-            .subscribe(onNext: { [weak self] location in
-                self?.currentLocation.onNext(location.coordinate)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D?) {
-        guard let coordinate = coordinate else { return }
+    func fetchResult(for keyword: String, coordinate: CLLocationCoordinate2D) {
         roadRepository.fetchSearchResult(for: keyword, coordinate: coordinate)
             .map { $0.toDomain }
             .subscribe(onNext: { [weak self] searchResult in

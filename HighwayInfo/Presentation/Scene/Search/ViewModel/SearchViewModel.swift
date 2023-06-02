@@ -41,14 +41,12 @@ final class SearchViewModel: ViewModelType {
                             searchHistory: useCase.searchHistory.asObservable())
         input.viewWillAppear
             .subscribe(onNext: { [weak self] _ in
-                self?.useCase.observeLocation()
                 self?.useCase.fetchSearchHistory()
             })
             .disposed(by: disposeBag)
         
         searchKeyword
-            .subscribe(onNext: { [weak self] keyword in
-                guard let self = self else { return }
+            .subscribe(onNext: { keyword in
                 self.useCase.fetchResult(for: keyword, coordinate: self.currentLocation)
             })
             .disposed(by: disposeBag)
