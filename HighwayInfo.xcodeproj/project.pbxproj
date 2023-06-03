@@ -19,6 +19,8 @@
 		3B3087452A2A325D000D8F2C /* MockCardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087442A2A325D000D8F2C /* MockCardUseCase.swift */; };
 		3B30874A2A2B33ED000D8F2C /* FacilityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087492A2B33ED000D8F2C /* FacilityViewModelTests.swift */; };
 		3B30874C2A2B345C000D8F2C /* MockFacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30874B2A2B345C000D8F2C /* MockFacilityUseCase.swift */; };
+		3B30874F2A2B4711000D8F2C /* ServiceAreaViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30874E2A2B4711000D8F2C /* ServiceAreaViewModelTests.swift */; };
+		3B3087522A2B4729000D8F2C /* MockServiceAreaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087512A2B4729000D8F2C /* MockServiceAreaUseCase.swift */; };
 		3B3429EA2A14C69200A88F4C /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3429E92A14C69200A88F4C /* Secret.plist */; };
 		3B3429EC2A14C6D400A88F4C /* HighwayInfo++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */; };
 		3B3429EE2A176C8300A88F4C /* EmptyServiceAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */; };
@@ -306,6 +308,8 @@
 		3B3087442A2A325D000D8F2C /* MockCardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardUseCase.swift; sourceTree = "<group>"; };
 		3B3087492A2B33ED000D8F2C /* FacilityViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityViewModelTests.swift; sourceTree = "<group>"; };
 		3B30874B2A2B345C000D8F2C /* MockFacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFacilityUseCase.swift; sourceTree = "<group>"; };
+		3B30874E2A2B4711000D8F2C /* ServiceAreaViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAreaViewModelTests.swift; sourceTree = "<group>"; };
+		3B3087512A2B4729000D8F2C /* MockServiceAreaUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServiceAreaUseCase.swift; sourceTree = "<group>"; };
 		3B3429E92A14C69200A88F4C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighwayInfo++Bundle.swift"; sourceTree = "<group>"; };
 		3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyServiceAreaView.swift; sourceTree = "<group>"; };
@@ -526,6 +530,23 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		3B30874D2A2B46FB000D8F2C /* DetailScene */ = {
+			isa = PBXGroup;
+			children = (
+				3B3087502A2B471C000D8F2C /* Mock */,
+				3B30874E2A2B4711000D8F2C /* ServiceAreaViewModelTests.swift */,
+			);
+			path = DetailScene;
+			sourceTree = "<group>";
+		};
+		3B3087502A2B471C000D8F2C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				3B3087512A2B4729000D8F2C /* MockServiceAreaUseCase.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		3B3429FC2A25090500A88F4C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,6 +563,7 @@
 				3B3D531A2A2767F3002FF6AE /* RoadScene */,
 				3B3D531B2A2767FE002FF6AE /* SearchScene */,
 				3B3D531C2A276804002FF6AE /* ResultScene */,
+				3B30874D2A2B46FB000D8F2C /* DetailScene */,
 				3B3D531E2A276816002FF6AE /* FacilityScene */,
 			);
 			path = HighwayInfoTests;
@@ -1469,6 +1491,7 @@
 				3B3087412A2A31B7000D8F2C /* ResultViewModelTests.swift in Sources */,
 				3B3D53442A284F23002FF6AE /* RoadService.swift in Sources */,
 				3B3D53602A285040002FF6AE /* FoodDTO.swift in Sources */,
+				3B30874F2A2B4711000D8F2C /* ServiceAreaViewModelTests.swift in Sources */,
 				3B3D53372A284E62002FF6AE /* DefaultLocationService.swift in Sources */,
 				3B3D532D2A284DF3002FF6AE /* Route.swift in Sources */,
 				3B3D535E2A28503C002FF6AE /* GasStationDTO.swift in Sources */,
@@ -1525,6 +1548,7 @@
 				3B3D53272A276A2D002FF6AE /* FacilityUseCase.swift in Sources */,
 				3B3D536B2A28505E002FF6AE /* RoadRepository.swift in Sources */,
 				3B3D53992A28554D002FF6AE /* ResultCoordinator.swift in Sources */,
+				3B3087522A2B4729000D8F2C /* MockServiceAreaUseCase.swift in Sources */,
 				3B3D53572A285024002FF6AE /* GasStationParser.swift in Sources */,
 				3B3D53322A284DFD002FF6AE /* ConvenienceList.swift in Sources */,
 				3B3D53232A276A26002FF6AE /* RoadUseCase.swift in Sources */,
