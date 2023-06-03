@@ -30,8 +30,8 @@ final class RoadViewModelTests: XCTestCase {
     
     func test_location_authorization_start_with_not_determined() {
         let authorizationObserver = scheduler.createObserver(Bool.self)
-        
         let viewWillAppearTestableObservable = scheduler.createHotObservable([.next(10, ())])
+        
         input = RoadViewModel.Input(viewWillAppear: viewWillAppearTestableObservable.asObservable())
         output = viewModel.transform(input: input)
         output.showAuthorizationAlert.subscribe(authorizationObserver).disposed(by: disposeBag)
@@ -56,6 +56,25 @@ final class RoadViewModelTests: XCTestCase {
         
         XCTAssertEqual(currentLocationObserver.events, [
             .next(10, CLLocationCoordinate2D(latitude: 37, longitude: 127))
+        ])
+    }
+    
+    func test_show_alert_start_with_false() {
+        let showAlertObserver = scheduler.createObserver(Bool.self)
+        let viewWillAppearTestableObservable = scheduler.createHotObservable([.next(10, ())])
+        
+        input = RoadViewModel.Input(viewWillAppear: viewWillAppearTestableObservable.asObservable())
+        output = viewModel.transform(input: input)
+        output.showAuthorizationAlert
+            .asObservable()
+            .subscribe(showAlertObserver)
+            .disposed(by: disposeBag)
+        
+        scheduler.start()
+        
+        XCTAssertEqual(showAlertObserver.events, [
+            .next(0, false),
+            .next(10, false)
         ])
     }
 }

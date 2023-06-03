@@ -19,8 +19,7 @@ final class MockCardUseCase: CardUseCase {
                                   convenience: "수유실|샤워실|세탁실",
                                   direction: "부산",
                                   address: "경기 용인시 기흥구공세로 173 기흥휴게소",
-                                  telNo: "031-286-5001"
-        )
+                                  telNo: "031-286-5001")
         
         let gas = GasStation(uuid: "test_gas_uuid",
                              name: "화성(서울)주유소",
@@ -28,8 +27,7 @@ final class MockCardUseCase: CardUseCase {
                              gasolinePrice: "1,520원",
                              lpgPrice: "X",
                              telNo: "055-312-2862",
-                             oilCompany: "SK"
-        )
+                             oilCompany: "SK")
         
         serviceArea.onNext([service])
         gasStation.onNext([gas])

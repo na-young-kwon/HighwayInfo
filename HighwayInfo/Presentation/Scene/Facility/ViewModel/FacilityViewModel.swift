@@ -28,7 +28,7 @@ final class FacilityViewModel: ViewModelType {
         let gasStation: Observable<GasStation>
     }
     
-    init(coordinator: FacilityCoordinator, useCase: FacilityUseCase, serviceArea: ServiceArea) {
+    init(coordinator: FacilityCoordinator?, useCase: FacilityUseCase, serviceArea: ServiceArea) {
         self.coordinator = coordinator
         self.useCase = useCase
         self.serviceArea = serviceArea

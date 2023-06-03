@@ -17,6 +17,8 @@
 		3B3087412A2A31B7000D8F2C /* ResultViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087402A2A31B7000D8F2C /* ResultViewModelTests.swift */; };
 		3B3087432A2A3204000D8F2C /* CardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087422A2A3204000D8F2C /* CardViewModelTests.swift */; };
 		3B3087452A2A325D000D8F2C /* MockCardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087442A2A325D000D8F2C /* MockCardUseCase.swift */; };
+		3B30874A2A2B33ED000D8F2C /* FacilityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087492A2B33ED000D8F2C /* FacilityViewModelTests.swift */; };
+		3B30874C2A2B345C000D8F2C /* MockFacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30874B2A2B345C000D8F2C /* MockFacilityUseCase.swift */; };
 		3B3429EA2A14C69200A88F4C /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3429E92A14C69200A88F4C /* Secret.plist */; };
 		3B3429EC2A14C6D400A88F4C /* HighwayInfo++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */; };
 		3B3429EE2A176C8300A88F4C /* EmptyServiceAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */; };
@@ -302,6 +304,8 @@
 		3B3087402A2A31B7000D8F2C /* ResultViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModelTests.swift; sourceTree = "<group>"; };
 		3B3087422A2A3204000D8F2C /* CardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModelTests.swift; sourceTree = "<group>"; };
 		3B3087442A2A325D000D8F2C /* MockCardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardUseCase.swift; sourceTree = "<group>"; };
+		3B3087492A2B33ED000D8F2C /* FacilityViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityViewModelTests.swift; sourceTree = "<group>"; };
+		3B30874B2A2B345C000D8F2C /* MockFacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFacilityUseCase.swift; sourceTree = "<group>"; };
 		3B3429E92A14C69200A88F4C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighwayInfo++Bundle.swift"; sourceTree = "<group>"; };
 		3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyServiceAreaView.swift; sourceTree = "<group>"; };
@@ -514,6 +518,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		3B3087482A2B33DB000D8F2C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				3B30874B2A2B345C000D8F2C /* MockFacilityUseCase.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		3B3429FC2A25090500A88F4C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +587,8 @@
 		3B3D531E2A276816002FF6AE /* FacilityScene */ = {
 			isa = PBXGroup;
 			children = (
+				3B3087482A2B33DB000D8F2C /* Mock */,
+				3B3087492A2B33ED000D8F2C /* FacilityViewModelTests.swift */,
 			);
 			path = FacilityScene;
 			sourceTree = "<group>";
@@ -1447,6 +1461,7 @@
 				3B3087382A29FC58000D8F2C /* MockLocationService.swift in Sources */,
 				3B3D53712A2850AC002FF6AE /* RoadViewModel.swift in Sources */,
 				3B3D53692A28505B002FF6AE /* AccidentRepository.swift in Sources */,
+				3B30874A2A2B33ED000D8F2C /* FacilityViewModelTests.swift in Sources */,
 				3B3D535D2A28503A002FF6AE /* ServiceAreaDTO.swift in Sources */,
 				3B3D53262A276A2C002FF6AE /* CardUseCase.swift in Sources */,
 				3B3D537E2A2850E5002FF6AE /* PaddingLabel.swift in Sources */,
@@ -1466,6 +1481,7 @@
 				3B3D53422A284F1A002FF6AE /* CCTVRequest.swift in Sources */,
 				3B3D53792A2850D0002FF6AE /* ServiceAreaViewModel.swift in Sources */,
 				3B3D53672A28504C002FF6AE /* DefaultFacilityRepository.swift in Sources */,
+				3B30874C2A2B345C000D8F2C /* MockFacilityUseCase.swift in Sources */,
 				3B3D53762A2850C1002FF6AE /* ResultViewModel.swift in Sources */,
 				3B3D533B2A284F03002FF6AE /* HTTPMethod.swift in Sources */,
 				3B3D53822A2850EC002FF6AE /* UIColor+Extension.swift in Sources */,
