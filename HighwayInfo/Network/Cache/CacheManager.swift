@@ -25,18 +25,18 @@ final class CacheManager {
         gasStationCache.setObject(CacheValue(data), forKey: key)
     }
     
-    func saveConvenienceList(data: [ConvenienceList], for uuid: UUID) {
-        let key = NSString(string: uuid.uuidString)
+    func saveConvenienceList(data: [ConvenienceList], for uuid: String) {
+        let key = NSString(string: uuid)
         convenienceListCache.setObject(CacheValue(data), forKey: key)
     }
     
-    func saveFoodMenu(data: [FoodMenu], for uuid: UUID) {
-        let key = NSString(string: uuid.uuidString)
+    func saveFoodMenu(data: [FoodMenu], for uuid: String) {
+        let key = NSString(string: uuid)
         foodMenuCache.setObject(CacheValue(data), forKey: key)
     }
     
-    func saveBrand(data: [Brand], for uuid: UUID) {
-        let key = NSString(string: uuid.uuidString)
+    func saveBrand(data: [Brand], for uuid: String) {
+        let key = NSString(string: uuid)
         brandCache.setObject(CacheValue(data), forKey: key)
     }
     
@@ -56,24 +56,24 @@ final class CacheManager {
         return cache.value
     }
     
-    func fetchConvenienceList(for uuid: UUID) -> [ConvenienceList]? {
-        let key = NSString(string: uuid.uuidString)
+    func fetchConvenienceList(for uuid: String) -> [ConvenienceList]? {
+        let key = NSString(string: uuid)
         guard let cache = convenienceListCache.object(forKey: key) else {
             return nil
         }
         return cache.value
     }
     
-    func fetchFoodMenu(for uuid: UUID) -> [FoodMenu]? {
-        let key = NSString(string: uuid.uuidString)
+    func fetchFoodMenu(for uuid: String) -> [FoodMenu]? {
+        let key = NSString(string: uuid)
         guard let cache = foodMenuCache.object(forKey: key) else {
             return nil
         }
         return cache.value
     }
     
-    func fetchBrand(for uuid: UUID) -> [Brand]? {
-        let key = NSString(string: uuid.uuidString)
+    func fetchBrand(for uuid: String) -> [Brand]? {
+        let key = NSString(string: uuid)
         guard let cache = brandCache.object(forKey: key) else {
             return nil
         }

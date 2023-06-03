@@ -14,6 +14,9 @@
 		3B3087392A29FC6D000D8F2C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087352A29FADC000D8F2C /* LocationService.swift */; };
 		3B30873C2A2A1EAE000D8F2C /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30873B2A2A1EAE000D8F2C /* SearchViewModelTests.swift */; };
 		3B30873E2A2A1EE6000D8F2C /* MockSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30873D2A2A1EE6000D8F2C /* MockSearchUseCase.swift */; };
+		3B3087412A2A31B7000D8F2C /* ResultViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087402A2A31B7000D8F2C /* ResultViewModelTests.swift */; };
+		3B3087432A2A3204000D8F2C /* CardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087422A2A3204000D8F2C /* CardViewModelTests.swift */; };
+		3B3087452A2A325D000D8F2C /* MockCardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3087442A2A325D000D8F2C /* MockCardUseCase.swift */; };
 		3B3429EA2A14C69200A88F4C /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3429E92A14C69200A88F4C /* Secret.plist */; };
 		3B3429EC2A14C6D400A88F4C /* HighwayInfo++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */; };
 		3B3429EE2A176C8300A88F4C /* EmptyServiceAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */; };
@@ -296,6 +299,9 @@
 		3B3087372A29FC58000D8F2C /* MockLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationService.swift; sourceTree = "<group>"; };
 		3B30873B2A2A1EAE000D8F2C /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		3B30873D2A2A1EE6000D8F2C /* MockSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchUseCase.swift; sourceTree = "<group>"; };
+		3B3087402A2A31B7000D8F2C /* ResultViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModelTests.swift; sourceTree = "<group>"; };
+		3B3087422A2A3204000D8F2C /* CardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModelTests.swift; sourceTree = "<group>"; };
+		3B3087442A2A325D000D8F2C /* MockCardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCardUseCase.swift; sourceTree = "<group>"; };
 		3B3429E92A14C69200A88F4C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		3B3429EB2A14C6D400A88F4C /* HighwayInfo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HighwayInfo++Bundle.swift"; sourceTree = "<group>"; };
 		3B3429ED2A176C8300A88F4C /* EmptyServiceAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyServiceAreaView.swift; sourceTree = "<group>"; };
@@ -500,6 +506,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		3B30873F2A2A31A8000D8F2C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				3B3087442A2A325D000D8F2C /* MockCardUseCase.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		3B3429FC2A25090500A88F4C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +565,9 @@
 		3B3D531C2A276804002FF6AE /* ResultScene */ = {
 			isa = PBXGroup;
 			children = (
+				3B30873F2A2A31A8000D8F2C /* Mock */,
+				3B3087402A2A31B7000D8F2C /* ResultViewModelTests.swift */,
+				3B3087422A2A3204000D8F2C /* CardViewModelTests.swift */,
 			);
 			path = ResultScene;
 			sourceTree = "<group>";
@@ -1399,6 +1416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3087432A2A3204000D8F2C /* CardViewModelTests.swift in Sources */,
 				3B3D535A2A285035002FF6AE /* SearchResultDTO.swift in Sources */,
 				3B3D53A22A28569D002FF6AE /* RoadCoordinator.swift in Sources */,
 				3B3D535F2A28503E002FF6AE /* GasPriceDTO.swift in Sources */,
@@ -1433,6 +1451,7 @@
 				3B3D53262A276A2C002FF6AE /* CardUseCase.swift in Sources */,
 				3B3D537E2A2850E5002FF6AE /* PaddingLabel.swift in Sources */,
 				3B3D53252A276A29002FF6AE /* ServiceAreaUseCase.swift in Sources */,
+				3B3087412A2A31B7000D8F2C /* ResultViewModelTests.swift in Sources */,
 				3B3D53442A284F23002FF6AE /* RoadService.swift in Sources */,
 				3B3D53602A285040002FF6AE /* FoodDTO.swift in Sources */,
 				3B3D53372A284E62002FF6AE /* DefaultLocationService.swift in Sources */,
@@ -1474,6 +1493,7 @@
 				3B3D53132A276630002FF6AE /* HomeViewModelTests.swift in Sources */,
 				3B30873C2A2A1EAE000D8F2C /* SearchViewModelTests.swift in Sources */,
 				3B3D53482A284FF0002FF6AE /* ServiceAreaRequest.swift in Sources */,
+				3B3087452A2A325D000D8F2C /* MockCardUseCase.swift in Sources */,
 				3B3D53472A284FEC002FF6AE /* AddressRequest.swift in Sources */,
 				3B3D534B2A284FF8002FF6AE /* FacilityService.swift in Sources */,
 				3B3D53302A284DF9002FF6AE /* Convenience.swift in Sources */,

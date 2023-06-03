@@ -8,7 +8,7 @@
 import Foundation
 
 struct GasStation {
-    let uuid = UUID()
+    let uuid: String
     let name: String
     let dieselPrice: String
     let gasolinePrice: String

@@ -12,7 +12,7 @@ import CoreLocation
 
 final class ResultViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private let coordinator: ResultCoordinator
+    private let coordinator: ResultCoordinator?
     private let route: Route
     let cardViewModel: CardViewModel
     
@@ -28,7 +28,7 @@ final class ResultViewModel: ViewModelType {
         let highwayInfo: Observable<[HighwayInfo]>
     }
     
-    init(coordinator: ResultCoordinator, route: Route, cardViewModel: CardViewModel) {
+    init(coordinator: ResultCoordinator?, route: Route, cardViewModel: CardViewModel) {
         self.coordinator = coordinator
         self.route = route
         self.cardViewModel = cardViewModel
@@ -43,6 +43,6 @@ final class ResultViewModel: ViewModelType {
     }
     
     func removeCoordinator() {
-        coordinator.removeCoordinator()
+        coordinator?.removeCoordinator()
     }
 }

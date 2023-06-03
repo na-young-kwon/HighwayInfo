@@ -16,7 +16,8 @@ class ServiceAreaDTO: Decodable {
     var telNo: String!
     
     var toDomain: ServiceArea {
-        return ServiceArea(name: serviceAreaName,
+        return ServiceArea(id: UUID().uuidString,
+                           name: serviceAreaName,
                            serviceAreaCode: serviceAreaCode,
                            convenience: convenience,
                            direction: direction,

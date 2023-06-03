@@ -11,5 +11,6 @@ target 'HighwayInfo' do
 target 'HighwayInfoTests' do
   pod 'RxSwift'
   pod 'RxTest'
+  pod 'RxBlocking'
   end
 end

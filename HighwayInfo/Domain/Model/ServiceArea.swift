@@ -8,7 +8,7 @@
 import Foundation
 
 struct ServiceArea {
-    let uuid = UUID()
+    let id: String
     let name: String
     let serviceAreaCode: String
     let convenience: String
@@ -41,6 +41,6 @@ struct ServiceArea {
 
 extension ServiceArea: Hashable {
     static func == (lhs: ServiceArea, rhs: ServiceArea) -> Bool {
-        lhs.uuid == rhs.uuid
+        lhs.id == rhs.id
     }
 }

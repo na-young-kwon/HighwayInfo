@@ -20,7 +20,8 @@ struct GasPriceDTO: Decodable {
         if list.isEmpty {
             return nil
         }
-        return list.map { GasStation(name: $0.name,
+        return list.map { GasStation(uuid: UUID().uuidString,
+                                     name: $0.name,
                                      dieselPrice: $0.diselPrice,
                                      gasolinePrice: $0.gasolinePrice,
                                      lpgPrice: $0.lpgPrice,
