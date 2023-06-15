@@ -3,7 +3,7 @@
 
 
 
-### 앱 다운받기
+### [앱 다운받기](https://apps.apple.com/kr/app/highwayinfo-%EA%B3%A0%EC%86%8D%EB%8F%84%EB%A1%9C-%EA%B5%90%ED%86%B5%EC%A0%95%EB%B3%B4/id6449296080)
 <img src="https://github.com/na-young-kwon/HighwayInfo/assets/74536728/9069258e-c3c9-42cc-aedc-ee89c26746c5" width="200" height="200">
 
 
