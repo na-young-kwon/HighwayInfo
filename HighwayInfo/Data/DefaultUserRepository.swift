@@ -20,12 +20,14 @@ final class DefaultUserRepository: UserRepository {
         guard var info = try? JSONDecoder().decode([LocationInfo].self, from: data) else {
             return
         }
-        info.reverse()
-        info.append(locationInfo)
-        guard let encoded = try? JSONEncoder().encode(info.reversed()) else {
-            return
+        if info.contains(locationInfo) == false {
+            info.reverse()
+            info.append(locationInfo)
+            guard let encoded = try? JSONEncoder().encode(info.reversed()) else {
+                return
+            }
+            userDefault.set(encoded, forKey: locationInfoKey)
         }
-        userDefault.set(encoded, forKey: locationInfoKey)
     }
     
     func fetchSearchHistory() -> Observable<[LocationInfo]> {

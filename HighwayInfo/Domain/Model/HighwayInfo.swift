@@ -25,11 +25,11 @@ struct HighwayInfo {
 
 extension HighwayInfo: Hashable {
     static func == (lhs: HighwayInfo, rhs: HighwayInfo) -> Bool {
-        lhs.name == rhs.name
+        lhs.uuid == rhs.uuid
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
+        hasher.combine(uuid)
         hasher.combine(coordinate)
     }
 }
