@@ -9,9 +9,9 @@ import UIKit
 
 final class AppCoordinator: Coordinator {
     private let window: UIWindow
-    var tabBarController: UITabBarController
-    var childCoordinators: [Coordinator] = []
     private let apiProvider = DefaultAPIProvider()
+    private var tabBarController: UITabBarController
+    var childCoordinators: [Coordinator] = []
     
     init(window: UIWindow) {
         self.window = window
