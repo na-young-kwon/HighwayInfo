@@ -25,7 +25,7 @@ extension AccidentAPI: Router {
         }
     }
     
-    var method: Alamofire.HTTPMethod {
+    var method: HTTPMethod {
         switch self {
         case .getAccidents:
             return .get

@@ -141,7 +141,7 @@ private extension DefaultAPIProvider {
     
     func createRequestPost(of url: URL,
                            with headers: [String: String]?,
-                           httpMethod: HTTPMethod,
+                           httpMethod: HttpMethod,
                            with body: Data? = nil
     ) -> URLRequest {
         var request = URLRequest(url: url)

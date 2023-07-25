@@ -10,7 +10,7 @@ import Foundation
 struct CCTVRequest: APIRequest {
     typealias Response = CctvDTO?
     
-    let httpMethod: HTTPMethod = .get
+    let httpMethod: HttpMethod = .get
     let urlHost = "https://openapi.its.go.kr:9443/"
     let urlPath = "cctvInfo?"
     let apiKey = Bundle.main.cctvApiKey

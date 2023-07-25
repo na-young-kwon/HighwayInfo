@@ -10,7 +10,7 @@ import Foundation
 struct ConvenienceListRequest: APIRequest {
     typealias Response = ConvenienceListDTO
     
-    let httpMethod: HTTPMethod = .get
+    let httpMethod: HttpMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/restinfo/"
     let urlPath = "restConvList?"
     let key = Bundle.main.serviceAreaKey

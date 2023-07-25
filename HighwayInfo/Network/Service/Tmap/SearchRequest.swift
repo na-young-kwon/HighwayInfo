@@ -10,7 +10,7 @@ import Foundation
 struct SearchRequest: APIRequest {
     typealias Response = SearchResultDTO
         
-    let httpMethod: HTTPMethod = .get
+    let httpMethod: HttpMethod = .get
     let urlHost = "https://apis.openapi.sk.com/tmap/"
     let urlPath = "pois?"
     let version = "2.12"

@@ -10,7 +10,7 @@ import Foundation
 protocol APIRequest {
     associatedtype Response: Decodable
 
-    var httpMethod: HTTPMethod { get }
+    var httpMethod: HttpMethod { get }
     var urlHost: String { get }
     var urlPath: String { get }
     var parameters: [String: String] { get }

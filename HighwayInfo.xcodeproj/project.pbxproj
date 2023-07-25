@@ -57,7 +57,7 @@
 		3B3D53382A284E74002FF6AE /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086829B9BEB2009D7396 /* ViewModelType.swift */; };
 		3B3D53392A284EE0002FF6AE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD11D29B1E8E500E2AFAA /* Coordinator.swift */; };
 		3B3D533A2A284EE8002FF6AE /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAD29B768EE0055D3A4 /* NetworkingError.swift */; };
-		3B3D533B2A284F03002FF6AE /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA829B768860055D3A4 /* HTTPMethod.swift */; };
+		3B3D533B2A284F03002FF6AE /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA829B768860055D3A4 /* HttpMethod.swift */; };
 		3B3D533C2A284F05002FF6AE /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAB29B768D20055D3A4 /* APIProvider.swift */; };
 		3B3D533D2A284F08002FF6AE /* DefaultAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAB129B76C1E0055D3A4 /* DefaultAPIProvider.swift */; };
 		3B3D533E2A284F0D002FF6AE /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA529B767EF0055D3A4 /* APIRequest.swift */; };
@@ -211,7 +211,7 @@
 		3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */; };
 		3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B0E9629B0CFDE00AECF22 /* LaunchScreen.storyboard */; };
 		3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA529B767EF0055D3A4 /* APIRequest.swift */; };
-		3B63BAA929B768860055D3A4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA829B768860055D3A4 /* HTTPMethod.swift */; };
+		3B63BAA929B768860055D3A4 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA829B768860055D3A4 /* HttpMethod.swift */; };
 		3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAB29B768D20055D3A4 /* APIProvider.swift */; };
 		3B63BAAE29B768EE0055D3A4 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAAD29B768EE0055D3A4 /* NetworkingError.swift */; };
 		3B63BAB229B76C1E0055D3A4 /* DefaultAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAB129B76C1E0055D3A4 /* DefaultAPIProvider.swift */; };
@@ -408,7 +408,7 @@
 		3B5B0E9429B0CFDE00AECF22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B5B0E9729B0CFDE00AECF22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B63BAA529B767EF0055D3A4 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIRequest.swift; path = ../../Provider/APIRequest.swift; sourceTree = "<group>"; };
-		3B63BAA829B768860055D3A4 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		3B63BAA829B768860055D3A4 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		3B63BAAB29B768D20055D3A4 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		3B63BAAD29B768EE0055D3A4 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		3B63BAB129B76C1E0055D3A4 /* DefaultAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAPIProvider.swift; sourceTree = "<group>"; };
@@ -952,7 +952,7 @@
 			isa = PBXGroup;
 			children = (
 				3B8F086129B87E57009D7396 /* Error */,
-				3B63BAA829B768860055D3A4 /* HTTPMethod.swift */,
+				3B63BAA829B768860055D3A4 /* HttpMethod.swift */,
 				3B63BAAB29B768D20055D3A4 /* APIProvider.swift */,
 				3B63BAB129B76C1E0055D3A4 /* DefaultAPIProvider.swift */,
 			);
@@ -1516,7 +1516,7 @@
 				3B3D53672A28504C002FF6AE /* DefaultFacilityRepository.swift in Sources */,
 				3B30874C2A2B345C000D8F2C /* MockFacilityUseCase.swift in Sources */,
 				3B3D53762A2850C1002FF6AE /* ResultViewModel.swift in Sources */,
-				3B3D533B2A284F03002FF6AE /* HTTPMethod.swift in Sources */,
+				3B3D533B2A284F03002FF6AE /* HttpMethod.swift in Sources */,
 				3B3D53822A2850EC002FF6AE /* UIColor+Extension.swift in Sources */,
 				3B3D53562A285022002FF6AE /* ServiceAreaParser.swift in Sources */,
 				3B3D53642A285047002FF6AE /* DefaultAccidentRepository.swift in Sources */,
@@ -1679,7 +1679,7 @@
 				3B497ACA29F3DD7600D3FAAC /* SearchHistoryCell.swift in Sources */,
 				3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */,
 				3B97E45329DF2756000F4B39 /* DefaultRoadUseCase.swift in Sources */,
-				3B63BAA929B768860055D3A4 /* HTTPMethod.swift in Sources */,
+				3B63BAA929B768860055D3A4 /* HttpMethod.swift in Sources */,
 				3B497AE129FBE54400D3FAAC /* GasPriceRequest.swift in Sources */,
 				3B497AE329FBE59500D3FAAC /* GasPriceDTO.swift in Sources */,
 				3B5AD12829B1F5E800E2AFAA /* RoadViewController.swift in Sources */,
