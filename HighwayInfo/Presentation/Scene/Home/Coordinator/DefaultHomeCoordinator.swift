@@ -21,8 +21,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: HomeViewController.self)
         let accidentRepository = DefaultAccidentRepository(service: AccidentService.live)
-        let cctvRepository = DefaultCCTVRepository(service: CCTVService(apiProvider: apiProvider))
-        
+        let cctvRepository = DefaultCCTVRepository(service: CCTVService.live)
         vc.viewModel = HomeViewModel(
             useCase: DefaultAccidentUseCase(
                 accidentRepository: accidentRepository,

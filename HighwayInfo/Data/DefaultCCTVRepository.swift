@@ -16,10 +16,10 @@ final class DefaultCCTVRepository: CCTVRepository {
     }
     
     func fetchPreviewBy(x: Double, y: Double) -> Observable<CctvDTO?> {
-        service.fetchPreviewBy(x: x, y: y)
+        service.fetchPreview(x, y)
     }
     
     func fetchVideo(x: Double, y: Double) -> Observable<CctvDTO?> {
-        service.fetchVideo(x: x, y: y)
+        service.fetchVideo(x, y)
     }
 }

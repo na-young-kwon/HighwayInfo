@@ -1,8 +1,8 @@
 //
-//  CCTVRequest.swift
+//  CCTVAPI.swift
 //  HighwayInfo
 //
-//  Created by 권나영 on 2023/03/15.
+//  Created by 권나영 on 2023/07/25.
 //
 
 import Alamofire

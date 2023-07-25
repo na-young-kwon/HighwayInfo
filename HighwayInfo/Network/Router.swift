@@ -11,7 +11,7 @@ import Foundation
 protocol Router {    
     var baseURL: URL { get }
     var path: String { get }
-    var method: Alamofire.HTTPMethod { get }
+    var method: HTTPMethod { get }
     var headers: [String: String]? { get }
     var task: Task { get }
 }
@@ -19,4 +19,5 @@ protocol Router {
 enum Task {
     case requestPlain
     case requestJSONEncodable(Encodable)
+    case requestParameters(parameters: [String: Any])
 }

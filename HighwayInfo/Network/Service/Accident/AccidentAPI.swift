@@ -9,7 +9,6 @@ import Alamofire
 import Foundation
 
 enum AccidentAPI {
-    typealias Response = [AccidentDTO]
     case getAccidents
 }
 
@@ -32,14 +31,16 @@ extension AccidentAPI: Router {
         }
     }
     
+    var headers: [String: String]? {
+        return nil
+    }
+    
     var task: Task {
         switch self {
         case .getAccidents:
-            return .requestPlain
+            return .requestParameters(
+                parameters: ["serviceKey": Bundle.main.accidentApiKey]
+            )
         }
-    }
-    
-    var headers: [String: String]? {
-        return ["serviceKey": Bundle.main.accidentApiKey]
     }
 }

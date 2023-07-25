@@ -56,14 +56,12 @@ extension RouterManager {
     }
     
     private func makeDataRequest(router: Router) -> DataRequest {
-        let parameters: Parameters = router.headers ?? [:]
-        
         switch router.task {
         case .requestPlain:
             return self.alamofireSession.request(
                 "\(router.baseURL)\(router.path)",
                 method: router.method,
-                parameters: parameters,
+                headers: HTTPHeaders(headers: router.headers),
                 interceptor: interceptor
             )
             
@@ -74,6 +72,23 @@ extension RouterManager {
                 parameters: parameters,
                 interceptor: interceptor
             )
+            
+        case .requestParameters(parameters: let parameters):
+            return self.alamofireSession.request(
+                "\(router.baseURL)\(router.path)",
+                method: router.method,
+                parameters: parameters,
+                interceptor: interceptor
+            )
         }
+    }
+}
+
+extension HTTPHeaders {
+    init?(headers: [String: String]?) {
+        guard let headers = headers else {
+            return nil
+        }
+        self.init(headers)
     }
 }
