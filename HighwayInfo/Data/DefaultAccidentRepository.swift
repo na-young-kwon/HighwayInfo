@@ -16,6 +16,6 @@ final class DefaultAccidentRepository: AccidentRepository {
     }
     
     func fetchAllAccidents() -> Observable<[AccidentDTO]> {
-        service.fetchAllAccidents()
+        service.fetchAccidents()
     }
 }

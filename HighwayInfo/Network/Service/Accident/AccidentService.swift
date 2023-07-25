@@ -8,15 +8,26 @@
 import Foundation
 import RxSwift
 
-final class AccidentService {
-    let apiProvider: APIProvider
+struct AccidentService {
+    let fetchAccidents: () -> Observable<[AccidentDTO]>
     
-    init(apiProvider: APIProvider) {
-        self.apiProvider = apiProvider
+    init(fetchAccidents: @escaping () -> Observable<[AccidentDTO]>) {
+        self.fetchAccidents = fetchAccidents
     }
-    
-    func fetchAllAccidents() -> Observable<[AccidentDTO]> {
-        let request = AccidentRequest()
-        return apiProvider.performDataTask(with: request, decodeType: .accident)
-    }
+}
+
+extension AccidentService {
+    static let live = Self(
+        fetchAccidents: {
+            return RouterManager<AccidentAPI>
+                .init()
+                .request(router: .getAccidents)
+                .map({ data in
+                    let parser = AccidentParser(data: data)
+                    let decoded = parser.parseXML()
+                    return decoded
+                })
+                .asObservable()
+        }
+    )
 }

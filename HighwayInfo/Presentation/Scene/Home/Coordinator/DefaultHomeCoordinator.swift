@@ -20,7 +20,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(ofType: HomeViewController.self)
-        let accidentRepository = DefaultAccidentRepository(service: AccidentService(apiProvider: apiProvider))
+        let accidentRepository = DefaultAccidentRepository(service: AccidentService.live)
         let cctvRepository = DefaultCCTVRepository(service: CCTVService(apiProvider: apiProvider))
         
         vc.viewModel = HomeViewModel(

@@ -62,7 +62,6 @@
 		3B3D533D2A284F08002FF6AE /* DefaultAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAB129B76C1E0055D3A4 /* DefaultAPIProvider.swift */; };
 		3B3D533E2A284F0D002FF6AE /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAA529B767EF0055D3A4 /* APIRequest.swift */; };
 		3B3D533F2A284F12002FF6AE /* AccidentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B63BAB329B7711B0055D3A4 /* AccidentService.swift */; };
-		3B3D53402A284F14002FF6AE /* AccidentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085929B87299009D7396 /* AccidentRequest.swift */; };
 		3B3D53412A284F19002FF6AE /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3B3D53422A284F1A002FF6AE /* CCTVRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9A29C1D0350010FB25 /* CCTVRequest.swift */; };
 		3B3D53432A284F1C002FF6AE /* CCTVType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9C29C1ECF40010FB25 /* CCTVType.swift */; };
@@ -228,8 +227,12 @@
 		3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */; };
 		3B7399F629DC2DE600B5D1FF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F529DC2DE600B5D1FF /* SearchViewController.swift */; };
 		3B7399F829DC34C200B5D1FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */; };
+		3B88CC942A6E58150041FF0D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC932A6E58140041FF0D /* Router.swift */; };
+		3B88CC962A6E58E50041FF0D /* RouterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC952A6E58E50041FF0D /* RouterManager.swift */; };
+		3B88CC982A6E59F80041FF0D /* RouterManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC972A6E59F80041FF0D /* RouterManagerError.swift */; };
+		3B88CC9C2A6E69B70041FF0D /* AccidentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC9B2A6E69B70041FF0D /* AccidentAPI.swift */; };
+		3B88CC9D2A6FD6630041FF0D /* AccidentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC9B2A6E69B70041FF0D /* AccidentAPI.swift */; };
 		3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */; };
-		3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085929B87299009D7396 /* AccidentRequest.swift */; };
 		3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */; };
 		3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086229B89AE7009D7396 /* AccidentParser.swift */; };
 		3B8F086529B9BDD1009D7396 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086429B9BDD1009D7396 /* ActivityIndicator.swift */; };
@@ -422,8 +425,11 @@
 		3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadRepository.swift; sourceTree = "<group>"; };
 		3B7399F529DC2DE600B5D1FF /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = HighwayInfo/Presentation/Scene/Search/View/SearchViewController.swift; sourceTree = SOURCE_ROOT; };
 		3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		3B88CC932A6E58140041FF0D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		3B88CC952A6E58E50041FF0D /* RouterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterManager.swift; sourceTree = "<group>"; };
+		3B88CC972A6E59F80041FF0D /* RouterManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterManagerError.swift; sourceTree = "<group>"; };
+		3B88CC9B2A6E69B70041FF0D /* AccidentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentAPI.swift; sourceTree = "<group>"; };
 		3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentRepository.swift; sourceTree = "<group>"; };
-		3B8F085929B87299009D7396 /* AccidentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentRequest.swift; sourceTree = "<group>"; };
 		3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentDTO.swift; sourceTree = "<group>"; };
 		3B8F086229B89AE7009D7396 /* AccidentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentParser.swift; sourceTree = "<group>"; };
 		3B8F086429B9BDD1009D7396 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -935,6 +941,9 @@
 				3B63BAA729B768760055D3A4 /* Provider */,
 				3B63BAAA29B768A60055D3A4 /* Service */,
 				3B3429FC2A25090500A88F4C /* Cache */,
+				3B88CC932A6E58140041FF0D /* Router.swift */,
+				3B88CC952A6E58E50041FF0D /* RouterManager.swift */,
+				3B88CC972A6E59F80041FF0D /* RouterManagerError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1222,7 +1231,7 @@
 			isa = PBXGroup;
 			children = (
 				3B63BAB329B7711B0055D3A4 /* AccidentService.swift */,
-				3B8F085929B87299009D7396 /* AccidentRequest.swift */,
+				3B88CC9B2A6E69B70041FF0D /* AccidentAPI.swift */,
 			);
 			path = Accident;
 			sourceTree = "<group>";
@@ -1486,6 +1495,7 @@
 				3B30874A2A2B33ED000D8F2C /* FacilityViewModelTests.swift in Sources */,
 				3B3D535D2A28503A002FF6AE /* ServiceAreaDTO.swift in Sources */,
 				3B3D53262A276A2C002FF6AE /* CardUseCase.swift in Sources */,
+				3B88CC9D2A6FD6630041FF0D /* AccidentAPI.swift in Sources */,
 				3B3D537E2A2850E5002FF6AE /* PaddingLabel.swift in Sources */,
 				3B3D53252A276A29002FF6AE /* ServiceAreaUseCase.swift in Sources */,
 				3B3087412A2A31B7000D8F2C /* ResultViewModelTests.swift in Sources */,
@@ -1541,7 +1551,6 @@
 				3B3D53982A28554B002FF6AE /* CardCoordinator.swift in Sources */,
 				3B3D537F2A2850E7002FF6AE /* ShadowView.swift in Sources */,
 				3B3D536F2A285094002FF6AE /* HighwayInfo++Bundle.swift in Sources */,
-				3B3D53402A284F14002FF6AE /* AccidentRequest.swift in Sources */,
 				3B3D533C2A284F05002FF6AE /* APIProvider.swift in Sources */,
 				3B3D533F2A284F12002FF6AE /* AccidentService.swift in Sources */,
 				3B3D53A12A285676002FF6AE /* FacilityCoordinator.swift in Sources */,
@@ -1586,6 +1595,7 @@
 				3BD4EE9929C1D00A0010FB25 /* CCTVService.swift in Sources */,
 				3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */,
 				3B497B012A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift in Sources */,
+				3B88CC942A6E58150041FF0D /* Router.swift in Sources */,
 				3B497AF22A00F42700D3FAAC /* ServiceArea.swift in Sources */,
 				3B497B352A0A8A1D00D3FAAC /* BrandListRequest.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
@@ -1612,7 +1622,6 @@
 				3B497B2A2A0A502100D3FAAC /* FacilityRepository.swift in Sources */,
 				3B497B532A12422D00D3FAAC /* GasPriceStackView.swift in Sources */,
 				3B497AD729FAA34000D3FAAC /* ServiceAreaParser.swift in Sources */,
-				3B8F085A29B87299009D7396 /* AccidentRequest.swift in Sources */,
 				3B63BAAC29B768D20055D3A4 /* APIProvider.swift in Sources */,
 				3B497B2C2A0A505600D3FAAC /* DefaultFacilityRepository.swift in Sources */,
 				3B5AD12229B1F2D900E2AFAA /* DefaultHomeCoordinator.swift in Sources */,
@@ -1630,6 +1639,7 @@
 				3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */,
 				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,
 				3B497B282A0A4C7300D3FAAC /* FoodDTO.swift in Sources */,
+				3B88CC982A6E59F80041FF0D /* RouterManagerError.swift in Sources */,
 				3B497B2E2A0A65F100D3FAAC /* FacilityService.swift in Sources */,
 				3B497B0D2A08C69000D3FAAC /* ServiceAreaUseCase.swift in Sources */,
 				3B97E46929E419FB000F4B39 /* ResultViewController.swift in Sources */,
@@ -1657,6 +1667,7 @@
 				3B497ADB29FBC03900D3FAAC /* GasStationDTO.swift in Sources */,
 				3B97E46329E3FEB0000F4B39 /* DefaultSearchUseCase.swift in Sources */,
 				3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */,
+				3B88CC9C2A6E69B70041FF0D /* AccidentAPI.swift in Sources */,
 				3BD4EE9F29C1EF940010FB25 /* CctvDTO.swift in Sources */,
 				3B97E45F29E3CA12000F4B39 /* DefaultLocationService.swift in Sources */,
 				3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */,
@@ -1692,6 +1703,7 @@
 				3B497AC229F3BA2500D3FAAC /* CardViewModel.swift in Sources */,
 				3B6CF36E29D313B0002289A0 /* RoadViewModel.swift in Sources */,
 				3B497B472A0B918C00D3FAAC /* FoodMenuCell.swift in Sources */,
+				3B88CC962A6E58E50041FF0D /* RouterManager.swift in Sources */,
 				3B63BAA629B767EF0055D3A4 /* APIRequest.swift in Sources */,
 				3B497B242A0A20B500D3FAAC /* DefaultFacilityUseCase.swift in Sources */,
 				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,
