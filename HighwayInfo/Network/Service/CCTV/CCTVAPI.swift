@@ -48,14 +48,14 @@ extension CCTVAPI: Router {
         case .fetchVideoBy(let x, let y):
             return .requestParameters(
                 parameters:
-                    [ "apiKey": Bundle.main.cctvApiKey,
-                      "type": "ex",
-                      "cctvType": "2",
-                      "minX": String(x - 0.006),
-                      "maxX": String(x + 0.006),
-                      "minY": String(y - 0.006),
-                      "maxY": String(y + 0.006),
-                      "getType": "xml"
+                    ["apiKey": Bundle.main.cctvApiKey,
+                     "type": "ex",
+                     "cctvType": "2",
+                     "minX": String(x - 0.006),
+                     "maxX": String(x + 0.006),
+                     "minY": String(y - 0.006),
+                     "maxY": String(y + 0.006),
+                     "getType": "xml"
                     ])
         }
     }

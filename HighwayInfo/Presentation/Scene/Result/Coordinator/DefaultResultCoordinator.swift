@@ -32,7 +32,7 @@ final class DefaultResultCoordinator: ResultCoordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: ResultViewController.self)
         let cardCoordinator = DefaultCardCoordinator(navigationController: navigationController, parentCoordinator: self)
-        let cardUseCase = DefaultCardUseCase(roadRepository: DefaultRoadRepository(service: RoadService(apiProvider: apiProvider)))
+        let cardUseCase = DefaultCardUseCase(roadRepository: DefaultRoadRepository(service: RoadService.live))
         childCoordinators.append(cardCoordinator)
         cardViewModel = CardViewModel(coordinator: cardCoordinator, useCase: cardUseCase, highwayInfo: route.highwayInfo)
         controller.viewModel = ResultViewModel(coordinator: self, route: route, cardViewModel: cardViewModel!)

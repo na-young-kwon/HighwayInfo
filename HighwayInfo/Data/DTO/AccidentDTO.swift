@@ -20,7 +20,7 @@ class AccidentDTO: Decodable {
         return Accident(startTime: startDate,
                         place: inciPlace1,
                         direction: inciPlace2.removeDirection(),
-                        restrictType: restrictType,
+                        restrictType: restrictType ?? "",
                         description: inciDesc,
                         coord_x: Double(coord_x) ?? 0,
                         coord_y: Double(coord_y) ?? 0

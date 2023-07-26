@@ -39,7 +39,7 @@ extension RouterManager {
                             guard let data = response.data else { return }
                             single(.success(data))
                         } else {
-                            let error = RouterManagerError(code: .isNotSuccessful)
+                            let error = RouterManagerError(code: .isNotSuccessful, response: response)
                             single(.failure(error))
                         }
                     case .failure(let underlyingError):
@@ -58,7 +58,7 @@ extension RouterManager {
     private func makeDataRequest(router: Router) -> DataRequest {
         switch router.task {
         case .requestPlain:
-            return self.alamofireSession.request(
+            return alamofireSession.request(
                 "\(router.baseURL)\(router.path)",
                 method: router.method,
                 headers: HTTPHeaders(headers: router.headers),
@@ -66,18 +66,21 @@ extension RouterManager {
             )
             
         case .requestJSONEncodable(let parameters):
-            return self.alamofireSession.request(
+            return alamofireSession.request(
                 "\(router.baseURL)\(router.path)",
                 method: router.method,
                 parameters: parameters,
+                encoder: .json,
+                headers: HTTPHeaders(headers: router.headers),
                 interceptor: interceptor
             )
             
         case .requestParameters(parameters: let parameters):
-            return self.alamofireSession.request(
+            return alamofireSession.request(
                 "\(router.baseURL)\(router.path)",
                 method: router.method,
                 parameters: parameters,
+                headers: HTTPHeaders(headers: router.headers),
                 interceptor: interceptor
             )
         }

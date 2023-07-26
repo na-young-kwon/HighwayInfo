@@ -9,55 +9,118 @@ import Foundation
 import RxSwift
 import CoreLocation
 
-struct RouteCoordinate: Encodable {
-    let startX: String
-    let startY: String
-    let endX: String
-    let endY: String
-    let searchOption = "4"
-    let mainRoadInfo = "Y"
+struct  RoadService {
+    let fetchSearchResult: (_ keyword: String, _ coordinate: CLLocationCoordinate2D) -> Observable<SearchResultDTO>
+    let fetchRoute: (_ point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) -> Observable<RouteDTO>
+    let fetchStartPointName: (_ point: CLLocationCoordinate2D) -> Observable<AddressDTO>
+    let fetchServiceArea: (_ routeName: String) -> Observable<[ServiceAreaDTO]>
+    let fetchGasStation: (_ routeName: String) -> Observable<[GasStationDTO]>
+    let fetchGasPrice: (_ routeName: String) -> Observable<GasPriceDTO>
+    
+    init(fetchSearchResult: @escaping (_ keyword: String, _ coordinate: CLLocationCoordinate2D) -> Observable<SearchResultDTO>,
+         fetchRoute: @escaping (_ point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) -> Observable<RouteDTO>,
+         fetchStartPointName: @escaping(_ point: CLLocationCoordinate2D) -> Observable<AddressDTO>,
+         fetchServiceArea: @escaping (_ routeName: String) -> Observable<[ServiceAreaDTO]>,
+         fetchGasStation: @escaping (_ routeName: String) -> Observable<[GasStationDTO]>,
+         fetchGasPrice: @escaping (_ routeName: String) -> Observable<GasPriceDTO>) {
+        self.fetchSearchResult = fetchSearchResult
+        self.fetchRoute = fetchRoute
+        self.fetchStartPointName = fetchStartPointName
+        self.fetchServiceArea = fetchServiceArea
+        self.fetchGasStation = fetchGasStation
+        self.fetchGasPrice = fetchGasPrice
+    }
 }
 
-final class RoadService {
-    let apiProvider: APIProvider
+extension RoadService {
+    static let live = Self(
+        fetchSearchResult: { keyword, coordinate in
+            return RouterManager<RoadAPI>
+                .init()
+                .request(router: .fetchSearchResult(keyword: keyword, coordinate: coordinate))
+                .map { data in
+                    do {
+                        return try JSONDecoder().decode(SearchResultDTO.self, from: data)
+                    } catch {
+                        throw RoadServiceError(code: .decodeFailed, underlying: error)
+                    }
+                }
+                .asObservable()
+        },
+        fetchRoute: { point in
+            return RouterManager<RoadAPI>
+                .init()
+                .request(router: .fetchRoute(point: point))
+                .map { data in
+                    do {
+                        return try JSONDecoder().decode(RouteDTO.self, from: data)
+                    } catch {
+                        throw RoadServiceError(code: .decodeFailed, underlying: error)
+                    }
+                }
+                .asObservable()
+        },
+        fetchStartPointName: { point in
+            return RouterManager<RoadAPI>
+                .init()
+                .request(router: .fetchStartPointName(point: point))
+                .map { data in
+                    do {
+                        return try JSONDecoder().decode(AddressDTO.self, from: data)
+                    } catch {
+                        throw RoadServiceError(code: .decodeFailed, underlying: error)
+                    }
+                }
+                .asObservable()
+        },
+        fetchServiceArea: { routeName in
+            return RouterManager<RoadAPI>
+                .init()
+                .request(router: .fetchServiceArea(routeName: routeName))
+                .map({ data in
+                    let parser = ServiceAreaParser(data: data)
+                    let decoded = parser.parseXML()
+                    return decoded
+                })
+                .asObservable()
+        },
+        fetchGasStation: { routeName in
+            return RouterManager<RoadAPI>
+                .init()
+                .request(router: .fetchGasStation(routeName: routeName))
+                .map({ data in
+                    let parser = GasStationParser(data: data)
+                    let decoded = parser.parseXML()
+                    return decoded
+                })
+                .asObservable()
+        },
+        fetchGasPrice: { serviceName in
+            return RouterManager<RoadAPI>
+                .init()
+                .request(router: .fetchGasPrice(serviceName: serviceName))
+                .map { data in
+                    do {
+                        return try JSONDecoder().decode(GasPriceDTO.self, from: data)
+                    } catch {
+                        throw RoadServiceError(code: .decodeFailed, underlying: error)
+                    }
+                }
+                .asObservable()
+        }
+    )
+}
+
+struct RoadServiceError: Error {
+    var code: Code
+    var underlying: Error?
     
-    init(apiProvider: APIProvider) {
-        self.apiProvider = apiProvider
+    enum Code: Int {
+        case decodeFailed = 0
     }
     
-    func fetchSearchResult(for keyword: String, coordinate: CLLocationCoordinate2D) -> Observable<SearchResultDTO> {
-        let request = SearchRequest(searchKeyword: keyword,
-                                    longitude: coordinate.longitude,
-                                    latitude: coordinate.latitude)
-        return apiProvider.performDataTask(with: request, decodeType: .json)
-    }
-    
-    func fetchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) -> Observable<RouteDTO> {
-        let request = RouteRequest()
-        let data = RouteCoordinate(startX: String(point.0.longitude),
-                                   startY: String(point.0.latitude),
-                                   endX: String(point.1.longitude),
-                                   endY: String(point.1.latitude))
-        return apiProvider.performPostDataTask(data, with: request)
-    }
-    
-    func fetchStartPointName(for point: CLLocationCoordinate2D) -> Observable<AddressDTO> {
-        let request = AddressRequest(latitude: point.latitude, longitude: point.longitude)
-        return apiProvider.performDataTask(with: request, decodeType: .json)
-    }
-    
-    func fetchServiceArea(for routeName: String) -> Observable<[ServiceAreaDTO]> {
-        let request = ServiceAreaRequest(routeName: routeName)
-        return apiProvider.performDataTask(with: request, decodeType: .serviceArea)
-    }
-    
-    func fetchGasStation(for routeName: String) -> Observable<[GasStationDTO]> {
-        let request = GasStationRequest(routeName: routeName)
-        return apiProvider.performDataTask(with: request, decodeType: .gasStation)
-    }
-    
-    func fetchGasPrice(for serviceName: String) -> Observable<GasPriceDTO> {
-        let request = GasPriceRequest(serviceAreaName: serviceName)
-        return apiProvider.performDataTask(with: request, decodeType: .json)
+    init(code: Code, underlying: Error? = nil) {
+        self.code = code
+        self.underlying = underlying
     }
 }

@@ -27,7 +27,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
         let controller = SearchViewController()
         let searchUseCase = DefaultSearchUseCase(
             roadRepository: DefaultRoadRepository(
-                service: RoadService(apiProvider: apiProvider)),
+                service: RoadService.live),
             userRepository: DefaultUserRepository(),
             locationService: DefaultLocationService.shared
         )
