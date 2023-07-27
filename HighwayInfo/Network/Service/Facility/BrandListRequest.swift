@@ -10,7 +10,7 @@ import Foundation
 struct BrandListRequest: APIRequest {
     typealias Response = BrandListDTO
     
-    let httpMethod: HTTPMethod = .get
+    let httpMethod: HttpMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/restinfo/"
     let urlPath = "restBrandList?"
     let key = Bundle.main.serviceAreaKey

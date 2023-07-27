@@ -10,7 +10,7 @@ import Foundation
 struct RouteRequest: APIRequest {
     typealias Response = RouteDTO
         
-    let httpMethod: HTTPMethod = .post
+    let httpMethod: HttpMethod = .post
     let urlHost = "https://apis.openapi.sk.com/tmap/"
     let urlPath = "routes?"
     let version = "1"

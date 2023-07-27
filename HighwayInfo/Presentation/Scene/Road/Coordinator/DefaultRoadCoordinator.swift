@@ -11,11 +11,9 @@ import CoreLocation
 final class DefaultRoadCoordinator: RoadCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    private let apiProvider: DefaultAPIProvider
     
-    init(_ navigationController: UINavigationController, apiProvider: DefaultAPIProvider) {
+    init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.apiProvider = apiProvider
     }
     
     func start() {
@@ -28,7 +26,7 @@ final class DefaultRoadCoordinator: RoadCoordinator {
     }
     
     func showSearchView(with currentLocation: CLLocationCoordinate2D) {
-        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController, parentCoordinator: self, apiProvider: apiProvider)
+        let searchCoordinator = DefaultSearchCoordinator(navigationController: navigationController, parentCoordinator: self)
         
         childCoordinators.append(searchCoordinator)
         searchCoordinator.start()

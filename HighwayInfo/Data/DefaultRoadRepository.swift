@@ -17,26 +17,26 @@ final class DefaultRoadRepository: RoadRepository {
     }
     
     func fetchSearchResult(for keyword: String, coordinate: CLLocationCoordinate2D) -> Observable<SearchResultDTO> {
-        service.fetchSearchResult(for: keyword, coordinate: coordinate)
+        service.fetchSearchResult(keyword, coordinate)
     }
     
     func fetchRoute(for point: (CLLocationCoordinate2D, CLLocationCoordinate2D)) -> Observable<RouteDTO> {
-        service.fetchRoute(for: point)
+        service.fetchRoute(point)
     }
     
     func fetchStartPointName(for point: CLLocationCoordinate2D) -> Observable<String> {
-        service.fetchStartPointName(for: point).map { $0.addressInfo.cityDo + " " + $0.addressInfo.guGun + " " + $0.addressInfo.legalDong + " →" }
+        service.fetchStartPointName(point).map { $0.addressInfo.cityDo + " " + $0.addressInfo.guGun + " " + $0.addressInfo.legalDong + " →" }
     }
     
     func fetchServiceArea(for routeName: String) -> Observable<[ServiceAreaDTO]> {
-        service.fetchServiceArea(for: routeName)
+        service.fetchServiceArea(routeName)
     }
     
     func fetchGasStation(for routeName: String) -> Observable<[GasStationDTO]> {
-        service.fetchGasStation(for: routeName)
+        service.fetchGasStation(routeName)
     }
     
     func fetchGasPrice(for serviceName: String) -> Observable<GasPriceDTO> {
-        service.fetchGasPrice(for: serviceName)
+        service.fetchGasPrice(serviceName)
     }
 }

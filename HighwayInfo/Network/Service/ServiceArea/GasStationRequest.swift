@@ -10,7 +10,7 @@ import Foundation
 struct GasStationRequest: APIRequest {
     typealias Response = [GasStationDTO]
         
-    let httpMethod: HTTPMethod = .get
+    let httpMethod: HttpMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/restinfo/"
     let urlPath = "restOilList?"
     let key = Bundle.main.serviceAreaKey

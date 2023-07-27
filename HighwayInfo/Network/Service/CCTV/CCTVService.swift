@@ -8,30 +8,42 @@
 import Foundation
 import RxSwift
 
-final class CCTVService {
-    let apiProvider: APIProvider
+struct CCTVService {
+    let fetchPreview: (_ x: Double, _ y: Double) -> Observable<CctvDTO?>
+    let fetchVideo: (_ x: Double, _ y: Double) -> Observable<CctvDTO?>
     
-    init(apiProvider: APIProvider) {
-        self.apiProvider = apiProvider
+    init(fetchPreview: @escaping (_ x: Double, _ y: Double) -> Observable<CctvDTO?>,
+         fetchVideo: @escaping (_ x: Double, _ y: Double) -> Observable<CctvDTO?>) {
+        self.fetchPreview = fetchPreview
+        self.fetchVideo = fetchVideo
     }
-    
-    func fetchPreviewBy(x: Double, y: Double) -> Observable<CctvDTO?> {
-        let request = CCTVRequest(cctvType: .preview,
-                                  minX: x - 0.006,
-                                  maxX: x + 0.006,
-                                  minY: y - 0.006,
-                                  maxY: y + 0.006)
-        let result = apiProvider.performDataTask(with: request, decodeType: .cctv)
-        return result
-    }
-    
-    func fetchVideo(x: Double, y: Double) -> Observable<CctvDTO?> {
-        let request = CCTVRequest(cctvType: .video,
-                                  minX: x - 0.006,
-                                  maxX: x + 0.006,
-                                  minY: y - 0.006,
-                                  maxY: y + 0.006)
-        let result = apiProvider.performDataTask(with: request, decodeType: .cctv)
-        return result
-    }
+}
+
+extension CCTVService {
+    static let live = Self(
+        fetchPreview: { x, y in
+        return RouterManager<CCTVAPI>
+            .init()
+            .request(router: .fetchPreviewBy(x, y))
+            .map({ data in
+                let parser = CCTVParser(data: data)
+                let decoded = parser.parseXML()
+                return decoded
+            })
+            .asObservable()
+        
+    },
+        fetchVideo: { x, y in
+            return RouterManager<CCTVAPI>
+                .init()
+                .request(router: .fetchVideoBy(x, y))
+                .map({ data in
+                    let parser = CCTVParser(data: data)
+                    let decoded = parser.parseXML()
+                    return decoded
+                })
+                .asObservable()
+            
+        }
+    )
 }

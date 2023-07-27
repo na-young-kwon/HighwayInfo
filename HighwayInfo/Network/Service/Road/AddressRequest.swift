@@ -10,7 +10,7 @@ import Foundation
 struct AddressRequest: APIRequest {
     typealias Response = AddressDTO
         
-    let httpMethod: HTTPMethod = .get
+    let httpMethod: HttpMethod = .get
     let urlHost = "https://apis.openapi.sk.com/tmap/geo/"
     let urlPath = "reversegeocoding?"
     let version = "1"

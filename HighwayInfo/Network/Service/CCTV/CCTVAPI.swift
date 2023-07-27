@@ -1,8 +1,8 @@
 //
-//  CCTVRequest.swift
+//  CCTVAPI.swift
 //  HighwayInfo
 //
-//  Created by 권나영 on 2023/03/15.
+//  Created by 권나영 on 2023/07/25.
 //
 
 import Alamofire
@@ -48,14 +48,14 @@ extension CCTVAPI: Router {
         case .fetchVideoBy(let x, let y):
             return .requestParameters(
                 parameters:
-                    [ "apiKey": Bundle.main.cctvApiKey,
-                      "type": "ex",
-                      "cctvType": "2",
-                      "minX": String(x - 0.006),
-                      "maxX": String(x + 0.006),
-                      "minY": String(y - 0.006),
-                      "maxY": String(y + 0.006),
-                      "getType": "xml"
+                    ["apiKey": Bundle.main.cctvApiKey,
+                     "type": "ex",
+                     "cctvType": "2",
+                     "minX": String(x - 0.006),
+                     "maxX": String(x + 0.006),
+                     "minY": String(y - 0.006),
+                     "maxY": String(y + 0.006),
+                     "getType": "xml"
                     ])
         }
     }

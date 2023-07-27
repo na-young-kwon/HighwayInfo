@@ -10,7 +10,7 @@ import Foundation
 struct FoodRequest: APIRequest {
     typealias Response = FoodDTO
 
-    let httpMethod: HTTPMethod = .get
+    let httpMethod: HttpMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/restinfo/"
     let urlPath = "restBestfoodList?"
     let key = Bundle.main.serviceAreaKey

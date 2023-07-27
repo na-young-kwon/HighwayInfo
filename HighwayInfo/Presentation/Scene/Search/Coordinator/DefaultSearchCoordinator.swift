@@ -12,12 +12,10 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     private weak var parentCoordinator: Coordinator?
-    private let apiProvider: DefaultAPIProvider
     
-    init(navigationController: UINavigationController, parentCoordinator: Coordinator, apiProvider: DefaultAPIProvider) {
+    init(navigationController: UINavigationController, parentCoordinator: Coordinator) {
         self.navigationController = navigationController
         self.parentCoordinator = parentCoordinator
-        self.apiProvider = apiProvider
     }
 
     func start() {
@@ -27,7 +25,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
         let controller = SearchViewController()
         let searchUseCase = DefaultSearchUseCase(
             roadRepository: DefaultRoadRepository(
-                service: RoadService(apiProvider: apiProvider)),
+                service: RoadService.live),
             userRepository: DefaultUserRepository(),
             locationService: DefaultLocationService.shared
         )
@@ -38,8 +36,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     func toResultView(with route: Route) {
         let resultCoordinator = DefaultResultCoordinator(
             navigationController: navigationController,
-            parentCoordinator: self, apiProvider: apiProvider
-        )
+            parentCoordinator: self)
         childCoordinators.append(resultCoordinator)
         resultCoordinator.start()
         resultCoordinator.start(with: route)

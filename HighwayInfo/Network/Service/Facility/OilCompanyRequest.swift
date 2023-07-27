@@ -10,7 +10,7 @@ import Foundation
 struct OilCompanyRequest: APIRequest {
     typealias Response = OilCompanyDTO
 
-    let httpMethod: HTTPMethod = .get
+    let httpMethod: HttpMethod = .get
     let urlHost = "http://data.ex.co.kr/openapi/business/"
     let urlPath = "lpgServiceAreaInfo?"
     let key = Bundle.main.serviceAreaKey
