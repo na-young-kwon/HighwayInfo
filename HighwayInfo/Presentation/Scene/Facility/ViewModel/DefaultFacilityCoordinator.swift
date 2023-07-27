@@ -28,7 +28,7 @@ final class DefaultFacilityCoordinator: FacilityCoordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(ofType: FacilityViewController.self)
         let apiProvider = DefaultAPIProvider()
-        let facilityService = FacilityService(apiProvider: apiProvider)
+        let facilityService = FacilityService.live
         let roadRepository = DefaultRoadRepository(service: RoadService.live)
         let facilityRepository = DefaultFacilityRepository(service: facilityService)
         controller.viewModel = FacilityViewModel(coordinator: self, useCase: DefaultFacilityUseCase(roadRepository: roadRepository, facilityRepository: facilityRepository), serviceArea: serviceArea)

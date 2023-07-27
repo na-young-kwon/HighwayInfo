@@ -64,10 +64,6 @@
 		3B3D53412A284F19002FF6AE /* CCTVService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4EE9829C1D00A0010FB25 /* CCTVService.swift */; };
 		3B3D53442A284F23002FF6AE /* RoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37029D31544002289A0 /* RoadService.swift */; };
 		3B3D534B2A284FF8002FF6AE /* FacilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */; };
-		3B3D534C2A284FFA002FF6AE /* FoodRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */; };
-		3B3D534D2A284FFB002FF6AE /* OilCompanyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B302A0A7D4500D3FAAC /* OilCompanyRequest.swift */; };
-		3B3D534E2A284FFE002FF6AE /* BrandListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */; };
-		3B3D534F2A285000002FF6AE /* ConvenienceListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */; };
 		3B3D53502A285003002FF6AE /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429FD2A25093200A88F4C /* CacheManager.swift */; };
 		3B3D53512A285006002FF6AE /* CacheValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3429FF2A25B51900A88F4C /* CacheValue.swift */; };
 		3B3D53522A28500D002FF6AE /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086D29B9C1F6009D7396 /* Observable+Extension.swift */; };
@@ -162,17 +158,13 @@
 		3B497B1F2A09273700D3FAAC /* DefaultFacilityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B1E2A09273700D3FAAC /* DefaultFacilityCoordinator.swift */; };
 		3B497B212A0A207B00D3FAAC /* FacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B202A0A207B00D3FAAC /* FacilityUseCase.swift */; };
 		3B497B242A0A20B500D3FAAC /* DefaultFacilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */; };
-		3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */; };
 		3B497B282A0A4C7300D3FAAC /* FoodDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */; };
 		3B497B2A2A0A502100D3FAAC /* FacilityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B292A0A502100D3FAAC /* FacilityRepository.swift */; };
 		3B497B2C2A0A505600D3FAAC /* DefaultFacilityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B2B2A0A505600D3FAAC /* DefaultFacilityRepository.swift */; };
 		3B497B2E2A0A65F100D3FAAC /* FacilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */; };
-		3B497B312A0A7D4500D3FAAC /* OilCompanyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B302A0A7D4500D3FAAC /* OilCompanyRequest.swift */; };
 		3B497B332A0A7D5800D3FAAC /* OilCompanyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B322A0A7D5800D3FAAC /* OilCompanyDTO.swift */; };
-		3B497B352A0A8A1D00D3FAAC /* BrandListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */; };
 		3B497B372A0A8A3100D3FAAC /* BrandListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B362A0A8A3100D3FAAC /* BrandListDTO.swift */; };
 		3B497B392A0B6CA700D3FAAC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B382A0B6CA700D3FAAC /* Brand.swift */; };
-		3B497B3B2A0B6ED500D3FAAC /* ConvenienceListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */; };
 		3B497B3D2A0B6EE800D3FAAC /* ConvenienceListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3C2A0B6EE800D3FAAC /* ConvenienceListDTO.swift */; };
 		3B497B3F2A0B708D00D3FAAC /* ConvenienceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B3E2A0B708D00D3FAAC /* ConvenienceList.swift */; };
 		3B497B412A0B7D9A00D3FAAC /* FacilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B497B402A0B7D9A00D3FAAC /* FacilityCell.swift */; };
@@ -222,6 +214,8 @@
 		3B88CC9D2A6FD6630041FF0D /* AccidentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC9B2A6E69B70041FF0D /* AccidentAPI.swift */; };
 		3B88CC9F2A6FED760041FF0D /* CCTVAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC9E2A6FED760041FF0D /* CCTVAPI.swift */; };
 		3B88CCA12A70EC2A0041FF0D /* RoadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CCA02A70EC2A0041FF0D /* RoadAPI.swift */; };
+		3B88CCA32A712BAE0041FF0D /* FacilityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CCA22A712BAE0041FF0D /* FacilityAPI.swift */; };
+		3B88CCA52A72565E0041FF0D /* RoadServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CCA42A72565E0041FF0D /* RoadServiceError.swift */; };
 		3B8F085829B86646009D7396 /* DefaultAccidentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */; };
 		3B8F086029B87CE7009D7396 /* AccidentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */; };
 		3B8F086329B89AE7009D7396 /* AccidentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F086229B89AE7009D7396 /* AccidentParser.swift */; };
@@ -352,17 +346,13 @@
 		3B497B1E2A09273700D3FAAC /* DefaultFacilityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DefaultFacilityCoordinator.swift; path = HighwayInfo/Presentation/Scene/Facility/ViewModel/DefaultFacilityCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		3B497B202A0A207B00D3FAAC /* FacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityUseCase.swift; sourceTree = "<group>"; };
 		3B497B232A0A20B500D3FAAC /* DefaultFacilityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFacilityUseCase.swift; sourceTree = "<group>"; };
-		3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRequest.swift; sourceTree = "<group>"; };
 		3B497B272A0A4C7300D3FAAC /* FoodDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDTO.swift; sourceTree = "<group>"; };
 		3B497B292A0A502100D3FAAC /* FacilityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityRepository.swift; sourceTree = "<group>"; };
 		3B497B2B2A0A505600D3FAAC /* DefaultFacilityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFacilityRepository.swift; sourceTree = "<group>"; };
 		3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityService.swift; sourceTree = "<group>"; };
-		3B497B302A0A7D4500D3FAAC /* OilCompanyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilCompanyRequest.swift; sourceTree = "<group>"; };
 		3B497B322A0A7D5800D3FAAC /* OilCompanyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilCompanyDTO.swift; sourceTree = "<group>"; };
-		3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListRequest.swift; sourceTree = "<group>"; };
 		3B497B362A0A8A3100D3FAAC /* BrandListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListDTO.swift; sourceTree = "<group>"; };
 		3B497B382A0B6CA700D3FAAC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
-		3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceListRequest.swift; sourceTree = "<group>"; };
 		3B497B3C2A0B6EE800D3FAAC /* ConvenienceListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceListDTO.swift; sourceTree = "<group>"; };
 		3B497B3E2A0B708D00D3FAAC /* ConvenienceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceList.swift; sourceTree = "<group>"; };
 		3B497B402A0B7D9A00D3FAAC /* FacilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityCell.swift; sourceTree = "<group>"; };
@@ -413,6 +403,8 @@
 		3B88CC9B2A6E69B70041FF0D /* AccidentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentAPI.swift; sourceTree = "<group>"; };
 		3B88CC9E2A6FED760041FF0D /* CCTVAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTVAPI.swift; sourceTree = "<group>"; };
 		3B88CCA02A70EC2A0041FF0D /* RoadAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadAPI.swift; sourceTree = "<group>"; };
+		3B88CCA22A712BAE0041FF0D /* FacilityAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityAPI.swift; sourceTree = "<group>"; };
+		3B88CCA42A72565E0041FF0D /* RoadServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadServiceError.swift; sourceTree = "<group>"; };
 		3B8F085729B86646009D7396 /* DefaultAccidentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccidentRepository.swift; sourceTree = "<group>"; };
 		3B8F085F29B87CE7009D7396 /* AccidentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentDTO.swift; sourceTree = "<group>"; };
 		3B8F086229B89AE7009D7396 /* AccidentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentParser.swift; sourceTree = "<group>"; };
@@ -673,10 +665,7 @@
 			isa = PBXGroup;
 			children = (
 				3B497B2D2A0A65F100D3FAAC /* FacilityService.swift */,
-				3B497B252A0A4C0E00D3FAAC /* FoodRequest.swift */,
-				3B497B302A0A7D4500D3FAAC /* OilCompanyRequest.swift */,
-				3B497B342A0A8A1D00D3FAAC /* BrandListRequest.swift */,
-				3B497B3A2A0B6ED500D3FAAC /* ConvenienceListRequest.swift */,
+				3B88CCA22A712BAE0041FF0D /* FacilityAPI.swift */,
 			);
 			path = Facility;
 			sourceTree = "<group>";
@@ -772,13 +761,6 @@
 				3B497B1C2A0926F000D3FAAC /* FacilityViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3B497B2F2A0A662600D3FAAC /* ServiceArea */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ServiceArea;
 			sourceTree = "<group>";
 		};
 		3B5AD11A29B1E7B300E2AFAA /* Application */ = {
@@ -942,8 +924,7 @@
 				3B8F085D29B872EF009D7396 /* Protocol */,
 				3BD4EE9629C1CED50010FB25 /* Accident */,
 				3BD4EE9729C1CFF10010FB25 /* CCTV */,
-				3B6CF36F29D31523002289A0 /* Tmap */,
-				3B497B2F2A0A662600D3FAAC /* ServiceArea */,
+				3B6CF36F29D31523002289A0 /* Road */,
 				3B497ADD29FBCF4000D3FAAC /* Facility */,
 			);
 			path = Service;
@@ -1042,13 +1023,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		3B6CF36F29D31523002289A0 /* Tmap */ = {
+		3B6CF36F29D31523002289A0 /* Road */ = {
 			isa = PBXGroup;
 			children = (
 				3B6CF37029D31544002289A0 /* RoadService.swift */,
 				3B88CCA02A70EC2A0041FF0D /* RoadAPI.swift */,
+				3B88CCA42A72565E0041FF0D /* RoadServiceError.swift */,
 			);
-			path = Tmap;
+			path = Road;
 			sourceTree = "<group>";
 		};
 		3B6CF37629D317DD002289A0 /* Protocol */ = {
@@ -1452,7 +1434,6 @@
 				3B3D53592A285031002FF6AE /* CctvDTO.swift in Sources */,
 				3B3D533A2A284EE8002FF6AE /* NetworkingError.swift in Sources */,
 				3B3D53662A28504A002FF6AE /* DefaultRoadRepository.swift in Sources */,
-				3B3D534E2A284FFE002FF6AE /* BrandListRequest.swift in Sources */,
 				3B3D53342A284E00002FF6AE /* FoodMenu.swift in Sources */,
 				3B3D53802A2850E9002FF6AE /* UIView+Extension.swift in Sources */,
 				3B3D53522A28500D002FF6AE /* Observable+Extension.swift in Sources */,
@@ -1492,12 +1473,10 @@
 				3B3D53822A2850EC002FF6AE /* UIColor+Extension.swift in Sources */,
 				3B3D53562A285022002FF6AE /* ServiceAreaParser.swift in Sources */,
 				3B3D53642A285047002FF6AE /* DefaultAccidentRepository.swift in Sources */,
-				3B3D534F2A285000002FF6AE /* ConvenienceListRequest.swift in Sources */,
 				3B3D532F2A284DF7002FF6AE /* GasStation.swift in Sources */,
 				3B3D532C2A284DF1002FF6AE /* HighwayInfo.swift in Sources */,
 				3B3D532E2A284DF5002FF6AE /* ServiceArea.swift in Sources */,
 				3B3D537D2A2850E3002FF6AE /* ActivityIndicator.swift in Sources */,
-				3B3D534D2A284FFB002FF6AE /* OilCompanyRequest.swift in Sources */,
 				3B3D53772A2850C8002FF6AE /* CardViewModel.swift in Sources */,
 				3B3D53382A284E74002FF6AE /* ViewModelType.swift in Sources */,
 				3B3D539D2A2855F4002FF6AE /* ServiceAreaCoordinator.swift in Sources */,
@@ -1507,7 +1486,6 @@
 				3B3D538B2A28529D002FF6AE /* HomeCoordinator.swift in Sources */,
 				3B3D537C2A2850DE002FF6AE /* Reusable.swift in Sources */,
 				3B3D53512A285006002FF6AE /* CacheValue.swift in Sources */,
-				3B3D534C2A284FFA002FF6AE /* FoodRequest.swift in Sources */,
 				3B3D53132A276630002FF6AE /* HomeViewModelTests.swift in Sources */,
 				3B30873C2A2A1EAE000D8F2C /* SearchViewModelTests.swift in Sources */,
 				3B3087452A2A325D000D8F2C /* MockCardUseCase.swift in Sources */,
@@ -1562,7 +1540,7 @@
 				3B497B012A03BF3900D3FAAC /* DefaultServiceAreaCoordinator.swift in Sources */,
 				3B88CC942A6E58150041FF0D /* Router.swift in Sources */,
 				3B497AF22A00F42700D3FAAC /* ServiceArea.swift in Sources */,
-				3B497B352A0A8A1D00D3FAAC /* BrandListRequest.swift in Sources */,
+				3B88CCA52A72565E0041FF0D /* RoadServiceError.swift in Sources */,
 				3B5AD11E29B1E8E500E2AFAA /* Coordinator.swift in Sources */,
 				3B3429FE2A25093200A88F4C /* CacheManager.swift in Sources */,
 				3B5B0E9029B0CFDD00AECF22 /* HomeViewController.swift in Sources */,
@@ -1578,7 +1556,6 @@
 				3B497B052A05022A00D3FAAC /* ConvenienceCell.swift in Sources */,
 				3B497AC629F3CE6B00D3FAAC /* EmptyView.swift in Sources */,
 				3B63BAC129B862D30055D3A4 /* DefaultAccidentUseCase.swift in Sources */,
-				3B497B3B2A0B6ED500D3FAAC /* ConvenienceListRequest.swift in Sources */,
 				3B497AEB29FFF4C400D3FAAC /* ServiceCell.swift in Sources */,
 				3B97E46B29E41B24000F4B39 /* DefaultResultCoordinator.swift in Sources */,
 				3B3D538E2A2852BA002FF6AE /* RoadCoordinator.swift in Sources */,
@@ -1599,7 +1576,7 @@
 				3B497B432A0B8F0E00D3FAAC /* Facility.swift in Sources */,
 				3B7399F629DC2DE600B5D1FF /* SearchViewController.swift in Sources */,
 				3B3429EE2A176C8300A88F4C /* EmptyServiceAreaView.swift in Sources */,
-				3B497B262A0A4C0E00D3FAAC /* FoodRequest.swift in Sources */,
+				3B88CCA32A712BAE0041FF0D /* FacilityAPI.swift in Sources */,
 				3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */,
 				3B497B282A0A4C7300D3FAAC /* FoodDTO.swift in Sources */,
 				3B88CC982A6E59F80041FF0D /* RouterManagerError.swift in Sources */,
@@ -1669,7 +1646,6 @@
 				3B497B242A0A20B500D3FAAC /* DefaultFacilityUseCase.swift in Sources */,
 				3BD4EEA129C1F5910010FB25 /* CCTVRepository.swift in Sources */,
 				3B8F087029B9C2C6009D7396 /* AccidentViewModel.swift in Sources */,
-				3B497B312A0A7D4500D3FAAC /* OilCompanyRequest.swift in Sources */,
 				3B497AF02A00DE4100D3FAAC /* TitleView.swift in Sources */,
 				3B497B0B2A06517D00D3FAAC /* CategoryStackView.swift in Sources */,
 				3B8F086529B9BDD1009D7396 /* ActivityIndicator.swift in Sources */,
