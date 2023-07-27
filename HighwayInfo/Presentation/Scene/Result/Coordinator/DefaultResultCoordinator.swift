@@ -13,12 +13,10 @@ final class DefaultResultCoordinator: ResultCoordinator {
     var childCoordinators: [Coordinator] = []
     var cardViewModel: CardViewModel?
     private weak var parentCoordinator: Coordinator?
-    private let apiProvider: DefaultAPIProvider
     
-    init(navigationController: UINavigationController, parentCoordinator: Coordinator, apiProvider: DefaultAPIProvider) {
+    init(navigationController: UINavigationController, parentCoordinator: Coordinator) {
         self.navigationController = navigationController
         self.parentCoordinator = parentCoordinator
-        self.apiProvider = apiProvider
     }
     
     func start() {

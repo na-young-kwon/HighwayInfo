@@ -9,7 +9,6 @@ import UIKit
 
 final class AppCoordinator: Coordinator {
     private let window: UIWindow
-    private let apiProvider = DefaultAPIProvider()
     private var tabBarController: UITabBarController
     var childCoordinators: [Coordinator] = []
     
@@ -50,10 +49,10 @@ final class AppCoordinator: Coordinator {
     private func startTabCoordinator(of page: TabBarPage, to navigationController: UINavigationController) {
         switch page {
         case .home:
-            let homeCoordinator = DefaultHomeCoordinator(navigationController, apiProvider: apiProvider)
+            let homeCoordinator = DefaultHomeCoordinator(navigationController)
             homeCoordinator.start()
         case .search:
-            let roadCoordinator = DefaultRoadCoordinator(navigationController, apiProvider: apiProvider)
+            let roadCoordinator = DefaultRoadCoordinator(navigationController)
             roadCoordinator.start()
         }
     }

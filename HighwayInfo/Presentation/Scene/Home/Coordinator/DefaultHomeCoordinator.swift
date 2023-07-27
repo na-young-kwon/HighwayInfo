@@ -10,11 +10,9 @@ import UIKit
 final class DefaultHomeCoordinator: HomeCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    private let apiProvider: DefaultAPIProvider
     
-    init(_ navigationController: UINavigationController, apiProvider: DefaultAPIProvider) {
+    init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.apiProvider = apiProvider
     }
     
     func start() {
