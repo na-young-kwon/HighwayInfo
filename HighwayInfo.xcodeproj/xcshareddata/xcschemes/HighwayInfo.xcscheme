@@ -50,6 +50,17 @@
                ReferencedContainer = "container:HighwayInfo.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3B88CCAA2A8E28BA0041FF0D"
+               BuildableName = "HighwayInfoUseCaseTests.xctest"
+               BlueprintName = "HighwayInfoUseCaseTests"
+               ReferencedContainer = "container:HighwayInfo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
