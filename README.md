@@ -100,3 +100,28 @@
 ### 구조 한눈에 보기
 
 <img src="https://github.com/na-young-kwon/HighwayInfo/assets/74536728/c9925a37-ac65-407d-ba5d-4beb05eae4bb" width="700" height="350">
+
+## Directory 구조
+프로젝트 구조 설명
+- 코드 관리를 위해 프로젝트를 기능단위로 나누고, 각 모듈은 자체 MVVM 패턴을 따르도록 설계했습니다.
+
+### Presentation
+- View 및 Screen 디렉토리 안에 뷰와 관련된 파일을 저장합니다. 
+- 이 디렉토리에는 스토리보드, XIB 파일 뷰, 뷰모델이 포함됩니다.
+
+### Domain
+- Model 또는 Data 디렉토리 안에 모델 클래스를 저장합니다.
+- 이 디렉토리에는 데이터 구조와 비즈니스 로직을 처리하는 UseCase와 Repository 프로토콜이 포함됩니다.
+
+### Data
+- 외부의 데이터를 가져오는 객체인 레파지토리가 Data레이어에 포함됩니다.
+  
+### Network
+- 서비스 및 네트워킹 관련 코드는 Service 또는 Networking 디렉토리에 저장합니다.
+
+### Utility
+- 재사용 가능한 도구나 유틸리티 함수를 저장합니다.
+
+### Resource
+- 이미지, 문자열, 폰트 및 기타 리소스 파일은 Resource 또는 Assets 디렉토리에 저장합니다.
+
