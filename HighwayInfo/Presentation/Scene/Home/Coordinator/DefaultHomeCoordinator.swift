@@ -9,23 +9,22 @@ import UIKit
 
 final class DefaultHomeCoordinator: HomeCoordinator {
     var navigationController: UINavigationController
+    var homeViewController: HomeViewController
     var childCoordinators: [Coordinator] = []
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.homeViewController = HomeViewController()
     }
     
     func start() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(ofType: HomeViewController.self)
         let accidentRepository = DefaultAccidentRepository(service: AccidentService.live)
         let cctvRepository = DefaultCCTVRepository(service: CCTVService.live)
-        vc.viewModel = HomeViewModel(
-            useCase: DefaultAccidentUseCase(
-                accidentRepository: accidentRepository,
-                cctvRepository: cctvRepository),
-            coordinator: self)
+        homeViewController.viewModel = HomeViewModel(
+            useCase: DefaultAccidentUseCase(accidentRepository: accidentRepository, cctvRepository: cctvRepository),
+            coordinator: self
+        )
         
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(homeViewController, animated: true)
     }
 }

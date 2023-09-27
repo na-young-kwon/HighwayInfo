@@ -3,83 +3,13 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="HighwayInfo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-Sd-Ulg">
-                                <rect key="frame" x="0.0" y="127.66666666666669" width="393" height="724.33333333333326"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19i-vM-20H">
-                                        <rect key="frame" x="295.33333333333331" y="13.999999999999986" width="83.666666666666686" height="34.333333333333336"/>
-                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="새로고침"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="돌발정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGT-tC-EjM">
-                                        <rect key="frame" x="18" y="17.999999999999986" width="76.333333333333329" height="26.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vTX-Lh-9vm">
-                                        <rect key="frame" x="18" y="68.333333333333314" width="357" height="656"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="vTX-Lh-9vm" firstAttribute="top" secondItem="19i-vM-20H" secondAttribute="bottom" constant="20" id="7Wa-fu-rtE"/>
-                                    <constraint firstItem="TGT-tC-EjM" firstAttribute="leading" secondItem="Y0U-Sd-Ulg" secondAttribute="leading" constant="18" id="7qh-si-1dl"/>
-                                    <constraint firstItem="vTX-Lh-9vm" firstAttribute="leading" secondItem="TGT-tC-EjM" secondAttribute="leading" id="CiS-Tm-3wB"/>
-                                    <constraint firstItem="TGT-tC-EjM" firstAttribute="top" secondItem="Y0U-Sd-Ulg" secondAttribute="top" constant="18" id="Dqu-NJ-3dw"/>
-                                    <constraint firstAttribute="trailing" secondItem="19i-vM-20H" secondAttribute="trailing" constant="14" id="Rzl-AH-fGw"/>
-                                    <constraint firstAttribute="trailing" secondItem="vTX-Lh-9vm" secondAttribute="trailing" constant="18" id="lwS-Jz-VYI"/>
-                                    <constraint firstItem="19i-vM-20H" firstAttribute="leading" relation="lessThanOrEqual" secondItem="TGT-tC-EjM" secondAttribute="trailing" constant="201" id="qw5-mM-p4T"/>
-                                    <constraint firstAttribute="bottom" secondItem="vTX-Lh-9vm" secondAttribute="bottom" id="sV2-ly-Bx5"/>
-                                    <constraint firstItem="19i-vM-20H" firstAttribute="top" secondItem="Y0U-Sd-Ulg" secondAttribute="top" constant="14" id="yzJ-q4-AP8"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HighwayInfo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N98-Bf-UZ4">
-                                <rect key="frame" x="18" y="76.333333333333329" width="130" height="26.333333333333329"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.15686274509803921" green="0.25490196078431371" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Y0U-Sd-Ulg" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.85" id="9Qs-GY-vwt"/>
-                            <constraint firstItem="N98-Bf-UZ4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="CQA-4W-p1Z"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y0U-Sd-Ulg" secondAttribute="trailing" id="Ile-b0-BY6"/>
-                            <constraint firstItem="Y0U-Sd-Ulg" firstAttribute="top" secondItem="N98-Bf-UZ4" secondAttribute="bottom" constant="25" id="ZWU-N3-lFZ"/>
-                            <constraint firstItem="Y0U-Sd-Ulg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a2W-la-meE"/>
-                            <constraint firstAttribute="bottom" secondItem="Y0U-Sd-Ulg" secondAttribute="bottom" id="cWG-hz-j6f"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="N98-Bf-UZ4" secondAttribute="trailing" constant="245" id="fKn-Qj-GZR"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="refreshButton" destination="19i-vM-20H" id="hFD-64-haV"/>
-                        <outlet property="tableView" destination="vTX-Lh-9vm" id="pCG-Az-4l5"/>
-                        <outlet property="whiteView" destination="Y0U-Sd-Ulg" id="g01-Ih-XQ3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9.9236641221374047" y="-2.1126760563380285"/>
-        </scene>
         <!--Road View Controller-->
         <scene sceneID="dMs-Tn-oKP">
             <objects>

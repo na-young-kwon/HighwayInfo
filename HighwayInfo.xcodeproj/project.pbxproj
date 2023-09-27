@@ -176,7 +176,6 @@
 		3B5AD12A29B1F61500E2AFAA /* DefaultRoadCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12929B1F61500E2AFAA /* DefaultRoadCoordinator.swift */; };
 		3B5AD12C29B1FB8200E2AFAA /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12B29B1FB8200E2AFAA /* TabBarPage.swift */; };
 		3B5AD12F29B203F300E2AFAA /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD12E29B203F300E2AFAA /* Reusable.swift */; };
-		3B5AD13329B2291D00E2AFAA /* AccidentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */; };
 		3B5AD13529B22AE700E2AFAA /* AccidentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */; };
 		3B5AD13729B32E3900E2AFAA /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5AD13629B32E3900E2AFAA /* ShadowView.swift */; };
 		3B5B0E8C29B0CFDD00AECF22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B0E8B29B0CFDD00AECF22 /* AppDelegate.swift */; };
@@ -197,6 +196,7 @@
 		3B6CF37A29D31B2E002289A0 /* DefaultRoadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */; };
 		3B7399F629DC2DE600B5D1FF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F529DC2DE600B5D1FF /* SearchViewController.swift */; };
 		3B7399F829DC34C200B5D1FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */; };
+		3B7BED3A2AC466070007F813 /* AccidentPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BED392AC466070007F813 /* AccidentPaddingLabel.swift */; };
 		3B88CC942A6E58150041FF0D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC932A6E58140041FF0D /* Router.swift */; };
 		3B88CC962A6E58E50041FF0D /* RouterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC952A6E58E50041FF0D /* RouterManager.swift */; };
 		3B88CC982A6E59F80041FF0D /* RouterManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88CC972A6E59F80041FF0D /* RouterManagerError.swift */; };
@@ -359,7 +359,6 @@
 		3B5AD12929B1F61500E2AFAA /* DefaultRoadCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadCoordinator.swift; sourceTree = "<group>"; };
 		3B5AD12B29B1FB8200E2AFAA /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
 		3B5AD12E29B203F300E2AFAA /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
-		3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccidentCell.xib; sourceTree = "<group>"; };
 		3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentCell.swift; sourceTree = "<group>"; };
 		3B5AD13629B32E3900E2AFAA /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		3B5B0E8829B0CFDD00AECF22 /* HighwayInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighwayInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -382,6 +381,7 @@
 		3B6CF37929D31B2E002289A0 /* DefaultRoadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRoadRepository.swift; sourceTree = "<group>"; };
 		3B7399F529DC2DE600B5D1FF /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = HighwayInfo/Presentation/Scene/Search/View/SearchViewController.swift; sourceTree = SOURCE_ROOT; };
 		3B7399F729DC34C200B5D1FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		3B7BED392AC466070007F813 /* AccidentPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentPaddingLabel.swift; sourceTree = "<group>"; };
 		3B88CC932A6E58140041FF0D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3B88CC952A6E58E50041FF0D /* RouterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterManager.swift; sourceTree = "<group>"; };
 		3B88CC972A6E59F80041FF0D /* RouterManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterManagerError.swift; sourceTree = "<group>"; };
@@ -1089,7 +1089,7 @@
 			children = (
 				3B5B0E8F29B0CFDD00AECF22 /* HomeViewController.swift */,
 				3B5AD13429B22AE700E2AFAA /* AccidentCell.swift */,
-				3B5AD13229B2291D00E2AFAA /* AccidentCell.xib */,
+				3B7BED392AC466070007F813 /* AccidentPaddingLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1281,7 +1281,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B5AD13329B2291D00E2AFAA /* AccidentCell.xib in Resources */,
 				3B5B0E9829B0CFDE00AECF22 /* LaunchScreen.storyboard in Resources */,
 				3B5B0E9529B0CFDE00AECF22 /* Assets.xcassets in Resources */,
 				3B5B0E9329B0CFDD00AECF22 /* Main.storyboard in Resources */,
@@ -1486,6 +1485,7 @@
 				3B497B392A0B6CA700D3FAAC /* Brand.swift in Sources */,
 				3B88CCA12A70EC2A0041FF0D /* RoadAPI.swift in Sources */,
 				3B497B072A05045600D3FAAC /* Convenience.swift in Sources */,
+				3B7BED3A2AC466070007F813 /* AccidentPaddingLabel.swift in Sources */,
 				3B3D53A02A285652002FF6AE /* FacilityCoordinator.swift in Sources */,
 				3B497ACE29F67CE800D3FAAC /* DefaultUserRepository.swift in Sources */,
 				3B497AFA2A03BDCF00D3FAAC /* ServiceAreaViewController.swift in Sources */,

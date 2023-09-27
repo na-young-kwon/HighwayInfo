@@ -8,6 +8,7 @@ target 'HighwayInfo' do
   pod 'RxCocoa', '~> 6.5.0'
   pod 'lottie-ios'
   pod 'Alamofire'
+  pod 'SnapKit', '~> 5.6.0'
 
 target 'HighwayInfoTests' do
   pod 'RxSwift'

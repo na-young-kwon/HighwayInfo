@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import RxSwift
 import RxCocoa
 import AVKit
@@ -23,9 +24,43 @@ class HomeViewController: UIViewController {
     private var videoController = AVPlayerViewController()
     private var dataSource: UITableViewDiffableDataSource<Section, AccidentViewModel>!
     
-    @IBOutlet weak var whiteView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var refreshButton: UIButton!
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "HighwayInfo"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        return label
+    }()
+    
+    private var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "돌발정보"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        return label
+    }()
+    
+    private var whiteView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 15
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private var refreshButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("새로고침", for: .normal)
+        button.setTitleColor(.darkGray, for: .normal)
+        return button
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(AccidentCell.self, forCellReuseIdentifier: AccidentCell.reuseID)
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
+        return tableView
+    }()
     
     private var loadingIndicator: LottieAnimationView = {
         let animation = LottieAnimation.named("GrayLoadingIndicator")
@@ -39,23 +74,45 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureUI()
-        configureTableView()
+        view.backgroundColor = .mainBlueColor
+        configureHierarchy()
+        configureConstraint()
         configureDataSource()
         bindViewModel()
     }
     
-    private func configureUI() {
-        whiteView.layer.cornerRadius = 15
-        loadingIndicator.center = view.center
+    private func configureHierarchy() {
+        view.addSubview(whiteView)
+        view.addSubview(titleLabel)
+        view.addSubview(descriptionLabel)
+        view.addSubview(refreshButton)
+        view.addSubview(tableView)
         view.addSubview(loadingIndicator)
     }
-    
-    private func configureTableView() {
-        let nib = UINib(nibName: AccidentCell.reuseID, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: AccidentCell.reuseID)
-        tableView.showsVerticalScrollIndicator = false
+        
+    private func configureConstraint() {
+        loadingIndicator.center = view.center
+        whiteView.snp.makeConstraints { make in
+            make.height.equalToSuperview().multipliedBy(0.85)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(18)
+            make.bottom.equalTo(whiteView.snp.top).inset(-25)
+        }
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.leading.equalTo(whiteView).inset(18)
+        }
+        refreshButton.snp.makeConstraints { make in
+            make.top.equalTo(whiteView).inset(14)
+            make.trailing.equalToSuperview().inset(14)
+        }
+        tableView.snp.makeConstraints { make in
+            make.leading.equalTo(descriptionLabel)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
+            make.trailing.equalTo(whiteView).inset(18)
+            make.bottom.equalTo(whiteView)
+        }
     }
     
     private func configureDataSource() {
