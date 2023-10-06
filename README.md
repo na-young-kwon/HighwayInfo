@@ -99,7 +99,8 @@
 
 ### 구조 한눈에 보기
 
-<img src="https://github.com/na-young-kwon/HighwayInfo/assets/74536728/c9925a37-ac65-407d-ba5d-4beb05eae4bb" width="700" height="350">
+<img src="https://github.com/na-young-kwon/HighwayInfo/assets/74536728/4e222298-370f-4693-b3e6-8c8f9db1e01c" width="700" height="350">
+
 
 ## Directory 구조
 프로젝트 구조 설명
