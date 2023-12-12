@@ -17,12 +17,10 @@ final class RoadViewModel: ViewModelType {
     let useCase: RoadUseCase
     
     struct Input {
-        let viewWillAppear: Observable<Void>
+        let viewDidLoad: Observable<Void>
     }
     
     struct Output {
-        let showAuthorizationAlert = BehaviorRelay<Bool>(value: false)
-        let currentLocation: Observable<CLLocationCoordinate2D>
     }
     
     init(useCase: RoadUseCase, coordinator: RoadCoordinator?) {
@@ -31,27 +29,14 @@ final class RoadViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let output = Output(currentLocation: useCase.currentLocation.asObservable())
-        
-        input.viewWillAppear
+        input.viewDidLoad
             .subscribe(onNext: { [weak self] _ in
                 self?.useCase.checkAuthorization()
                 self?.useCase.observeLocation()
             })
             .disposed(by: disposeBag)
         
-        useCase.authorizationStatus
-            .map { $0 == .notAllowed }
-            .bind(to: output.showAuthorizationAlert)
-            .disposed(by: disposeBag)
-      
-        useCase.currentLocation
-            .subscribe(onNext: { location in
-                self.currentLocation = location
-            })
-            .disposed(by: disposeBag)
-        
-        return output
+        return Output()
     }
     
     func showSearchView() {

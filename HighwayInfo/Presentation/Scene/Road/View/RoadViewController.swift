@@ -10,18 +10,16 @@ import RxSwift
 import RxCocoa
 import TMapSDK
 import CoreLocation
+import WebKit
 
 class RoadViewController: UIViewController, TMapViewDelegate {
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var locationInputView: UIView!
     @IBOutlet weak var placeholderLabel: UILabel!
-    @IBOutlet weak var currentLocationButton: UIButton!
     
     var viewModel: RoadViewModel!
     private let disposeBag = DisposeBag()
-    private var mapView: TMapView?
-    private let apiKey = Bundle.main.mapViewApiKey
-    private var position: CLLocationCoordinate2D?
+    private var webView: WKWebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,20 +44,15 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         locationInputView.layer.shadowOffset = .zero
         locationInputView.layer.shadowOpacity = 1
         locationInputView.layer.shadowRadius = 3
-        currentLocationButton.backgroundColor = .white
-        currentLocationButton.setImage(UIImage(systemName: "location.fill.viewfinder"), for: .normal)
-        currentLocationButton.layer.cornerRadius = currentLocationButton.frame.width / 2
-        currentLocationButton.layer.shadowColor = UIColor.gray.cgColor
-        currentLocationButton.layer.shadowOffset = .zero
-        currentLocationButton.layer.shadowOpacity = 1
-        currentLocationButton.layer.shadowRadius = 3
     }
     
     private func configureMapView() {
-        mapView = TMapView(frame: backgroundView.frame)
-        mapView?.delegate = self
-        mapView?.setApiKey(apiKey)
-        backgroundView.addSubview(mapView!)
+        webView = WKWebView(frame: backgroundView.frame)
+        let url = URL(string: "https://velog.io/@na-young-kwon")
+        let request = URLRequest(url: url!)
+        webView?.allowsBackForwardNavigationGestures = true 
+        webView?.load(request)
+        backgroundView.addSubview(webView!)
     }
     
     private func configureTapGesture() {
@@ -68,22 +61,9 @@ class RoadViewController: UIViewController, TMapViewDelegate {
     }
     
     private func bindViewModel() {
-        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
-            .mapToVoid()
-        let input = RoadViewModel.Input(viewWillAppear: viewWillAppear)
+        let viewDidLoad = Observable.of(Void())
+        let input = RoadViewModel.Input(viewDidLoad: viewDidLoad)
         let output = viewModel.transform(input: input)
-        
-        output.currentLocation
-            .subscribe(onNext: { [weak self] location in
-                self?.position = location
-            })
-            .disposed(by: disposeBag)
-        
-        output.showAuthorizationAlert
-            .subscribe(onNext: { [weak self] showAlert in
-                if showAlert { self?.setAuthAlertAction() }
-            })
-            .disposed(by: disposeBag)
     }
     
     private  func setAuthAlertAction() {
@@ -98,21 +78,6 @@ class RoadViewController: UIViewController, TMapViewDelegate {
         )
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
-    }
-    
-    @IBAction func tap(_ sender: UIButton) {
-        showCurrentLocation()
-    }
-    
-    private func showCurrentLocation() {
-        if let position = position {
-            let marker = TMapCustomMarker(position: position)
-            let view = UIImageView(image: UIImage(named: "marker"))
-            marker.view = view
-            mapView?.setCenter(position)
-            mapView?.setZoom(17)
-            marker.map = self.mapView
-        }
     }
     
     @objc func showSearchView() {

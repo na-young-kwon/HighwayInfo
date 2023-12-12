@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -118,9 +118,6 @@
                                     <constraint firstAttribute="width" constant="50" id="NE9-6Q-wBF"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="tap:" destination="rzH-ha-7Df" eventType="touchUpInside" id="wfc-Jg-Qbj"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Slq-y6-mci"/>
@@ -138,7 +135,6 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="9Ej-IM-2Ik" id="s07-jv-AUy"/>
-                        <outlet property="currentLocationButton" destination="kby-z9-vwm" id="X90-hb-ewQ"/>
                         <outlet property="locationInputView" destination="OBP-4F-wij" id="PA2-Vp-bBj"/>
                         <outlet property="placeholderLabel" destination="BOG-ph-noE" id="zjt-gq-Rnr"/>
                     </connections>
